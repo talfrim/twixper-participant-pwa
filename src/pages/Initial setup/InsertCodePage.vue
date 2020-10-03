@@ -1,0 +1,157 @@
+<template>
+    <section class="code-page">
+        <!-- right -->
+        <div class="right">
+          <div class="middle-content">
+            <i class="fas fa-dove"></i>
+            <h1>Welcome to Twixper.</h1>
+            <h4>To start, insert the code you got.</h4>
+  
+            <button type="button" class="btn main-btn" @click="codeInserted">Continue</button>
+          </div>
+        </div>
+        <!-- end of right -->
+      </section>
+</template>
+
+<script>
+    
+</script>
+
+  
+<style>
+    .code-page {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr min-content;
+    }
+    
+      .right {
+        grid-column: 2 / -1;
+        grid-row: 1 / 2;
+        position: relative;
+    }
+    
+    .btn-top {
+        width: 8rem;
+        background-color: #fff;
+        color: #1aa1f5;
+        border: 0.1rem solid #1aa1f5;
+        border-radius: 3rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .btn-top:hover {
+        background-color: #d9ebf7;
+    }
+    
+    .middle-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+    }
+    
+    .middle-content i {
+        font-size: 4rem;
+        color: #1aa1f5;
+        margin-bottom: 2rem;
+    }
+    
+    .middle-content h1 {
+        font-size: 2.8rem;
+        margin-bottom: 4rem;
+        line-height: 4rem;
+    }
+    
+    .middle-content h4 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .middle-content button {
+        margin: 0.8rem 0;
+        padding: 0.5rem;
+        border: 0.1rem solid #1aa1f5;
+        border-radius: 4rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .btn
+     {
+        background-color: #1aa1f5;
+        color: #fff;
+    }
+    
+    .btn:hover {
+        background-color: #0f5d8d;
+    }
+    
+    .log-in {
+        background-color: #fff;
+    }
+    
+    .log-in:hover {
+        background-color: #d9ebf7;
+    }
+    
+    @media (max-width: 1100px) {
+        .code-page {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr) min-content;
+        }
+    
+        .right {
+            grid-column: 1 / 2;
+            grid-row: 1/ 2;
+            width: 70%;
+            margin: auto;
+        }
+    }
+    
+    @media (max-width: 1300px) {
+        .middle-content {
+            width: 60%;
+        }
+    }
+    
+    @media (max-width: 800px) {
+        .right {
+            width: 80%;
+        }
+    
+        .middle-content i {
+            display: none;
+        }
+    
+        .middle-content h1 {
+            margin-bottom: 2rem;
+        }
+    
+        .middle-content h4 {
+            margin-bottom: 1rem;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .main-page {
+            grid-template-rows: 1fr min-content;
+        }
+      
+        .right {
+            grid-row: 1 / 2;
+            width: 90%;
+        }
+    }
+    
+</style>

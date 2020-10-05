@@ -5,29 +5,7 @@
     <!-- feeds content -->
     <div class="feeds-content dark-mode-2">
       <div class="posts dark-mode-1">
-        <div class="post border">
-          <div class="user-avatar">
-            <img src= '../assets/Dekel.png'>
-          </div>
-          <div class="post-content">
-            <div class="post-user-info light-text">
-              <h4>Dekel Levy</h4>
-              <i class="fas fa-check-circle"></i>
-              <span>@dekellevy 15m</span>
-            </div>
-            <p class="post-text light-text">
-              I Love Databases everybody!
-            </p>
-            <div>
-            </div>
-            <div class="post-icons">
-              <i class="far fa-comment"></i>
-              <i class="fas fa-retweet"></i>
-              <i class="far fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-        </div>
+        
         <div class="post border">
           <div class="user-avatar">
             <img src="../assets/Nir.png" />
@@ -279,9 +257,9 @@ export default {
 	}
 
 	.post-icons i {
-		font-size: 1.8rem;
+		font-size: 1.6rem;
 		color: #868383;
-		margin-right: 6rem;
+		margin-right: 4rem;
 	}
 
 	.follow {

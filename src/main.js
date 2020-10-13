@@ -1,15 +1,23 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import VueHead from 'vue-head'
-
-Vue.use(VueHead)
-Vue.use(VueRouter)
-
 import App from './App.vue'
+
+import VueHead from 'vue-head'
+Vue.use(VueHead)
+
+import VueRouter from "vue-router";
+Vue.use(VueRouter);
+import routes from "./routes";
+const router = new VueRouter({
+  routes,
+});
+
+import { ImagePlugin } from 'bootstrap-vue'
+Vue.use(ImagePlugin)
 
 
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   render: h => h(App),
-}).$mount('#app')
+}).$mount('#app');

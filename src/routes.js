@@ -4,7 +4,7 @@ const routes = [
         This can be done like here: https://stackoverflow.com/questions/53578974/conditional-route-in-vue-js */
       path: "/",
       name: "default",
-      component: () => import("./pages/Initial setup/InsertCodePage"),
+      component: () => import("./pages/Initial setup/InsertCodePage.vue"),
     },
     {
       path: "/insertCode",
@@ -14,12 +14,14 @@ const routes = [
     {
         path: "/loginToTwitter",
         name: "loginToTwitter",
-        component: () => import("./pages/Initial setup/loginToTwitterPage"),
+        component: () => import("./pages/Initial setup/LoginToTwitterPage"),
     },
     {
         path: "/feed",
         name: "feed",
-        component: () => import("./pages/tweets display/TweetPreview"),
+        component: () => import("./components/tweets_display/TweetPreviewList"), //TODO change back to feed
     },
-
 ]
+
+export default routes;
+

@@ -1,13 +1,12 @@
+<!-- if user has valid code and was routed through default page,  -->
 <template>
     <section class="code-page">
         <!-- right -->
         <div class="right">
           <div class="middle-content">
-            <i class="fas fa-dove"></i>
-            <h1>Welcome to Twixper.</h1>
+                <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img>
             <h4>To start, insert the code you got.</h4>
-  
-            <button type="button" class="btn main-btn" @click="codeInserted">Continue</button>
+            <button type="button" class="btn main-btn" @click="$router.push('feed')">Continue</button>
           </div>
         </div>
         <!-- end of right -->
@@ -19,7 +18,7 @@
 </script>
 
   
-<style>
+<style scoped>
     .code-page {
         width: 100%;
         height: 100vh;
@@ -108,7 +107,6 @@
     @media (max-width: 1100px) {
         .code-page {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(2, 1fr) min-content;
         }
     
         .right {

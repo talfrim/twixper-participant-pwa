@@ -16,12 +16,7 @@
 
 export default {
   name: 'App',
-  head: {
-    link: [
-    { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css', integrity: 'sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay', crossorigin: 'anonymous'  },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap'},
-    ]
-  },
+  
   
 }
 </script>
@@ -46,6 +41,21 @@ export default {
 		width: 100%;
 		height: 100vh;
 	}
+
+@media (max-width: 363px){
+    html {
+		  font-size: 57.5%;
+	  }
+}
+
+@media (max-width: 333px){
+    html {
+		  font-size: 52.5%;
+	  }
+}
+
+
+  
 
   /*.feeds-content {
 		display: grid;

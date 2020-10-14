@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import VueHead from 'vue-head'
-Vue.use(VueHead)
-
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 import routes from "./routes";

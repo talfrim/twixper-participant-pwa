@@ -47,11 +47,11 @@ export default {
 		height: 100vh;
 	}
 
-  .feeds-content {
+  /*.feeds-content {
 		display: grid;
 		grid-template-columns: minmax(5rem, 1fr) 60rem 40rem minmax(5rem, 1fr);
 		grid-template-rows: repeat(2, min-content);
 		padding-top: 6.5rem;
-	}
+	}*/
 </style>
 

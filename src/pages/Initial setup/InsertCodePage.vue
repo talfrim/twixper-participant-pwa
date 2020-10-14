@@ -18,7 +18,7 @@
 </script>
 
   
-<style>
+<style scoped>
     .code-page {
         width: 100%;
         height: 100vh;

@@ -4,9 +4,10 @@
           <img :src=tweetPreview.imageUrl>
         </div>
         <div class="post-content">
-			<div class="post-user-info light-text">
-				<h4>{{tweetPreview.userFullName}} 
-					<i v-if="!varified_icon" class="fas fa-check-circle"></i> 
+			<div class="post-user-info">
+				<h4>
+					{{tweetPreview.userFullName}} 
+					<i v-if="tweetPreview.varified_icon" class="fas fa-check-circle"></i> 
 					<span class="usernameSpan">@{{tweetPreview.userName}}</span>
 				</h4>
 				<span style="margin-left: 1vw">{{tweetPreview.time}}</span>

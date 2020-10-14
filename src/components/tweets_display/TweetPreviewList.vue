@@ -12,6 +12,7 @@
             return {
                     tp: [{
                         userFullName: "Avigdor Liberman", 
+                        varified_icon: true,
                         imageUrl: "https://pbs.twimg.com/profile_images/1273191655890464777/SNhqTJGz_400x400.jpg",
                         userName: "liberman",   
                         time: "35m",
@@ -25,7 +26,8 @@
                         content: "We are closed due to COVID.",
                     },
                     {
-                        userFullName: "Avigdor Liberman", 
+                        userFullName: "Avigdor LongLongName", 
+                        varified_icon: true,
                         imageUrl: "https://pbs.twimg.com/profile_images/1273191655890464777/SNhqTJGz_400x400.jpg",
                         userName: "liberman",   
                         time: "55m",
@@ -42,7 +44,7 @@
                     {
                         userFullName: "Yair Netanyahu ", 
                         imageUrl: "https://pbs.twimg.com/profile_images/1288147374204956672/BWhwDO4i_400x400.jpg",
-                        userName: "liberman",   
+                        userName: "yairnet",   
                         time: "1h",
                         content: "Vote for Bibi...",
                         postImg: "https://hsro-inf-wt.github.io/assets/vuejs.gif"
@@ -57,7 +59,7 @@
                     {
                         userFullName: "Yair Netanyahu ", 
                         imageUrl: "https://pbs.twimg.com/profile_images/1288147374204956672/BWhwDO4i_400x400.jpg",
-                        userName: "liberman",   
+                        userName: "yairnet",   
                         time: "2h",
                         content: "I love Twixper.",
                     },

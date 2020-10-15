@@ -2,13 +2,16 @@
 <template>
     <section class="code-page">
         <!-- right -->
-        <div class="right">
+        
+            <div id="image-container">
+                <img src="../../assets/twixperEdited.png" >
+            </div>
           <div class="middle-content">
-                <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img>
+              <!--  <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img> -->
             <h4>To start, insert the code you got.</h4>
             <button type="button" class="btn main-btn" @click="$router.push('feed')">Continue</button>
           </div>
-        </div>
+       
         <!-- end of right -->
       </section>
 </template>
@@ -19,6 +22,15 @@
 
   
 <style scoped>
+img{
+    width: 50vh
+}
+#image-container{
+    text-align: center;
+    position: relative;
+    top: 35vw;
+    max-height: 20%;
+}
     .code-page {
         width: 100%;
         height: 100vh;
@@ -51,12 +63,13 @@
     
     .middle-content {
         position: absolute;
-        top: 50%;
+        bottom: 15%;
         left: 50%;
+        
         transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
-        width: 40%;
+        width: 70%;
     }
     
     .middle-content i {

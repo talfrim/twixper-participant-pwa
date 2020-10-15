@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-   <!-- feeds page -->
-  <section class="feeds-page">
+   <!-- feeds page
+  <section class="feeds-page"> -->
     <!-- feeds content -->
-    <transition>
+    <transition name="slide-left">
       <router-view/>
     </transition>
     
-  </section>
-  <!-- end of feeds page -->
+  <!--</section>
+   end of feeds page -->
   </div>
 </template>
 
@@ -27,7 +27,39 @@ export default {
 		padding: 0;
 		font-family: 'Josefin Sans', sans-serif;
 		outline: none;
-	}
+  }
+  /*
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to    { //.fade-leave-active below version 2.1.8
+    opacity: 0;
+  }*/
+
+ /* Transition Effect */
+  slide-left-enter-active,
+  .slide-left-leave-active,
+  .slide-right-enter-active,
+  .slide-right-leave-active {
+    transition-duration: 0.5s;
+    transition-property: height, opacity, transform;
+    transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+    overflow: hidden;
+  }
+
+  .slide-left-enter,
+  .slide-right-leave-active {
+    opacity: 0;
+    transform: translate(2em, 0);
+  }
+
+  .slide-left-leave-active,
+  .slide-right-enter {
+    opacity: 0;
+    transform: translate(-2em, 0);
+  }
+
+  /* End of transition effect */
 
 	html {
 		font-size: 62.5%;
@@ -37,10 +69,11 @@ export default {
 		background-color: #f0f8fd;
 	}
   
+  /*
   .feeds-page {
 		width: 100%;
 		height: 100vh;
-	}
+	}*/
 
 @media (max-width: 363px){
     html {

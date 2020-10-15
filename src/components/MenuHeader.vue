@@ -18,8 +18,8 @@ Header middle will change with vuex probably according to the current tab.-->
         </div>
       </nav>
        <!-- sidebar -->
-      <div class="sidebar-wrapper">
-        <div class="sidebar dark-mode-1">
+      <div class="sidebar-wrapper" ref="sidebarWrapper">
+        <div class="sidebar dark-mode-1" ref="sidebar">
           <div class="sidebar-header border">
             <h2 class="light-text">Account info</h2>
             <i class="fas fa-times" @click="closeSidebar()"></i>
@@ -77,16 +77,12 @@ Header middle will change with vuex probably according to the current tab.-->
 export default {
     methods:{
         openSidebar(){
-            const sidebar = document.querySelector('.sidebar');
-            const sidebarWrapper = document.querySelector('.sidebar-wrapper');
-            sidebar.classList.add('sidebar-display');
-	        sidebarWrapper.classList.add('sidebar-wrapper-display');
+            this.$refs.sidebar.classList.add('sidebar-display');
+            this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');
         },
         closeSidebar(){
-            const sidebar = document.querySelector('.sidebar');
-            const sidebarWrapper = document.querySelector('.sidebar-wrapper');
-            sidebar.classList.remove('sidebar-display');
-	        sidebarWrapper.classList.remove('sidebar-wrapper-display');
+            this.$refs.sidebar.classList.remove('sidebar-display');
+	        this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
         }
     }    
 }

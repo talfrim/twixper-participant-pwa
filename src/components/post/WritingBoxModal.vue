@@ -5,20 +5,21 @@
  -->
 
 <template>
-  <div class="modal-wrapper">
-    <div class="modal dark-mode-1">
+  <div class="modal-wrapper" ref="modalWrapper">
+    <div class="modal dark-mode-1" ref="modal">
       <div class="modal-header border">
-        <i class="fas fa-times"></i>
+        <i class="fas fa-times" @click="closeModal()"></i>
         <button type="button">Post</button>
       </div>
       <div class="modal-body">
         <div class="modal-img">
-          <img src="images/user1.jpg" />
+          <img src="../../assets/user1.jpg" />
         </div>
         <input
           type="text"
           placeholder="What's happening?"
           class="modal-input dark-mode-2 light-text border"
+          ref="modalInput"
         />
         <i class="far fa-smile"></i>
       </div>
@@ -36,18 +37,36 @@
     export default {
       name: "WritingBox",
       props: {
-        placeholder: {
+       /* placeholder: {
           type: String,
           required: true
         },
         buttonText: {
           type: String,
           required: true
-        },
+        },*/
         parentTweetId: {
           type: String,
           required: false
         },
       },
+      methods:{
+        displayModal(){
+          this.$refs.modal.style.display = 'block';
+          this.$refs.modalWrapper.classList.add('modal-wrapper-display');
+        },
+        closeModal(){
+          this.$refs.modal.style.display = 'none';
+          this.$refs.modalWrapper.classList.remove('modal-wrapper-display');
+
+          if (this.$refs.modalInput.value !== '') {
+            this.$refs.modalInput.value = '';
+          }
+        }
+      }
     };
 </script>
+
+<style scoped src="../../assets/css/WritePostModalCSS.css">
+
+</style>

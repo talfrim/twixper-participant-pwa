@@ -1,7 +1,7 @@
 <!-- menu from youtube vue proj/youtube react proj.
 Header middle will change with vuex probably according to the current tab.-->
 <template>
-<div id="wrapper">
+<div id="wrapper" ref="wrapper">
    <nav class="feeds-nav dark-mode-1">
        <div class="user" @click="openSidebar()">
           <div class="user-img-wrapper">
@@ -19,7 +19,12 @@ Header middle will change with vuex probably according to the current tab.-->
       </nav>
        <!-- sidebar -->
       <div class="sidebar-wrapper" ref="sidebarWrapper">
-        <div class="sidebar dark-mode-1" ref="sidebar">
+        <div class="sidebar dark-mode-1" ref="sidebar"
+        >
+        <!-- v-closable="{
+        exclude: [],
+        handler: 'closeModal'
+      }" -->
           <div class="sidebar-header border">
             <h2 class="light-text">Account info</h2>
             <i class="fas fa-times" @click="closeSidebar()"></i>
@@ -63,11 +68,12 @@ Header middle will change with vuex probably according to the current tab.-->
               <li><a href="#">Help Center</a></li>
               <li><a href="#">Log Out</a></li>
             </ul>
-          </div> 
-        </div>
-        <div class="sidebar-footer">
+          </div>
+          <div class="sidebar-footer">
             <i class="fas fa-times" @click="closeSidebar()"></i>
-          </div> 
+          </div>  
+        </div>
+        
       </div>
       <!-- end of sidebar -->
 </div>      
@@ -75,6 +81,11 @@ Header middle will change with vuex probably according to the current tab.-->
 
 <script>
 export default {
+    props:{
+        fatherComponent:{
+            required: true
+        }
+    },
     data(){
         return{
             touch:{
@@ -82,14 +93,67 @@ export default {
                 endX: 0,
                 startY: 0,
                 endY: 0,
-            }
+            },
+            isSidebarOpen: false
         }
     },
+    //let handleOutsideClick
+    /*directives:{
+        'closable': {
+            bind (el, binding, vnode) {
+                console.log(el);
+                // Here's the click/touchstart handler
+                // (it is registered below)
+                let handleOutsideClick = (e) => {
+                e.stopPropagation()
+                // Get the handler method name and the exclude array
+                // from the object used in v-closable
+                const { handler, exclude } = binding.value
+
+                // This variable indicates if the clicked element is excluded
+                let clickedOnExcludedEl = false
+                exclude.forEach(refName => {
+                    // We only run this code if we haven't detected
+                    // any excluded element yet
+                    if (!clickedOnExcludedEl) {
+                    // Get the element using the reference name
+                    const excludedEl = vnode.context.$refs[refName]
+                    // See if this excluded element
+                    // is the same element the user just clicked on
+                    clickedOnExcludedEl = excludedEl.contains(e.target)
+                    }
+                })
+
+                // We check to see if the clicked element is not
+                // the dialog element and not excluded
+                if (!el.contains(e.target) && !clickedOnExcludedEl) {
+                    // If the clicked element is outside the dialog
+                    // and not the button, then call the outside-click handler
+                    // from the same component this directive is used in
+                    vnode.context[handler]()
+                }
+                }
+                // Register click/touchstart event listeners on the whole page
+                //document.addEventListener('click', handleOutsideClick)
+                el.handleOutsideClick = handleOutsideClick;
+                document.addEventListener('touchstart', handleOutsideClick)
+            },
+
+            unbind (el) {
+                // If the element that has v-closable is removed, then
+                // unbind click/touchstart listeners from the whole page
+                //document.removeEventListener('click', handleOutsideClick)
+                document.removeEventListener('touchstart', el.handleOutsideClick)
+            }
+        }
+    },*/
     mounted(){
         //Add listeners to touch-on-screen events
-        this.$root.$el.addEventListener("touchstart", event => this.touchStart(event));
-        this.$root.$el.addEventListener("touchmove", event => this.touchMove(event));
-        this.$root.$el.addEventListener("touchend", () => this.touchEnd());
+        //console.log(this.fatherComponent);
+        //console.log(this.$root.$el);
+        this.fatherComponent.addEventListener("touchstart", event => this.touchStart(event));
+        this.fatherComponent.addEventListener("touchmove", event => this.touchMove(event));
+        this.fatherComponent.addEventListener("touchend", () => this.touchEnd());
     },
     methods:{
         touchStart(event){
@@ -103,14 +167,16 @@ export default {
             this.touch.endY = event.touches[0].clientY;
         },
         touchEnd(){
-            /*console.log(this.touch.startX - this.touch.endX);
-            console.log(this.touch.startY - this.touch.endY);
-            console.log();*/
-            
+            //console.log(this.touch);
+            //console.log(Math.abs(this.touch.endX - this.touch.startX));
+            //console.log(Math.abs(this.touch.endY - this.touch.startY));
+           // console.log();
+
             //Check if the user tries to open the sidebar using finger drag gestore
-            if(!this.touch.endX || 
+            if(
                 Math.abs(this.touch.endY - this.touch.startY) > 30 || //Scrolls up
-                Math.abs(this.touch.endX - this.touch.startX) < 50){ //Not scrolling enough
+                Math.abs(this.touch.endX - this.touch.startX) < 45){ //Not scrolling enough
+                    //this.resetPositions();
                     return;
             }
             if(this.touch.endX > this.touch.startX){
@@ -119,15 +185,26 @@ export default {
             else{
                 this.closeSidebar();
             }
+            //this.resetPositions();
             
         },
+        resetPositions(){
+            this.touch.startX = 0;
+            this.touch.endX = 0;
+            this.touch.startY = 0;
+            this.touch.endY = 0;
+        },
         openSidebar(){
+            console.log("openSidebar called");
             this.$refs.sidebar.classList.add('sidebar-display');
             this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');
+            this.isSidebarOpen = true;
         },
         closeSidebar(){
+            console.log("closeSidebar called");
             this.$refs.sidebar.classList.remove('sidebar-display');
-	        this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
+            this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
+            this.isSidebarOpen = false; 
         }
     }    
 }

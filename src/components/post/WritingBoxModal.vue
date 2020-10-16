@@ -6,7 +6,11 @@
 
 <template>
   <div class="modal-wrapper" ref="modalWrapper">
-    <div class="modal dark-mode-1" ref="modal">
+    <div class="modal dark-mode-1" ref="modal" 
+     > <!-- v-closable="{
+        exclude: [],
+        handler: 'closeModal'
+      }" -->
       <div class="modal-header border">
         <i class="fas fa-times" @click="closeModal()"></i>
         <button type="button">Post</button>
@@ -52,10 +56,12 @@
       },
       methods:{
         displayModal(){
+          console.log("display called");
           this.$refs.modal.style.display = 'block';
           this.$refs.modalWrapper.classList.add('modal-wrapper-display');
         },
         closeModal(){
+          console.log("close called");
           this.$refs.modal.style.display = 'none';
           this.$refs.modalWrapper.classList.remove('modal-wrapper-display');
 

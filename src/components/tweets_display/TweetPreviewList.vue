@@ -1,7 +1,5 @@
 <template>
     <div id="wrapper">
-        <MenuHeader />
-        <WriteNewTweet />
         <div class="posts">
             <TweetPreview :tweetPreview="t" v-for="(t,i) in tp" v-bind:key="i"></TweetPreview>
             <br><br><br><br><br><br> <!-- For the menu bar at the bottom -->
@@ -11,13 +9,11 @@
 
 <script>
 import TweetPreview from "./TweetPreview.vue";
-import MenuHeader from "../MenuHeader.vue";
-import WriteNewTweet from "../post/WriteNewTweet.vue";
+
 export default {
     components: {
         TweetPreview,
-        MenuHeader,
-        WriteNewTweet
+       
     },
     data() {
         return {

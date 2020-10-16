@@ -75,7 +75,52 @@ Header middle will change with vuex probably according to the current tab.-->
 
 <script>
 export default {
+    data(){
+        return{
+            touch:{
+                startX: 0,
+                endX: 0,
+                startY: 0,
+                endY: 0,
+            }
+        }
+    },
+    mounted(){
+        //Add listeners to touch-on-screen events
+        this.$root.$el.addEventListener("touchstart", event => this.touchStart(event));
+        this.$root.$el.addEventListener("touchmove", event => this.touchMove(event));
+        this.$root.$el.addEventListener("touchend", () => this.touchEnd());
+    },
     methods:{
+        touchStart(event){
+            this.touch.startX = event.touches[0].clientX; // [0] is the first finger touches
+            this.touch.endX = 0;
+            this.touch.startY = event.touches[0].clientY; 
+            this.touch.endY = 0;
+        },
+        touchMove(event){
+            this.touch.endX = event.touches[0].clientX;
+            this.touch.endY = event.touches[0].clientY;
+        },
+        touchEnd(){
+            /*console.log(this.touch.startX - this.touch.endX);
+            console.log(this.touch.startY - this.touch.endY);
+            console.log();*/
+            
+            //Check if the user tries to open the sidebar using finger drag gestore
+            if(!this.touch.endX || 
+                Math.abs(this.touch.endY - this.touch.startY) > 30 || //Scrolls up
+                Math.abs(this.touch.endX - this.touch.startX) < 50){ //Not scrolling enough
+                    return;
+            }
+            if(this.touch.endX > this.touch.startX){
+                this.openSidebar();
+            }
+            else{
+                this.closeSidebar();
+            }
+            
+        },
         openSidebar(){
             this.$refs.sidebar.classList.add('sidebar-display');
             this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');

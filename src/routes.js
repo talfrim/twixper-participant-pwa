@@ -19,7 +19,7 @@ const routes = [
     {
         path: "/feed",
         name: "feed",
-        component: () => import("./components/tweets_display/TweetPreviewList"), //TODO change back to feed
+        component: () => import("./pages/tweets_display/FeedPage"), //TODO change back to feed
     },
 ]
 

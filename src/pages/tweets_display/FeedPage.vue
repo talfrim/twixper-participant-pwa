@@ -1,11 +1,14 @@
 <template>
-    <div></div>
+    <div>
+        <TweetPreviewList></TweetPreviewList>
+    </div>
 </template>
 
 <script>
-    export default [
-
-    ]
+import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
+export default {
+    components: {TweetPreviewList}
+}
 </script>
 
 <style scoped>

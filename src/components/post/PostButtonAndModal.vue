@@ -1,8 +1,5 @@
 <template>
     <div>
-        <button type="button" class="post-btn" v-on:click="openPostModal">
-            <i class="fas fa-feather-alt"></i> 
-        </button>
     </div>
 </template>
 

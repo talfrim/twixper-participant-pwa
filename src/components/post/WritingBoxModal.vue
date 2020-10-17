@@ -5,12 +5,14 @@
  -->
 
 <template>
-  <div class="modal-wrapper" ref="modalWrapper">
-    <div class="modal dark-mode-1" ref="modal" 
-     > <!-- v-closable="{
+  <!-- v-closable: close the modal when he is out of focus -->
+  <div class="modal-wrapper" ref="modalWrapper"
+      v-closable="{
         exclude: [],
+        areaToFocus: 'modal',
         handler: 'closeModal'
-      }" -->
+      }">
+    <div class="modal dark-mode-1" ref="modal" > <!-- -->
       <div class="modal-header border">
         <i class="fas fa-times" @click="closeModal()"></i>
         <button type="button">Post</button>

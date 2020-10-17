@@ -19,12 +19,7 @@ Header middle will change with vuex probably according to the current tab.-->
       </nav>
        <!-- sidebar -->
       <div class="sidebar-wrapper" ref="sidebarWrapper">
-        <div class="sidebar dark-mode-1" ref="sidebar"
-        >
-        <!-- v-closable="{
-        exclude: [],
-        handler: 'closeModal'
-      }" -->
+        <div class="sidebar dark-mode-1" ref="sidebar">
           <div class="sidebar-header border">
             <h2 class="light-text">Account info</h2>
             <i class="fas fa-times" @click="closeSidebar()"></i>
@@ -82,7 +77,7 @@ Header middle will change with vuex probably according to the current tab.-->
 <script>
 export default {
     props:{
-        fatherComponent:{
+        parentsEl:{
             required: true
         }
     },
@@ -97,63 +92,13 @@ export default {
             isSidebarOpen: false
         }
     },
-    //let handleOutsideClick
-    /*directives:{
-        'closable': {
-            bind (el, binding, vnode) {
-                console.log(el);
-                // Here's the click/touchstart handler
-                // (it is registered below)
-                let handleOutsideClick = (e) => {
-                e.stopPropagation()
-                // Get the handler method name and the exclude array
-                // from the object used in v-closable
-                const { handler, exclude } = binding.value
-
-                // This variable indicates if the clicked element is excluded
-                let clickedOnExcludedEl = false
-                exclude.forEach(refName => {
-                    // We only run this code if we haven't detected
-                    // any excluded element yet
-                    if (!clickedOnExcludedEl) {
-                    // Get the element using the reference name
-                    const excludedEl = vnode.context.$refs[refName]
-                    // See if this excluded element
-                    // is the same element the user just clicked on
-                    clickedOnExcludedEl = excludedEl.contains(e.target)
-                    }
-                })
-
-                // We check to see if the clicked element is not
-                // the dialog element and not excluded
-                if (!el.contains(e.target) && !clickedOnExcludedEl) {
-                    // If the clicked element is outside the dialog
-                    // and not the button, then call the outside-click handler
-                    // from the same component this directive is used in
-                    vnode.context[handler]()
-                }
-                }
-                // Register click/touchstart event listeners on the whole page
-                //document.addEventListener('click', handleOutsideClick)
-                el.handleOutsideClick = handleOutsideClick;
-                document.addEventListener('touchstart', handleOutsideClick)
-            },
-
-            unbind (el) {
-                // If the element that has v-closable is removed, then
-                // unbind click/touchstart listeners from the whole page
-                //document.removeEventListener('click', handleOutsideClick)
-                document.removeEventListener('touchstart', el.handleOutsideClick)
-            }
-        }
-    },*/
     mounted(){
         //Add listeners to touch-on-screen events
         //console.log(this.fatherComponent);
         //console.log(this.$root.$el);
-        this.fatherComponent.addEventListener("touchstart", event => this.touchStart(event));
-        this.fatherComponent.addEventListener("touchmove", event => this.touchMove(event));
-        this.fatherComponent.addEventListener("touchend", () => this.touchEnd());
+        this.parentsEl.addEventListener("touchstart", event => this.touchStart(event));
+        this.parentsEl.addEventListener("touchmove", event => this.touchMove(event));
+        this.parentsEl.addEventListener("touchend", () => this.touchEnd());
     },
     methods:{
         touchStart(event){
@@ -195,16 +140,20 @@ export default {
             this.touch.endY = 0;
         },
         openSidebar(){
-            console.log("openSidebar called");
-            this.$refs.sidebar.classList.add('sidebar-display');
-            this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');
-            this.isSidebarOpen = true;
+            if(!this.isSidebarOpen){
+                console.log("openSidebar called");
+                this.$refs.sidebar.classList.add('sidebar-display');
+                this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');
+                this.isSidebarOpen = true;
+            }
         },
         closeSidebar(){
-            console.log("closeSidebar called");
-            this.$refs.sidebar.classList.remove('sidebar-display');
-            this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
-            this.isSidebarOpen = false; 
+            if(this.isSidebarOpen){
+                console.log("closeSidebar called");
+                this.$refs.sidebar.classList.remove('sidebar-display');
+                this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
+                this.isSidebarOpen = false;
+            } 
         }
     }    
 }

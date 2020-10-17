@@ -1,6 +1,6 @@
 <template>
     <div>
-        <MenuHeader v-if="myEl" :fatherComponent="myEl"/>
+        <MenuHeader v-if="myEl" :parentsEl="myEl"/>
         <WriteNewTweet />
         <TweetPreviewList></TweetPreviewList>
     </div>

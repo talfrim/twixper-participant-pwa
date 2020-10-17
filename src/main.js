@@ -13,20 +13,23 @@ Vue.use(ImagePlugin)
 
 
 Vue.config.productionTip = false
-/*
-let handleOutsideClick
 
+// v-closable
+let handleOutsideClick
+let areaInFocus // The area that is in focused
+let areaParentEl// the wrapper that surrounds the area, a listener will be attcached to him
 Vue.directive('closable', {
   bind (el, binding, vnode) {
-    console.log(el);
     // Here's the click/touchstart handler
     // (it is registered below)
+    const { areaToFocus } = binding.value
+    areaInFocus = vnode.context.$refs[areaToFocus];
+    areaParentEl = el;
     handleOutsideClick = (e) => {
       e.stopPropagation()
       // Get the handler method name and the exclude array
       // from the object used in v-closable
-      const { handler, exclude } = binding.value
-
+      const { handler, exclude} = binding.value
       // This variable indicates if the clicked element is excluded
       let clickedOnExcludedEl = false
       exclude.forEach(refName => {
@@ -43,26 +46,24 @@ Vue.directive('closable', {
 
       // We check to see if the clicked element is not
       // the dialog element and not excluded
-      if (!el.contains(e.target) && !clickedOnExcludedEl) {
-        // If the clicked element is outside the dialog
-        // and not the button, then call the outside-click handler
+      if (!areaInFocus.contains(e.target) && !clickedOnExcludedEl) {
+        // If the clicked element is outside the dialog,
+        // then call the outside-click handler
         // from the same component this directive is used in
         vnode.context[handler]()
       }
     }
-    // Register click/touchstart event listeners on the whole page
-    //document.addEventListener('click', handleOutsideClick)
-    el.addEventListener('touchstart', handleOutsideClick)
+    // Register touchstart event listeners on the wrapper
+    areaParentEl.addEventListener('touchstart', handleOutsideClick)
   },
 
-  unbind (el) {
+  unbind () {
     // If the element that has v-closable is removed, then
-    // unbind click/touchstart listeners from the whole page
-    //document.removeEventListener('click', handleOutsideClick)
-    console.log(el);
-    el.removeEventListener('touchstart', handleOutsideClick)
+    // unbind touchstart listeners from his wrapper
+    areaParentEl.removeEventListener('touchstart', handleOutsideClick)
   }
-})*/
+}) 
+//End of v-closable
 
 new Vue({
   router,

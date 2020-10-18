@@ -38,7 +38,7 @@ export default {
                     imageUrl: "https://pbs.twimg.com/profile_images/1273191655890464777/SNhqTJGz_400x400.jpg",
                     userName: "liberman",   
                     time: "55m",
-                    content: "Vote for Bibi.",
+                    content: "Vote for Alla.",
                     postImg: "https://images.jpost.com/image/upload/f_auto,fl_lossy/t_JD_ArticleMainImageFaceDetect/455223"
                 },
                 {

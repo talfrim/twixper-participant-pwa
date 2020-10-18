@@ -9,6 +9,7 @@ const router = new VueRouter({
 });
 
 import { ImagePlugin } from 'bootstrap-vue'
+import './registerServiceWorker'
 Vue.use(ImagePlugin)
 
 

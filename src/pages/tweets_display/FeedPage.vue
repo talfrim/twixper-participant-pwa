@@ -25,7 +25,7 @@ export default {
     },
     mounted(){
         this.myEl = this.$el;
-        twtCommunicator.getHomeTimeline();
+        //twtCommunicator.getHomeTimeline();
     }
 }
 </script>

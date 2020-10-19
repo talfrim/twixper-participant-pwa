@@ -10,7 +10,7 @@
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
 import MenuHeader from "../../components/MenuHeader.vue";
 import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
-//const twtCommunicator = require("../../communicators/twitterApiCommunicator");
+import twtCommunicator from "../../communicators/twitterApiCommunicator.js"
 
 export default {
     components: {
@@ -25,7 +25,7 @@ export default {
     },
     mounted(){
         this.myEl = this.$el;
-        //twtCommunicator.getHomeTimeline();
+        twtCommunicator.getHomeTimeline();
     }
 }
 </script>

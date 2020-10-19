@@ -51,7 +51,7 @@ export default {
                 {
                     userFullName: "Yair Netanyahu ", 
                     imageUrl: "https://pbs.twimg.com/profile_images/1288147374204956672/BWhwDO4i_400x400.jpg",
-                    userName: "yairnet",   
+                    userName: "yairneta",   
                     time: "1h",
                     content: "Vote for Bibi...",
                     postImg: "https://hsro-inf-wt.github.io/assets/vuejs.gif"

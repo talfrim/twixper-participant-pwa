@@ -1,5 +1,3 @@
-<!-- menu from youtube vue proj/youtube react proj.
-Header middle will change with vuex probably according to the current tab.-->
 <template>
 <div id="wrapper" ref="wrapper">
    <nav class="feeds-nav dark-mode-1">
@@ -11,8 +9,8 @@ Header middle will change with vuex probably according to the current tab.-->
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="icons">
-          <a href="#" class="active"><i class="fas fa-home"></i></a>
-          <a href="#"><i class="fas fa-search fa-sm"></i></a>
+          <a href="#" class="active" @click="homeTabClicked" ><i class="fas fa-home"></i></a>
+          <a href="#" @click="searchTabClicked"><i class="fas fa-search fa-sm"></i></a>
           <a href="#"><i class="far fa-bell"></i></a>
           <a href="#"><i class="far fa-envelope"></i></a>
         </div>
@@ -154,7 +152,14 @@ export default {
                 this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
                 this.isSidebarOpen = false;
             } 
+        },
+        searchTabClicked(){
+          this.$router.push("/search")
+        },
+        homeTabClicked(){
+          this.$router.push("/feed")
         }
+
     }    
 }
 </script>

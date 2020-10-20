@@ -21,7 +21,12 @@ const routes = [
         name: "feed",
         component: () => import("./pages/tweets_display/FeedPage"), //TODO change back to feed
     },
+    {
+      path: "/search",
+      name: "search",
+      component: () => import("./pages/search/SearchPage"), //TODO change back to feed
+    },
+    
 ]
 
-export default routes;
-
+export default routes

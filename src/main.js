@@ -1,6 +1,24 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import './registerServiceWorker'
+
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import { mdbIcon, mdbFormInline, mdbInput } from 'mdbvue';
+Vue.use(mdbIcon)
+Vue.use(mdbFormInline)
+Vue.use(mdbInput)
+
+
+
+
+
+
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 import routes from "./routes";
@@ -9,7 +27,6 @@ const router = new VueRouter({
 });
 
 import { ImagePlugin } from 'bootstrap-vue'
-import './registerServiceWorker'
 Vue.use(ImagePlugin)
 
 

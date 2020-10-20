@@ -2,7 +2,7 @@
     <div>
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
         <WriteNewTweet />
-        <TweetPreviewList></TweetPreviewList>
+        <TweetPreviewList :feedTweetsArr="feedTweetsArr"></TweetPreviewList>
     </div>
 </template>
 
@@ -10,7 +10,7 @@
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
 import MenuHeader from "../../components/MenuHeader.vue";
 import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
-import twtCommunicator from "../../communicators/twitterApiCommunicator.js"
+import feedJSON from "../../communicators/FeedJSON.js"
 
 export default {
     components: {
@@ -20,12 +20,16 @@ export default {
     },
     data(){
         return{
-            myEl: null
+            myEl: null,
+            feedTweetsArr: []
         }
+    },
+    created(){
+        this.feedTweetsArr.push(...feedJSON);
+        console.log(this.feedTweetsArr);
     },
     mounted(){
         this.myEl = this.$el;
-        //twtCommunicator.getHomeTimeline();
     }
 }
 </script>

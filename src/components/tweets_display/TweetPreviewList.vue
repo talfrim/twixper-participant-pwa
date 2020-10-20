@@ -1,8 +1,9 @@
 <template>
     <div id="wrapper">
         <div class="posts">
-            <TweetPreview :tweetPreview="t" v-for="(t,i) in tp" v-bind:key="i"></TweetPreview>
+            <TweetPreview :tweetPreview="t" v-for="(t,i) in feedTweetsArr" v-bind:key="i"></TweetPreview>
             <br><br><br><br><br><br> <!-- For the menu bar at the bottom -->
+            <!-- The brs above are not a great solution, fix it in other way later -->
         </div>
     </div>   
 </template>
@@ -13,7 +14,12 @@ import TweetPreview from "./TweetPreview.vue";
 export default {
     components: {
         TweetPreview,
-       
+    },
+    props:{
+        feedTweetsArr:{
+            type: Array,
+            required: true
+        }
     },
     data() {
         return {

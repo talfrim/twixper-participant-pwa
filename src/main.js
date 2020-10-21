@@ -7,6 +7,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 Vue.use(BootstrapVue);
 */
+import Toasted from 'vue-toasted';
+Vue.use(Toasted,
+  {
+    position: "bottom-center",
+    duration: 1200,
+    singleton: true // only 1 toast at a time (not works perfectly)
+  })
 
 import VueRouter from "vue-router";
 Vue.use(VueRouter);

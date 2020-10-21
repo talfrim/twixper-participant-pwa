@@ -82,22 +82,17 @@ export default {
 			if(!this.isLiked){//Like the tweet
 				//TODO: Call the communicator to tell the API we liked a tweet
 				this.$refs.heart.classList.add('is_animating');
+				this.$toasted.show('Tweet liked');
 
-				//Make the heart whole
-				/*this.$refs.heartIcon.classList.remove('far');
-				this.$refs.heartIcon.classList.add('fas');
-				this.$refs.heartIcon.style.color = "red";*/
+				
 				this.likes ++;
 				this.isLiked = true;
 			}
 			else{ //Unlike the tweet
 				//TODO: Call the communicator to tell the API we unliked a tweet
 				this.$refs.heart.classList.remove('is_animating');
+				this.$toasted.show('Tweet unliked');
 
-
-				/*this.$refs.heartIcon.classList.remove('fas');
-				this.$refs.heartIcon.classList.add('far');
-				this.$refs.heartIcon.style.color = "#868383";*/
 				this.likes --;
 				this.isLiked = false;
 			}
@@ -128,33 +123,5 @@ export default {
 </script>
 
 <style scoped src="../../assets/css/TweetPreviewCSS.css">
-
-</style>
-<style  scoped>
-.heart {
-	display: inline-block;
-	
-	/*Move it slightly down */
-	position: relative;
-	left: 0;
-	top: 0.4rem;
-
-	height: 1.7rem;
-	width: 5.5rem;
-	background-image:url('../../assets/images/heartAnimation.png');
-	background-position: left;
-	background-repeat:no-repeat;
-	background-size:2900%;
-}
-
-.is_animating {
-  animation: heart-burst .8s steps(28) 1;
-  background-position: right;
-}
-
-@keyframes heart-burst {
- from {background-position:left;}
- to { background-position:right;}
-}
 
 </style>

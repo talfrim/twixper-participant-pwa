@@ -100,6 +100,34 @@ h4 .usernameSpan{
 	margin-left: 2rem;
 }
 
+/* Like button */
+.heart {
+	display: inline-block;
+	
+	/*Move it slightly down */
+	position: relative;
+	left: 0;
+	top: 0.4rem;
+
+	height: 1.7rem;
+	width: 5.5rem;
+	background-image:url('../../assets/images/heartAnimation.png');
+	background-position: left;
+	background-repeat:no-repeat;
+	background-size:2900%;
+}
+
+.is_animating {
+  animation: heart-burst .8s steps(28) 1;
+  background-position: right;
+}
+
+@keyframes heart-burst {
+ from {background-position:left;}
+ to { background-position:right;}
+}
+/* End of like button */
+
 .follow {
 	position: fixed;
 	top: 8rem;

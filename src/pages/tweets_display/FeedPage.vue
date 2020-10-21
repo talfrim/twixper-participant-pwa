@@ -26,7 +26,7 @@ export default {
     },
     created(){
         this.feedTweetsArr.push(...feedJSON);
-        console.log(this.feedTweetsArr);
+        //console.log(this.feedTweetsArr);
     },
     mounted(){
         this.myEl = this.$el;

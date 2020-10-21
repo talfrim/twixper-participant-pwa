@@ -16,7 +16,7 @@ function parseTwitterDate(tdate) {
     if (diff <= 129600) {return "1d";}
     if (diff < 604800) {return Math.round(diff / 86400) + "d";}
     if (diff <= 777600) {return "1w";}
-    return "on " + system_date; //CHANGE FORMAT TO "19 Oct" for example
+    return "on " + system_date; //TODO: CHANGE FORMAT TO "19 Oct" for example
 }
 
 // from http://widgets.twimg.com/j/1/widget.js

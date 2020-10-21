@@ -20,12 +20,30 @@
                 <img :src=tweetPreview.postImg  />
             </div>-->
 			<div>
+				
 			</div>
 			<div class="post-icons">
-				<i class="far fa-comment"></i>
-				<i class="fas fa-retweet"></i>
-				<i class="far fa-heart"></i>
-				<i class="fas fa-share-alt"></i>
+				<span class="post-icons-spans">
+					<i class="far fa-comment"></i>
+				</span>
+
+				<span class="post-icons-spans">
+					<i class="fas fa-retweet"></i>
+					<span >{{retweets}}</span>
+				</span>
+
+				<span class="post-icons-heart-container" @click="likeTweet()">
+					<span class="heart" ref="heart"></span>
+					<span>{{likes}}</span>
+				</span>
+
+				<!-- <span class="post-icons-spans" @click="likeTweet()">
+					<i class="far fa-heart" ref="heartIcon"></i>
+					<span>{{likes}}</span>
+				</span> -->
+				<span class="post-icons-share-container">
+					<i class="fas fa-share-alt"></i>
+				</span>
 			</div>
         </div>
     </div>
@@ -60,14 +78,40 @@ export default {
 		};
 	},
 	methods: {
-		
+		likeTweet(){
+			if(!this.isLiked){//Like the tweet
+				//TODO: Call the communicator to tell the API we liked a tweet
+				this.$refs.heart.classList.add('is_animating');
+
+				//Make the heart whole
+				/*this.$refs.heartIcon.classList.remove('far');
+				this.$refs.heartIcon.classList.add('fas');
+				this.$refs.heartIcon.style.color = "red";*/
+				this.likes ++;
+				this.isLiked = true;
+			}
+			else{ //Unlike the tweet
+				//TODO: Call the communicator to tell the API we unliked a tweet
+				this.$refs.heart.classList.remove('is_animating');
+
+
+				/*this.$refs.heartIcon.classList.remove('fas');
+				this.$refs.heartIcon.classList.add('far');
+				this.$refs.heartIcon.style.color = "#868383";*/
+				this.likes --;
+				this.isLiked = false;
+			}
+		}
 	},
 	created(){
 		const tweetPrev = this.tweetPreview;
 		this.time = parseTwitterDateFunc(tweetPrev.created_at);
 		this.text = tweetPrev.text;
+
+		//TODO: When the number is bigger than 9999, format it to K
 		this.likes = tweetPrev.favorite_count;
 		this.retweets = tweetPrev.retweet_count;
+
 		this.isLiked = tweetPrev.favorited;
 		this.isRetweeteed = tweetPrev.retweeted;
 		const userJson = tweetPrev.user;
@@ -84,5 +128,33 @@ export default {
 </script>
 
 <style scoped src="../../assets/css/TweetPreviewCSS.css">
+
+</style>
+<style  scoped>
+.heart {
+	display: inline-block;
+	
+	/*Move it slightly down */
+	position: relative;
+	left: 0;
+	top: 0.4rem;
+
+	height: 1.7rem;
+	width: 5.5rem;
+	background-image:url('../../assets/images/heartAnimation.png');
+	background-position: left;
+	background-repeat:no-repeat;
+	background-size:2900%;
+}
+
+.is_animating {
+  animation: heart-burst .8s steps(28) 1;
+  background-position: right;
+}
+
+@keyframes heart-burst {
+ from {background-position:left;}
+ to { background-position:right;}
+}
 
 </style>

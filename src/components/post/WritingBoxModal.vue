@@ -19,7 +19,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-img">
-          <img src="../../assets/facebook-user-icon-17.jpg" />
+          <img src="../../assets/images/facebook-user-icon-17.jpg" />
         </div>
         <input
           type="text"

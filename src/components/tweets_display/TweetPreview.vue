@@ -1,7 +1,7 @@
 <template>
 	<div class="post border">
-        <div class="user-avatar">
-          <img :src="author.profileImgUrl">
+        <div class="user-avatar" v-lazyload>
+          <img :data-url="author.profileImgUrl">
         </div>
         <div class="post-content">
 			<div class="post-user-info">

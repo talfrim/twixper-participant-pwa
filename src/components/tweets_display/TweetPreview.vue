@@ -15,6 +15,7 @@
 			<p class="post-text light-text">
 				{{text}}
 			</p>
+			<TweetPreviewImgsGrid v-if="photosJson" :photosJson="photosJson" />
 			<!-- add photo with v-if has photo, add nested tweet if a share
 			<div class="post-img" v-if="hasImage">
                 <img :src=tweetPreview.postImg  />
@@ -51,8 +52,12 @@
 
 <script>
 import {parseTwitterDateFunc} from "../../assets/globalFunctions";
+import TweetPreviewImgsGrid from "./TweetPreviewImgsGrid.vue";
 
 export default {
+	components:{
+		TweetPreviewImgsGrid
+	},
 	props: {
 		tweetPreview: {
 			type: Object,
@@ -74,7 +79,8 @@ export default {
 				userName: "",
 				profileImgUrl: "",
 				isVerified: false
-			}
+			},
+			photosJson: [],
 		};
 	},
 	methods: {
@@ -114,6 +120,19 @@ export default {
 		this.author.userName = userJson.screen_name;
 		this.author.profileImgUrl = userJson.profile_image_url_https;
 		this.author.isVerified = userJson.verified;
+		if(tweetPrev.extended_entities){
+			const extEnt = tweetPrev.extended_entities;
+			if(extEnt.media){
+				const extEntMedia = extEnt.media; //Array of obj
+				//Loop thorough media
+				for (let i = 0; i < extEntMedia.length; i++) {
+					const extEntMediaItem = extEntMedia[i];
+					if(extEntMediaItem.type === "photo"){
+						this.photosJson.push(extEntMediaItem);
+					}
+				}
+			}
+		}
 	},
 	/*mounted() {
 		if (this.tweetPreview.postImg)

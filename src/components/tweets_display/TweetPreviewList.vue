@@ -99,5 +99,9 @@ export default {
 
     .posts {
 			grid-column: 1 / -1;
-		}
+        }
+        
+    #wrapper{
+         min-height: 100vh;
+    }    
 </style>

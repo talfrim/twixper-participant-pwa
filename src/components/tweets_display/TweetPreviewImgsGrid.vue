@@ -3,8 +3,11 @@
         <div v-for="photoObj in photosObjects" 
             :key="photoObj.className" 
             :class="photoObj.className"
+            v-lazyload
         >
-            <img :src="photoObj.url" :class="photoObj.className">
+            <img :data-url="photoObj.url" 
+                :class="photoObj.className"
+                alt="random image">
         </div>
     </div>
     

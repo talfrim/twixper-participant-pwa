@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
+import LazyLoadDirective from "./assets/directives/LazyLoadDirective";
+
+Vue.directive("lazyload", LazyLoadDirective);
+
 
 /*
 import BootstrapVue from 'bootstrap-vue'

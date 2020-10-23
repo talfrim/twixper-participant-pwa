@@ -3,7 +3,7 @@
    <nav class="feeds-nav dark-mode-1">
        <div class="user" @click="openSidebar()">
           <div class="user-img-wrapper">
-            <img src="../assets/facebook-user-icon-17.jpg" />
+            <img src="../assets/images/facebook-user-icon-17.jpg" />
           </div>
           <a href="#" class="user-link light-text">Jane Smith</a>
           <i class="fas fa-chevron-down"></i>
@@ -24,7 +24,7 @@
           </div>
           <div class="sidebar-user">
             <div class="sidebar-user-img">
-              <img src="../assets/facebook-user-icon-17.jpg" />
+              <img src="../assets/images/facebook-user-icon-17.jpg" />
             </div>
             <span>+</span>
           </div>

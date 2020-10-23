@@ -4,7 +4,7 @@
         <!-- right -->
         
             <div id="image-container">
-                <img src="../../assets/twixperEdited.png" >
+                <img src="../../assets/images/twixperEdited.png" >
             </div>
           <div class="middle-content">
               <!--  <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img> -->

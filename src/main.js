@@ -1,5 +1,23 @@
 import Vue from 'vue'
 import App from './App.vue'
+import LazyLoadDirective from "./assets/directives/LazyLoadDirective";
+
+Vue.directive("lazyload", LazyLoadDirective);
+
+
+/*
+import BootstrapVue from 'bootstrap-vue'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+Vue.use(BootstrapVue);
+*/
+import Toasted from 'vue-toasted';
+Vue.use(Toasted,
+  {
+    position: "bottom-center",
+    duration: 1200,
+    singleton: true // only 1 toast at a time (not works perfectly)
+  })
 
 import './registerServiceWorker'
 

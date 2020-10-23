@@ -37,7 +37,7 @@ export default {
   }*/
 
  /* Transition Effect */
-  slide-left-enter-active,
+  .slide-left-enter-active,
   .slide-left-leave-active,
   .slide-right-enter-active,
   .slide-right-leave-active {
@@ -67,13 +67,27 @@ export default {
 
 	body {
 		background-color: #f0f8fd;
-	}
+  }
   
-  /*
-  .feeds-page {
-		width: 100%;
-		height: 100vh;
-	}*/
+@media (max-width: 600px){
+  /* Overriding toast notifications external css */
+  .toasted{
+    width: 29% !important;
+    justify-content: center !important;
+    
+    border-radius: 3rem !important;
+    top: -6rem !important ;
+    left: 30%;
+    opacity: 0.9 !important;
+  }
+   .toasted.toasted-primary {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    min-height: 3.7rem !important;
+  }
+  
+}
+  
 
 @media (max-width: 363px){
     html {

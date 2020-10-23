@@ -16,7 +16,7 @@
 				<p class="post-text light-text">
 					{{text}}
 				</p>
-				<div class="post-content-media">
+				<div class="post-content-media" v-if="hasMedia">
 					<TweetPreviewImgsGrid
 						v-if="photosJson" 
 						:photosJson="photosJson" 
@@ -76,6 +76,7 @@ export default {
 				profileImgUrl: "",
 				isVerified: false
 			},
+			hasMedia: false,
 			photosJson: [],
 		};
 	},
@@ -98,6 +99,7 @@ export default {
 		if(tweetPrev.extended_entities){
 			const extEnt = tweetPrev.extended_entities;
 			if(extEnt.media){
+				this.hasMedia = true;
 				const extEntMedia = extEnt.media; //Array of obj
 				//Loop thorough media
 				for (let i = 0; i < extEntMedia.length; i++) {

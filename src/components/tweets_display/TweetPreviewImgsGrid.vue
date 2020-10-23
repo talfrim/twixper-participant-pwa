@@ -106,8 +106,13 @@ export default {
 }
 
 .photo-container{
-    width: 22rem; /* Ipad sizing */
-    height: 22rem;
+    /* Ipad sizing */
+    /*width: 22rem; 
+    height: 22rem;*/
+    /*width: 13rem; 
+    height: 13rem;*/
+    width: 33vmin; 
+    height: 33vmin;
 }
 .photos{
     object-fit: cover;
@@ -120,7 +125,7 @@ export default {
     border-radius: 15%;
     border: 0.1rem solid silver;
 }
-
+/*
 @media (max-width: 550px){
     .photo-container{
 		width: 14rem;
@@ -141,4 +146,11 @@ export default {
         height: 12rem;
 	}
 }
+
+@media (max-width: 283px){
+    .photo-container{
+		width: 11.5rem;
+        height: 11.5rem;
+	}
+}*/
 </style>

@@ -10,17 +10,13 @@
         <div>
             <b-tabs content-class="mt-3" justified>
                 <b-tab v-if="hasTweets" title="TWEETS" active>
-                    <p>first tab</p>
+                    <TweetPreviewList :feedTweetsArr="this.tweetResults"></TweetPreviewList>
                 </b-tab>
-                <b-tab v-else title="TWEETS" disabled>
-                    <p>first tab</p>
-                </b-tab>
+                <b-tab v-else title="TWEETS" disabled> </b-tab> <!-- disabled tweets tab-->
                 <b-tab v-if="hasPeople" title="USERS" >
                     <p>second tab</p>\
                   </b-tab>    
-                <b-tab v-else title="USERS" disabled>
-                    <p>second tab</p>\
-                </b-tab>
+                <b-tab v-else title="USERS" disabled> </b-tab>  <!-- disabled users tab-->
             </b-tabs>
         </div>
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
@@ -29,11 +25,15 @@
 </template>
 
 <script>
-import MenuHeader from "../../components/MenuHeader.vue";
+import MenuHeader from "../../components/MenuHeader.vue"
+import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
+import feedJSON from "../../communicators/FeedJSON.js"
+
 
 export default {
     components: {
         MenuHeader,
+        TweetPreviewList,
     },
     data(){
         return{
@@ -47,13 +47,14 @@ export default {
         hasTweets() {return this.tweetResults.length>0},
         hasPeople() {return this.peopleResults.length>0}
     },
-    mounted(){
+    mounted() {
         this.myEl = this.$el;
         //twtCommunicator.getHomeTimeline();
     },
     methods: {
         searchClicked() {
-            console.log("searched")
+            console.log("search clicked")
+            this.tweetResults.push(...feedJSON);
         }
     }
 }

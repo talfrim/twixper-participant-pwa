@@ -12,16 +12,24 @@
 				</h4>
 				<span style="margin-left: 1vw">{{time}}</span>
 			</div>
-			<p class="post-text light-text">
-				{{text}}
-			</p>
-			<TweetPreviewImgsGrid v-if="photosJson" :photosJson="photosJson" />
-			<!-- add photo with v-if has photo, add nested tweet if a share
-			<div class="post-img" v-if="hasImage">
-                <img :src=tweetPreview.postImg  />
-            </div>-->
-			<div>
-				
+			<div class="post-content-loadSpinner" v-if="postContentStyle.visibility == 'hidden'">
+				<Loader />
+			</div>
+			<!-- :hidden="contentsToLoad > 0" -->
+			<div class="post-content" :style="postContentStyle">
+				<p class="post-text light-text">
+					{{text}}
+				</p>
+				<TweetPreviewImgsGrid
+					 v-if="photosJson" 
+					 :photosJson="photosJson" 
+					 @image-loaded="imageLoaded"
+					 @image-load-error="imageLoadError"
+				/>
+				<!-- add photo with v-if has photo, add nested tweet if a share
+				<div class="post-img" v-if="hasImage">
+					<img :src=tweetPreview.postImg  />
+				</div>-->
 			</div>
 			<div class="post-icons">
 				<span class="post-icons-spans">
@@ -53,10 +61,12 @@
 <script>
 import {parseTwitterDateFunc} from "../../assets/globalFunctions";
 import TweetPreviewImgsGrid from "./TweetPreviewImgsGrid.vue";
+import Loader from "../Loader.vue";
 
 export default {
 	components:{
-		TweetPreviewImgsGrid
+		TweetPreviewImgsGrid,
+		Loader
 	},
 	props: {
 		tweetPreview: {
@@ -68,6 +78,14 @@ export default {
 		return {
 			//varified_icon: false,
 			//hasImage:false,
+			//loadingContent: true, 
+
+			// Display tweet content only when it's fully loaded
+			postContentStyle:{
+				visibility: "hidden"
+			},
+			contentsToLoad: 0, //How many contents of the tweet are left to load
+			
 			time: "",
 			text: "",
 			likes: -1,
@@ -83,24 +101,10 @@ export default {
 			photosJson: [],
 		};
 	},
-	methods: {
-		likeTweet(){
-			if(!this.isLiked){//Like the tweet
-				//TODO: Call the communicator to tell the API we liked a tweet
-				this.$refs.heart.classList.add('is_animating');
-				this.$toasted.show('Tweet liked');
-
-				
-				this.likes ++;
-				this.isLiked = true;
-			}
-			else{ //Unlike the tweet
-				//TODO: Call the communicator to tell the API we unliked a tweet
-				this.$refs.heart.classList.remove('is_animating');
-				this.$toasted.show('Tweet unliked');
-
-				this.likes --;
-				this.isLiked = false;
+	watch:{
+		contentsToLoad(newVal, oldVal){
+			if(oldVal > 0 && newVal <= 0){ // Done loading contents
+				this.postContentStyle.visibility = "visible";
 			}
 		}
 	},
@@ -129,11 +133,43 @@ export default {
 					const extEntMediaItem = extEntMedia[i];
 					if(extEntMediaItem.type === "photo"){
 						this.photosJson.push(extEntMediaItem);
+						this.contentsToLoad ++;
 					}
 				}
 			}
 		}
+		if(this.contentsToLoad == 0){ // No special content to load
+			this.postContentStyle.visibility = "visible";
+		}
 	},
+	methods: {
+		imageLoaded(){
+			this.contentsToLoad --;
+		},
+		imageLoadError(){
+			this.contentsToLoad --;
+		},
+		likeTweet(){
+			if(!this.isLiked){//Like the tweet
+				//TODO: Call the communicator to tell the API we liked a tweet
+				this.$refs.heart.classList.add('is_animating');
+				this.$toasted.show('Tweet liked');
+
+				
+				this.likes ++;
+				this.isLiked = true;
+			}
+			else{ //Unlike the tweet
+				//TODO: Call the communicator to tell the API we unliked a tweet
+				this.$refs.heart.classList.remove('is_animating');
+				this.$toasted.show('Tweet unliked');
+
+				this.likes --;
+				this.isLiked = false;
+			}
+		},
+	},
+	
 	/*mounted() {
 		if (this.tweetPreview.postImg)
 			this.hasImage=true;

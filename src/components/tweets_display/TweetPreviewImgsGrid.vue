@@ -2,12 +2,15 @@
     <div class="imgsWrapper">
         <div v-for="photoObj in photosObjects" 
             :key="photoObj.className" 
-            :class="photoObj.className"
             v-lazyload
         >
             <img :data-url="photoObj.url" 
                 :class="photoObj.className"
-                alt="random image">
+                @load="$emit('image-loaded')"
+                @error="$emit('image-load-error')"
+               >
+               <!-- alt="random image">
+                -->
         </div>
     </div>
     
@@ -37,6 +40,9 @@ export default {
             photoObj.className = "photos photo" + i;
             this.photosObjects.push(photoObj);
         }
+    },
+    methods:{
+       
     }    
 }
 </script>

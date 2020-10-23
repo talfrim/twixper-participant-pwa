@@ -48,7 +48,7 @@ img{
  width: 51px;
  height: 51px;
  border-radius: 50%;
- background: #14ffe9;
+ background: rgb(26, 161, 245, 0.8); /*#14ffe9 */
  animation: animate .9s linear infinite;
 }
 

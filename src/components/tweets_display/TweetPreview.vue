@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="post-icons">
-				<span class="post-icons-spans">
+				<span class="post-icons-spans-comment">
 					<i class="far fa-comment"></i>
 				</span>
 

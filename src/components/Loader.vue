@@ -45,8 +45,8 @@ img{
 
 #loader 
 {
- width: 51px;
- height: 51px;
+ width: 4vh; /* 51px */
+ height: 4vh;
  border-radius: 50%;
  background: rgb(26, 161, 245, 0.8); /*#14ffe9 */
  animation: animate .9s linear infinite;
@@ -73,8 +73,8 @@ img{
  left: 0px;
  right: 6px;
  bottom: 6px;
- width: 45px;
- height: 45px;
+ width: 3.5vh; /* 45px */
+ height: 3.5vh;
  background: white; 
  border-radius:50%;
  z-index: -20;

@@ -77,8 +77,6 @@ h4 .usernameSpan{
 /* Loader spinner container */
 .post-content-loadSpinner{
 	position: relative;
-	/*top: 20%;*/
-	/*height: 20rem;*/
 }
 /* End of loader spinner container */
 
@@ -303,21 +301,6 @@ h4 .usernameSpan{
 	.sidebar-list-2 li {
 		margin-bottom: 1.5rem;
 	}
-}
-
-@media (max-height: 750px){
-	/* Loader spinner container */
-	.post-content-loadSpinner{
-		/*height: 16rem;*/
-	}
-	/* End of loader spinner container */
-}
-@media (max-height: 670px){
-	/* Loader spinner container */
-	.post-content-loadSpinner{
-		/*height: 14rem;*/
-	}
-	/* End of loader spinner container */
 }
 
 @media (max-width: 600px) {

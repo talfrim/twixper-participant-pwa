@@ -94,8 +94,6 @@ export default {
            //Disable the image loader
            this.showLoaderAtIndex[imgIndex] = false;
            this.photosObjects[imgIndex].isLoaded = true;
-           //Make the photo container visible
-           //this.$refs["photo" + imgIndex][0].$refs.image.classList.add("photo-display");
 
            //Enable the next image loader if exists
            if(  imgIndex == this.currLoaderIndex &&
@@ -145,25 +143,6 @@ export default {
 
     width: 36vmin; 
     height: 33vmin;
-}
-
-.photos{
-    object-fit: cover;
-    /*object-position: 0, 100%;*/
-
-    /* Takes the width and the height of the parent */
-    width: 100%;
-    height: 100%;
-
-    border-radius: 15%;
-    border: 0.1rem solid silver;
-    visibility: hidden; 
-    opacity: 0;
-    transition: opacity .5s, visibility .5s;
-}
-.photo-display{
-    opacity: 1;
-    visibility: visible;
 }
 /*
 @media (max-width: 550px){

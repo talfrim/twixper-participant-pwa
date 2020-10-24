@@ -88,6 +88,7 @@ export default {
             }
         },
         imageLoaded(){
+            /*Make the image visible */
             this.$refs.image.classList.add("photo-display");
             this.$emit('image-loaded');
             this.isImageLoaded = true;

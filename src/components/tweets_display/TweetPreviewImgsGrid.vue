@@ -1,15 +1,17 @@
 <template>
-    <div class="imgsWrapper">
+    <div class="imgsWrapper" ref="imgsWrapper">
         <div v-for="(photoObj, i) in photosObjects" 
             :key="i"
             class="photo-container" 
+            :ref="photoObj.containerRefName"
             v-lazyload
         >   
             <div class="loader-container">
                 <Loader v-if="showLoaderAtIndex[i] && photoObj.isLoaded == false" />
             </div>
             <img :data-url="photoObj.url" 
-                :class="photoObj.className"
+                 class="photos"
+                 :ref="photoObj.refName"
                  @load="imageLoaded(i)"
                  @error="imageLoadError(i)"
                >
@@ -49,7 +51,8 @@ export default {
             //photoJsonItem.media_url_https
             photoObj.url = photoJsonItem.media_url_https;
             photoObj.isLoaded = false; // Whether the img loaded
-            photoObj.className = "photos photo" + i;
+            photoObj.refName = "photo" + i;
+            photoObj.containerRefName = "photoContainer" + i;
             this.photosObjects.push(photoObj);
             this.showLoaderAtIndex.push(false);
         }
@@ -58,11 +61,32 @@ export default {
             this.showLoaderAtIndex[0] = true;
         }
     },
+    mounted(){
+        if(this.photosObjects.length ==  1){ //Only one photo
+            //Expand it to full grid size 
+            this.$refs.photoContainer0[0].style.width = "65vmin";
+            this.$refs.photoContainer0[0].style.height = "40vmin";
+        }
+        if(this.photosObjects.length ==  3){ //Three photos
+            //Position them nicely 
+            this.$refs.photoContainer0[0].style.gridArea = "img1";
+            this.$refs.photoContainer1[0].style.gridArea = "img2";
+            this.$refs.photoContainer2[0].style.gridArea = "img3";
+            this.$refs.imgsWrapper.style.gridTemplateRows = "1fr 1fr";
+            this.$refs.imgsWrapper.style.gridTemplateAreas = 
+                                            "\"img1 img2\" \"img1 img3\"";
+            this.$refs.photoContainer0[0].style.height = "68vmin";
+            this.$refs.photoContainer0[0].style.width = "38vmin";
+
+        }
+    },
     methods:{
        imageLoaded(imgIndex){
            //Disable the image loader
            this.showLoaderAtIndex[imgIndex] = false;
            this.photosObjects[imgIndex].isLoaded = true;
+           //Make the photo container visible
+           this.$refs["photo" + imgIndex][0].classList.add("photo-display");
 
            //Enable the next image loader if exists
            if(  imgIndex == this.currLoaderIndex &&
@@ -109,11 +133,11 @@ export default {
     /* Ipad sizing */
     /*width: 22rem; 
     height: 22rem;*/
-    /*width: 13rem; 
-    height: 13rem;*/
-    width: 33vmin; 
+
+    width: 36vmin; 
     height: 33vmin;
 }
+
 .photos{
     object-fit: cover;
     /*object-position: 0, 100%;*/
@@ -124,6 +148,13 @@ export default {
 
     border-radius: 15%;
     border: 0.1rem solid silver;
+    visibility: hidden; 
+    opacity: 0;
+    transition: opacity .5s, visibility .5s;
+}
+.photo-display{
+    opacity: 1;
+    visibility: visible;
 }
 /*
 @media (max-width: 550px){

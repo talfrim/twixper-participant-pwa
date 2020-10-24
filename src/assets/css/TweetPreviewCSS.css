@@ -1,6 +1,6 @@
 h4{
 	/*display: flex;*/
-	max-width: 68vw;
+	max-width: 55vw;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -335,8 +335,8 @@ h4 .usernameSpan{
 		left: 70%;
 	}
 }
-@media (max-width: 290px) {
+@media (max-width: 298px) {
 	h4{
-		max-width: 65vw;
+		max-width: 50vw;
 	}
 }

@@ -74,8 +74,17 @@ export default {
             const y = e.touches[0].clientY;
             //If the click is between the image boundries and the wrapper,
             //close the expander.
-            const a = image.height;
-            const b = image.width;
+            //const a = image.height;
+            //const b = image.width;
+            var ratio = image.naturalWidth/image.naturalHeight
+            let width = image.height*ratio
+            let height = image.height
+            if (width > image.width) {
+                width = image.width
+                height = image.width/ratio
+            }
+            const a = height;
+            const b = width;
             const c = this.cloned.offsetHeight;
             const d = this.cloned.offsetWidth;
             if (
@@ -191,8 +200,9 @@ body > .expandable-image.expanded > img {
   max-height: 81vh;
   object-fit: contain;
   margin: 0 auto;
-  background: rgb(255,255,255,0.8);
+  /*background: rgb(255,255,255,0.8);*/
   border: none;
+  border-radius: 0;
 }
 body > .expandable-image.expanded > .close-button {
   display: block;
@@ -208,28 +218,6 @@ svg {
   filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.5));
 }
 svg path {
-  fill: #FFF;
-}
-.expand-button {
-  position: absolute;
-  z-index: 999;
-  right: 10px;
-  top: 10px;
-  padding: 0px;
-  align-items: center;
-  justify-content: center;
-  padding: 3px;
-  opacity: 0;
-  transition: 0.2s opacity;
-}
-.expandable-image:hover .expand-button {
-  opacity: 1;
-}
-.expand-button svg {
-  width: 20px;
-  height: 20px;
-}
-.expand-button path {
   fill: #FFF;
 }
 .expandable-image img {

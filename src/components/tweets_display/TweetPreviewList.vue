@@ -92,7 +92,7 @@ export default {
 
 <style scoped>
     .posts {
-		grid-column: 2 / 3;
+		/*grid-column: 2 / 3;*/
 		grid-row: 2 / -1;
 		background-color: #fff;
 	}
@@ -102,6 +102,11 @@ export default {
         }
         
     #wrapper{
-         min-height: 100vh;
-    }    
+        height: 100vh;
+    } 
+    /*@media (max-width: 290px){
+        #wrapper{
+            width: 105vw;
+        } 
+    }   */
 </style>

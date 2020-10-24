@@ -12,27 +12,19 @@
 				</h4>
 				<span style="margin-left: 1vw">{{time}}</span>
 			</div>
-			<div class="post-content-loadSpinner" v-if="postContentStyle.visibility == 'hidden'">
-				<Loader />
-			</div>
-			<!-- :hidden="contentsToLoad > 0" -->
-			<div class="post-content" :style="postContentStyle">
+			<div class="post-content" >
 				<p class="post-text light-text">
 					{{text}}
 				</p>
-				<TweetPreviewImgsGrid
-					 v-if="photosJson" 
-					 :photosJson="photosJson" 
-					 @image-loaded="imageLoaded"
-					 @image-load-error="imageLoadError"
-				/>
-				<!-- add photo with v-if has photo, add nested tweet if a share
-				<div class="post-img" v-if="hasImage">
-					<img :src=tweetPreview.postImg  />
-				</div>-->
+				<div class="post-content-media" v-if="hasMedia">
+					<TweetPreviewImgsGrid
+						v-if="photosJson" 
+						:photosJson="photosJson" 
+					/>
+				</div>
 			</div>
 			<div class="post-icons">
-				<span class="post-icons-spans">
+				<span class="post-icons-spans-comment">
 					<i class="far fa-comment"></i>
 				</span>
 
@@ -46,10 +38,6 @@
 					<span>{{likes}}</span>
 				</span>
 
-				<!-- <span class="post-icons-spans" @click="likeTweet()">
-					<i class="far fa-heart" ref="heartIcon"></i>
-					<span>{{likes}}</span>
-				</span> -->
 				<span class="post-icons-share-container">
 					<i class="fas fa-share-alt"></i>
 				</span>
@@ -61,12 +49,10 @@
 <script>
 import {parseTwitterDateFunc} from "../../assets/globalFunctions";
 import TweetPreviewImgsGrid from "./TweetPreviewImgsGrid.vue";
-import Loader from "../Loader.vue";
 
 export default {
 	components:{
 		TweetPreviewImgsGrid,
-		Loader
 	},
 	props: {
 		tweetPreview: {
@@ -76,15 +62,7 @@ export default {
 	}, 
 	data() {
 		return {
-			//varified_icon: false,
-			//hasImage:false,
-			//loadingContent: true, 
-
-			// Display tweet content only when it's fully loaded
-			postContentStyle:{
-				visibility: "hidden"
-			},
-			contentsToLoad: 0, //How many contents of the tweet are left to load
+			//contentsToLoad: 0, //How many contents (including media) of the tweet are left to load
 			
 			time: "",
 			text: "",
@@ -98,15 +76,9 @@ export default {
 				profileImgUrl: "",
 				isVerified: false
 			},
+			hasMedia: false,
 			photosJson: [],
 		};
-	},
-	watch:{
-		contentsToLoad(newVal, oldVal){
-			if(oldVal > 0 && newVal <= 0){ // Done loading contents
-				this.postContentStyle.visibility = "visible";
-			}
-		}
 	},
 	created(){
 		const tweetPrev = this.tweetPreview;
@@ -127,6 +99,7 @@ export default {
 		if(tweetPrev.extended_entities){
 			const extEnt = tweetPrev.extended_entities;
 			if(extEnt.media){
+				this.hasMedia = true;
 				const extEntMedia = extEnt.media; //Array of obj
 				//Loop thorough media
 				for (let i = 0; i < extEntMedia.length; i++) {
@@ -138,17 +111,8 @@ export default {
 				}
 			}
 		}
-		if(this.contentsToLoad == 0){ // No special content to load
-			this.postContentStyle.visibility = "visible";
-		}
 	},
 	methods: {
-		imageLoaded(){
-			this.contentsToLoad --;
-		},
-		imageLoadError(){
-			this.contentsToLoad --;
-		},
 		likeTweet(){
 			if(!this.isLiked){//Like the tweet
 				//TODO: Call the communicator to tell the API we liked a tweet
@@ -170,10 +134,6 @@ export default {
 		},
 	},
 	
-	/*mounted() {
-		if (this.tweetPreview.postImg)
-			this.hasImage=true;
-	},*/
 }
 </script>
 

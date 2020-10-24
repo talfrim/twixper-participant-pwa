@@ -36,7 +36,8 @@ export default {
 		border-radius: 50%;
 		cursor: pointer;
 		box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3);
-		transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        z-index: 1;
 	}
 
 .post-btn:hover {

@@ -4,17 +4,23 @@
             :key="i"
             class="photo-container" 
             :ref="photoObj.containerRefName"
-            v-lazyload
-        >   
-            <div class="loader-container">
-                <Loader v-if="showLoaderAtIndex[i] && photoObj.isLoaded == false" />
+           
+        >   <!--  v-lazyload -->
+
+            <div class="loader-container" v-if="showLoaderAtIndex[i] && photoObj.isLoaded == false">
+                <Loader/>
             </div>
-            <img :data-url="photoObj.url" 
+            <ExpandableImg 
+                :data-url="photoObj.url" 
+                @image-loaded="imageLoaded(i)"
+                @image-load-error="imageLoadError(i)"
+            />
+            <!--<img :data-url="photoObj.url" 
                  class="photos"
                  :ref="photoObj.refName"
                  @load="imageLoaded(i)"
                  @error="imageLoadError(i)"
-               >
+               >-->
                <!-- alt="random image">
                 -->
         </div>
@@ -24,9 +30,12 @@
 
 <script>
 import Loader from "../Loader.vue";
+import ExpandableImg from "../ExpandableImg.vue";
+
 export default {
     components:{
-        Loader
+        Loader,
+        ExpandableImg
     },
     props:{
         photosJson:{ 
@@ -86,7 +95,7 @@ export default {
            this.showLoaderAtIndex[imgIndex] = false;
            this.photosObjects[imgIndex].isLoaded = true;
            //Make the photo container visible
-           this.$refs["photo" + imgIndex][0].classList.add("photo-display");
+           //this.$refs["photo" + imgIndex][0].$refs.image.classList.add("photo-display");
 
            //Enable the next image loader if exists
            if(  imgIndex == this.currLoaderIndex &&

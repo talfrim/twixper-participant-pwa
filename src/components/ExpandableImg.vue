@@ -19,21 +19,8 @@
         />
       </svg>
     </i>
-    <!--<i
-      v-else
-      class="expand-button"
-    >
-      <svg
-        style="width:24px;height:24px"
-        viewBox="0 0 24 24"
-      >
-        <path
-          fill="#000000"
-          d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z"
-        />
-      </svg>
-    </i>-->
     <img v-bind="$attrs" 
+        crossorigin="anonymous" 
         ref="image"
         class="photos"
         @load="imageLoaded()"
@@ -43,15 +30,18 @@
 </template>
 
 <script>
+import ColorThief from 'colorthief';
+var colorThief = new ColorThief();
+
 export default {
     data () {
         return {
             isImageLoaded: false,
             expanded: false,
-            closeButtonRef: null
+            closeButtonRef: null,
+            backgroundColor: "rgba(171, 166, 166, 0.95)" //defauld background
         }
     },
-
     methods: {
         clickedImgDiv(){
             if(this.isImageLoaded){
@@ -97,10 +87,12 @@ export default {
             }
         },
         imageLoaded(){
-            /*Make the image visible */
+            /*Get the img main color and make the image visible */
             this.$refs.image.classList.add("photo-display");
             this.$emit('image-loaded');
             this.isImageLoaded = true;
+            const dominentColor = colorThief.getColor(this.$refs.image);
+            this.backgroundColor = "rgba("+dominentColor[0]+","+dominentColor[1]+","+dominentColor[2]+",0.95)";
         },
         imageLoadError(){
            this.$refs.image.classList.add("photo-display");
@@ -122,6 +114,8 @@ export default {
                 this.cloned.addEventListener('touchstart', this.onExpandedImageClick)
                 // Add the cloned element into <body>
                 document.body.appendChild(this.cloned)
+                //Change the background to the dominent color of the image
+                this.cloned.style.background = this.backgroundColor;
                 // Prevent the page from scrolling
                 document.body.style.overflow = 'hidden'
                 setTimeout(() => {
@@ -187,7 +181,7 @@ body > .expandable-image.expanded {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(171, 166, 166, 0.95);
+  /*background: rgba(171, 166, 166, 0.95);*/
   display: flex;
   align-items: center;
   opacity: 0;

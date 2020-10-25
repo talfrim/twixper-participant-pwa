@@ -144,6 +144,8 @@ export default {
                 console.log("openSidebar called");
                 this.$refs.sidebar.classList.add('sidebar-display');
                 this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');
+                // Prevent the page from scrolling
+                document.body.style.overflow = 'hidden';
                 this.isSidebarOpen = true;
             }
         },
@@ -152,6 +154,8 @@ export default {
                 console.log("closeSidebar called");
                 this.$refs.sidebar.classList.remove('sidebar-display');
                 this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
+                // Re-enable the scrolling
+                document.body.style.overflow = 'auto'
                 this.isSidebarOpen = false;
             } 
         }

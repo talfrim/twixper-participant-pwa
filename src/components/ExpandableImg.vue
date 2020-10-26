@@ -23,6 +23,7 @@
         crossorigin="anonymous" 
         ref="image"
         class="photos"
+        :style="imgStyle"
         @load="imageLoaded()"
         @error="imageLoadError()"
     />
@@ -34,12 +35,40 @@ import ColorThief from 'colorthief';
 var colorThief = new ColorThief();
 
 export default {
+    props:{
+      imgBorderRadius:{
+          type: String,
+          required: false,
+          default: "15%"
+      },
+      imgWidth:{
+          type: String,
+          required: false,
+          default: "100%"
+      },
+      imgHeight:{
+          type: String,
+          required: false,
+          default: "100%"
+      },
+      imgBorder:{
+          type: String,
+          required: false,
+          default: "0.1rem solid silver"
+      }
+    },
     data () {
         return {
             isImageLoaded: false,
             expanded: false,
             closeButtonRef: null,
-            backgroundColor: "rgba(171, 166, 166, 0.95)" //defauld background
+            backgroundColor: "rgba(171, 166, 166, 0.95)", //defauld background
+            imgStyle:{
+                borderRadius: this.imgBorderRadius,
+                width: this.imgWidth,
+                height: this.imgHeight,
+                border: this.imgBorder
+            },
         }
     },
     methods: {
@@ -163,8 +192,8 @@ export default {
     width: 100%;
     height: 100%;
 
-    border-radius: 15%;
-    border: 0.1rem solid silver;
+    /*border-radius: 15%;*/
+    /*border: 0.1rem solid silver;*/
     visibility: hidden; 
     opacity: 0;
     transition: opacity .5s, visibility .5s;
@@ -179,8 +208,8 @@ body > .expandable-image.expanded {
   z-index: 999999;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  /*width: 100%;
+  height: 100%;*/
   /*background: rgba(171, 166, 166, 0.95);*/
   display: flex;
   align-items: center;
@@ -195,8 +224,8 @@ body > .expandable-image.expanded > img {
   object-fit: contain;
   margin: 0 auto;
   /*background: rgb(255,255,255,0.8);*/
-  border: none;
-  border-radius: 0;
+  border: none !important; 
+  border-radius: 0 !important;
 }
 body > .expandable-image.expanded > .close-button {
   display: block;

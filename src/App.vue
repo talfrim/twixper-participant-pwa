@@ -28,6 +28,10 @@ export default {
 		font-family: 'Josefin Sans', sans-serif;
 		outline: none;
   }
+  body{
+    /* Prevent the page from scrolling on axios x*/ 
+    overflow-x: hidden;
+  }
   /*
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;

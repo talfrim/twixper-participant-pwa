@@ -51,7 +51,453 @@ export default {
   },
 }
 */
-export default [ 
+export default [
+	{
+        "created_at": "Tue Oct 06 20:14:49 +0000 2020",
+        "id": 1313573447121993728,
+        "id_str": "1313573447121993728",
+        "text": "É sempre um sentimento especial representar o nosso país!🇵🇹👏🏽💪🏽\n#todosportugal https://t.co/yTYT5CKZtK",
+        "truncated": false,
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "todosportugal",
+                    "indices": [
+                        64,
+                        78
+                    ]
+                }
+            ],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [],
+            "media": [
+                {
+                    "id": 1313573442092965889,
+                    "id_str": "1313573442092965889",
+                    "indices": [
+                        79,
+                        102
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
+                    "url": "https://t.co/yTYT5CKZtK",
+                    "display_url": "pic.twitter.com/yTYT5CKZtK",
+                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 640,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 1313573442092965889,
+                    "id_str": "1313573442092965889",
+                    "indices": [
+                        79,
+                        102
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
+                    "url": "https://t.co/yTYT5CKZtK",
+                    "display_url": "pic.twitter.com/yTYT5CKZtK",
+                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 640,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 1313573442134908934,
+                    "id_str": "1313573442134908934",
+                    "indices": [
+                        79,
+                        102
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/EjrAFgTWoAY3zbg.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgTWoAY3zbg.jpg",
+                    "url": "https://t.co/yTYT5CKZtK",
+                    "display_url": "pic.twitter.com/yTYT5CKZtK",
+                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 640,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 1313573442097156100,
+                    "id_str": "1313573442097156100",
+                    "indices": [
+                        79,
+                        102
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/EjrAFgKWkAQAkpJ.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgKWkAQAkpJ.jpg",
+                    "url": "https://t.co/yTYT5CKZtK",
+                    "display_url": "pic.twitter.com/yTYT5CKZtK",
+                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 640,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1080,
+                            "h": 1017,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 155659213,
+            "id_str": "155659213",
+            "name": "Cristiano Ronaldo",
+            "screen_name": "Cristiano",
+            "location": "Turim, Piemonte",
+            "description": "This Privacy Policy addresses the collection and use of personal information - https://t.co/Jp6yh1T58c",
+            "url": "https://t.co/VcAXB9ryty",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/VcAXB9ryty",
+                            "expanded_url": "http://www.facebook.com/cristiano",
+                            "display_url": "facebook.com/cristiano",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/Jp6yh1T58c",
+                            "expanded_url": "http://www.cristianoronaldo.com/terms",
+                            "display_url": "cristianoronaldo.com/terms",
+                            "indices": [
+                                79,
+                                102
+                            ]
+                        }
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 88696370,
+            "friends_count": 51,
+            "listed_count": 83635,
+            "created_at": "Mon Jun 14 19:09:20 +0000 2010",
+            "favourites_count": 2,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": true,
+            "verified": true,
+            "statuses_count": 3594,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": true,
+            "profile_background_color": "080101",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/155659213/1564759975",
+            "profile_link_color": "1643C9",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "838387",
+            "profile_text_color": "0D0D0D",
+            "profile_use_background_image": true,
+            "has_extended_profile": false,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": false,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "regular"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 8809,
+        "favorite_count": 160978,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "pt"
+	}, 
+	{
+        "created_at": "Sat Oct 24 09:30:00 +0000 2020",
+        "id": 1319934155170279424,
+        "id_str": "1319934155170279424",
+        "text": "🚨 TWO HOURS 🚨\n\nWhat're you guys up to ahead of the game? \n\n🔷 #ManCity | https://t.co/axa0klUGiM https://t.co/R0ti2mIphv",
+        "truncated": false,
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "ManCity",
+                    "indices": [
+                        61,
+                        69
+                    ]
+                }
+            ],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [
+                {
+                    "url": "https://t.co/axa0klUGiM",
+                    "expanded_url": "http://mancity.com",
+                    "display_url": "mancity.com",
+                    "indices": [
+                        72,
+                        95
+                    ]
+                }
+            ],
+            "media": [
+                {
+                    "id": 1319653486926114817,
+                    "id_str": "1319653486926114817",
+                    "indices": [
+                        96,
+                        119
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
+                    "url": "https://t.co/R0ti2mIphv",
+                    "display_url": "pic.twitter.com/R0ti2mIphv",
+                    "expanded_url": "https://twitter.com/ManCity/status/1319934155170279424/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 1200,
+                            "h": 675,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1920,
+                            "h": 1080,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 383,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 1319653486926114817,
+                    "id_str": "1319653486926114817",
+                    "indices": [
+                        96,
+                        119
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
+                    "url": "https://t.co/R0ti2mIphv",
+                    "display_url": "pic.twitter.com/R0ti2mIphv",
+                    "expanded_url": "https://twitter.com/ManCity/status/1319934155170279424/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 1200,
+                            "h": 675,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1920,
+                            "h": 1080,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 383,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 14573900,
+            "id_str": "14573900",
+            "name": "Manchester City",
+            "screen_name": "ManCity",
+            "location": "Etihad Stadium",
+            "description": "𝐸𝓈𝓉. 1894  💙 This Is Our City 🏆 6 x League Champions 🙌 #ManCity ℹ️ @ManCityHelp",
+            "url": "https://t.co/rZckZ8PABr",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/rZckZ8PABr",
+                            "expanded_url": "http://www.mancity.com/city+",
+                            "display_url": "mancity.com/city+",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 8588075,
+            "friends_count": 51895,
+            "listed_count": 14587,
+            "created_at": "Mon Apr 28 19:28:08 +0000 2008",
+            "favourites_count": 13615,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 134354,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": true,
+            "profile_background_color": "060606",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/14573900/1602505147",
+            "profile_link_color": "81B2D5",
+            "profile_sidebar_border_color": "000000",
+            "profile_sidebar_fill_color": "EFEFEF",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": false,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 45,
+        "favorite_count": 780,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
 	{
 		"created_at":"Tue Oct 20 20:46:20 +0000 2020",
 		"id":1318654807821963300,
@@ -139,6 +585,283 @@ export default [
 		"retweeted":false,
 		"lang":"iw"
 	},
+	{
+        "created_at": "Sat Oct 24 10:30:34 +0000 2020",
+        "id": 1319949398487519232,
+        "id_str": "1319949398487519232",
+        "text": "The power of the Khun family: unmatched https://t.co/plCrz0G1Ss",
+        "truncated": false,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [],
+            "media": [
+                {
+                    "id": 1319949393387192320,
+                    "id_str": "1319949393387192320",
+                    "indices": [
+                        40,
+                        63
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElFm-tpWAAAfA0x.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElFm-tpWAAAfA0x.jpg",
+                    "url": "https://t.co/plCrz0G1Ss",
+                    "display_url": "pic.twitter.com/plCrz0G1Ss",
+                    "expanded_url": "https://twitter.com/agueroagnis_/status/1319949398487519232/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 750,
+                            "h": 484,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 750,
+                            "h": 484,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 439,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 1319949393387192320,
+                    "id_str": "1319949393387192320",
+                    "indices": [
+                        40,
+                        63
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElFm-tpWAAAfA0x.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElFm-tpWAAAfA0x.jpg",
+                    "url": "https://t.co/plCrz0G1Ss",
+                    "display_url": "pic.twitter.com/plCrz0G1Ss",
+                    "expanded_url": "https://twitter.com/agueroagnis_/status/1319949398487519232/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 750,
+                            "h": 484,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 750,
+                            "h": 484,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 439,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 1319949393383084033,
+                    "id_str": "1319949393383084033",
+                    "indices": [
+                        40,
+                        63
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElFm-toXUAEbsjE.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElFm-toXUAEbsjE.jpg",
+                    "url": "https://t.co/plCrz0G1Ss",
+                    "display_url": "pic.twitter.com/plCrz0G1Ss",
+                    "expanded_url": "https://twitter.com/agueroagnis_/status/1319949398487519232/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 750,
+                            "h": 440,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 750,
+                            "h": 440,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 399,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 1319949393387290625,
+                    "id_str": "1319949393387290625",
+                    "indices": [
+                        40,
+                        63
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElFm-tpXgAEkcgv.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElFm-tpXgAEkcgv.jpg",
+                    "url": "https://t.co/plCrz0G1Ss",
+                    "display_url": "pic.twitter.com/plCrz0G1Ss",
+                    "expanded_url": "https://twitter.com/agueroagnis_/status/1319949398487519232/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 750,
+                            "h": 553,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 750,
+                            "h": 553,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 501,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 1319949393391484929,
+                    "id_str": "1319949393391484929",
+                    "indices": [
+                        40,
+                        63
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElFm-tqXgAEA0Mg.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElFm-tqXgAEA0Mg.jpg",
+                    "url": "https://t.co/plCrz0G1Ss",
+                    "display_url": "pic.twitter.com/plCrz0G1Ss",
+                    "expanded_url": "https://twitter.com/agueroagnis_/status/1319949398487519232/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "medium": {
+                            "w": 749,
+                            "h": 447,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 406,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 749,
+                            "h": 447,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 1084116061165965312,
+            "id_str": "1084116061165965312",
+            "name": "Annie ☆",
+            "screen_name": "agueroagnis_",
+            "location": "",
+            "description": "~ 𝐿𝒾𝓀𝑒 𝐼 𝒶𝓁𝓌𝒶𝓎𝓈 𝓈𝒶𝓎, 𝒸𝒶𝓃’𝓉 𝒻𝒾𝓃𝒹 𝒶 𝒹𝑜𝑜𝓇? 𝑀𝒶𝓀𝑒 𝓎𝑜𝓊𝓇 𝑜𝓌𝓃 ~ 𝓔𝓭𝔀𝓪𝓻𝓭 𝓔𝓵𝓻𝓲𝓬",
+            "url": "https://t.co/pJcoTuwMmh",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/pJcoTuwMmh",
+                            "expanded_url": "https://curiouscat.me/agueroagnis_",
+                            "display_url": "curiouscat.me/agueroagnis_",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 3709,
+            "friends_count": 543,
+            "listed_count": 39,
+            "created_at": "Sat Jan 12 15:53:05 +0000 2019",
+            "favourites_count": 19291,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 8167,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "F5F8FA",
+            "profile_background_image_url": null,
+            "profile_background_image_url_https": null,
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1270817851591532546/_nThOWDK_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1270817851591532546/_nThOWDK_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/1084116061165965312/1595307448",
+            "profile_link_color": "1DA1F2",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": true,
+            "default_profile": true,
+            "default_profile_image": false,
+            "following": false,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 1,
+        "favorite_count": 8,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
     {
         "created_at": "Wed Oct 21 09:47:28 +0000 2020",
         "id": 1318851389402062848,

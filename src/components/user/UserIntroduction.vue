@@ -63,7 +63,7 @@ export default {
     position: relative;
 }
 .banner-img-container{
-    height: 18vh;
+    height: 17vh;
     width: 100vw;
 }
 .profile-img-container{
@@ -72,6 +72,7 @@ export default {
     position: absolute;
     left: 4vw;
     bottom: -7.5vh;
+    border: 2px solid white;
     border-radius: 50%;
     background: white;
 }

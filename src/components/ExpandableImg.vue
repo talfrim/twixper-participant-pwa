@@ -23,7 +23,6 @@
         crossorigin="anonymous" 
         ref="image"
         class="photos"
-        :style="imgStyle"
         @load="imageLoaded()"
         @error="imageLoadError()"
     />
@@ -35,27 +34,7 @@ import ColorThief from 'colorthief';
 var colorThief = new ColorThief();
 
 export default {
-    props:{
-      imgBorderRadius:{
-          type: String,
-          required: false,
-          default: "15%"
-      },
-      imgWidth:{
-          type: String,
-          required: false,
-          default: "100%"
-      },
-      imgHeight:{
-          type: String,
-          required: false,
-          default: "100%"
-      },
-      imgBorder:{
-          type: String,
-          required: false,
-          default: "0.1rem solid silver"
-      }
+    props:{     
     },
     data () {
         return {
@@ -63,12 +42,6 @@ export default {
             expanded: false,
             closeButtonRef: null,
             backgroundColor: "rgba(171, 166, 166, 0.95)", //defauld background
-            imgStyle:{
-                borderRadius: this.imgBorderRadius,
-                width: this.imgWidth,
-                height: this.imgHeight,
-                border: this.imgBorder
-            },
         }
     },
     methods: {
@@ -180,7 +153,7 @@ export default {
   /* Takes the width and the height of the parent */
     width: 100%;
     height: 100%;
-
+    border-radius: inherit;
   /*cursor: zoom-in;*/
 }
 
@@ -191,7 +164,7 @@ export default {
     /* Takes the width and the height of the parent */
     width: 100%;
     height: 100%;
-
+    border-radius: inherit;
     /*border-radius: 15%;*/
     /*border: 0.1rem solid silver;*/
     visibility: hidden; 

@@ -143,6 +143,8 @@ export default {
 
     width: 36vmin; 
     height: 33vmin;
+    border: 1px solid silver;
+    border-radius: 15%;
 }
 /*
 @media (max-width: 550px){

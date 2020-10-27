@@ -1,7 +1,10 @@
 <template>
 	<div class="post border">
         <div class="user-avatar" v-lazyload>
-          <img :data-url="author.profileImgUrl">
+          <!--<img :data-url="author.profileImgUrl">-->
+		  <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+		  	 tag="img" :data-url="author.profileImgUrl"> 
+		  </router-link>
         </div>
         <div class="post-content">
 			<div class="post-user-info">
@@ -84,7 +87,8 @@ export default {
 	created(){
 		const tweetPrev = this.tweetPreview;
 		this.time = parseTwitterDateFunc(tweetPrev.created_at);
-		this.textHtml = tweetPrev.text.replace(/(?:\r\n|\r|\n)/g, '<br>');//Convert string to html
+		let tweetText = tweetPrev.full_text || tweetPrev.text;
+		this.textHtml = tweetText.replace(/(?:\r\n|\r|\n)/g, '<br>');//Convert string to html
 		this.lang = tweetPrev.lang;
 
 		//TODO: When the number is bigger than 9999, format it to K
@@ -120,7 +124,7 @@ export default {
 	methods: {
 		setTextParagraph(){
 			this.$refs.textParagraph.innerHTML = this.textHtml;
-			//Change text direction to rtl if needed
+			// Change text direction to rtl if needed
 			// Hebrew Arabic Persian Kurdish Maldivian
 			const rtlLangCodes = ["iw", "ar", "fa", "ckb", "dv"];
 			if(rtlLangCodes.includes(this.lang)){

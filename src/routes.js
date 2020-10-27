@@ -19,14 +19,18 @@ const routes = [
     {
         path: "/feed",
         name: "feed",
-        component: () => import("./pages/tweets_display/FeedPage"), //TODO change back to feed
+        component: () => import("./pages/tweets_display/FeedPage"), 
     },
     {
       path: "/search",
       name: "search",
       component: () => import("./pages/search/SearchPage"), //TODO change back to feed
     },
-    
+    {
+      path: "/userPagePublic/:userName",
+      name: "userPage",
+      component: () => import("./pages/user/UserPagePublic"), 
+    },
 ]
 
 export default routes

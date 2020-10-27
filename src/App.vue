@@ -3,9 +3,9 @@
    <!-- feeds page
   <section class="feeds-page"> -->
     <!-- feeds content -->
-    <transition name="slide-left">
+    <!--<transition name="slide-left"> -->
       <router-view/>
-    </transition>
+    <!--</transition> -->
     
   <!--</section>
    end of feeds page -->
@@ -80,14 +80,14 @@ export default {
     justify-content: center !important;
     
     border-radius: 3rem !important;
-    top: -6rem !important ;
+    top: -4rem !important ;
     left: 30%;
     opacity: 0.9 !important;
   }
    .toasted.toasted-primary {
     font-size: 1.5rem !important;
     font-weight: bold !important;
-    min-height: 3.7rem !important;
+    min-height: 2.5rem !important;
   }
   
 }

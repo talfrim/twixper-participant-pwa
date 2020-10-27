@@ -3,7 +3,7 @@
         type="button" 
         @click="$emit('clicked-btn')" 
         ref="btn"
-        :class="{btnOn: btnClicked === true}"
+        :class="{btnOn: btnModeOn === true}"
     >
         {{btnText}}
     </button>
@@ -17,7 +17,7 @@ export default {
             required: false,
             default: "btn name"
         },
-        btnClicked:{
+        btnModeOn:{
             type: Boolean,
             required: false,
             default: false

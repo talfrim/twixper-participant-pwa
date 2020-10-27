@@ -18,11 +18,10 @@
             </div>
         </div>
         <div class="follow-btn-container">
-            <!--<button style="height: 20px; margin-right: 10px">Follow / Unfollow</button>-->
-            <ButtonCustom 
-                :btnText="followBtnText" 
-                :btnClicked="following"
-                @clicked-btn="followUnfollowUser()" 
+            <!--<button style="height: 20px; margin-right: 10px">Follow / Unfollow</button>--> 
+            <FollowButton
+                :usernameContext="userName" 
+                :following="following" 
             />
         </div>
         <div class="profile-details-container">
@@ -59,12 +58,12 @@
 
 <script>
 import ExpandableImg from "../ExpandableImg.vue";
-import ButtonCustom from "../ButtonCustom.vue";
+import FollowButton from "../buttons/FollowButton.vue";
 
 export default {
     components:{
         ExpandableImg,
-        ButtonCustom
+        FollowButton
     },
     props:{
         userPageJson:{
@@ -87,7 +86,6 @@ export default {
             },
             joinedDate: null,
             following: false,
-            followBtnText: "Follow"
         }
     },
     created(){
@@ -107,36 +105,8 @@ export default {
         }
         this.joinedDate = userJson.created_at;
         this.following = userJson.following;
-        if(this.following === true){
-            this.followBtnText = "Unfollow";
-        }
     },
-    methods:{
-        followUnfollowUser(){
-            if(this.following === false){ // Follow
-                // TODO: Send request to the serer to follow this page (user clicked follow btn)
-                // If the request was successful:
-                this.following = true;
-            }
-            else{ // Unfollow
-                // TODO: Ask if the user is sure
-                // TODO: Send request to the serer to unfollow this page (user clicked unfollow btn)
-                // If the request was successful:
-                this.following = false;
-            }
-
-        }
-    },
-    watch:{
-        following(newVal){
-            if(newVal === true){
-                this.followBtnText = "Unfollow";
-            }
-            else{
-                this.followBtnText = "Follow";
-            }
-        }
-    } 
+    
 }
 </script>
 

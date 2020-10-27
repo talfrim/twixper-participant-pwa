@@ -50,6 +50,8 @@ export default {
             if(this.isFollowing === false){ // Follow
                 // TODO: Send request to the serer to follow this page (user clicked follow btn)
                 // If the request was successful:
+
+
                 this.isFollowing = true;
                 this.$toasted.show('Followed');
                 console.log("Follow user "+ this.usernameContext)
@@ -58,6 +60,8 @@ export default {
                 // TODO: Ask if the user is sure
                 // TODO: Send request to the serer to unfollow this page (user clicked unfollow btn)
                 // If the request was successful:
+
+                
                 this.isFollowing = false;
                 this.$toasted.show('Unfollowed');
                 console.log("Unfollow user "+ this.usernameContext)

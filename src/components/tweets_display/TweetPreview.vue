@@ -1,7 +1,10 @@
 <template>
 	<div class="post border">
         <div class="user-avatar" v-lazyload>
-          <img :data-url="author.profileImgUrl">
+          <!--<img :data-url="author.profileImgUrl">-->
+		  <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+		  	 tag="img" :data-url="author.profileImgUrl"> 
+		  </router-link>
         </div>
         <div class="post-content">
 			<div class="post-user-info">
@@ -13,8 +16,8 @@
 				<span style="margin-left: 1vw">{{time}}</span>
 			</div>
 			<div class="post-content" >
-				<p class="post-text light-text">
-					{{text}}
+				<p class="post-text light-text" ref="textParagraph">
+					
 				</p>
 				<div class="post-content-media" v-if="hasMedia">
 					<TweetPreviewImgsGrid
@@ -65,7 +68,8 @@ export default {
 			//contentsToLoad: 0, //How many contents (including media) of the tweet are left to load
 			
 			time: "",
-			text: "",
+			textHtml: "",
+			lang: "",
 			likes: -1,
 			retweets: -1,
 			isLiked: false,
@@ -83,7 +87,9 @@ export default {
 	created(){
 		const tweetPrev = this.tweetPreview;
 		this.time = parseTwitterDateFunc(tweetPrev.created_at);
-		this.text = tweetPrev.text;
+		let tweetText = tweetPrev.full_text || tweetPrev.text;
+		this.textHtml = tweetText.replace(/(?:\r\n|\r|\n)/g, '<br>');//Convert string to html
+		this.lang = tweetPrev.lang;
 
 		//TODO: When the number is bigger than 9999, format it to K
 		this.likes = tweetPrev.favorite_count;
@@ -112,7 +118,19 @@ export default {
 			}
 		}
 	},
+	mounted(){
+		this.setTextParagraph();
+	},
 	methods: {
+		setTextParagraph(){
+			this.$refs.textParagraph.innerHTML = this.textHtml;
+			// Change text direction to rtl if needed
+			// Hebrew Arabic Persian Kurdish Maldivian
+			const rtlLangCodes = ["iw", "ar", "fa", "ckb", "dv"];
+			if(rtlLangCodes.includes(this.lang)){
+				this.$refs.textParagraph.style.direction = "rtl";
+			} 
+		},
 		likeTweet(){
 			if(!this.isLiked){//Like the tweet
 				//TODO: Call the communicator to tell the API we liked a tweet

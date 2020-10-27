@@ -18,7 +18,12 @@
             </div>
         </div>
         <div class="follow-btn-container">
-            <button style="height: 20px; margin-right: 10px">Follow / Unfollow</button>
+            <!--<button style="height: 20px; margin-right: 10px">Follow / Unfollow</button>-->
+            <ButtonCustom 
+                :btnText="followBtnText" 
+                :btnClicked="following"
+                @clicked-btn="followUnfollowUser()" 
+            />
         </div>
         <div class="profile-details-container">
             <div class="user-full-name-container">
@@ -54,10 +59,12 @@
 
 <script>
 import ExpandableImg from "../ExpandableImg.vue";
+import ButtonCustom from "../ButtonCustom.vue";
 
 export default {
     components:{
         ExpandableImg,
+        ButtonCustom
     },
     props:{
         userPageJson:{
@@ -78,7 +85,9 @@ export default {
                 displayUrl: null,
                 expandedUrl: null
             },
-            joinedDate: null
+            joinedDate: null,
+            following: false,
+            followBtnText: "Follow"
         }
     },
     created(){
@@ -97,7 +106,37 @@ export default {
             this.link.expandedUrl = url.expanded_url;
         }
         this.joinedDate = userJson.created_at;
-    }, 
+        this.following = userJson.following;
+        if(this.following === true){
+            this.followBtnText = "Unfollow";
+        }
+    },
+    methods:{
+        followUnfollowUser(){
+            if(this.following === false){ // Follow
+                // TODO: Send request to the serer to follow this page (user clicked follow btn)
+                // If the request was successful:
+                this.following = true;
+            }
+            else{ // Unfollow
+                // TODO: Ask if the user is sure
+                // TODO: Send request to the serer to unfollow this page (user clicked unfollow btn)
+                // If the request was successful:
+                this.following = false;
+            }
+
+        }
+    },
+    watch:{
+        following(newVal){
+            if(newVal === true){
+                this.followBtnText = "Unfollow";
+            }
+            else{
+                this.followBtnText = "Follow";
+            }
+        }
+    } 
 }
 </script>
 
@@ -131,6 +170,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-right: 5vw;
 }
 .profile-details-container{
     margin-left: 15px;

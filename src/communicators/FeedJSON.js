@@ -1306,35 +1306,28 @@ export default [
         "possibly_sensitive": false,
         "lang": "iw"
 	},
-	{
-        "created_at": "Thu Oct 22 13:40:30 +0000 2020",
-        "id": 1319272421749260290,
-        "id_str": "1319272421749260290",
-        "text": "RT @krys_pics: She is art https://t.co/yoxb88en1V",
+    {
+        "created_at": "Thu Oct 22 13:38:54 +0000 2020",
+        "id": 1319272016524972033,
+        "id_str": "1319272016524972033",
+        "full_text": "She is art https://t.co/yoxb88en1V",
         "truncated": false,
+        "display_text_range": [
+            0,
+            10
+        ],
         "entities": {
             "hashtags": [],
             "symbols": [],
-            "user_mentions": [
-                {
-                    "screen_name": "krys_pics",
-                    "name": "Krystal pics",
-                    "id": 3311180101,
-                    "id_str": "3311180101",
-                    "indices": [
-                        3,
-                        13
-                    ]
-                }
-            ],
+            "user_mentions": [],
             "urls": [],
             "media": [
                 {
                     "id": 1319271784386998275,
                     "id_str": "1319271784386998275",
                     "indices": [
-                        26,
-                        49
+                        11,
+                        34
                     ],
                     "media_url": "http://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
                     "media_url_https": "https://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
@@ -1363,11 +1356,7 @@ export default [
                             "h": 680,
                             "resize": "fit"
                         }
-                    },
-                    "source_status_id": 1319272016524972033,
-                    "source_status_id_str": "1319272016524972033",
-                    "source_user_id": 3311180101,
-                    "source_user_id_str": "3311180101"
+                    }
                 }
             ]
         },
@@ -1377,8 +1366,8 @@ export default [
                     "id": 1319271784386998275,
                     "id_str": "1319271784386998275",
                     "indices": [
-                        26,
-                        49
+                        11,
+                        34
                     ],
                     "media_url": "http://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
                     "media_url_https": "https://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
@@ -1407,18 +1396,14 @@ export default [
                             "h": 680,
                             "resize": "fit"
                         }
-                    },
-                    "source_status_id": 1319272016524972033,
-                    "source_status_id_str": "1319272016524972033",
-                    "source_user_id": 3311180101,
-                    "source_user_id_str": "3311180101"
+                    }
                 },
                 {
                     "id": 1319271855795044353,
                     "id_str": "1319271855795044353",
                     "indices": [
-                        26,
-                        49
+                        11,
+                        34
                     ],
                     "media_url": "http://pbs.twimg.com/media/Ek7-w1bVgAE4SFW.jpg",
                     "media_url_https": "https://pbs.twimg.com/media/Ek7-w1bVgAE4SFW.jpg",
@@ -1447,18 +1432,14 @@ export default [
                             "h": 1623,
                             "resize": "fit"
                         }
-                    },
-                    "source_status_id": 1319272016524972033,
-                    "source_status_id_str": "1319272016524972033",
-                    "source_user_id": 3311180101,
-                    "source_user_id_str": "3311180101"
+                    }
                 },
                 {
                     "id": 1319271930046738434,
                     "id_str": "1319271930046738434",
                     "indices": [
-                        26,
-                        49
+                        11,
+                        34
                     ],
                     "media_url": "http://pbs.twimg.com/media/Ek7-1KCUcAIrk3n.jpg",
                     "media_url_https": "https://pbs.twimg.com/media/Ek7-1KCUcAIrk3n.jpg",
@@ -1487,18 +1468,14 @@ export default [
                             "h": 1623,
                             "resize": "fit"
                         }
-                    },
-                    "source_status_id": 1319272016524972033,
-                    "source_status_id_str": "1319272016524972033",
-                    "source_user_id": 3311180101,
-                    "source_user_id_str": "3311180101"
+                    }
                 },
                 {
                     "id": 1319272011902775299,
                     "id_str": "1319272011902775299",
                     "indices": [
-                        26,
-                        49
+                        11,
+                        34
                     ],
                     "media_url": "http://pbs.twimg.com/media/Ek7-56-UcAMKmLM.jpg",
                     "media_url_https": "https://pbs.twimg.com/media/Ek7-56-UcAMKmLM.jpg",
@@ -1527,11 +1504,7 @@ export default [
                             "h": 680,
                             "resize": "fit"
                         }
-                    },
-                    "source_status_id": 1319272016524972033,
-                    "source_status_id_str": "1319272016524972033",
-                    "source_user_id": 3311180101,
-                    "source_user_id_str": "3311180101"
+                    }
                 }
             ]
         },
@@ -1555,16 +1528,16 @@ export default [
                 }
             },
             "protected": false,
-            "followers_count": 27373,
-            "friends_count": 18,
-            "listed_count": 425,
+            "followers_count": 27457,
+            "friends_count": 19,
+            "listed_count": 427,
             "created_at": "Mon Aug 10 04:53:10 +0000 2015",
-            "favourites_count": 6486,
+            "favourites_count": 6491,
             "utc_offset": null,
             "time_zone": null,
             "geo_enabled": false,
             "verified": false,
-            "statuses_count": 7866,
+            "statuses_count": 7875,
             "lang": null,
             "contributors_enabled": false,
             "is_translator": false,
@@ -1573,9 +1546,9 @@ export default [
             "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
             "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
             "profile_background_tile": false,
-            "profile_image_url": "http://pbs.twimg.com/profile_images/1273990261765521408/GAA3Z0-v_normal.jpg",
-            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1273990261765521408/GAA3Z0-v_normal.jpg",
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/3311180101/1569971966",
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1319885662527500288/ztk0-g8K_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1319885662527500288/ztk0-g8K_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/3311180101/1603543241",
             "profile_link_color": "FF691F",
             "profile_sidebar_border_color": "000000",
             "profile_sidebar_fill_color": "000000",
@@ -1593,273 +1566,9 @@ export default [
         "coordinates": null,
         "place": null,
         "contributors": null,
-        "retweeted_status": {
-            "created_at": "Thu Oct 22 13:38:54 +0000 2020",
-            "id": 1319272016524972033,
-            "id_str": "1319272016524972033",
-            "text": "She is art https://t.co/yoxb88en1V",
-            "truncated": false,
-            "entities": {
-                "hashtags": [],
-                "symbols": [],
-                "user_mentions": [],
-                "urls": [],
-                "media": [
-                    {
-                        "id": 1319271784386998275,
-                        "id_str": "1319271784386998275",
-                        "indices": [
-                            11,
-                            34
-                        ],
-                        "media_url": "http://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
-                        "media_url_https": "https://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
-                        "url": "https://t.co/yoxb88en1V",
-                        "display_url": "pic.twitter.com/yoxb88en1V",
-                        "expanded_url": "https://twitter.com/krys_pics/status/1319272016524972033/photo/1",
-                        "type": "photo",
-                        "sizes": {
-                            "large": {
-                                "w": 1080,
-                                "h": 1623,
-                                "resize": "fit"
-                            },
-                            "thumb": {
-                                "w": 150,
-                                "h": 150,
-                                "resize": "crop"
-                            },
-                            "medium": {
-                                "w": 799,
-                                "h": 1200,
-                                "resize": "fit"
-                            },
-                            "small": {
-                                "w": 452,
-                                "h": 680,
-                                "resize": "fit"
-                            }
-                        }
-                    }
-                ]
-            },
-            "extended_entities": {
-                "media": [
-                    {
-                        "id": 1319271784386998275,
-                        "id_str": "1319271784386998275",
-                        "indices": [
-                            11,
-                            34
-                        ],
-                        "media_url": "http://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
-                        "media_url_https": "https://pbs.twimg.com/media/Ek7-sraVMAMH4oV.jpg",
-                        "url": "https://t.co/yoxb88en1V",
-                        "display_url": "pic.twitter.com/yoxb88en1V",
-                        "expanded_url": "https://twitter.com/krys_pics/status/1319272016524972033/photo/1",
-                        "type": "photo",
-                        "sizes": {
-                            "large": {
-                                "w": 1080,
-                                "h": 1623,
-                                "resize": "fit"
-                            },
-                            "thumb": {
-                                "w": 150,
-                                "h": 150,
-                                "resize": "crop"
-                            },
-                            "medium": {
-                                "w": 799,
-                                "h": 1200,
-                                "resize": "fit"
-                            },
-                            "small": {
-                                "w": 452,
-                                "h": 680,
-                                "resize": "fit"
-                            }
-                        }
-                    },
-                    {
-                        "id": 1319271855795044353,
-                        "id_str": "1319271855795044353",
-                        "indices": [
-                            11,
-                            34
-                        ],
-                        "media_url": "http://pbs.twimg.com/media/Ek7-w1bVgAE4SFW.jpg",
-                        "media_url_https": "https://pbs.twimg.com/media/Ek7-w1bVgAE4SFW.jpg",
-                        "url": "https://t.co/yoxb88en1V",
-                        "display_url": "pic.twitter.com/yoxb88en1V",
-                        "expanded_url": "https://twitter.com/krys_pics/status/1319272016524972033/photo/1",
-                        "type": "photo",
-                        "sizes": {
-                            "small": {
-                                "w": 452,
-                                "h": 680,
-                                "resize": "fit"
-                            },
-                            "thumb": {
-                                "w": 150,
-                                "h": 150,
-                                "resize": "crop"
-                            },
-                            "medium": {
-                                "w": 799,
-                                "h": 1200,
-                                "resize": "fit"
-                            },
-                            "large": {
-                                "w": 1080,
-                                "h": 1623,
-                                "resize": "fit"
-                            }
-                        }
-                    },
-                    {
-                        "id": 1319271930046738434,
-                        "id_str": "1319271930046738434",
-                        "indices": [
-                            11,
-                            34
-                        ],
-                        "media_url": "http://pbs.twimg.com/media/Ek7-1KCUcAIrk3n.jpg",
-                        "media_url_https": "https://pbs.twimg.com/media/Ek7-1KCUcAIrk3n.jpg",
-                        "url": "https://t.co/yoxb88en1V",
-                        "display_url": "pic.twitter.com/yoxb88en1V",
-                        "expanded_url": "https://twitter.com/krys_pics/status/1319272016524972033/photo/1",
-                        "type": "photo",
-                        "sizes": {
-                            "medium": {
-                                "w": 799,
-                                "h": 1200,
-                                "resize": "fit"
-                            },
-                            "thumb": {
-                                "w": 150,
-                                "h": 150,
-                                "resize": "crop"
-                            },
-                            "small": {
-                                "w": 452,
-                                "h": 680,
-                                "resize": "fit"
-                            },
-                            "large": {
-                                "w": 1080,
-                                "h": 1623,
-                                "resize": "fit"
-                            }
-                        }
-                    },
-                    {
-                        "id": 1319272011902775299,
-                        "id_str": "1319272011902775299",
-                        "indices": [
-                            11,
-                            34
-                        ],
-                        "media_url": "http://pbs.twimg.com/media/Ek7-56-UcAMKmLM.jpg",
-                        "media_url_https": "https://pbs.twimg.com/media/Ek7-56-UcAMKmLM.jpg",
-                        "url": "https://t.co/yoxb88en1V",
-                        "display_url": "pic.twitter.com/yoxb88en1V",
-                        "expanded_url": "https://twitter.com/krys_pics/status/1319272016524972033/photo/1",
-                        "type": "photo",
-                        "sizes": {
-                            "large": {
-                                "w": 1080,
-                                "h": 1623,
-                                "resize": "fit"
-                            },
-                            "thumb": {
-                                "w": 150,
-                                "h": 150,
-                                "resize": "crop"
-                            },
-                            "medium": {
-                                "w": 799,
-                                "h": 1200,
-                                "resize": "fit"
-                            },
-                            "small": {
-                                "w": 452,
-                                "h": 680,
-                                "resize": "fit"
-                            }
-                        }
-                    }
-                ]
-            },
-            "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
-            "in_reply_to_status_id": null,
-            "in_reply_to_status_id_str": null,
-            "in_reply_to_user_id": null,
-            "in_reply_to_user_id_str": null,
-            "in_reply_to_screen_name": null,
-            "user": {
-                "id": 3311180101,
-                "id_str": "3311180101",
-                "name": "Krystal pics",
-                "screen_name": "krys_pics",
-                "location": "Credits to owners",
-                "description": "Fanpage for 정수정 🖤",
-                "url": null,
-                "entities": {
-                    "description": {
-                        "urls": []
-                    }
-                },
-                "protected": false,
-                "followers_count": 27373,
-                "friends_count": 18,
-                "listed_count": 425,
-                "created_at": "Mon Aug 10 04:53:10 +0000 2015",
-                "favourites_count": 6486,
-                "utc_offset": null,
-                "time_zone": null,
-                "geo_enabled": false,
-                "verified": false,
-                "statuses_count": 7866,
-                "lang": null,
-                "contributors_enabled": false,
-                "is_translator": false,
-                "is_translation_enabled": false,
-                "profile_background_color": "000000",
-                "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
-                "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
-                "profile_background_tile": false,
-                "profile_image_url": "http://pbs.twimg.com/profile_images/1273990261765521408/GAA3Z0-v_normal.jpg",
-                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1273990261765521408/GAA3Z0-v_normal.jpg",
-                "profile_banner_url": "https://pbs.twimg.com/profile_banners/3311180101/1569971966",
-                "profile_link_color": "FF691F",
-                "profile_sidebar_border_color": "000000",
-                "profile_sidebar_fill_color": "000000",
-                "profile_text_color": "000000",
-                "profile_use_background_image": true,
-                "has_extended_profile": false,
-                "default_profile": false,
-                "default_profile_image": false,
-                "following": false,
-                "follow_request_sent": false,
-                "notifications": false,
-                "translator_type": "none"
-            },
-            "geo": null,
-            "coordinates": null,
-            "place": null,
-            "contributors": null,
-            "is_quote_status": false,
-            "retweet_count": 147,
-            "favorite_count": 172,
-            "favorited": false,
-            "retweeted": false,
-            "possibly_sensitive": false,
-            "lang": "en"
-        },
         "is_quote_status": false,
-        "retweet_count": 147,
-        "favorite_count": 0,
+        "retweet_count": 671,
+        "favorite_count": 1041,
         "favorited": false,
         "retweeted": false,
         "possibly_sensitive": false,

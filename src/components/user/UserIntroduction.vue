@@ -18,7 +18,11 @@
             </div>
         </div>
         <div class="follow-btn-container">
-            <button style="height: 20px; margin-right: 10px">Follow / Unfollow</button>
+            <!--<button style="height: 20px; margin-right: 10px">Follow / Unfollow</button>--> 
+            <FollowButton
+                :usernameContext="userName" 
+                :following="following" 
+            />
         </div>
         <div class="profile-details-container">
             <div class="user-full-name-container">
@@ -54,10 +58,12 @@
 
 <script>
 import ExpandableImg from "../ExpandableImg.vue";
+import FollowButton from "../buttons/FollowButton.vue";
 
 export default {
     components:{
         ExpandableImg,
+        FollowButton
     },
     props:{
         userPageJson:{
@@ -78,7 +84,8 @@ export default {
                 displayUrl: null,
                 expandedUrl: null
             },
-            joinedDate: null
+            joinedDate: null,
+            following: false,
         }
     },
     created(){
@@ -97,7 +104,9 @@ export default {
             this.link.expandedUrl = url.expanded_url;
         }
         this.joinedDate = userJson.created_at;
-    }, 
+        this.following = userJson.following;
+    },
+    
 }
 </script>
 
@@ -131,6 +140,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-right: 5vw;
 }
 .profile-details-container{
     margin-left: 15px;

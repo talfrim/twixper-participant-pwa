@@ -1,5 +1,6 @@
 <template>
     <div>
+        <WriteNewTweet />
         <UserIntroduction :userPageJson="userPageJson"/>
         {{userName}}
     </div>
@@ -9,10 +10,12 @@
 //Temporarly instead of server request
 import UserPageJSON from "../../communicators/UserPageJSON.js"
 import UserIntroduction from "../../components/user/UserIntroduction.vue"
+import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
 
 export default {
     components:{
         UserIntroduction,
+        WriteNewTweet
     },
     data(){
         return{

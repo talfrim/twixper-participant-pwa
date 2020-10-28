@@ -51,6 +51,25 @@
                     <span>Joined {{joinedDate}}</span>
                 </div>
             </div>
+            <div class="follow-numbers-container">
+                <div>
+                    <span class="numbers-span">
+                        {{friendsNumStr}}
+                    </span>
+                    <span class="title-span">
+                        Following
+                    </span>
+                </div>
+                <div>
+                    <span class="numbers-span">
+                        {{folowersNumStr}}
+                    </span>
+                    <span class="title-span">
+                        Followers
+                    </span>
+                </div>
+            </div>
+
         </div>
             
     </div>
@@ -59,6 +78,7 @@
 <script>
 import ExpandableImg from "../ExpandableImg.vue";
 import FollowButton from "../buttons/FollowButton.vue";
+import {parseTwitterNumbersToStringFunc} from "../../assets/globalFunctions";
 
 export default {
     components:{
@@ -86,6 +106,8 @@ export default {
             },
             joinedDate: null,
             following: false,
+            folowersNumStr: -1,
+            friendsNumStr: -1
         }
     },
     created(){
@@ -105,6 +127,9 @@ export default {
         }
         this.joinedDate = userJson.created_at;
         this.following = userJson.following;
+        this.folowersNumStr = parseTwitterNumbersToStringFunc(userJson.followers_count);
+        this.friendsNumStr = parseTwitterNumbersToStringFunc(userJson.friends_count);
+        
     },
     
 }
@@ -143,28 +168,29 @@ export default {
     margin-right: 5vw;
 }
 .profile-details-container{
-    margin-left: 15px;
+    padding: 0 15px;
     line-height: 18px;
 }
 .user-full-name-container span{
     color: rgb(20, 23, 26);
     font-weight: 900;
-    font-size: 19px;
+    font-size: 20px;
 }
 .user-full-name-container i{
 	font-size: 1.6rem;
 	color: #1aa1f5;
 	margin-left: 0.5rem;
 }
-.user-username-container span{
+.user-username-container span,
+.follow-numbers-container .title-span{
     color: rgb(101, 119, 134);
     font-weight: 400;
-    font-size: 15px;    
+    font-size: 16px;    
 }
 .description-container{
     padding: 12px 0;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 16px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     line-height: 19px;
 }
@@ -175,7 +201,7 @@ export default {
     display: inline-block;
     padding-right: 10px;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 16px;
 }
 .fourth-segment div span{
     color: rgb(101, 119, 134);
@@ -189,4 +215,18 @@ export default {
     margin-right: 0.5rem;
     font-size: 1.4rem;
 }
+
+.follow-numbers-container{
+    line-height: 40px;
+}
+.follow-numbers-container div{
+    display: inline-block;
+    padding-right: 20px;
+}
+.follow-numbers-container .numbers-span{
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(20, 23, 26);
+}
+
 </style>

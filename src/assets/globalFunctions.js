@@ -28,6 +28,31 @@ var K = function () {
     }
 }();
 
+function parseNumbersToString (number, decimalPlaces = 1) {
+    let letter = "";
+    decimalPlaces = Math.pow(10, decimalPlaces);
+    const abbrev = ["K", "M", "B", "T"];
+
+    for (let i = abbrev.length - 1; i >= 0; i--) {
+        const size = Math.pow(10, (i + 1) * 3);
+
+    if (size <= number) {
+      number = Math.floor((number * decimalPlaces) / size) / decimalPlaces;
+
+      if (number === 1000 && i < abbrev.length - 1) {
+        number = 1;
+        i++;
+      }
+
+      letter = abbrev[i];
+      break;
+    }
+  }
+
+  return number.toString() + letter;
+}
+
 module.exports = {
     parseTwitterDateFunc: parseTwitterDate,
+    parseTwitterNumbersToStringFunc: parseNumbersToString
 };

@@ -13,9 +13,7 @@
         handler: 'closeModal'
       }"
   -->
-  <div class="modal-wrapper" ref="modalWrapper"
-      
-    >
+  <div class="modal-wrapper" ref="modalWrapper">
     <div class="modal dark-mode-1" ref="modal" > <!-- -->
       <div class="modal-header border">
         <i class="fas fa-times" @click="closeModal()"></i>

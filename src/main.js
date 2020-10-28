@@ -16,7 +16,7 @@ Vue.use(Toasted,
   {
     position: "bottom-center",
     duration: 1200,
-    singleton: true // only 1 toast at a time (not works perfectly)
+    singleton: true // only 1 toast at a time (not working- showing 3 somehow)
   })
 
 import './registerServiceWorker'

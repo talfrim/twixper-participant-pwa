@@ -24,7 +24,7 @@ const routes = [
     {
       path: "/search",
       name: "search",
-      component: () => import("./pages/search/SearchPage"), //TODO change back to feed
+      component: () => import("./pages/search/SearchPage"), 
     },
     {
       path: "/userPagePublic/:userName",

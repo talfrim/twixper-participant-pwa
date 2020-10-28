@@ -12,16 +12,13 @@
         <div>
             <b-tabs class="tabs" content-class="mt-3" justified>
                 <b-tab v-if="hasTweets" title="TWEETS" active>
-                    <Loader v-if="this.loadingTweets"/>
                     <TweetPreviewList :feedTweetsArr="this.tweetResults"></TweetPreviewList>
                 </b-tab>
-                <b-tab v-else title="TWEETS" disabled> </b-tab> <!-- disabled tweets tab-->
+                <b-tab v-else title="TWEETS" disabled></b-tab> <!-- disabled tweets tab-->
                 <b-tab v-if="hasUsers" title="USERS" >
-                    <p>users tab</p>
-                    <Loader v-if="this.loadingUsers"/>
-
-                  </b-tab>    
-                <b-tab v-else title="USERS" disabled> </b-tab>  <!-- disabled users tab-->
+                    <UserPreviewListSearchResults :userPreviews="this.usersResults"></UserPreviewListSearchResults>
+                </b-tab>    
+                <b-tab v-else title="USERS" disabled></b-tab>  <!-- disabled users tab-->
             </b-tabs>
         </div>
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
@@ -32,7 +29,9 @@
 <script>
 import MenuHeader from "../../components/MenuHeader.vue"
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
+import UserPreviewListSearchResults from "../../components/user/UserPreviewListSearchResults.vue"
 import feedJSON from "../../communicators/FeedJSON.js"
+import peopleJSON from "../../communicators/SearchPeopleJSON.js"
 import Loader from "../../components/Loader.vue";
 
 
@@ -40,7 +39,8 @@ export default {
     components: {
         MenuHeader,
         TweetPreviewList,
-        Loader,
+        UserPreviewListSearchResults,
+        //Loader,
     },
     data(){
         return{
@@ -66,6 +66,7 @@ export default {
             this.loadingTweets=true
             this.loadingUsers=true
             this.tweetResults.push(...feedJSON) //should be done with await communicator.search(query)...
+            this.usersResults.push(...peopleJSON)
             this.loadingTweets=false
             this.loadingUsers=false
 

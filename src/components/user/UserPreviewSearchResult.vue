@@ -1,4 +1,4 @@
-<template>
+<template> <!--Add Button-->
     <div class="post border">
         <div class="user-avatar" v-lazyload>
           <!--<img :data-url="author.profileImgUrl">-->
@@ -11,7 +11,7 @@
 				<h4>
 					{{name}} 
 					<i v-if="verified" class="fas fa-check-circle"></i> 
-					<span class="usernameSpan">@{{username}}</span>
+					<div class="username">@{{username}}</div>
 				</h4>
 			</div>
 			<div class="user-content" >
@@ -55,8 +55,8 @@
     }
 </script>
 
-<style scoped src="../../assets/css/TweetPreviewCSS.css">
+<style scoped src="../../assets/css/UserPreviewCSS.css">
 
-    
+
 
 </style>

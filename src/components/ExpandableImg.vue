@@ -169,7 +169,7 @@ export default {
 
 .photos{
     object-fit: cover;
-    object-position: 0 22%;
+    object-position: 22% 22%;
 
     /* Takes the width and the height of the parent */
     width: 100%;

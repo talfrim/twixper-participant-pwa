@@ -75,6 +75,14 @@ h4 .usernameSpan{
 	border-radius: 1rem;
 }
 
+.post-content{
+	width: 100%;
+}
+
+.post-content-media{
+	width: 73vmin;
+}
+
 /* Loader spinner container */
 .post-content-loadSpinner{
 	position: relative;
@@ -211,6 +219,15 @@ h4 .usernameSpan{
 
 	.post-btn {
 		left: 80%;
+	}
+
+	.post-text {
+		width: 95%;
+	}
+
+	.post-img {
+		width: 90%;
+		height: 25rem;
 	}
 }
 

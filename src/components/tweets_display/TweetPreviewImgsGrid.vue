@@ -73,13 +73,13 @@ export default {
     mounted(){
         if(this.photosObjects.length ==  1){ //Only one photo
             //Expand it to full grid size 
-            this.$refs.photoContainer0[0].style.width = "72vmin";
-            this.$refs.photoContainer0[0].style.height = "50vmin";
+            this.$refs.photoContainer0[0].style.width = "73vmin";
+            this.$refs.photoContainer0[0].style.height = "48vmin";
         }
         else if (this.photosObjects.length ==  2){ // Two photos
             // Expand the images height
-            this.$refs.photoContainer0[0].style.height = "50vmin";
-            this.$refs.photoContainer1[0].style.height = "50vmin";
+            this.$refs.photoContainer0[0].style.height = "48vmin";
+            this.$refs.photoContainer1[0].style.height = "48vmin";
             // Set border radius
             this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 15%"
             this.$refs.photoContainer1[0].style.borderRadius = "0 15% 15% 0"
@@ -92,8 +92,8 @@ export default {
             this.$refs.imgsWrapper.style.gridTemplateRows = "1fr 1fr";
             this.$refs.imgsWrapper.style.gridTemplateAreas = 
                                             "\"img1 img2\" \"img1 img3\"";
-            this.$refs.photoContainer0[0].style.height = "68vmin";
-            this.$refs.photoContainer0[0].style.width = "38vmin";
+            this.$refs.photoContainer0[0].style.height = "48vmin";
+            //this.$refs.photoContainer0[0].style.width = "34vmin";
             // Set border radius
             this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 15%"
             this.$refs.photoContainer1[0].style.borderRadius = "0 15% 0 0"
@@ -150,8 +150,8 @@ export default {
     grid-template-columns: 1fr 1fr;
     /*grid-template-rows: 1fr 1fr;*/
     /*grid-template-columns: repeat(auto-fit, minmax(7rem, 18rem));*/
-    row-gap: 0.5rem;
-    column-gap: 0.5rem;
+    row-gap: 0.1rem;
+    column-gap: 0.3rem;
 }
 
 .photo-container{
@@ -159,8 +159,8 @@ export default {
     /*width: 22rem; 
     height: 22rem;*/
 
-    width: 36vmin; 
-    height: 33vmin;
+    width: 36.2vmin; 
+    height: 23vmin;
     border: 1px solid silver;
     border-radius: 15%;
 }

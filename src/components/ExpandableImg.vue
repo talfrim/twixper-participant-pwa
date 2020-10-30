@@ -205,6 +205,7 @@ body > .expandable-image.expanded > img {
   /*max-width: 1200px;*/
   max-height: 81vh;
   object-fit: contain;
+  object-position: unset;
   margin: 0 auto;
   /*background: rgb(255,255,255,0.8);*/
   border: none !important; 

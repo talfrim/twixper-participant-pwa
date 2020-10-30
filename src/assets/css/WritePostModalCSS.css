@@ -21,7 +21,7 @@
 /* post modal */
 .modal-wrapper {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(178, 178, 178, 0.9);
     top: 0;
     left: 0;
     right: 0;
@@ -41,7 +41,7 @@
     width: 92%;
     background-color: #fff;
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 1.5rem;

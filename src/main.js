@@ -43,7 +43,7 @@ Vue.use(ImagePlugin)
 
 Vue.config.productionTip = false
 
-// v-closable
+// v-closable. WE DONT USE THIS ANYMORE
 let handleOutsideClick
 let areaInFocus // The area that is in focused
 let areaParentEl// the wrapper that surrounds the area, a listener will be attcached to him
@@ -54,6 +54,7 @@ Vue.directive('closable', {
     const { areaToFocus } = binding.value
     areaInFocus = vnode.context.$refs[areaToFocus];
     areaParentEl = el;
+
     handleOutsideClick = (e) => {
       e.stopPropagation()
       // Get the handler method name and the exclude array

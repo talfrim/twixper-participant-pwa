@@ -5,13 +5,15 @@
  -->
 
 <template>
-  <!-- v-closable: close the modal when he is out of focus -->
-  <div class="modal-wrapper" ref="modalWrapper"
+  <!-- v-closable: close the modal when he is out of focus. 
+      Update: WE DONT USE THIS ANYMORE 
       v-closable="{
         exclude: [],
         areaToFocus: 'modal',
         handler: 'closeModal'
-      }">
+      }"
+  -->
+  <div class="modal-wrapper" ref="modalWrapper">
     <div class="modal dark-mode-1" ref="modal" > <!-- -->
       <div class="modal-header border">
         <i class="fas fa-times" @click="closeModal()"></i>
@@ -56,7 +58,17 @@
           required: false
         },
       },
+      mounted(){
+        this.$refs.modalWrapper.addEventListener('touchstart', this.handleOutsideClick);
+      },
       methods:{
+        handleOutsideClick(e){
+          // Close the modal if we clicked on outside element
+          e.stopPropagation();
+          if (!this.$refs.modal.contains(e.target)){
+            this.closeModal();
+          }
+        },
         displayModal(){
           console.log("display called");
           this.$refs.modal.style.display = 'block';

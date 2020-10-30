@@ -27,7 +27,7 @@ export default
             }
         },
         "protected": false,
-        "followers_count": 8597924,
+        "followers_count": 8603940,
         "friends_count": 51883,
         "listed_count": 14597,
         "created_at": "Mon Apr 28 19:28:08 +0000 2008",

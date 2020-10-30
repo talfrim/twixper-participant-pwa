@@ -73,10 +73,18 @@ export default {
     mounted(){
         if(this.photosObjects.length ==  1){ //Only one photo
             //Expand it to full grid size 
-            this.$refs.photoContainer0[0].style.width = "65vmin";
-            this.$refs.photoContainer0[0].style.height = "40vmin";
+            this.$refs.photoContainer0[0].style.width = "72vmin";
+            this.$refs.photoContainer0[0].style.height = "50vmin";
         }
-        if(this.photosObjects.length ==  3){ //Three photos
+        else if (this.photosObjects.length ==  2){ // Two photos
+            // Expand the images height
+            this.$refs.photoContainer0[0].style.height = "50vmin";
+            this.$refs.photoContainer1[0].style.height = "50vmin";
+            // Set border radius
+            this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 15%"
+            this.$refs.photoContainer1[0].style.borderRadius = "0 15% 15% 0"
+        }
+        else if(this.photosObjects.length ==  3){ //Three photos
             //Position them nicely 
             this.$refs.photoContainer0[0].style.gridArea = "img1";
             this.$refs.photoContainer1[0].style.gridArea = "img2";
@@ -86,7 +94,17 @@ export default {
                                             "\"img1 img2\" \"img1 img3\"";
             this.$refs.photoContainer0[0].style.height = "68vmin";
             this.$refs.photoContainer0[0].style.width = "38vmin";
-
+            // Set border radius
+            this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 15%"
+            this.$refs.photoContainer1[0].style.borderRadius = "0 15% 0 0"
+            this.$refs.photoContainer2[0].style.borderRadius = "0 0 15% 0"
+        }
+        else if (this.photosObjects.length ==  4){ // Four photos
+            // Set border radius
+            this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 0"
+            this.$refs.photoContainer1[0].style.borderRadius = "0 15% 0 0"
+            this.$refs.photoContainer2[0].style.borderRadius = "0 0 0 15%"
+            this.$refs.photoContainer3[0].style.borderRadius = "0 0 15% 0"
         }
     },
     methods:{

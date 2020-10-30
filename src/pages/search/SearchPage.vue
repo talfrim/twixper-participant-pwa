@@ -10,6 +10,7 @@
             </div>
         </div>
         <div>
+            <Loader v-if="loadingTweets"/>
             <b-tabs class="tabs" content-class="mt-3" justified>
                 <b-tab v-if="hasTweets" title="TWEETS" active>
                     <TweetPreviewList :feedTweetsArr="this.tweetResults"></TweetPreviewList>
@@ -40,7 +41,7 @@ export default {
         MenuHeader,
         TweetPreviewList,
         UserPreviewListSearchResults,
-        //Loader,
+        Loader,
     },
     data(){
         return{
@@ -65,14 +66,10 @@ export default {
             this.clearResults() 
             this.loadingTweets=true
             this.loadingUsers=true
-            this.tweetResults.push(...feedJSON) //should be done with await communicator.search(query)...
+            this.tweetResults.push(...feedJSON) //should be done with await communicator.search(query).
             this.usersResults.push(...peopleJSON)
             this.loadingTweets=false
             this.loadingUsers=false
-
-        },
-        sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
         },
         clearResults() {
             this.tweetResults = []

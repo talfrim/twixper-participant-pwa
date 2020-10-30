@@ -18,8 +18,7 @@
             </div>
         </div>
         <div class="follow-btn-container">
-            <!--<button style="height: 20px; margin-right: 10px">Follow / Unfollow</button>--> 
-            <FollowButton
+            <FollowButton 
                 :usernameContext="userName" 
                 :following="following" 
             />

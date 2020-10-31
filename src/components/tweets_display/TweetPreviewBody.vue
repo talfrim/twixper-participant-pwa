@@ -1,8 +1,10 @@
 <template>
     <div class="post-content" >
-        <p class="post-text light-text" ref="textParagraph">
-            
-        </p>
+		<router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }" class="router-link"> 	
+			<p class="post-text light-text" ref="textParagraph">
+				
+			</p>
+		</router-link>	
         <div class="post-content-media" v-if="hasMedia">
             <TweetPreviewImgsGrid
                 v-if="photosJson" 
@@ -28,14 +30,16 @@ export default {
     data(){
         return{
             //contentsToLoad: 0, //How many contents (including media) of the tweet are left to load
-            textHtml: "",
+			tweetId: "",
+			textHtml: "",
 			lang: "",
             hasMedia: false,
 			photosJson: [],
         }
     },
     created(){
-        const tweetPrev = this.tweetPreview;
+		const tweetPrev = this.tweetPreview;
+		this.tweetId = tweetPrev.id
         let tweetText = tweetPrev.full_text || tweetPrev.text;
 		this.textHtml = tweetText.replace(/(?:\r\n|\r|\n)/g, '<br>');//Convert string to html
         this.lang = tweetPrev.lang;
@@ -75,4 +79,11 @@ export default {
 
 <style scoped src="../../assets/css/TweetPreviewCSS.css">
 
+</style>
+<style scoped>
+.router-link{
+	text-decoration: none; 
+	color: inherit; 
+	cursor:default
+}
 </style>

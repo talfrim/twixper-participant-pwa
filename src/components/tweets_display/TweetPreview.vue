@@ -1,20 +1,25 @@
 <template>
 	<div class="post border">
-        <div class="user-avatar" v-lazyload>
-          <!--<img :data-url="author.profileImgUrl">-->
-		  <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
-		  	 tag="img" :data-url="author.profileImgUrl"> 
-		  </router-link>
-        </div>
-        <div class="post-content">
-			<div class="post-user-info">
+		<router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }"
+		  	 tag="div" class="user-avatar-container"> 
+			<div class="user-avatar" v-lazyload>
+			<!--<img :data-url="author.profileImgUrl">-->
+			<router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+				tag="img" :data-url="author.profileImgUrl"> 
+			</router-link>
+			</div>
+		</router-link>
+        <div class="post-content"> 	
+			<!--<div class="post-user-info">-->
+			<router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }"
+		  	 tag="div" class="post-user-info"> 		
 				<h4>
 					{{author.userFullName}} 
 					<i v-if="author.isVerified" class="fas fa-check-circle"></i> 
 					<span class="usernameSpan">@{{author.userName}}</span>
 				</h4>
 				<span style="margin-left: 1vw">{{time}}</span>
-			</div>
+			</router-link>
 			<TweetPreviewBody :tweetPreview="tweetPreview" />
 			<TweetPreviewActions :tweetPreview="tweetPreview" />
         </div>
@@ -39,6 +44,7 @@ export default {
 	}, 
 	data() {
 		return {
+			tweetId: "",
 			time: "",
 			author:{
 				userFullName: "",
@@ -51,6 +57,7 @@ export default {
 	},
 	created(){
 		const tweetPrev = this.tweetPreview;
+		this.tweetId = tweetPrev.id;
 		this.time = parseTwitterDateFunc(tweetPrev.created_at);
 
 		const userJson = tweetPrev.user;

@@ -21,11 +21,11 @@ Vue.use(Toasted,
 
 import './registerServiceWorker'
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+// Vue.use(BootstrapVue)
+// Vue.use(IconsPlugin)
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
 
@@ -37,8 +37,9 @@ const router = new VueRouter({
   routes,
 });
 
-import { ImagePlugin } from 'bootstrap-vue'
-Vue.use(ImagePlugin)
+// import { ImagePlugin } from 'bootstrap-vue'
+import './quasar'
+//Vue.use(ImagePlugin)
 
 
 Vue.config.productionTip = false

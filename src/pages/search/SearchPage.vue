@@ -15,7 +15,9 @@
                     </template>
                 </Tabs>
             </div>    
-            <div>{{ `current tab: ${tabs[cur].name}` }}</div>
+            <div class="tab-content-container">
+                {{ `current tab: ${tabs[cur].name}` }}
+            </div>
         </div>
     </div>
 
@@ -79,6 +81,9 @@
 }
 .tab-name-span{
     font-family: "Segoe UI";
+}
+.tab-content-container{
+    font-size: large;
 }
 </style>
     

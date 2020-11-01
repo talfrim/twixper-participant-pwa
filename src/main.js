@@ -38,7 +38,7 @@ const router = new VueRouter({
 });
 
 // import { ImagePlugin } from 'bootstrap-vue'
-import './quasar'
+//import './quasar'
 //Vue.use(ImagePlugin)
 
 

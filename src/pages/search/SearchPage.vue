@@ -3,7 +3,7 @@
 
         <div class="col-md-6">
             <div class="page-top">
-                <b-form-input v-model="query" size="lg" id="searchInput" autocomplete="off" v-on:keyup.enter="searchClicked" placeholder="Search tweets or users" list="last-search"></b-form-input>
+                <b-form-input v-model="query" id="searchInput" autocomplete="off" v-on:keyup.enter="searchClicked" placeholder="Search tweets or users" list="last-search"></b-form-input>
                 <datalist id="last-search">
                 <option> Last Search From Store </option>
                 </datalist>
@@ -88,5 +88,9 @@ export default {
 
     .tabs {
         padding-top: 8%;
+    }
+
+    .search-box {
+        height: 1000%;
     }
 </style>

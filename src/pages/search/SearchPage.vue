@@ -1,6 +1,9 @@
 <template>
     <div class="page-wrapper">
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
+        <div class="search-box-container">
+            <input class="search-box" v-model="query" placeholder="Search tweets or users">
+        </div>
         <div>
             <div class="tabs-container">
                 <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
@@ -38,7 +41,13 @@
                 myEl: null,
                 cur: 0,
                 tabs: [{ name: "Tweets" }, { name: "Users" }, { name: "Media" }],
-                listTabStyle:{}
+                listTabStyle:{},
+                //search stuf
+                query:"",
+                tweetResults:[],
+                usersResults:[],
+                loadingTweets: false,
+                loadingUsers: false,
             }
         },
         created(){
@@ -63,9 +72,7 @@
     height: 100vh;
     width: 100vw;
 }
-.tabs-container{
 
-}
 .list-tab {
   box-sizing: border-box;
   font-size: 4.5vmin;
@@ -84,6 +91,17 @@
 }
 .tab-content-container{
     font-size: large;
+}
+
+.search-box {
+  width: 99%;
+  padding: 4%;
+  margin: 2% 0; 
+  display: inline-block;
+  border: 1px solid aqua;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 2.5vh;
 }
 </style>
     

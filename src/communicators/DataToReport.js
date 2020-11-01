@@ -36,6 +36,7 @@ export default{
             "action_date": "",
             "participant_twiitter_username" : "",
             "participant_group_id": "",
+            "participant_group_name": "",
             "action_type" : ""
         },
         // The other fields varies for each action type.
@@ -53,7 +54,7 @@ export default{
             "saw user profile", // Went to a public user profile page
             "follow",
             "unfollow",
-            "followed by", // Followed by other user
+            //"followed by", // Followed by other user
             "saw tweet media", // Clicked on a media that was attached to a tweet. For example - image, video, link
             "search"
             // Question, can we represent a tweet by Id, or do we have to include the full Json of the tweet (which is HUGE)?  

@@ -42,7 +42,11 @@ export default {
             expanded: false,
             closeButtonRef: null,
             backgroundColor: "rgba(171, 166, 166, 0.95)", //defauld background
+            isDestroyed: false // Is the component destroyed
         }
+    },
+    beforeDestroy(){
+      this.isDestroyed = true;
     },
     methods: {
         clickedImgDiv(){
@@ -89,16 +93,22 @@ export default {
             }
         },
         imageLoaded(){
-            /*Get the img main color and make the image visible */
-            this.$refs.image.classList.add("photo-display");
-            this.$emit('image-loaded');
-            this.isImageLoaded = true;
-            const dominentColor = colorThief.getColor(this.$refs.image);
-            this.backgroundColor = "rgba("+dominentColor[0]+","+dominentColor[1]+","+dominentColor[2]+",0.95)";
+          if(this.isDestroyed){
+            return;
+          }
+          /*Get the img main color and make the image visible */
+          this.$refs.image.classList.add("photo-display");
+          this.$emit('image-loaded');
+          this.isImageLoaded = true;
+          const dominentColor = colorThief.getColor(this.$refs.image);
+          this.backgroundColor = "rgba("+dominentColor[0]+","+dominentColor[1]+","+dominentColor[2]+",0.95)";
         },
         imageLoadError(){
-           this.$refs.image.classList.add("photo-display");
-           this.$emit('image-load-error');
+          if(this.isDestroyed){
+            return;
+          }
+          this.$refs.image.classList.add("photo-display");
+          this.$emit('image-load-error');
         }
     },
     watch: {
@@ -159,7 +169,7 @@ export default {
 
 .photos{
     object-fit: cover;
-    /*object-position: 0, 100%;*/
+    object-position: 22% 22%;
 
     /* Takes the width and the height of the parent */
     width: 100%;
@@ -195,6 +205,7 @@ body > .expandable-image.expanded > img {
   /*max-width: 1200px;*/
   max-height: 81vh;
   object-fit: contain;
+  object-position: unset;
   margin: 0 auto;
   /*background: rgb(255,255,255,0.8);*/
   border: none !important; 

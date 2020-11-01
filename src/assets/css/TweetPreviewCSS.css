@@ -8,12 +8,12 @@ h4{
 h4 .usernameSpan{
 	font-weight: 400;
 }
-.posts {
+/*.posts {
 	grid-column: 2 / 3;
 	grid-row: 2 / -1;
 	background-color: #fff;
 }
-
+*/
 .post {
 	display: flex;
 	padding: 1.5rem;
@@ -75,74 +75,20 @@ h4 .usernameSpan{
 	border-radius: 1rem;
 }
 
+.post-content{
+	width: 100%;
+}
+
+.post-content-media{
+	width: 73vmin;
+}
+
 /* Loader spinner container */
 .post-content-loadSpinner{
 	position: relative;
 }
 /* End of loader spinner container */
-
-.post-icons {
-	margin-top: 1.2rem;
-}
-
-.post-icons i {
-	font-size: 1.6rem;
-	color: #868383; /* lime on retweet */
-	margin-right: 1.5rem;
-	transition: color 400ms ease-in;
-}
-
-.post-icons-spans {
-	display: inline-block;
-	min-width: 6.6rem;
-	max-width: 6.6rem;
-	font-size: 1.4rem;
-	color: rgb(101, 119, 134);
-}
-.post-icons-spans-comment{
-	display: inline-block;
-	min-width: 4rem;
-	max-width: 4rem;
-	font-size: 1.4rem;
-	color: rgb(101, 119, 134);
-}
-.post-icons-heart-container{
-	font-size: 1.4rem;
-	color: rgb(101, 119, 134);
-}
-.post-icons-share-container{
-	display: inline-block;
-	margin-left: 2rem;
-}
-
-/* Like button */
-.heart {
-	display: inline-block;
-	
-	/*Move it slightly down */
-	position: relative;
-	left: 0;
-	top: 0.4rem;
-
-	height: 1.7rem;
-	width: 5.5rem;
-	background-image:url('../../assets/images/heartAnimation.png');
-	background-position: left;
-	background-repeat:no-repeat;
-	background-size:2900%;
-}
-
-.is_animating {
-  animation: heart-burst .8s steps(28) 1;
-  background-position: right;
-}
-
-@keyframes heart-burst {
- from {background-position:left;}
- to { background-position:right;}
-}
-/* End of like button */
-
+/*
 .follow {
 	position: fixed;
 	top: 8rem;
@@ -220,9 +166,9 @@ h4 .usernameSpan{
 	font-size: 1.5rem;
 	color: #868383;
 	margin: 0 0.7rem;
-}
+}*/
 /* end of feeds content */
-
+/*
 .post-btn {
 	position: fixed;
 	bottom: 2rem;
@@ -242,7 +188,7 @@ h4 .usernameSpan{
 .post-btn:hover {
 	background-color: #117abb;
 }
-
+*/
 @media (max-width: 1600px) {
 	/* news feed page */
 	.follow {
@@ -273,6 +219,15 @@ h4 .usernameSpan{
 
 	.post-btn {
 		left: 80%;
+	}
+
+	.post-text {
+		width: 95%;
+	}
+
+	.post-img {
+		width: 90%;
+		height: 25rem;
 	}
 }
 

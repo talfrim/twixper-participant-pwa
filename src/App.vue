@@ -73,9 +73,9 @@ export default {
 		font-size: 62.5%;
 	}
 
-	body {
+	/*body {
 		background-color: #f0f8fd;
-  }
+  }*/
   
 @media (max-width: 600px){
   /* Overriding toast notifications external css */

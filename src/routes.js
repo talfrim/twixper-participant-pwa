@@ -31,6 +31,11 @@ const routes = [
       name: "userPage",
       component: () => import("./pages/user/UserPagePublic"), 
     },
+    {
+      path: "/tweetPage/:tweetId",
+      name: "tweetPage",
+      component: () => import("./pages/tweets_display/TweetPage"), 
+    },
 ]
 
 export default routes

@@ -37,6 +37,7 @@ img{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr min-content;
+        background-color: #f0f8fd;
     }
     
       .right {

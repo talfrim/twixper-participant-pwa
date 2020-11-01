@@ -1,30 +1,37 @@
 <template>
     <div>
-
-        <div class="col-md-6">
-            <div class="page-top">
-                <b-form-input v-model="query" id="searchInput" autocomplete="off" v-on:keyup.enter="searchClicked" placeholder="Search tweets or users" list="last-search"></b-form-input>
-                <datalist id="last-search">
-                <option> Last Search From Store </option>
-                </datalist>
-            </div>
+        <div class="search-box-container">
+            <q-input outlined v-model="query" :dense=false id="searchFormInput" v-on:keyup.enter="searchClicked" placeholder="Search tweets or users"></q-input>
         </div>
-        <div>
-            <Loader v-if="loadingTweets"/>
-            <b-tabs class="tabs" content-class="mt-3" justified>
-                <b-tab v-if="hasTweets" title="TWEETS" active>
+        <Loader v-if="loadingTweets"/>
+        <div class="tabs">
+            <q-card>
+              <q-tabs
+                v-model="tab"
+                dense
+                active-color="primary"
+                indicator-color="primary"
+                align="justify"
+                narrow-indicator
+              >
+                <q-tab v-if="hasTweets" name="tweets" label="TWEETS" />
+                <q-tab  v-if="hasUsers" name="users" label="USERS" />
+              </q-tabs>
+              <q-separator />
+              <q-tab-panels v-model="tab" animated>
+                <q-tab-panel name="tweets">
                     <TweetPreviewList :feedTweetsArr="this.tweetResults"></TweetPreviewList>
-                </b-tab>
-                <b-tab v-else title="TWEETS" disabled></b-tab> <!-- disabled tweets tab-->
-                <b-tab v-if="hasUsers" title="USERS" >
+                </q-tab-panel>
+                <q-tab-panel name="users">
                     <UserPreviewListSearchResults :userPreviews="this.usersResults"></UserPreviewListSearchResults>
-                </b-tab>    
-                <b-tab v-else title="USERS" disabled></b-tab>  <!-- disabled users tab-->
-            </b-tabs>
-        </div>
+                </q-tab-panel>
+              </q-tab-panels>
+            </q-card>
+              <q-separator />
+          </div>
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
-
     </div>
+
 </template>
 
 <script>
@@ -51,6 +58,7 @@ export default {
             usersResults:[],
             loadingTweets: false,
             loadingUsers: false,
+            tab: 'tweets' //for the tabs
         }
     },
     computed: {
@@ -80,17 +88,21 @@ export default {
 </script>
 
 <style>
-    .page-top {
+    .search-box-container {
         position:fixed;
         z-index: 1;
-        width: 92%;
+        background-color: white;
+        width: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top:2%;
+        
+        
     }
 
     .tabs {
-        padding-top: 8%;
+        padding-top: 18%;
     }
 
-    .search-box {
-        height: 1000%;
-    }
+   
 </style>

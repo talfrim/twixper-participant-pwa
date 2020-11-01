@@ -27,6 +27,16 @@ const routes = [
       component: () => import("./pages/search/SearchPage"), 
     },
     {
+      path: "/notifications",
+      name: "notifications",
+      component: () => import("./pages/notifications tab/NotificationsPage"), 
+    },
+    {
+      path: "/messaging",
+      name: "messaging",
+      component: () => import("./pages/messaging/MessagingPage"), 
+    },
+    {
       path: "/userPagePublic/:userName",
       name: "userPage",
       component: () => import("./pages/user/UserPagePublic"), 

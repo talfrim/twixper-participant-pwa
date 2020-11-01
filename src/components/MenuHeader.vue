@@ -9,10 +9,22 @@
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="icons">
-          <a href="#" class="active" @click="homeTabClicked" ><i class="fas fa-home"></i></a>
+          <!--<a href="#" class="active" @click="homeTabClicked" ><i class="fas fa-home"></i></a>
           <a href="#" @click="searchTabClicked"><i class="fas fa-search fa-sm"></i></a>
           <a href="#"><i class="far fa-bell"></i></a>
-          <a href="#"><i class="far fa-envelope"></i></a>
+          <a href="#"><i class="far fa-envelope"></i></a>-->
+          <router-link :to="{ name: 'feed'}">
+            <i class="fas fa-home"></i>
+          </router-link>
+          <router-link :to="{ name: 'search'}">
+            <i class="fas fa-search fa-sm"></i>
+          </router-link>
+           <router-link :to="{ name: 'notifications'}">
+            <i class="far fa-bell"></i>
+          </router-link>
+           <router-link :to="{ name: 'messaging'}">
+            <i class="far fa-envelope"></i>
+          </router-link>
         </div>
       </nav>
        <!-- sidebar -->
@@ -76,8 +88,8 @@
 export default {
     props:{
         parentsEl:{
-            required: true
-        }
+          required: true
+        },
     },
     data(){
         return{
@@ -157,12 +169,12 @@ export default {
                 this.isSidebarOpen = false;
             } 
         },
-        searchTabClicked(){
+        /*searchTabClicked(){
           this.$router.push("/search")
         },
         homeTabClicked(){
           this.$router.push("/feed")
-        }
+        }*/
 
     }    
 }

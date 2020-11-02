@@ -23,7 +23,7 @@
     color: #9e9a9a;
 }
 
-.icons .active {
+.icons .active, .icons .router-link-exact-active {
     color: #1aa1f5;
 }
 .user {

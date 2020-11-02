@@ -15,7 +15,7 @@ import Toasted from 'vue-toasted';
 Vue.use(Toasted,
   {
     position: "bottom-center",
-    duration: 1200,
+    duration: 700,
     singleton: true // only 1 toast at a time (not working- showing 3 somehow)
   })
 
@@ -38,7 +38,7 @@ const router = new VueRouter({
 });
 
 // import { ImagePlugin } from 'bootstrap-vue'
-import './quasar'
+//import './quasar'
 //Vue.use(ImagePlugin)
 
 

@@ -1,5 +1,6 @@
 export default{
     //Details about the experiment
+    "exp_id": "",
     "title": "",
     "start_date": "",
     "end_date" : "", // Null if not ended yet
@@ -45,19 +46,20 @@ export default{
             "first_login",
             "login",
             "logout",
-            "saw tweet", // Passively saw a tweet, in feed or in other tab (for example in public user's timleine) 
+            "view tweet", // Passively saw a tweet, in feed or in other tab (for example in public user's timleine) 
             "like", // Can be like on a tweet or comment
             "retweet",
             "comment",
+            "quote",
             "tweeted", // Posted new tweet
-            "saw tweet full", // Went to the tweet's full page
-            "saw user profile", // Went to a public user profile page
+            "view tweet full", // Went to the tweet's full page
+            "view user profile", // Went to a public user profile page
             "follow",
             "unfollow",
             //"followed by", // Followed by other user
-            "saw tweet media", // Clicked on a media that was attached to a tweet. For example - image, video, link
+            "click tweet media", // Clicked on a media that was attached to a tweet. For example - image, video, link
             "search"
-            // Question, can we represent a tweet by Id, or do we have to include the full Json of the tweet (which is HUGE)?  
+            // Represent a tweet by Id, and save all the data in another json for easy retrieval  
         ]
 
     ]

@@ -9,8 +9,9 @@
       <div
         v-for="(tab, index) in tabs"
         :key="index"
-        class="tab-item"
+        :class="[ current === index ? 'active' : '', 'tab-item']"
         @click="tabClick($event, index)"
+        :style="listTabStyle"
       >
         <slot name="tab" :tab="tab" :index="index" />
       </div>
@@ -36,6 +37,7 @@ export default {
   },
   data() {
     return {
+        listTabStyle:{}
       //tabWidth: 0,
      // minLeft: 0,
       //left: 0,
@@ -61,6 +63,10 @@ export default {
       this.setCurrentTab(v)
     }
   },
+   created(){
+        // Width of each tab
+        this.listTabStyle.width = parseInt(100/this.tabs.length) + "vw"
+    },
   mounted() {
     //this.init()
     this.setCurrentTab(this.current)
@@ -105,23 +111,6 @@ export default {
 </script>
 
 <style scoped >
-/* lang="less"
-.slide-tab {
-  overflow: hidden;
-  .tab-wrapper {
-    display: inline-block;
-    white-space: nowrap;
-    will-change: transform;
-    &.motion {
-      transition: all 0.3s;
-    }
-    .tab-item {
-      vertical-align: top;
-      box-sizing: border-box;
-      display: inline-block;
-    }
-  }
-}*/
 .slide-tab {
   overflow: hidden;
 }
@@ -137,5 +126,15 @@ export default {
     vertical-align: top;
     box-sizing: border-box;
     display: inline-block;
+    font-size: 4.5vmin;
+    padding: 11px;
+    text-align: center;
+    font-weight: 700;
+    color: rgb(101, 119, 134);
+    border-bottom: 1px solid rgb(204, 214, 221) ;
+}
+.active {
+    color: rgb(29,161,242);
+    border-bottom: 2px solid rgb(29,161,242) ;
 }
 </style>

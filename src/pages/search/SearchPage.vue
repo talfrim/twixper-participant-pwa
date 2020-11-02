@@ -4,10 +4,8 @@
         <div>
             <div class="tabs-container">
                 <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
-                    <template v-slot:tab="{ tab, index }">
-                        <div :class="[ cur === index ? 'active' : '', 'list-tab']"
-                            :style="listTabStyle"
-                        >
+                    <template v-slot:tab="{ tab}">
+                        <div>
                             <span class="tab-name-span">
                                 {{ `${tab.name}` }}
                             </span>
@@ -38,12 +36,8 @@
                 myEl: null,
                 cur: 0,
                 tabs: [{ name: "Tweets" }, { name: "Users" }, { name: "Media" }],
-                listTabStyle:{}
+               
             }
-        },
-        created(){
-            // Width of each tab
-            this.listTabStyle.width = parseInt(100/this.tabs.length) + "vw"
         },
         mounted() {
             this.myEl = this.$el;
@@ -66,19 +60,7 @@
 .tabs-container{
 
 }
-.list-tab {
-  box-sizing: border-box;
-  font-size: 4.5vmin;
-  padding: 11px;
-  text-align: center;
-  font-weight: 700;
-  color: rgb(101, 119, 134);
-  border-bottom: 1px solid rgb(204, 214, 221) ;
-}
-.active {
-    color: rgb(29,161,242);
-    border-bottom: 2px solid rgb(29,161,242) ;
-}
+
 .tab-name-span{
     font-family: "Segoe UI";
 }

@@ -48,33 +48,19 @@ export default {
     },
     watch:{
         currTabName(newTabName){
-            this.searchForQuery(this.query);
+            private_switchTabsAndSearch(this, this.query);
         }
     },
     methods:{
-        searchForQueryFirstTime(q){ // Call this from the parent
+        searchForQuery(q){ // Call this from the parent
             this.resetResults();
-            this.searchForQuery(q);
+            this.private_switchTabsAndSearch(this, q);
             this.query = q;
         },
         resetResults(){
             this.tweetsResultsArr = [];
             this.usersResultsArr = [];
             this.mediaResultsArr = [];
-        },
-        searchForQuery(q){ // Do not call this from the parent
-            switch (this.currTabName){
-                case "Tweets":
-                    this.searchForTweets(q);
-                    break;
-                case "Users":
-                    this.searchForUsers(q);
-                    break;
-                case "Media":
-                    this.searchForMedia(q);
-                    break;
-                default:
-            }
         },
         async searchForTweets(q){
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
@@ -100,6 +86,21 @@ export default {
         },
     }
 }
+
+function private_switchTabsAndSearch(context, q){
+    switch (context.currTabName){
+        case "Tweets":
+            context.searchForTweets(q);
+            break;
+        case "Users":
+            context.searchForUsers(q);
+            break;
+        case "Media":
+            context.searchForMedia(q);
+            break;
+        default:
+    }
+} 
 </script>
 
 <style scoped>

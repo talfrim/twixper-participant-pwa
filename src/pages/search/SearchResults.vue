@@ -54,7 +54,7 @@ export default {
     methods:{
         searchForQuery(q){ // Call this from the parent
             this.resetResults();
-            this.private_switchTabsAndSearch(this, q);
+            private_switchTabsAndSearch(this, q);
             this.query = q;
         },
         resetResults(){
@@ -87,6 +87,7 @@ export default {
     }
 }
 
+// Context = this component
 function private_switchTabsAndSearch(context, q){
     switch (context.currTabName){
         case "Tweets":

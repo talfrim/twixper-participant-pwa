@@ -3,8 +3,6 @@
     <div
       ref="wrapper"
       class='tab-wrapper'
-     
-     
     >
       <div
         v-for="(tab, index) in tabs"
@@ -14,6 +12,7 @@
         :style="listTabStyle"
       >
         <slot name="tab" :tab="tab" :index="index" />
+        
       </div>
     </div>
   </div>

@@ -23,8 +23,8 @@ const routes = [
     },
     {
       path: "/search",
-      name: "search",
-      component: () => import("./pages/search/SearchPage"), 
+      name: "searchBoxPage",
+      component: () => import("./pages/search/SearchBoxPage"), 
     },
     {
       path: "/notifications",

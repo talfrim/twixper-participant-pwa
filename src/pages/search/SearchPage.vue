@@ -2,6 +2,7 @@
     <div class="page-wrapper">
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
         <WriteNewTweet />
+        <SearchBox></SearchBox>
         <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
             <template v-slot:tab="{ tab}">
                 <div>
@@ -22,13 +23,15 @@
 <script>
     import MenuHeader from "../../components/MenuHeader.vue"
     import Tabs from "../../components/Tabs.vue"
-    import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
+    import WriteNewTweet from "../../components/post/WriteNewTweet.vue"
+    import SearchBox from "../../components/search/SearchBox.vue"
 
     export default {
         components: {
             MenuHeader,
             WriteNewTweet,
-            Tabs
+            Tabs,
+            SearchBox
         },
         data(){
             return{

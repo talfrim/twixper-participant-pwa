@@ -38,7 +38,9 @@
         },
         methods: {
             redirectToSearch(query) {
-                this.$router.push({ name: 'search', params: {query: query} })
+                if(query.length > 0){
+                    this.$router.push({ name: 'search', params: {query: query} })
+                }
             }
         },
         mounted() {

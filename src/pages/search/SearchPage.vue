@@ -49,9 +49,10 @@
         },
         methods: {
             searchForQuery(query){
-                console.log("searchForQuery");
-                this.currQuery = query;
-                this.$refs.searchResults.searchForQuery(this.currQuery);
+                if(query.length > 0){
+                    this.currQuery = query;
+                    this.$refs.searchResults.searchForQuery(this.currQuery);
+                }
             },
             tabClick(index) {
                 this.cur = index

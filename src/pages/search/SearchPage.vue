@@ -12,9 +12,10 @@
                 </div>
             </template>
         </Tabs>
-        <div class="tab-content-container">
+        <!--<div class="tab-content-container">
             {{ `current tab: ${tabs[cur].name}` }}
-        </div>
+        </div>-->
+        <SearchResults :currTabName="tabs[cur].name"/>
     </div>
 
 </template>
@@ -23,15 +24,15 @@
 <script>
     import MenuHeader from "../../components/MenuHeader.vue"
     import Tabs from "../../components/Tabs.vue"
-    import WriteNewTweet from "../../components/post/WriteNewTweet.vue"
-    import SearchBox from "../../components/search/SearchBox.vue"
+    import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
+    import SearchResults from "./SearchResults.vue";
 
     export default {
         components: {
             MenuHeader,
             WriteNewTweet,
             Tabs,
-            SearchBox
+            SearchResults
         },
         data(){
             return{

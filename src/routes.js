@@ -22,8 +22,13 @@ const routes = [
         component: () => import("./pages/tweets_display/FeedPage"), 
     },
     {
-      path: "/search",
-      name: "searchBoxPage",
+      path: "/searchBox",
+      name: "searchBox",
+      component: () => import("./pages/search/SearchBoxPage"), 
+    },
+    {
+      path: "/search/:query",
+      name: "search",
       component: () => import("./pages/search/SearchBoxPage"), 
     },
     {

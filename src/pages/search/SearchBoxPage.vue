@@ -1,7 +1,8 @@
 <template>
-    <div>
-        <div><searchBox v-on:searched="redirectToSearch"/>
-            <br/> <!--Bad solution to keep  the box on top-->
+    <div class="page-wrapper">
+        <div>
+            <SearchBox @searched="redirectToSearch" />
+            <!--<br/> Bad solution to keep  the box on top-->
         </div>
         <div class="list-container">
             <ul> <!--elements should be taken from local storage- we will save last 3 every time-->
@@ -17,7 +18,7 @@
 <script>
     import SearchBox from "../../components/search/SearchBox.vue"
     import MenuHeader from "../../components/MenuHeader.vue"
-    export default{
+    export default {
         components: {
             SearchBox,
             MenuHeader
@@ -27,12 +28,12 @@
                 //for menu
                 myEl: null,
                 //real data
-                query:"",
+                //query:"",
             }
         },
         methods: {
-            redirectToSearch() {
-                this.$router.push({ name: 'search', params: {query: this.query} })
+            redirectToSearch(query) {
+                this.$router.push({ name: 'search', params: {query: query} })
             }
         },
         mounted() {
@@ -41,25 +42,27 @@
     }
 </script>
 
-<style>
-
-.list-container {
-    margin-top: 17%;
+<style scoped>
+.page-wrapper{
+    height: 100vh;
 }
-ul {
+/*.list-container {
+    margin-top: 17%;
+}*/
+ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+ li {
     font-size: 200%;
     border-bottom: 1px solid #ccc;
     padding: 3%;
 }
 
 
-li a {
+ li a {
   text-decoration: none;
   color: #000;
   display: block;

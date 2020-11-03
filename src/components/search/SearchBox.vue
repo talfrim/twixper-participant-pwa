@@ -16,7 +16,7 @@
         },
         methods: {
             searchClicked() {
-                this.$emit('searched')
+                this.$emit('searched', this.query)
             }
         },
         props: {
@@ -41,13 +41,13 @@
         margin-left: 1%;
         margin-top: 2%;
         height: 1%;
-        position: fixed;    
+        /*position: fixed; */   
         font-size:3vh;
 
     }
     
-    .search-box-container {
+    /* .search-box-container {
         height:12%;
-    }
+    } */
 
 </style>

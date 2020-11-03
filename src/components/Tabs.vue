@@ -134,6 +134,6 @@ export default {
 }
 .active {
     color: rgb(29,161,242);
-    border-bottom: 2px solid rgb(29,161,242) ;
+    border-bottom: 3px solid rgb(29,161,242) ;
 }
 </style>

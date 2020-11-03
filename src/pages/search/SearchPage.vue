@@ -1,51 +1,58 @@
 <template>
     <div class="page-wrapper">
-        <MenuHeader v-if="myEl" :parentsEl="myEl"/>
         <WriteNewTweet />
-        <SearchBox></SearchBox>
-        <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
-            <template v-slot:tab="{ tab}">
-                <div>
-                    <span class="tab-name-span">
-                        {{ `${tab.name}` }}
-                    </span>
-                </div>
-            </template>
-        </Tabs>
-        <!--<div class="tab-content-container">
-            {{ `current tab: ${tabs[cur].name}` }}
-        </div>-->
-        <SearchResults :currTabName="tabs[cur].name"/>
+        <div class="top-container">
+            <SearchBox @searched="searchForQuery" :text="$route.params.query"/>
+            <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
+                <template v-slot:tab="{ tab}">
+                    <div>
+                        <span class="tab-name-span">
+                            {{ `${tab.name}` }}
+                        </span>
+                    </div>
+                </template>
+            </Tabs>
+        </div>
+        <div class="results-container">    
+            <SearchResults 
+                :currTabName="tabs[cur].name" 
+                ref="searchResults"
+            />
+        </div>    
     </div>
 
 </template>
 
 
 <script>
-    import MenuHeader from "../../components/MenuHeader.vue"
     import Tabs from "../../components/Tabs.vue"
     import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
+    import SearchBox from "../../components/search/SearchBox.vue"
     import SearchResults from "./SearchResults.vue";
 
     export default {
         components: {
-            MenuHeader,
             WriteNewTweet,
+            SearchBox,
             Tabs,
             SearchResults
         },
         data(){
             return{
-                myEl: null,
                 cur: 0,
+                currQuery: this.$route.params.query,
                 tabs: [{ name: "Tweets" }, { name: "Users" }, { name: "Media" }],
-               
             }
         },
         mounted() {
-            this.myEl = this.$el;
+            this.searchForQuery(this.currQuery);
         },
         methods: {
+            searchForQuery(query){
+                console.log("searchForQuery");
+                this.currQuery = query;
+                this.$refs.searchResults.searchForQuery(this.currQuery);
+            },
             tabClick(index) {
                 this.cur = index
             }
@@ -66,5 +73,15 @@
 .tab-content-container{
     font-size: large;
 }
+.top-container{
+    position: fixed;
+    top: 0;
+    background: white;
+    z-index: 30;
+}
+.results-container{
+    margin-top: 120px;
+}
+
 </style>
     

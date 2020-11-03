@@ -2,11 +2,11 @@
     <div>
         <Loader v-if="showLoader"/>
         <TweetPreviewList 
-            v-if="currTabName === 'Tweets'" 
+            :hidden="!(currTabName === 'Tweets')" 
             :feedTweetsArr="tweetsResultsArr" 
         />
         <UserPreviewListSearchResults 
-            v-if="currTabName === 'Users'" 
+            :hidden="!(currTabName === 'Users')" 
             :userPreviews="usersResultsArr"
         />
     </div>
@@ -65,7 +65,7 @@ export default {
         async searchForTweets(q){
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
-                await this.sleep(1500);
+                await this.sleep(700);
                 this.tweetsResultsArr.push(...feedJSON);
                 this.showLoader = false;
             }
@@ -73,7 +73,7 @@ export default {
         async searchForUsers(q){
             if(this.usersResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
-                await this.sleep(1500);
+                await this.sleep(700);
                 this.usersResultsArr.push(...peopleJSON);
                 this.showLoader = false;
             }

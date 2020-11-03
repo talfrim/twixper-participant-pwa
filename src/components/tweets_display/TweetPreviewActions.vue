@@ -6,12 +6,12 @@
 
         <span class="post-icons-spans">
             <i class="fas fa-retweet"></i>
-            <span >{{retweets}}</span>
+            <span >{{parseNumberBeforeDisplay(retweets)}}</span>
         </span>
 
         <span class="post-icons-heart-container" @click="likeTweet()">
             <span class="heart" ref="heart"></span>
-            <span>{{likes}}</span>
+            <span>{{parseNumberBeforeDisplay(likes)}}</span>
         </span>
 
         <span class="post-icons-share-container">
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import {parseTwitterNumbersToStringFunc} from "../../assets/globalFunctions";
+
 export default {
     props: {
 		tweetPreview: {
@@ -46,6 +48,9 @@ export default {
 		this.isRetweeteed = tweetPrev.retweeted;
     },
     methods:{
+        parseNumberBeforeDisplay(number){
+            return parseTwitterNumbersToStringFunc(number);
+        },
         likeTweet(){
 			if(!this.isLiked){//Like the tweet
 				//TODO: Call the communicator to tell the API we liked a tweet

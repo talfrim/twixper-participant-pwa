@@ -29,6 +29,9 @@ var K = function () {
 }();
 
 function parseNumbersToString (number, decimalPlaces = 1) {
+    if(number < 9999){
+        return numberWithCommas(number);
+    }
     let letter = "";
     decimalPlaces = Math.pow(10, decimalPlaces);
     const abbrev = ["K", "M", "B", "T"];
@@ -50,6 +53,13 @@ function parseNumbersToString (number, decimalPlaces = 1) {
   }
 
   return number.toString() + letter;
+}
+
+// 5789 => 5,789
+function numberWithCommas(number){
+    let parts = number.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
 }
 
 module.exports = {

@@ -25,7 +25,7 @@
     import MenuHeader from "../../components/MenuHeader.vue"
     import Tabs from "../../components/Tabs.vue"
     import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
-    import SearchResults from "./SearchResults.vue";
+    import SearchResults from "../../components/search/SearchResults.vue";
 
     export default {
         components: {

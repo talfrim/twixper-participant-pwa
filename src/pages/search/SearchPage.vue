@@ -2,6 +2,7 @@
     <div class="page-wrapper">
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
         <WriteNewTweet />
+        <SearchBox></SearchBox>
         <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
             <template v-slot:tab="{ tab}">
                 <div>

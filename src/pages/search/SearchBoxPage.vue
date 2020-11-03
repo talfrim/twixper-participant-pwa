@@ -1,5 +1,7 @@
 <template>
     <div class="page-wrapper">
+        <MenuHeader v-if="myEl" :parentsEl="myEl"/>
+        <WriteNewTweet />
         <div>
             <SearchBox @searched="redirectToSearch" />
             <!--<br/> Bad solution to keep  the box on top-->
@@ -11,17 +13,20 @@
                 <li><a href="#">Twixper social media </a></li>
             </ul>
         </div>
-        <MenuHeader v-if="myEl" :parentsEl="myEl"/>
+        
     </div>
 </template>
 
 <script>
     import SearchBox from "../../components/search/SearchBox.vue"
     import MenuHeader from "../../components/MenuHeader.vue"
+    import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
+
     export default {
         components: {
             SearchBox,
-            MenuHeader
+            MenuHeader,
+            WriteNewTweet
         },
         data(){
             return{

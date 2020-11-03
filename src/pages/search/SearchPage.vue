@@ -1,6 +1,6 @@
 <template>
     <div class="page-wrapper">
-        <WriteNewTweet />
+        <WriteNewTweet position="bottom"/>
         <div class="top-container">
             <SearchBox @searched="searchForQuery" :text="$route.params.query"/>
             <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">

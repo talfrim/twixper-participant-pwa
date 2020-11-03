@@ -1,8 +1,12 @@
 <template>
     <div class="search-box-container">
-        <input class="search-box" v-model="query" placeholder="Search tweets or users" v-on:keyup.enter="searchClicked"/>
+        <input
+            class="search-box" 
+            v-model="query" 
+            placeholder="Search tweets or users"
+            v-on:keyup.enter="searchClicked"
+        />
 
-        
     </div>
 </template>
 
@@ -32,22 +36,22 @@
 </script>
 
 <style>
-    .search-box {
-        border-radius: 25px;
-        border: 2px solid lightgray;
-        background-color: inherit;
-        padding: 5%;
-        width: 87%;
-        margin-left: 1%;
-        margin-top: 2%;
-        height: 1%;
-        /*position: fixed; */   
-        font-size:3vh;
+.search-box-container {
+    height: 10vmin;
+    margin: 4% 2%;
+} 
 
-    }
+.search-box {
+    border-radius: 25px;
+    border: 2px solid lightgray;
+    background-color: inherit;
+    /*  padding: 0;*/
+    width: 98%;
+    height: 100%;  
+    font-size:2.8vh;
+    text-align: center;
+}
     
-    /* .search-box-container {
-        height:12%;
-    } */
+   
 
 </style>

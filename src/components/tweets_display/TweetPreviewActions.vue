@@ -1,22 +1,22 @@
 <template>
-    <div class="post-icons">
-        <span class="post-icons-spans-comment">
+    <div class="post-icons-container">
+        <div class="post-icon">
             <i class="far fa-comment"></i>
-        </span>
+        </div>
 
-        <span class="post-icons-spans">
+        <div class="post-icon">
             <i class="fas fa-retweet"></i>
             <span >{{parseNumberBeforeDisplay(retweets)}}</span>
-        </span>
+        </div>
 
-        <span class="post-icons-heart-container" @click="likeTweet()">
-            <span class="heart" ref="heart"></span>
+        <div class="post-icon heart-container" @click="likeTweet()" >
+            <div class="heart" ref="heart"></div> 
             <span>{{parseNumberBeforeDisplay(likes)}}</span>
-        </span>
+        </div>
 
-        <span class="post-icons-share-container">
+        <div class="post-icon share-container">
             <i class="fas fa-share-alt"></i>
-        </span>
+        </div>
     </div>
 </template>
 

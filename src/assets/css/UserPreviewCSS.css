@@ -44,7 +44,7 @@
 .user-full-name-container span{
     color: rgb(20, 23, 26);
     font-weight: 900;
-    font-size: 20px;
+    font-size: 15px;
 }
 .user-full-name-container i{
 	font-size: 1.6rem;
@@ -55,7 +55,7 @@
 .user-username-container span{
     color: rgb(101, 119, 134);
     font-weight: 400;
-	font-size: 16px;   
+	font-size: 15px;   
 }
 
 .user-desc {

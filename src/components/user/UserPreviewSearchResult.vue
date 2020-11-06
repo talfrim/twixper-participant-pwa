@@ -1,15 +1,17 @@
 <template> 
     <div class="wrapper"> 
-        <div class="user-avatar-container">
+        <router-link :to="{ name: 'userPage', params: {userName: username} }"
+            tag="div" class="user-avatar-container"
+        >    
             <div class="user-avatar" v-lazyload>
-                <router-link :to="{ name: 'userPage', params: {userName: username} }"
-                    tag="img" :data-url="profileImgUrl"> 
-                </router-link>
+                <img :data-url="profileImgUrl"> 
             </div>
-       </div>
+       </router-link>
         <div class="user-content-wrapper">
             <div class="top-segment">
-                <div class="names-container"> <!-- inline-block -->
+                <router-link :to="{ name: 'userPage', params: {userName: username} }"
+                    tag="div" class="names-container"
+                >  
                     <div class="user-full-name-container">
                         <span>{{name}}</span>
                         <i v-if="isVerified" class="fas fa-check-circle"></i>
@@ -17,17 +19,18 @@
                     <div class="user-username-container">
                         <span>@{{username}}</span>
                     </div>
-                </div>
-                <div class="follow-btn-container"> <!-- inline-block -->
+                </router-link>
+                <div class="follow-btn-container">
                     <FollowButton class="follow-btn"
                         :usernameContext="username" 
                         :following="following" 
                     />
                 </div>
             </div>
-			<div class="user-desc" >
+			<router-link :to="{ name: 'userPage', params: {userName: username} }"
+                tag="div" class="user-desc"> 
                 {{description}}
-		    </div>
+		    </router-link>
         </div>
     </div>
 </template>

@@ -4,7 +4,6 @@
         <WriteNewTweet />
         <div>
             <SearchBox @searched="redirectToSearch" />
-            <!--<br/> Bad solution to keep  the box on top-->
         </div>
         <div class="list-container">
             <ul> <!--elements should be taken from local storage- we will save last 3 every time-->

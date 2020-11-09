@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="sr-wrapper">
         <Loader v-if="showLoader"/>
         <TweetPreviewList 
             :hidden="!(currTabName === 'Tweets')" 
@@ -105,5 +105,7 @@ function private_switchTabsAndSearch(context, q){
 </script>
 
 <style scoped>
-
+.sr-wrapper{
+    height: 100%;
+}
 </style>

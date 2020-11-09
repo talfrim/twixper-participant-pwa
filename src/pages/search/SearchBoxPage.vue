@@ -49,9 +49,9 @@
 </script>
 
 <style scoped>
-.page-wrapper{
+/*.page-wrapper{
     height: 100vh;
-}
+}*/
 /*.list-container {
     margin-top: 17%;
 }*/

@@ -1,8 +1,8 @@
 <template>
-    <div id="wrapper">
+    <div class="tpl-wrapper">
         <div class="posts">
             <TweetPreview :tweetPreview="t" v-for="(t,i) in feedTweetsArr" v-bind:key="i"></TweetPreview>
-            <br><br><br><br><br><br> <!-- For the menu bar at the bottom -->
+            <!--<br><br><br><br><br><br>  For the menu bar at the bottom -->
             <!-- The brs above are not a great solution, fix it in other way later -->
         </div>
     </div>   
@@ -101,12 +101,9 @@ export default {
 			grid-column: 1 / -1;
         }
         
-    #wrapper{
-        height: 100vh;
+    .tpl-wrapper{
+        height: 100%; /* 100% of the parent's height */
+        overflow-y: scroll;
     } 
-    /*@media (max-width: 290px){
-        #wrapper{
-            width: 105vw;
-        } 
-    }   */
+   
 </style>

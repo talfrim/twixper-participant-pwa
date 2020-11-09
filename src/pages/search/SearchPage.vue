@@ -65,8 +65,8 @@
     
 <style scoped>
 .page-wrapper {
-    height: 100vh;
-    width: 100vw;
+   /* height: 100vh;*/
+   overflow: hidden;
 }
 .tab-name-span{
     font-family: "Segoe UI";
@@ -75,13 +75,16 @@
     font-size: large;
 }
 .top-container{
-    position: fixed;
+    /*position: fixed;
     top: 0;
+    z-index: 30;*/
+    /*height: 15vh;*/
     background: white;
-    z-index: 30;
 }
 .results-container{
-    margin-top: 120px;
+    /* Fix it. this is not optimal */
+    height: 82.5vh;
+    
 }
 
 </style>

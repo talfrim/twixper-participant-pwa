@@ -29,8 +29,9 @@ export default {
 		outline: none;
   }
   body{
-    /* Prevent the page from scrolling on axios x*/ 
+    /* Prevent the page from scrolling*/ 
     overflow-x: hidden;
+    overflow-y: hidden;
   }
   /*
   .fade-enter-active, .fade-leave-active {

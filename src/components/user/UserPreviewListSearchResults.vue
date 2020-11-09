@@ -1,9 +1,10 @@
 <template>
     <div class="p-wrapper">
         <div class="users">
-            <UserPreviewSearchResult :userPreview="u" v-for="(u,i) in userPreviews" v-bind:key="i"></UserPreviewSearchResult>
-            <!--<br><br><br><br><br><br>  For the menu bar at the bottom -->
-            <!-- The brs above are not a great solution, fix it in other way later -->
+            <UserPreviewSearchResult 
+                :userPreview="u" 
+                v-for="(u,i) in userPreviews" 
+                v-bind:key="i" />
         </div>
     </div>
 </template>
@@ -27,5 +28,6 @@
 .p-wrapper{
     height: 100%; /* 100% of the parent's height */
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 </style>

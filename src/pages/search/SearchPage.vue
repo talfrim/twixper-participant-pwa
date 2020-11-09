@@ -82,7 +82,7 @@
     background: white;
 }
 .results-container{
-    /* Fix it. this is not optimal */
+    /* Not optimal, maybe fix it later */
     height: 82.5vh;
     
 }

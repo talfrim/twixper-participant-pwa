@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper">
+    <div class="inroduction-wrapper">
         <div class="top-segment">
             <div class="banner-img-container">
                 <ExpandableImg 

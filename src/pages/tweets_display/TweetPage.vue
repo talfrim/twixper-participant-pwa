@@ -2,12 +2,28 @@
     <div>
         <PageHeader text="Tweet" />
         <div class="tweet-page-wrapper">
-            <div class="user-avatar" v-lazyload>
-                <!--<img :data-url="author.profileImgUrl">-->
+            <div class="author-info-container">
+                <div class="user-avatar" v-lazyload>
+                    <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+                        tag="img" :data-url="author.profileImgUrl"> 
+                    </router-link>
+                </div>
                 <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
-                    tag="img" :data-url="author.profileImgUrl"> 
+                        tag="div" class="names-container"
+                >  
+                    <div class="user-full-name-container">
+                        <span>{{author.userFullName}}</span>
+                        <i v-if="author.isVerified" class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="user-username-container">
+                        <span>@{{author.userName}}</span>
+                    </div>
                 </router-link>
-            </div>
+            </div> 
+            <div class="post-content"> 	
+                <TweetPreviewBody :tweetPreview="tweetPageJson" />
+                <TweetPreviewActions :tweetPreview="tweetPageJson" />      
+            </div>   
         </div>    
     </div>
 </template>
@@ -20,9 +36,9 @@ import TweetPageJSON from "../../communicators/TweetPageJSON.js"
 
 export default {
     components:{
-        PageHeader
-		/*TweetPreviewBody,
-		TweetPreviewActions*/
+        PageHeader,
+		TweetPreviewBody,
+		TweetPreviewActions
 	},
     data() {
         return{
@@ -49,12 +65,6 @@ export default {
 }
 </script>
 
-<style scoped src="../../assets/css/TweetPreviewCSS.css">
+<style scoped src="../../assets/css/TweetPageCSS.css">
 
-</style>
-<style scoped>
-.tweet-page-wrapper{
-    margin: 2vh 4vw;
-    background-color: white;
-}
 </style>

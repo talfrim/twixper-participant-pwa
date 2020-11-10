@@ -1,0 +1,55 @@
+.tweet-page-wrapper{
+    margin: 2vh 1vw;
+    background-color: white;
+}
+.user-avatar {
+	width: 5rem;
+	height: 5rem;
+	flex-shrink: 0;
+	/*margin: 0.3rem 0.3rem;*/
+}
+
+.user-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 1px solid silver;
+}
+.author-info-container{
+    display: flex;
+    padding-bottom: 15px;
+}
+.names-container{
+    display: inline-block;
+    margin: 5px 15px;
+    width: 85%;
+    
+}
+
+.user-full-name-container{
+	white-space: nowrap; 
+	overflow: hidden;
+	text-overflow: ellipsis; 
+}
+
+.user-full-name-container span{
+    color: rgb(20, 23, 26);
+    font-weight: 900;
+    font-size: 15px;
+}
+.user-full-name-container i{
+	font-size: 1.6rem;
+	color: #1aa1f5;
+	margin-left: 0.5rem;
+}
+
+.user-username-container span{
+    color: rgb(101, 119, 134);
+    font-weight: 400;
+	font-size: 15px;   
+}
+
+.post-content{
+    padding: 0.5vmin;
+}

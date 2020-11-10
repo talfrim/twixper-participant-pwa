@@ -1,11 +1,12 @@
-#wrapper{
+.inroduction-wrapper{
     background-color: white;
+    overflow: scroll;
 }
 .top-segment{
     position: relative;
 }
 .banner-img-container{
-    height: 19vh;
+    /*height: 19vh;*/
     width: 100vw;
 }
 .profile-img-container{

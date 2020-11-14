@@ -1,7 +1,7 @@
 <template>
     <div class="page-wrapper">
         <WriteNewTweet position="bottom"/>
-        <div class="top-container">
+        <div class="top-container" ref="topDiv">
             <SearchBox @searched="searchForQuery" :text="$route.params.query"/>
             <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
                 <template v-slot:tab="{ tab}">
@@ -13,7 +13,7 @@
                 </template>
             </Tabs>
         </div>
-        <div class="results-container">    
+        <div class="results-container" ref="resultsDiv">    
             <SearchResults 
                 :currTabName="tabs[cur].name" 
                 ref="searchResults"
@@ -45,6 +45,10 @@
             }
         },
         mounted() {
+            // Setting the appropiate height of the search-results div
+            this.$refs.resultsDiv.style.height = 
+                    window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
+            
             this.searchForQuery(this.currQuery);
         },
         methods: {
@@ -67,6 +71,7 @@
 .page-wrapper {
    /* height: 100vh;*/
    overflow: hidden;
+   display: table;
 }
 .tab-name-span{
     font-family: "Segoe UI";
@@ -80,12 +85,14 @@
     z-index: 30;*/
     /*height: 15vh;*/
     background: white;
+    display:table-row;
 }
-.results-container{
+/*.results-container{*/
     /* Not optimal, maybe fix it later */
-    height: 82.5vh;
+    /*height: 82.5vh;*/
     
-}
+    
+
 
 </style>
     

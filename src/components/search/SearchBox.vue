@@ -38,7 +38,7 @@
 <style>
 .search-box-container {
     height: 10vmin;
-    margin: 4% 2%;
+    margin: 1.8rem 1.5rem;
 } 
 
 .search-box {

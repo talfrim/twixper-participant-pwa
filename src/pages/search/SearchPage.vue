@@ -46,10 +46,14 @@
         },
         mounted() {
             // Setting the appropiate height of the search-results div
+            window.addEventListener('resize', this.handleResize)
             this.$refs.resultsDiv.style.height = 
                     window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
             
             this.searchForQuery(this.currQuery);
+        },
+        beforeDestroy: function () {
+            window.removeEventListener('resize', this.handleResize)
         },
         methods: {
             searchForQuery(query){
@@ -60,6 +64,11 @@
             },
             tabClick(index) {
                 this.cur = index
+            },
+            handleResize(event) {
+                // Setting the appropiate height of the search-results div
+                this.$refs.resultsDiv.style.height = 
+                    window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
             }
         }
     }

@@ -1,7 +1,7 @@
 <template>
     <div class="p-wrapper">
         <div class="users">
-            <UserPreviewSearchResult 
+            <UserPreview 
                 :userPreview="u" 
                 v-for="(u,i) in userPreviews" 
                 v-bind:key="i" />
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-    import UserPreviewSearchResult from "./UserPreviewSearchResult.vue";
+    import UserPreview from "./UserPreview.vue";
 
     export default {
         components: {
-            UserPreviewSearchResult,
+            UserPreview,
         },
         props:{
             userPreviews:{

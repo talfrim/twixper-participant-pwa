@@ -47,6 +47,16 @@ const routes = [
       component: () => import("./pages/user/UserPagePublic"), 
     },
     {
+      path: "/followersPage/:userName",
+      name: "followersPage",
+      component: () => import("./pages/user/UserFollowersPage"), 
+    },
+    {
+      path: "/friendsPage/:userName",
+      name: "friendsPage",
+      component: () => import("./pages/user/UserFriendsPage"), 
+    },
+    {
       path: "/tweetPage/:tweetId",
       name: "tweetPage",
       component: () => import("./pages/tweets_display/TweetPage"), 

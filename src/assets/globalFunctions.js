@@ -62,7 +62,12 @@ function numberWithCommas(number){
     return parts.join(".");
 }
 
+function sleep(ms) { // For mocking server delay
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 module.exports = {
     parseTwitterDateFunc: parseTwitterDate,
-    parseTwitterNumbersToStringFunc: parseNumbersToString
+    parseTwitterNumbersToStringFunc: parseNumbersToString,
+    sleepFunc: sleep
 };

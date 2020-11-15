@@ -23,7 +23,7 @@
                     <TweetPreviewList :feedTweetsArr="this.tweetResults"></TweetPreviewList>
                 </q-tab-panel>
                 <q-tab-panel name="users">
-                    <UserPreviewListSearchResults :userPreviews="this.usersResults"></UserPreviewListSearchResults>
+                    <UserPreviewList :userPreviews="this.usersResults"></UserPreviewList>
                 </q-tab-panel>
               </q-tab-panels>
             </q-card>
@@ -37,7 +37,7 @@
 <script>
 import MenuHeader from "../../components/MenuHeader.vue"
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
-import UserPreviewListSearchResults from "../../components/user/UserPreviewListSearchResults.vue"
+import UserPreviewList from "../../components/user/UserPreviewList.vue"
 import feedJSON from "../../communicators/FeedJSON.js"
 import peopleJSON from "../../communicators/SearchPeopleJSON.js"
 import Loader from "../../components/Loader.vue";
@@ -48,7 +48,7 @@ export default {
     components: {
         MenuHeader,
         TweetPreviewList,
-        UserPreviewListSearchResults,
+        UserPreviewList,
         Loader,
     },
     data(){

@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper">
+    <div class="inroduction-wrapper">
         <div class="top-segment">
             <div class="banner-img-container">
                 <ExpandableImg 
@@ -51,22 +51,24 @@
                 </div>
             </div>
             <div class="follow-numbers-container">
-                <div>
+                <router-link :to="{ name: 'friendsPage', params: {userName: userName} }"
+				        tag="div"> 
                     <span class="numbers-span">
                         {{friendsNumStr}}
                     </span>
                     <span class="title-span">
                         Following
                     </span>
-                </div>
-                <div>
+                </router-link>
+                <router-link :to="{ name: 'followersPage', params: {userName: userName} }"
+				        tag="div"> 
                     <span class="numbers-span">
                         {{folowersNumStr}}
                     </span>
                     <span class="title-span">
                         Followers
                     </span>
-                </div>
+                </router-link>
             </div>
 
         </div>

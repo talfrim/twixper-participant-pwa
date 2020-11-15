@@ -1,6 +1,6 @@
 <template>
     <div>
-        <WriteNewTweet />
+        <WriteNewTweet position="bottom"/>
         <UserIntroduction :userPageJson="userPageJson"/>
         {{userName}}
     </div>

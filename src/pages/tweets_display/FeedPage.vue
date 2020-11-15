@@ -2,7 +2,9 @@
     <div>
         <MenuHeader v-if="myEl" :parentsEl="myEl"/>
         <WriteNewTweet />
-        <TweetPreviewList :feedTweetsArr="feedTweetsArr"></TweetPreviewList>
+        <div class="tpl-container">
+            <TweetPreviewList :feedTweetsArr="feedTweetsArr"></TweetPreviewList>
+        </div>
     </div>
 </template>
 
@@ -34,6 +36,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.tpl-container{
+    height: 90vh;
+}
 </style>

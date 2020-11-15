@@ -159,8 +159,8 @@ export default {
     /*width: 22rem; 
     height: 22rem;*/
 
-    width: 36.2vmin; 
-    height: 23vmin;
+   /* width: 36.2vmin; */
+    height: 23.5vmin;
     border: 1px solid silver;
     border-radius: 15%;
 }

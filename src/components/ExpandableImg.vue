@@ -129,7 +129,7 @@ export default {
                 //Change the background to the dominent color of the image
                 this.cloned.style.background = this.backgroundColor;
                 // Prevent the page from scrolling
-                document.body.style.overflow = 'hidden'
+                //document.body.style.overflow = 'hidden'
                 setTimeout(() => {
                 // Show the cloned element
                 this.cloned.style.opacity = 1
@@ -147,7 +147,7 @@ export default {
                 this.cloned = null
                 this.closeButtonRef = null
                 // Re-enable the scrolling
-                document.body.style.overflow = 'auto'
+                //document.body.style.overflow = 'auto'
                 }, 250)
             }
             })

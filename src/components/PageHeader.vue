@@ -34,7 +34,7 @@ i{
 }
 span{
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 700;
     font-family:  "Segoe UI";
 }
 </style>

@@ -22,7 +22,12 @@ const routes = [
         component: () => import("./pages/tweets_display/FeedPage"), 
     },
     {
-      path: "/search",
+      path: "/searchBox",
+      name: "searchBox",
+      component: () => import("./pages/search/SearchBoxPage"), 
+    },
+    {
+      path: "/search/:query",
       name: "search",
       component: () => import("./pages/search/SearchPage"), 
     },
@@ -40,6 +45,16 @@ const routes = [
       path: "/userPagePublic/:userName",
       name: "userPage",
       component: () => import("./pages/user/UserPagePublic"), 
+    },
+    {
+      path: "/followersPage/:userName",
+      name: "followersPage",
+      component: () => import("./pages/user/UserFollowersPage"), 
+    },
+    {
+      path: "/friendsPage/:userName",
+      name: "friendsPage",
+      component: () => import("./pages/user/UserFriendsPage"), 
     },
     {
       path: "/tweetPage/:tweetId",

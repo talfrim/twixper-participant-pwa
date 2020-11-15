@@ -16,7 +16,7 @@
           <router-link :to="{ name: 'feed'}">
             <i class="fas fa-home"></i>
           </router-link>
-          <router-link :to="{ name: 'search'}">
+          <router-link :to="{ name: 'searchBox'}">
             <i class="fas fa-search fa-sm"></i>
           </router-link>
            <router-link :to="{ name: 'notifications'}">

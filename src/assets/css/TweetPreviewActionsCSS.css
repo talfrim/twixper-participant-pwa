@@ -1,46 +1,38 @@
 
-.post-icons {
+.post-icons-container {
 	margin-top: 1.2rem;
+	display: grid;
+	grid-template-columns: 2fr 3fr 3fr 2fr;
 }
 
-.post-icons i {
+.post-icons-container i {
 	font-size: 1.6rem;
 	color: #868383; /* lime on retweet */
 	margin-right: 1.5rem;
 	transition: color 400ms ease-in;
 }
 
-.post-icons-spans {
-	display: inline-block;
-	min-width: 6.6rem;
-	max-width: 6.6rem;
+.post-icon span{
 	font-size: 1.4rem;
 	color: rgb(101, 119, 134);
-}
-.post-icons-spans-comment{
-	display: inline-block;
-	min-width: 4rem;
-	max-width: 4rem;
-	font-size: 1.4rem;
-	color: rgb(101, 119, 134);
-}
-.post-icons-heart-container{
-	font-size: 1.4rem;
-	color: rgb(101, 119, 134);
-}
-.post-icons-share-container{
-	display: inline-block;
-	margin-left: 2rem;
 }
 
+.heart-container{
+	display: flex;
+	/*margin-top: -1px;*/
+}
+
+.heart-container span{
+	display: inline-block;
+	margin-top: 2px;
+}
 /* Like button */
 .heart {
-	display: inline-block;
-	
-	/*Move it slightly down */
+	/*display: inline-block;*/
+	/*Move it slightly down
 	position: relative;
 	left: 0;
-	top: 0.4rem;
+	top: 0.4rem; */
 
 	height: 1.7rem;
 	width: 5.5rem;
@@ -60,3 +52,18 @@
  to { background-position:right;}
 }
 /* End of like button */
+
+.share-container{
+	text-align: right;
+	padding-right: 10%;
+	margin-top: 1px;
+}
+.share-container i{
+	font-size: 1.5rem;
+}
+
+@media (max-width: 300px){
+	.post-icon span{
+		font-size: 1.22rem;
+	}
+}

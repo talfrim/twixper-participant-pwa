@@ -1,6 +1,6 @@
 <template>
     <div id="wrapper">
-         <button type="button" class="post-btn" @click="showWritingBoxModal()">
+         <button type="button" class="post-btn" @click="showWritingBoxModal()" ref="btn">
             +<i class="fas fa-feather-alt"></i> <!-- "Post" -->
         </button>
         <WritingBoxModal ref="writeBoxModal"/>
@@ -14,6 +14,22 @@ export default {
    components: {
         WritingBoxModal
     },
+    props:{
+        position:{
+            /* E.g "bottom" */
+            type: String,
+            required: false,
+            default: "default"
+        }
+    },
+    mounted(){
+        if(this.position === "bottom"){
+            this.$refs.btn.style.bottom = "1rem" ;
+        }
+        else{
+            this.$refs.btn.style.bottom = "8rem" ;
+        }
+    },
     methods:{
         showWritingBoxModal(){
             this.$refs.writeBoxModal.displayModal();
@@ -25,7 +41,7 @@ export default {
 <style scoped>
 .post-btn {
 		position: fixed;
-		bottom: 8rem;
+		/*bottom: 8rem; Moved to mounted() */
 		left: 80%;
 		width: 6rem;
 		padding: 1.5rem 1rem;

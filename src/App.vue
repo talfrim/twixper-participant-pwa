@@ -29,8 +29,9 @@ export default {
 		outline: none;
   }
   body{
-    /* Prevent the page from scrolling on axios x*/ 
+    /* Prevent the page from scrolling*/ 
     overflow-x: hidden;
+    overflow-y: hidden;
   }
   /*
   .fade-enter-active, .fade-leave-active {
@@ -80,18 +81,20 @@ export default {
 @media (max-width: 600px){
   /* Overriding toast notifications external css */
   .toasted{
-    width: 29% !important;
+    width: 28% !important;
     justify-content: center !important;
     
     border-radius: 3rem !important;
     top: -4rem !important ;
     left: 30%;
-    opacity: 0.9 !important;
+    opacity: 0.85 !important;
+    
   }
    .toasted.toasted-primary {
     font-size: 1.5rem !important;
     font-weight: bold !important;
-    min-height: 2.5rem !important;
+    min-height: 2.7rem !important;
+    
   }
   
 }
@@ -109,14 +112,5 @@ export default {
 	  }
 }
 
-
-  
-
-  /*.feeds-content {
-		display: grid;
-		grid-template-columns: minmax(5rem, 1fr) 60rem 40rem minmax(5rem, 1fr);
-		grid-template-rows: repeat(2, min-content);
-		padding-top: 6.5rem;
-	}*/
 </style>
 

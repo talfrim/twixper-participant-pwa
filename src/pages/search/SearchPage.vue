@@ -1,63 +1,63 @@
 <template>
     <div class="page-wrapper">
-        <MenuHeader v-if="myEl" :parentsEl="myEl"/>
-        <div class="search-box-container">
-            <input class="search-box" v-model="query" placeholder="Search tweets or users">
+        <WriteNewTweet position="bottom"/>
+        <div class="top-container" ref="topDiv">
+            <SearchBox @searched="searchForQuery" :text="$route.params.query"/>
+            <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
+                <template v-slot:tab="{ tab}">
+                    <div>
+                        <span class="tab-name-span">
+                            {{ `${tab.name}` }}
+                        </span>
+                    </div>
+                </template>
+            </Tabs>
         </div>
-        <div>
-            <div class="tabs-container">
-                <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
-                    <template v-slot:tab="{ tab, index }">
-                        <div :class="[ cur === index ? 'active' : '', 'list-tab']"
-                            :style="listTabStyle"
-                        >
-                            <span class="tab-name-span">
-                                {{ `${tab.name}` }}
-                            </span>
-                        </div>
-                    </template>
-                </Tabs>
-            </div>    
-            <div class="tab-content-container">
-                {{ `current tab: ${tabs[cur].name}` }}
-            </div>
-        </div>
+        <div class="results-container" ref="resultsDiv">    
+            <SearchResults 
+                :currTabName="tabs[cur].name" 
+                ref="searchResults"
+            />
+        </div>    
     </div>
 
 </template>
 
 
 <script>
-    import MenuHeader from "../../components/MenuHeader.vue"
     import Tabs from "../../components/Tabs.vue"
+    import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
+    import SearchBox from "../../components/search/SearchBox.vue"
+    import SearchResults from "./SearchResults.vue";
 
     export default {
         components: {
-            MenuHeader,
-            Tabs
+            WriteNewTweet,
+            SearchBox,
+            Tabs,
+            SearchResults
         },
         data(){
             return{
-                myEl: null,
                 cur: 0,
+                currQuery: this.$route.params.query,
                 tabs: [{ name: "Tweets" }, { name: "Users" }, { name: "Media" }],
-                listTabStyle:{},
-                //search stuf
-                query:"",
-                tweetResults:[],
-                usersResults:[],
-                loadingTweets: false,
-                loadingUsers: false,
             }
         },
-        created(){
-            // Width of each tab
-            this.listTabStyle.width = parseInt(100/this.tabs.length) + "vw"
-        },
         mounted() {
-            this.myEl = this.$el;
+            // Setting the appropiate height of the search-results div
+            this.$refs.resultsDiv.style.height = 
+                    window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
+            
+            this.searchForQuery(this.currQuery);
         },
         methods: {
+            searchForQuery(query){
+                if(query.length > 0){
+                    this.currQuery = query;
+                    this.$refs.searchResults.searchForQuery(this.currQuery);
+                }
+            },
             tabClick(index) {
                 this.cur = index
             }
@@ -69,22 +69,9 @@
     
 <style scoped>
 .page-wrapper {
-    height: 100vh;
-    width: 100vw;
-}
-
-.list-tab {
-  box-sizing: border-box;
-  font-size: 4.5vmin;
-  padding: 11px;
-  text-align: center;
-  font-weight: 700;
-  color: rgb(101, 119, 134);
-  border-bottom: 1px solid rgb(204, 214, 221) ;
-}
-.active {
-    color: rgb(29,161,242);
-    border-bottom: 2px solid rgb(29,161,242) ;
+   /* height: 100vh;*/
+   overflow: hidden;
+   display: table;
 }
 .tab-name-span{
     font-family: "Segoe UI";
@@ -92,16 +79,20 @@
 .tab-content-container{
     font-size: large;
 }
-
-.search-box {
-  width: 99%;
-  padding: 4%;
-  margin: 2% 0; 
-  display: inline-block;
-  border: 1px solid aqua;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 2.5vh;
+.top-container{
+    /*position: fixed;
+    top: 0;
+    z-index: 30;*/
+    /*height: 15vh;*/
+    background: white;
+    display:table-row;
 }
+/*.results-container{*/
+    /* Not optimal, maybe fix it later */
+    /*height: 82.5vh;*/
+    
+    
+
+
 </style>
     

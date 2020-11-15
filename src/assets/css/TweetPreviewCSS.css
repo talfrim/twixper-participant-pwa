@@ -80,7 +80,8 @@ h4 .usernameSpan{
 }
 
 .post-content-media{
-	width: 73vmin;
+	/*width: 73vmin;*/
+	width: 100%;
 }
 
 /* Loader spinner container */

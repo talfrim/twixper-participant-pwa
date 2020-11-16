@@ -48,7 +48,7 @@
     /*  padding: 0;*/
     width: 98%;
     height: 100%;  
-    font-size:2.8vh;
+    font-size: 2rem;
     text-align: center;
 }
     

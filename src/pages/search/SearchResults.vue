@@ -9,6 +9,13 @@
             :hidden="!(currTabName === 'Users')" 
             :userPreviews="usersResultsArr"
         />
+        <div 
+            :hidden="!(currTabName === 'Media')" 
+            class="media-div"
+        >
+        <br>
+            <h2> Sorry, We currently not supporting media search results.</h2>
+        </div>
     </div>
 </template>
 

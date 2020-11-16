@@ -73,7 +73,7 @@ export default {
     mounted(){
         if(this.photosObjects.length ==  1){ //Only one photo
             //Expand it to full grid size 
-            this.$refs.photoContainer0[0].style.width = "73vmin";
+            this.$refs.photoContainer0[0].style.width = "76vmin";
             this.$refs.photoContainer0[0].style.height = "48vmin";
         }
         else if (this.photosObjects.length ==  2){ // Two photos

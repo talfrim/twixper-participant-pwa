@@ -10,16 +10,23 @@
                 v-if="photosJson" 
                 :photosJson="photosJson" 
             />
+			<ExpandableVideo
+				v-if="videoUrl"
+				:thumbnailImgUrl="videoThumbnailUrl"
+				:videoUrl="videoUrl"
+			/>
         </div>
     </div>
 </template>
 
 <script>
+import ExpandableVideo from '../ExpandableVideo.vue';
 import TweetPreviewImgsGrid from "./TweetPreviewImgsGrid.vue";
 
 export default {
     components:{
-		TweetPreviewImgsGrid
+		TweetPreviewImgsGrid,
+        ExpandableVideo
     },
     props: {
 		tweetPreview: {
@@ -35,6 +42,8 @@ export default {
 			lang: "",
             hasMedia: false,
 			photosJson: [],
+			videoThumbnailUrl: "",
+			videoUrl: ""
         }
     },
     created(){
@@ -51,9 +60,14 @@ export default {
 				//Loop thorough media
 				for (let i = 0; i < extEntMedia.length; i++) {
 					const extEntMediaItem = extEntMedia[i];
-					if(extEntMediaItem.type === "photo"){
+					const type = extEntMediaItem.type;
+					if(type === "photo"){
 						this.photosJson.push(extEntMediaItem);
-						this.contentsToLoad ++;
+					}
+					else if(type === "video" || type === "animated_gif"){
+						this.videoThumbnailUrl = extEntMediaItem.media_url_https;
+						const variants = extEntMediaItem.video_info.variants;
+						this.videoUrl = variants[variants.length - 1].url;
 					}
 				}
 			}

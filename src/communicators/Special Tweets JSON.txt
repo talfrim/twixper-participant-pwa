@@ -1,0 +1,448 @@
+// Tweet with gif
+{
+        "created_at": "Sun Nov 15 10:27:30 +0000 2020",
+        "id": 1327921158386315264,
+        "id_str": "1327921158386315264",
+        "full_text": "7️⃣ whole years of @JillScottJS8! \n\n#OnThisDay in 2013, we signed the one and only Jill Scott! 🙌\n\n🔷 #ManCity | https://t.co/axa0klD5re https://t.co/k8FTSOSh1l",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            134
+        ],
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "OnThisDay",
+                    "indices": [
+                        36,
+                        46
+                    ]
+                },
+                {
+                    "text": "ManCity",
+                    "indices": [
+                        100,
+                        108
+                    ]
+                }
+            ],
+            "symbols": [],
+            "user_mentions": [
+                {
+                    "screen_name": "JillScottJS8",
+                    "name": "Jill Scott MBE",
+                    "id": 73983778,
+                    "id_str": "73983778",
+                    "indices": [
+                        19,
+                        32
+                    ]
+                }
+            ],
+            "urls": [
+                {
+                    "url": "https://t.co/axa0klD5re",
+                    "expanded_url": "http://mancity.com",
+                    "display_url": "mancity.com",
+                    "indices": [
+                        111,
+                        134
+                    ]
+                }
+            ],
+            "media": [
+                {
+                    "id": 1327918268267507713,
+                    "id_str": "1327918268267507713",
+                    "indices": [
+                        135,
+                        158
+                    ],
+                    "media_url": "http://pbs.twimg.com/tweet_video_thumb/Em22oR7WMAE7Gi7.jpg",
+                    "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/Em22oR7WMAE7Gi7.jpg",
+                    "url": "https://t.co/k8FTSOSh1l",
+                    "display_url": "pic.twitter.com/k8FTSOSh1l",
+                    "expanded_url": "https://twitter.com/ManCity/status/1327921158386315264/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 1038,
+                            "h": 778,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 510,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1038,
+                            "h": 778,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 1327918268267507713,
+                    "id_str": "1327918268267507713",
+                    "indices": [
+                        135,
+                        158
+                    ],
+                    "media_url": "http://pbs.twimg.com/tweet_video_thumb/Em22oR7WMAE7Gi7.jpg",
+                    "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/Em22oR7WMAE7Gi7.jpg",
+                    "url": "https://t.co/k8FTSOSh1l",
+                    "display_url": "pic.twitter.com/k8FTSOSh1l",
+                    "expanded_url": "https://twitter.com/ManCity/status/1327921158386315264/photo/1",
+                    "type": "animated_gif",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 1038,
+                            "h": 778,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 510,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1038,
+                            "h": 778,
+                            "resize": "fit"
+                        }
+                    },
+                    "video_info": {
+                        "aspect_ratio": [
+                            519,
+                            389
+                        ],
+                        "variants": [
+                            {
+                                "bitrate": 0,
+                                "content_type": "video/mp4",
+                                "url": "https://video.twimg.com/tweet_video/Em22oR7WMAE7Gi7.mp4"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 14573900,
+            "id_str": "14573900",
+            "name": "Manchester City",
+            "screen_name": "ManCity",
+            "location": "Etihad Stadium",
+            "description": "𝐸𝓈𝓉. 1894  💙 This Is Our City 🏆 6 x League Champions 🙌 #ManCity ℹ️ @ManCityHelp",
+            "url": "https://t.co/rZckZ8PABr",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/rZckZ8PABr",
+                            "expanded_url": "http://www.mancity.com/city+",
+                            "display_url": "mancity.com/city+",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 8690190,
+            "friends_count": 51837,
+            "listed_count": 14684,
+            "created_at": "Mon Apr 28 19:28:08 +0000 2008",
+            "favourites_count": 13685,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 135020,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": true,
+            "profile_background_color": "060606",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/14573900/1602505147",
+            "profile_link_color": "81B2D5",
+            "profile_sidebar_border_color": "000000",
+            "profile_sidebar_fill_color": "EFEFEF",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": false,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 42,
+        "favorite_count": 789,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+
+// Tweet with video
+ {
+        "created_at": "Sun Nov 15 14:30:29 +0000 2020",
+        "id": 1327982305730760704,
+        "id_str": "1327982305730760704",
+        "full_text": "Honours even 🔵🔴\n\nWatch all the best bits from a thrilling Manchester derby! 👇\n\n🔷 #ManCity | https://t.co/axa0klD5re https://t.co/GMAS665cgp",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            115
+        ],
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "ManCity",
+                    "indices": [
+                        81,
+                        89
+                    ]
+                }
+            ],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [
+                {
+                    "url": "https://t.co/axa0klD5re",
+                    "expanded_url": "http://mancity.com",
+                    "display_url": "mancity.com",
+                    "indices": [
+                        92,
+                        115
+                    ]
+                }
+            ],
+            "media": [
+                {
+                    "id": 1327982162524692481,
+                    "id_str": "1327982162524692481",
+                    "indices": [
+                        116,
+                        139
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/Em3wyFRXcAAB96l.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/Em3wyFRXcAAB96l.jpg",
+                    "url": "https://t.co/GMAS665cgp",
+                    "display_url": "pic.twitter.com/GMAS665cgp",
+                    "expanded_url": "https://twitter.com/ManCity/status/1327982305730760704/video/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 1920,
+                            "h": 1080,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1200,
+                            "h": 675,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 383,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 1327982162524692481,
+                    "id_str": "1327982162524692481",
+                    "indices": [
+                        116,
+                        139
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/Em3wyFRXcAAB96l.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/Em3wyFRXcAAB96l.jpg",
+                    "url": "https://t.co/GMAS665cgp",
+                    "display_url": "pic.twitter.com/GMAS665cgp",
+                    "expanded_url": "https://twitter.com/ManCity/status/1327982305730760704/video/1",
+                    "type": "video",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 1920,
+                            "h": 1080,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1200,
+                            "h": 675,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 383,
+                            "resize": "fit"
+                        }
+                    },
+                    "video_info": {
+                        "aspect_ratio": [
+                            16,
+                            9
+                        ],
+                        "duration_millis": 117680,
+                        "variants": [
+                            {
+                                "content_type": "application/x-mpegURL",
+                                "url": "https://video.twimg.com/amplify_video/1327982162524692481/pl/48sq3u5qq0ERsbB_.m3u8?tag=13"
+                            },
+                            {
+                                "bitrate": 288000,
+                                "content_type": "video/mp4",
+                                "url": "https://video.twimg.com/amplify_video/1327982162524692481/vid/480x270/M5ostLWzanC9bSgJ.mp4?tag=13"
+                            },
+                            {
+                                "bitrate": 2176000,
+                                "content_type": "video/mp4",
+                                "url": "https://video.twimg.com/amplify_video/1327982162524692481/vid/1280x720/ev-TBZxZtaw1aEGM.mp4?tag=13"
+                            },
+                            {
+                                "bitrate": 832000,
+                                "content_type": "video/mp4",
+                                "url": "https://video.twimg.com/amplify_video/1327982162524692481/vid/640x360/sFmeHSaszV_6xqFo.mp4?tag=13"
+                            }
+                        ]
+                    },
+                    "additional_media_info": {
+                        "title": "FA WSL HIGHLIGHTS | UNITED V CITY ",
+                        "monetizable": true
+                    }
+                }
+            ]
+        },
+        "source": "<a href=\"http://grabyo.com\" rel=\"nofollow\">Grabyo</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 14573900,
+            "id_str": "14573900",
+            "name": "Manchester City",
+            "screen_name": "ManCity",
+            "location": "Etihad Stadium",
+            "description": "𝐸𝓈𝓉. 1894  💙 This Is Our City 🏆 6 x League Champions 🙌 #ManCity ℹ️ @ManCityHelp",
+            "url": "https://t.co/rZckZ8PABr",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/rZckZ8PABr",
+                            "expanded_url": "http://www.mancity.com/city+",
+                            "display_url": "mancity.com/city+",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 8690190,
+            "friends_count": 51837,
+            "listed_count": 14684,
+            "created_at": "Mon Apr 28 19:28:08 +0000 2008",
+            "favourites_count": 13685,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 135020,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": true,
+            "profile_background_color": "060606",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/14573900/1602505147",
+            "profile_link_color": "81B2D5",
+            "profile_sidebar_border_color": "000000",
+            "profile_sidebar_fill_color": "EFEFEF",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": false,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 14,
+        "favorite_count": 517,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },

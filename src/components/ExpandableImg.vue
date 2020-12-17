@@ -47,7 +47,14 @@ export default {
     },
     beforeDestroy(){
       this.isDestroyed = true;
-      // this.expanded = false;
+      if(this.expanded){
+        /* Close the expanded window before detroy */
+        this.cloned.style.opacity = 0
+        this.closeButtonRef.removeEventListener('click', this.closeImage)
+        this.cloned.removeEventListener('touchstart', this.onExpandedImageClick)
+        // Remove the cloned element and the references
+        this.cloned.remove()
+      }
       
     },
     methods: {

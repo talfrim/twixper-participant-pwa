@@ -85,6 +85,13 @@ export default {
     },
     beforeDestroy(){
         this.isDestroyed = true;
+        if(this.expanded){
+        /* Close the expanded window before detroy */
+        this.closeButtonRef.removeEventListener('click', this.closeVideo)
+        this.cloned.removeEventListener('touchstart', this.onExpandedClick)
+        // Remove the cloned element and the references
+        this.cloned.remove()
+      }
     },
     watch: {
        expanded (expanded) {

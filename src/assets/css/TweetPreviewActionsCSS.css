@@ -60,6 +60,7 @@
 }
 .share-container i{
 	font-size: 1.5rem;
+	opacity: 0.4; /* Because we don't support it yet */
 }
 
 @media (max-width: 300px){

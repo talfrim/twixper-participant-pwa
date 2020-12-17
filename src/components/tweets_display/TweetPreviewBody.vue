@@ -7,7 +7,7 @@
 		</router-link>	
         <div class="post-content-media" v-if="hasMedia">
             <TweetPreviewImgsGrid
-                v-if="photosJson" 
+                v-if="photosJson.length > 0" 
                 :photosJson="photosJson" 
             />
 			<ExpandableVideo

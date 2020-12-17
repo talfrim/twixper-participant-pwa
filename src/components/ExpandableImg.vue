@@ -47,6 +47,8 @@ export default {
     },
     beforeDestroy(){
       this.isDestroyed = true;
+      // this.expanded = false;
+      
     },
     methods: {
         clickedImgDiv(){
@@ -159,7 +161,7 @@ export default {
 <style scoped>
 .expandable-image {
   position: relative;
-  transition: .5s opacity;
+  transition: 0.5s opacity;
   /* Takes the width and the height of the parent */
     width: 100%;
     height: 100%;

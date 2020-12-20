@@ -100,7 +100,9 @@
     /* Not optimal, maybe fix it later */
     /*height: 82.5vh;*/
     
-    
+.results-container{
+    width: 100vw;
+}   
 
 
 </style>

@@ -47,6 +47,11 @@ export default {
 		this.isLiked = tweetPrev.favorited;
 		this.isRetweeteed = tweetPrev.retweeted;
     },
+    mounted(){
+        if(this.isLiked){
+            this.$refs.heart.classList.add('animated');
+        }
+    },
     methods:{
         parseNumberBeforeDisplay(number){
             return parseTwitterNumbersToStringFunc(number);
@@ -54,7 +59,7 @@ export default {
         likeTweet(){
 			if(!this.isLiked){//Like the tweet
 				//TODO: Call the communicator to tell the API we liked a tweet
-				this.$refs.heart.classList.add('is_animating');
+                this.$refs.heart.classList.add('is_animating');
 				this.$toasted.show('Tweet liked');
 
 				
@@ -63,7 +68,9 @@ export default {
 			}
 			else{ //Unlike the tweet
 				//TODO: Call the communicator to tell the API we unliked a tweet
-				this.$refs.heart.classList.remove('is_animating');
+                this.$refs.heart.classList.remove('is_animating');
+                this.$refs.heart.classList.remove('animated');
+
 				this.$toasted.show('Tweet unliked');
 
 				this.likes --;

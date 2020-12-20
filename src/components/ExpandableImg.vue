@@ -47,6 +47,15 @@ export default {
     },
     beforeDestroy(){
       this.isDestroyed = true;
+      if(this.expanded){
+        /* Close the expanded window before detroy */
+        this.cloned.style.opacity = 0
+        this.closeButtonRef.removeEventListener('click', this.closeImage)
+        this.cloned.removeEventListener('touchstart', this.onExpandedImageClick)
+        // Remove the cloned element and the references
+        this.cloned.remove()
+      }
+      
     },
     methods: {
         clickedImgDiv(){
@@ -159,7 +168,7 @@ export default {
 <style scoped>
 .expandable-image {
   position: relative;
-  transition: .5s opacity;
+  transition: 0.5s opacity;
   /* Takes the width and the height of the parent */
     width: 100%;
     height: 100%;

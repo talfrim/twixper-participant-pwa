@@ -1,6 +1,17 @@
 <template>
     <div>
         <PageHeader text="Tweet" />
+
+        <!-- If this a retweet, add appropiate header -->
+		<router-link
+			v-if="retweet_details.is_retweet == true"
+			:to="{ name: 'userPage', params: {userName: retweet_details.retweet_author_username} }"
+			tag="div" class="retweeter-user-info"
+		> 	
+			<i class="fas fa-retweet"></i>
+			{{retweet_details.retweet_author_fullName}} Retweeted
+		</router-link>
+
         <div class="tweet-page-wrapper">
             <div class="author-info-container">
                 <div class="user-avatar" v-lazyload>
@@ -44,6 +55,11 @@ export default {
         return{
             tweetId : this.$route.params.tweetId, // Use it in the request to the server to get the data
             tweetPageJson: null,
+            retweet_details:{
+				is_retweet: false,
+				retweet_author_username: "",
+				retweet_author_fullName: ""
+			},
             author:{
 				userFullName: "",
 				userName: "",
@@ -55,6 +71,15 @@ export default {
     created(){
         // Do preparation to the data so it would be more comfortable to display it
         this.tweetPageJson = TweetPageJSON;
+        // If this is a retweet, the tweetPrev should be the original tweet
+		if(this.tweetPageJson.retweeted_status){
+			this.retweet_details = {
+				is_retweet: true,
+				retweet_author_username: TweetPageJSON.user.screen_name,
+				retweet_author_fullName: TweetPageJSON.user.name
+            }
+            this.tweetPageJson = this.tweetPageJson.retweeted_status
+		}
         
         const userJson = this.tweetPageJson.user;
 		this.author.userFullName = userJson.name;

@@ -3,9 +3,9 @@
    <!-- feeds page
   <section class="feeds-page"> -->
     <!-- feeds content -->
-    <!--<transition name="slide-left"> -->
+    <!-- <transition name="slide-left"> -->
       <router-view/>
-    <!--</transition> -->
+    <!-- </transition> -->
     
   <!--</section>
    end of feeds page -->
@@ -50,7 +50,7 @@ export default {
     transition-property: height, opacity, transform;
     transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
     overflow: hidden;*/
-    transition-duration: .5s;
+    transition-duration: .3s;
     transition-property:  opacity;
     transition-timing-function: ease-in;
     overflow: hidden;

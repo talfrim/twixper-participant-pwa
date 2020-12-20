@@ -106,5 +106,6 @@ function private_switchTabsAndSearch(context, q){
 <style scoped>
 .sr-wrapper{
     height: 100%;
+    width: 100%;
 }
 </style>

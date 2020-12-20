@@ -79,12 +79,19 @@ export default {
         }
     },
     created(){
-        this.videoContainerInnerHtml = "<video width=\"100%\" height=\"100%\" controls autoplay class=\"video\">"
+        this.videoContainerInnerHtml = "<video width=\"100%\" height=\"70%\" controls autoplay class=\"video\">"
             +"<source src=\"" + this.videoUrl +  "\" type=\"video/mp4\">"
             +"Your browser does not support the video tag.</video>"
     },
     beforeDestroy(){
         this.isDestroyed = true;
+        if(this.expanded){
+        /* Close the expanded window before detroy */
+        this.closeButtonRef.removeEventListener('click', this.closeVideo)
+        this.cloned.removeEventListener('touchstart', this.onExpandedClick)
+        // Remove the cloned element and the references
+        this.cloned.remove()
+      }
     },
     watch: {
        expanded (expanded) {
@@ -256,6 +263,15 @@ body > .exp-video-container.expanded {
     border: 1px solid white;
     border-radius: 50%
 }
+
+.video-container{
+    height: 50vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*
     Close button
 */

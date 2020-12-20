@@ -47,6 +47,10 @@
   background-position: right;
 }
 
+.animated{
+	background-position: right;
+}
+
 @keyframes heart-burst {
  from {background-position:left;}
  to { background-position:right;}
@@ -60,6 +64,7 @@
 }
 .share-container i{
 	font-size: 1.5rem;
+	opacity: 0.4; /* Because we don't support it yet */
 }
 
 @media (max-width: 300px){

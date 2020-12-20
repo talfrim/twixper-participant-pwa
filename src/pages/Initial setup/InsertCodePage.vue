@@ -34,9 +34,9 @@ img{
     .code-page {
         width: 100%;
         height: 100vh;
-        display: grid;
+        /* display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1fr min-content;
+        grid-template-rows: 1fr min-content; */
         background-color: #f0f8fd;
     }
     

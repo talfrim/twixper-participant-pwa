@@ -1,10 +1,18 @@
 <template>
     <div class="post-content" >
-		<router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }" class="router-link"> 	
+		<!-- <router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }"
+			class="router-link"
+			@click.native="clickedTweet"
+		> 	 -->
+		<div
+			class="router-link"
+			@click="clickedTweet"
+		>
 			<p class="post-text light-text" ref="textParagraph">
-				
+		
 			</p>
-		</router-link>	
+		</div>	
+
         <div class="post-content-media" v-if="hasMedia">
             <TweetPreviewImgsGrid
                 v-if="photosJson.length > 0" 
@@ -105,7 +113,9 @@ export default {
 				this.$refs.textParagraph.style.direction = "rtl";
 			} 
 		},
-		
+		clickedTweet(){
+			this.$emit('clickedTweet')
+		}
 	}, 
 }
 </script>

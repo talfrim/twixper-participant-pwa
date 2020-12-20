@@ -1,7 +1,11 @@
 <template>
-    <div class="quoted-tweet-wrapper">
-        <router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }"
-            tag="div" class="user-header-container"> 
+    <div class="quoted-tweet-wrapper" ref="quotedTweetWrapper">
+        <!-- <router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }"
+            tag="div" class="user-header-container">  -->
+        <div
+            class="user-header-container"
+            @click="clickedTweet"
+        >
             <div class="user-avatar" v-lazyload>
                 <img :data-url="author.profileImgUrl">
             </div>
@@ -11,14 +15,17 @@
                 <span class="usernameSpan">@{{author.userName}}</span>
             </h4>
             <span>{{time}}</span>
-		</router-link>
+		</div>
 
-        <TweetPreviewBody :tweetPreview="qTweetPreview" />
+        <TweetPreviewBody 
+            :tweetPreview="qTweetPreview" 
+            @clickedTweet="clickedTweet"
+        />
     </div>
 </template>
 
 <script>
-import {parseTwitterDateFunc} from "../../assets/globalFunctions";
+import {parseTwitterDateFunc, sleepFunc} from "../../assets/globalFunctions";
 
 export default {
     components:{
@@ -52,6 +59,15 @@ export default {
 		this.author.userName = userJson.screen_name;
 		this.author.profileImgUrl = userJson.profile_image_url_https;
 		this.author.isVerified = userJson.verified;	
+    },
+    methods:{
+        clickedTweet(){
+            // Redirect to tweet page
+            this.$refs.quotedTweetWrapper.style.backgroundColor = "rgba(0,0,0,0.1)"
+            setTimeout( () =>
+				this.$router.push({ path: '/tweetPage/'+this.tweetId})
+			, 400)
+        }
     }
 }
 </script>

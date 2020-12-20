@@ -3,6 +3,7 @@
 	border: 1px solid rgb(196, 207, 214);
 	border-radius: 5%;
 	padding: 0.5rem;
+	transition: background-color .4s ease;
 }
 
 .user-header-container{

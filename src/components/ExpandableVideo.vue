@@ -114,6 +114,8 @@ export default {
                 
                 // Adding the inner html of the video container:
                 this.vidContainer = this.cloned.querySelector('.video-container')
+                this.vidContainer.style.height = "50vh"
+                this.vidContainer.style.width = "100vw"
                 this.vidContainer.innerHTML = this.videoContainerInnerHtml
 
                 document.body.appendChild(this.cloned)
@@ -265,8 +267,8 @@ body > .exp-video-container.expanded {
 }
 
 .video-container{
-    height: 50vh;
-    width: 100vw;
+    /*height: 50vh;
+    width: 100vw;*/
     display: flex;
     justify-content: center;
     align-items: center;

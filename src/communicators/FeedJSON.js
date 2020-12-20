@@ -307,6 +307,940 @@ export default [
         "lang": "en"
     },
     {
+        "created_at": "Thu Nov 19 00:50:10 +0000 2020",
+        "id": 1329225417539137537,
+        "id_str": "1329225417539137537",
+        "full_text": "עוד טעימה מהפרוייקט-אם גם אתם התעוררתם באמצע הלילה אני ממליץ לכם לתת מבט. עכשיו ההתלבטות היא האם להישאר ער עוד קצת ולראות את הדראפט של ים..\n@Madar2020 https://t.co/bJpEzPJmUP",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            150
+        ],
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [
+                {
+                    "screen_name": "madar2020",
+                    "name": "ali",
+                    "id": 186947059,
+                    "id_str": "186947059",
+                    "indices": [
+                        140,
+                        150
+                    ]
+                }
+            ],
+            "urls": [
+                {
+                    "url": "https://t.co/bJpEzPJmUP",
+                    "expanded_url": "https://twitter.com/TwixperApp/status/1329186802859712517",
+                    "display_url": "twitter.com/TwixperApp/sta…",
+                    "indices": [
+                        151,
+                        174
+                    ]
+                }
+            ]
+        },
+        "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 1316854914820321282,
+            "id_str": "1316854914820321282",
+            "name": "Dekel Levy",
+            "screen_name": "Dekellevy93",
+            "location": "",
+            "description": "4th year student of BSc in Software and Information Systems Engineering in BGU.\nCheck out my Senior Project @TwixperApp .\nHTA fan (well, nobody's perfect).",
+            "url": "https://t.co/1YmH9O1NEb",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/1YmH9O1NEb",
+                            "expanded_url": "https://www.linkedin.com/in/dekellevy/",
+                            "display_url": "linkedin.com/in/dekellevy/",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 10,
+            "friends_count": 18,
+            "listed_count": 0,
+            "created_at": "Thu Oct 15 21:34:31 +0000 2020",
+            "favourites_count": 172,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 65,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "F5F8FA",
+            "profile_background_image_url": null,
+            "profile_background_image_url_https": null,
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1317003834913423360/Y1eOmZmW_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1317003834913423360/Y1eOmZmW_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/1316854914820321282/1602850317",
+            "profile_link_color": "1DA1F2",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": true,
+            "default_profile": true,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": true,
+        "quoted_status_id": 1329186802859712517,
+        "quoted_status_id_str": "1329186802859712517",
+        "quoted_status_permalink": {
+            "url": "https://t.co/bJpEzPJmUP",
+            "expanded": "https://twitter.com/TwixperApp/status/1329186802859712517",
+            "display": "twitter.com/TwixperApp/sta…"
+        },
+        "quoted_status": {
+            "created_at": "Wed Nov 18 22:16:43 +0000 2020",
+            "id": 1329186802859712517,
+            "id_str": "1329186802859712517",
+            "full_text": "Another look at our much-improved app, which is just a part of a powerful project.\nLatest main features:\n-Great visualization of photos and videos in a tweet.\n-Public user page. \n-Full tweet page\n-Search page, including tweets and users' search results.\nCheck out the demo below👇 https://t.co/Lu4yonTXvL",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                279
+            ],
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [],
+                "media": [
+                    {
+                        "id": 1329186742570790913,
+                        "id_str": "1329186742570790913",
+                        "indices": [
+                            280,
+                            303
+                        ],
+                        "media_url": "http://pbs.twimg.com/ext_tw_video_thumb/1329186742570790913/pu/img/SxJHk7r3K58euPDa.jpg",
+                        "media_url_https": "https://pbs.twimg.com/ext_tw_video_thumb/1329186742570790913/pu/img/SxJHk7r3K58euPDa.jpg",
+                        "url": "https://t.co/Lu4yonTXvL",
+                        "display_url": "pic.twitter.com/Lu4yonTXvL",
+                        "expanded_url": "https://twitter.com/TwixperApp/status/1329186802859712517/video/1",
+                        "type": "photo",
+                        "sizes": {
+                            "large": {
+                                "w": 440,
+                                "h": 938,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 319,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 440,
+                                "h": 938,
+                                "resize": "fit"
+                            }
+                        }
+                    }
+                ]
+            },
+            "extended_entities": {
+                "media": [
+                    {
+                        "id": 1329186742570790913,
+                        "id_str": "1329186742570790913",
+                        "indices": [
+                            280,
+                            303
+                        ],
+                        "media_url": "http://pbs.twimg.com/ext_tw_video_thumb/1329186742570790913/pu/img/SxJHk7r3K58euPDa.jpg",
+                        "media_url_https": "https://pbs.twimg.com/ext_tw_video_thumb/1329186742570790913/pu/img/SxJHk7r3K58euPDa.jpg",
+                        "url": "https://t.co/Lu4yonTXvL",
+                        "display_url": "pic.twitter.com/Lu4yonTXvL",
+                        "expanded_url": "https://twitter.com/TwixperApp/status/1329186802859712517/video/1",
+                        "type": "video",
+                        "sizes": {
+                            "large": {
+                                "w": 440,
+                                "h": 938,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 319,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 440,
+                                "h": 938,
+                                "resize": "fit"
+                            }
+                        },
+                        "video_info": {
+                            "aspect_ratio": [
+                                220,
+                                469
+                            ],
+                            "duration_millis": 79401,
+                            "variants": [
+                                {
+                                    "bitrate": 632000,
+                                    "content_type": "video/mp4",
+                                    "url": "https://video.twimg.com/ext_tw_video/1329186742570790913/pu/vid/320x682/XHTVYSB7doJ63VMl.mp4?tag=10"
+                                },
+                                {
+                                    "content_type": "application/x-mpegURL",
+                                    "url": "https://video.twimg.com/ext_tw_video/1329186742570790913/pu/pl/9eVc5Stb0hXfhAG5.m3u8?tag=10"
+                                },
+                                {
+                                    "bitrate": 832000,
+                                    "content_type": "video/mp4",
+                                    "url": "https://video.twimg.com/ext_tw_video/1329186742570790913/pu/vid/440x938/M6JdAnzVgiZbCkED.mp4?tag=10"
+                                }
+                            ]
+                        },
+                        "additional_media_info": {
+                            "monetizable": false
+                        }
+                    }
+                ]
+            },
+            "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 1316847294424199168,
+                "id_str": "1316847294424199168",
+                "name": "Twixper",
+                "screen_name": "TwixperApp",
+                "location": "",
+                "description": "Twixper is a social-media experimentation app, currently in development process. We are coming soon!",
+                "url": null,
+                "entities": {
+                    "description": {
+                        "urls": []
+                    }
+                },
+                "protected": false,
+                "followers_count": 11,
+                "friends_count": 32,
+                "listed_count": 0,
+                "created_at": "Thu Oct 15 21:04:13 +0000 2020",
+                "favourites_count": 23,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": false,
+                "verified": false,
+                "statuses_count": 6,
+                "lang": null,
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "F5F8FA",
+                "profile_background_image_url": null,
+                "profile_background_image_url_https": null,
+                "profile_background_tile": false,
+                "profile_image_url": "http://pbs.twimg.com/profile_images/1316848349618860033/5ii_bkh9_normal.jpg",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1316848349618860033/5ii_bkh9_normal.jpg",
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/1316847294424199168/1602796117",
+                "profile_link_color": "1DA1F2",
+                "profile_sidebar_border_color": "C0DEED",
+                "profile_sidebar_fill_color": "DDEEF6",
+                "profile_text_color": "333333",
+                "profile_use_background_image": true,
+                "has_extended_profile": true,
+                "default_profile": true,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 1,
+            "favorite_count": 3,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "possibly_sensitive_appealable": false,
+            "lang": "en"
+        },
+        "retweet_count": 0,
+        "favorite_count": 2,
+        "favorited": true,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "possibly_sensitive_appealable": false,
+        "lang": "iw"
+    },
+    {
+        "created_at": "Sun Dec 20 12:21:03 +0000 2020",
+        "id": 1340633309093621761,
+        "id_str": "1340633309093621761",
+        "full_text": "It is true. @RealMerrinD blazed trails! ❤️ I watched her on television LONG before I started acting and we’re peers. She got in young and is STILL killing the game. \n\nShe WORKS! Ya hear me?! She WORKS! ❤️\n\n👏🏾👏🏾👏🏾👏🏾👏🏾👏🏾👏🏾👏🏾👏🏾 https://t.co/zH873x9ZEJ",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            224
+        ],
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [
+                {
+                    "screen_name": "RealMerrinD",
+                    "name": "Merrin Christmas!🎅🏾🎄",
+                    "id": 418455326,
+                    "id_str": "418455326",
+                    "indices": [
+                        12,
+                        24
+                    ]
+                }
+            ],
+            "urls": [
+                {
+                    "url": "https://t.co/zH873x9ZEJ",
+                    "expanded_url": "https://twitter.com/realmerrind/status/1340380048742703105",
+                    "display_url": "twitter.com/realmerrind/st…",
+                    "indices": [
+                        225,
+                        248
+                    ]
+                }
+            ]
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 23314049,
+            "id_str": "23314049",
+            "name": "yvette nicole brown",
+            "screen_name": "YNB",
+            "location": "Fiddling with your mind",
+            "description": "Just a scripted-line saying, game show playing, TV show talking, notebook hawking super blerd! #StayWoke ❤✊🏽 #AlwaysABridesmaid on @netflix",
+            "url": "https://t.co/2hxFMNIpad",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/2hxFMNIpad",
+                            "expanded_url": "https://secure.actblue.com/donate/walkingdeadlive",
+                            "display_url": "secure.actblue.com/donate/walking…",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 478962,
+            "friends_count": 3017,
+            "listed_count": 3965,
+            "created_at": "Sun Mar 08 14:47:33 +0000 2009",
+            "favourites_count": 50861,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 179090,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1330996124434329600/VzG9q-1R_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1330996124434329600/VzG9q-1R_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/23314049/1606169180",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": false,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": true,
+        "quoted_status_id": 1340380048742703105,
+        "quoted_status_id_str": "1340380048742703105",
+        "quoted_status_permalink": {
+            "url": "https://t.co/zH873x9ZEJ",
+            "expanded": "https://twitter.com/realmerrind/status/1340380048742703105",
+            "display": "twitter.com/realmerrind/st…"
+        },
+        "quoted_status": {
+            "created_at": "Sat Dec 19 19:34:41 +0000 2020",
+            "id": 1340380048742703105,
+            "id_str": "1340380048742703105",
+            "full_text": "It’s true. \n#everywhere https://t.co/F65OAvCZ1i",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                23
+            ],
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "everywhere",
+                        "indices": [
+                            12,
+                            23
+                        ]
+                    }
+                ],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https://t.co/F65OAvCZ1i",
+                        "expanded_url": "https://twitter.com/keenie2020/status/1340369694356889602",
+                        "display_url": "twitter.com/keenie2020/sta…",
+                        "indices": [
+                            24,
+                            47
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 418455326,
+                "id_str": "418455326",
+                "name": "Merrin Christmas!🎅🏾🎄",
+                "screen_name": "RealMerrinD",
+                "location": "Probably on your tv right now ",
+                "description": "No cuts, no buts, no coconuts. She/her",
+                "url": null,
+                "entities": {
+                    "description": {
+                        "urls": []
+                    }
+                },
+                "protected": false,
+                "followers_count": 28930,
+                "friends_count": 964,
+                "listed_count": 312,
+                "created_at": "Tue Nov 22 06:01:16 +0000 2011",
+                "favourites_count": 78172,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": true,
+                "verified": true,
+                "statuses_count": 19666,
+                "lang": null,
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "CACDB8",
+                "profile_background_image_url": "http://abs.twimg.com/images/themes/theme6/bg.gif",
+                "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme6/bg.gif",
+                "profile_background_tile": true,
+                "profile_image_url": "http://pbs.twimg.com/profile_images/1326576445754277888/jHZr2oy5_normal.jpg",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1326576445754277888/jHZr2oy5_normal.jpg",
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/418455326/1606660961",
+                "profile_link_color": "F5ABB5",
+                "profile_sidebar_border_color": "4B9C96",
+                "profile_sidebar_fill_color": "491D3E",
+                "profile_text_color": "E97E6E",
+                "profile_use_background_image": true,
+                "has_extended_profile": true,
+                "default_profile": false,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": true,
+            "quoted_status_id": 1340369694356889602,
+            "quoted_status_id_str": "1340369694356889602",
+            "quoted_status_permalink": {
+                "url": "https://t.co/F65OAvCZ1i",
+                "expanded": "https://twitter.com/keenie2020/status/1340369694356889602",
+                "display": "twitter.com/keenie2020/sta…"
+            },
+            "retweet_count": 0,
+            "favorite_count": 65,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "possibly_sensitive_appealable": false,
+            "lang": "en"
+        },
+        "retweet_count": 0,
+        "favorite_count": 20,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "possibly_sensitive_appealable": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sun Dec 20 12:15:22 +0000 2020",
+        "id": 1340631877942571009,
+        "id_str": "1340631877942571009",
+        "full_text": "This energy. \nThis dragging. \nThis truth. https://t.co/iNxCdnECpJ",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            41
+        ],
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [
+                {
+                    "url": "https://t.co/iNxCdnECpJ",
+                    "expanded_url": "https://twitter.com/ufwupdates/status/1340629945165307904",
+                    "display_url": "twitter.com/ufwupdates/sta…",
+                    "indices": [
+                        42,
+                        65
+                    ]
+                }
+            ]
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 23314049,
+            "id_str": "23314049",
+            "name": "yvette nicole brown",
+            "screen_name": "YNB",
+            "location": "Fiddling with your mind",
+            "description": "Just a scripted-line saying, game show playing, TV show talking, notebook hawking super blerd! #StayWoke ❤✊🏽 #AlwaysABridesmaid on @netflix",
+            "url": "https://t.co/2hxFMNIpad",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/2hxFMNIpad",
+                            "expanded_url": "https://secure.actblue.com/donate/walkingdeadlive",
+                            "display_url": "secure.actblue.com/donate/walking…",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 478962,
+            "friends_count": 3017,
+            "listed_count": 3965,
+            "created_at": "Sun Mar 08 14:47:33 +0000 2009",
+            "favourites_count": 50861,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 179090,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1330996124434329600/VzG9q-1R_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1330996124434329600/VzG9q-1R_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/23314049/1606169180",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": false,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": true,
+        "quoted_status_id": 1340629945165307904,
+        "quoted_status_id_str": "1340629945165307904",
+        "quoted_status_permalink": {
+            "url": "https://t.co/iNxCdnECpJ",
+            "expanded": "https://twitter.com/ufwupdates/status/1340629945165307904",
+            "display": "twitter.com/ufwupdates/sta…"
+        },
+        "quoted_status": {
+            "created_at": "Sun Dec 20 12:07:41 +0000 2020",
+            "id": 1340629945165307904,
+            "id_str": "1340629945165307904",
+            "full_text": "Good morning to Justice González and Justice González only  https://t.co/vsYgurNqCn https://t.co/Q97S7TCPfu",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                107
+            ],
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https://t.co/Q97S7TCPfu",
+                        "expanded_url": "https://twitter.com/UFWupdates/status/1324510174774661120",
+                        "display_url": "twitter.com/UFWupdates/sta…",
+                        "indices": [
+                            84,
+                            107
+                        ]
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 1324528745156284417,
+                        "id_str": "1324528745156284417",
+                        "indices": [
+                            60,
+                            83
+                        ],
+                        "media_url": "http://pbs.twimg.com/ext_tw_video_thumb/1324528745156284417/pu/img/Wx_G-Plq0Oged5CG.jpg",
+                        "media_url_https": "https://pbs.twimg.com/ext_tw_video_thumb/1324528745156284417/pu/img/Wx_G-Plq0Oged5CG.jpg",
+                        "url": "https://t.co/vsYgurNqCn",
+                        "display_url": "pic.twitter.com/vsYgurNqCn",
+                        "expanded_url": "https://twitter.com/straterize/status/1324528916833316865/video/1",
+                        "type": "photo",
+                        "sizes": {
+                            "large": {
+                                "w": 1040,
+                                "h": 584,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 680,
+                                "h": 382,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 1040,
+                                "h": 584,
+                                "resize": "fit"
+                            }
+                        },
+                        "source_status_id": 1324528916833316865,
+                        "source_status_id_str": "1324528916833316865",
+                        "source_user_id": 806334038554202112,
+                        "source_user_id_str": "806334038554202112"
+                    }
+                ]
+            },
+            "extended_entities": {
+                "media": [
+                    {
+                        "id": 1324528745156284417,
+                        "id_str": "1324528745156284417",
+                        "indices": [
+                            60,
+                            83
+                        ],
+                        "media_url": "http://pbs.twimg.com/ext_tw_video_thumb/1324528745156284417/pu/img/Wx_G-Plq0Oged5CG.jpg",
+                        "media_url_https": "https://pbs.twimg.com/ext_tw_video_thumb/1324528745156284417/pu/img/Wx_G-Plq0Oged5CG.jpg",
+                        "url": "https://t.co/vsYgurNqCn",
+                        "display_url": "pic.twitter.com/vsYgurNqCn",
+                        "expanded_url": "https://twitter.com/straterize/status/1324528916833316865/video/1",
+                        "type": "video",
+                        "sizes": {
+                            "large": {
+                                "w": 1040,
+                                "h": 584,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 680,
+                                "h": 382,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 1040,
+                                "h": 584,
+                                "resize": "fit"
+                            }
+                        },
+                        "source_status_id": 1324528916833316865,
+                        "source_status_id_str": "1324528916833316865",
+                        "source_user_id": 806334038554202112,
+                        "source_user_id_str": "806334038554202112",
+                        "video_info": {
+                            "aspect_ratio": [
+                                130,
+                                73
+                            ],
+                            "duration_millis": 69795,
+                            "variants": [
+                                {
+                                    "bitrate": 2176000,
+                                    "content_type": "video/mp4",
+                                    "url": "https://video.twimg.com/ext_tw_video/1324528745156284417/pu/vid/1040x584/RXnSHUfy3j3XC_HS.mp4?tag=10"
+                                },
+                                {
+                                    "bitrate": 832000,
+                                    "content_type": "video/mp4",
+                                    "url": "https://video.twimg.com/ext_tw_video/1324528745156284417/pu/vid/640x360/kxIb1EA1XQk61W6-.mp4?tag=10"
+                                },
+                                {
+                                    "content_type": "application/x-mpegURL",
+                                    "url": "https://video.twimg.com/ext_tw_video/1324528745156284417/pu/pl/SvvlUu6ZcU67qPy5.m3u8?tag=10"
+                                },
+                                {
+                                    "bitrate": 256000,
+                                    "content_type": "video/mp4",
+                                    "url": "https://video.twimg.com/ext_tw_video/1324528745156284417/pu/vid/480x270/IjIrwPy_TfAO86EF.mp4?tag=10"
+                                }
+                            ]
+                        },
+                        "additional_media_info": {
+                            "monetizable": false,
+                            "source_user": {
+                                "id": 806334038554202112,
+                                "id_str": "806334038554202112",
+                                "name": "(probably) not your mom",
+                                "screen_name": "straterize",
+                                "location": "",
+                                "description": "a shark • progressive organizer • 2-cat lesbian • personal acct, personal opinions • she/her",
+                                "url": null,
+                                "entities": {
+                                    "description": {
+                                        "urls": []
+                                    }
+                                },
+                                "protected": false,
+                                "followers_count": 504,
+                                "friends_count": 858,
+                                "listed_count": 1,
+                                "created_at": "Wed Dec 07 03:06:30 +0000 2016",
+                                "favourites_count": 25364,
+                                "utc_offset": null,
+                                "time_zone": null,
+                                "geo_enabled": true,
+                                "verified": false,
+                                "statuses_count": 8708,
+                                "lang": null,
+                                "contributors_enabled": false,
+                                "is_translator": false,
+                                "is_translation_enabled": false,
+                                "profile_background_color": "F5F8FA",
+                                "profile_background_image_url": null,
+                                "profile_background_image_url_https": null,
+                                "profile_background_tile": false,
+                                "profile_image_url": "http://pbs.twimg.com/profile_images/1266541704082939910/8ZMWoR4l_normal.jpg",
+                                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1266541704082939910/8ZMWoR4l_normal.jpg",
+                                "profile_banner_url": "https://pbs.twimg.com/profile_banners/806334038554202112/1586570577",
+                                "profile_link_color": "1DA1F2",
+                                "profile_sidebar_border_color": "C0DEED",
+                                "profile_sidebar_fill_color": "DDEEF6",
+                                "profile_text_color": "333333",
+                                "profile_use_background_image": true,
+                                "has_extended_profile": true,
+                                "default_profile": true,
+                                "default_profile_image": false,
+                                "following": false,
+                                "follow_request_sent": false,
+                                "notifications": false,
+                                "translator_type": "none"
+                            }
+                        }
+                    }
+                ]
+            },
+            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 16316895,
+                "id_str": "16316895",
+                "name": "United Farm Workers",
+                "screen_name": "UFWupdates",
+                "location": "California",
+                "description": "United Farm Workers of America (UFW): Fighting for farm worker rights since 1962. Si Se Puede! ® RT≠Endorsement",
+                "url": "https://t.co/i4thyPvseu",
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "https://t.co/i4thyPvseu",
+                                "expanded_url": "http://www.ufw.org",
+                                "display_url": "ufw.org",
+                                "indices": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    "description": {
+                        "urls": []
+                    }
+                },
+                "protected": false,
+                "followers_count": 96830,
+                "friends_count": 4307,
+                "listed_count": 745,
+                "created_at": "Tue Sep 16 20:18:19 +0000 2008",
+                "favourites_count": 41713,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": true,
+                "verified": false,
+                "statuses_count": 31947,
+                "lang": null,
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "F00E21",
+                "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_tile": true,
+                "profile_image_url": "http://pbs.twimg.com/profile_images/306656052/Flag_twitter1_normal.jpg",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/306656052/Flag_twitter1_normal.jpg",
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/16316895/1348164671",
+                "profile_link_color": "0084B4",
+                "profile_sidebar_border_color": "FFFFFF",
+                "profile_sidebar_fill_color": "8D9986",
+                "profile_text_color": "333333",
+                "profile_use_background_image": true,
+                "has_extended_profile": false,
+                "default_profile": false,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": true,
+            "quoted_status_id": 1324510174774661120,
+            "quoted_status_id_str": "1324510174774661120",
+            "quoted_status_permalink": {
+                "url": "https://t.co/Q97S7TCPfu",
+                "expanded": "https://twitter.com/UFWupdates/status/1324510174774661120",
+                "display": "twitter.com/UFWupdates/sta…"
+            },
+            "retweet_count": 34,
+            "favorite_count": 165,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "possibly_sensitive_appealable": false,
+            "lang": "cs"
+        },
+        "retweet_count": 12,
+        "favorite_count": 122,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "possibly_sensitive_appealable": false,
+        "lang": "en"
+    },
+    {
         "created_at": "Thu Dec 17 21:39:38 +0000 2020",
         "id": 1339686716530188294,
         "id_str": "1339686716530188294",
@@ -1617,6 +2551,365 @@ export default [
         "retweeted": false,
         "possibly_sensitive": false,
         "lang": "en"
+    },
+    {
+        "created_at": "Tue Oct 27 13:44:56 +0000 2020",
+        "id": 1321085476237910021,
+        "id_str": "1321085476237910021",
+        "full_text": "אין מילים. שונאים את זה שבזכותו הם עשירים. https://t.co/jf8ZN9E1lJ https://t.co/AvhEa7y6TF",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            66
+        ],
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [
+                {
+                    "url": "https://t.co/jf8ZN9E1lJ",
+                    "expanded_url": "https://twitter.com/YairNetanyahu/status/1320339347435147270",
+                    "display_url": "twitter.com/YairNetanyahu/…",
+                    "indices": [
+                        43,
+                        66
+                    ]
+                }
+            ],
+            "media": [
+                {
+                    "id": 1321085469732589575,
+                    "id_str": "1321085469732589575",
+                    "indices": [
+                        67,
+                        90
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElVwPD1XUAcMeJK.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElVwPD1XUAcMeJK.jpg",
+                    "url": "https://t.co/AvhEa7y6TF",
+                    "display_url": "pic.twitter.com/AvhEa7y6TF",
+                    "expanded_url": "https://twitter.com/YairNetanyahu/status/1321085476237910021/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 506,
+                            "h": 680,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1242,
+                            "h": 1670,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 892,
+                            "h": 1200,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 1321085469732589575,
+                    "id_str": "1321085469732589575",
+                    "indices": [
+                        67,
+                        90
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/ElVwPD1XUAcMeJK.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/ElVwPD1XUAcMeJK.jpg",
+                    "url": "https://t.co/AvhEa7y6TF",
+                    "display_url": "pic.twitter.com/AvhEa7y6TF",
+                    "expanded_url": "https://twitter.com/YairNetanyahu/status/1321085476237910021/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 506,
+                            "h": 680,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1242,
+                            "h": 1670,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 892,
+                            "h": 1200,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 876408437814558724,
+            "id_str": "876408437814558724",
+            "name": "Yair Netanyahu 🇮🇱",
+            "screen_name": "YairNetanyahu",
+            "location": "",
+            "description": "https://t.co/iVIHHQNDuS",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/iVIHHQNDuS",
+                            "expanded_url": "https://youtube.com/c/YairNetanyahuTV",
+                            "display_url": "youtube.com/c/YairNetanyah…",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 105520,
+            "friends_count": 584,
+            "listed_count": 210,
+            "created_at": "Sun Jun 18 11:57:09 +0000 2017",
+            "favourites_count": 200016,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 39492,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "F5F8FA",
+            "profile_background_image_url": null,
+            "profile_background_image_url_https": null,
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1326793004594688001/VUwvuMp8_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1326793004594688001/VUwvuMp8_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/876408437814558724/1604954462",
+            "profile_link_color": "1DA1F2",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": false,
+            "default_profile": true,
+            "default_profile_image": false,
+            "following": false,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": true,
+        "quoted_status_id": 1320339347435147270,
+        "quoted_status_id_str": "1320339347435147270",
+        "quoted_status_permalink": {
+            "url": "https://t.co/jf8ZN9E1lJ",
+            "expanded": "https://twitter.com/YairNetanyahu/status/1320339347435147270",
+            "display": "twitter.com/YairNetanyahu/…"
+        },
+        "quoted_status": {
+            "created_at": "Sun Oct 25 12:20:05 +0000 2020",
+            "id": 1320339347435147270,
+            "id_str": "1320339347435147270",
+            "full_text": "תמונה שאומרת ככ הרבה. אלה ששונאים את נתניהו הכי הרבה, אלה העשירים בישראל,  אשר נהנהים הכי הרבה מפירות העשייה הכלכלית והדיפלומטית שלו, לצרכיהם הפרטיים. גם יונתן בן ארצי הנכד, ואולמרט הספיקו כבר לטוס  למסע תענוגות באיחוד האמירויות. https://t.co/ql4nqh9G57",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                229
+            ],
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [],
+                "media": [
+                    {
+                        "id": 1320339327306616833,
+                        "id_str": "1320339327306616833",
+                        "indices": [
+                            230,
+                            253
+                        ],
+                        "media_url": "http://pbs.twimg.com/media/ElLJn2sW0AEkRSa.jpg",
+                        "media_url_https": "https://pbs.twimg.com/media/ElLJn2sW0AEkRSa.jpg",
+                        "url": "https://t.co/ql4nqh9G57",
+                        "display_url": "pic.twitter.com/ql4nqh9G57",
+                        "expanded_url": "https://twitter.com/YairNetanyahu/status/1320339347435147270/photo/1",
+                        "type": "photo",
+                        "sizes": {
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "medium": {
+                                "w": 866,
+                                "h": 1024,
+                                "resize": "fit"
+                            },
+                            "small": {
+                                "w": 575,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "large": {
+                                "w": 866,
+                                "h": 1024,
+                                "resize": "fit"
+                            }
+                        }
+                    }
+                ]
+            },
+            "extended_entities": {
+                "media": [
+                    {
+                        "id": 1320339327306616833,
+                        "id_str": "1320339327306616833",
+                        "indices": [
+                            230,
+                            253
+                        ],
+                        "media_url": "http://pbs.twimg.com/media/ElLJn2sW0AEkRSa.jpg",
+                        "media_url_https": "https://pbs.twimg.com/media/ElLJn2sW0AEkRSa.jpg",
+                        "url": "https://t.co/ql4nqh9G57",
+                        "display_url": "pic.twitter.com/ql4nqh9G57",
+                        "expanded_url": "https://twitter.com/YairNetanyahu/status/1320339347435147270/photo/1",
+                        "type": "photo",
+                        "sizes": {
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "medium": {
+                                "w": 866,
+                                "h": 1024,
+                                "resize": "fit"
+                            },
+                            "small": {
+                                "w": 575,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "large": {
+                                "w": 866,
+                                "h": 1024,
+                                "resize": "fit"
+                            }
+                        }
+                    }
+                ]
+            },
+            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 876408437814558724,
+                "id_str": "876408437814558724",
+                "name": "Yair Netanyahu 🇮🇱",
+                "screen_name": "YairNetanyahu",
+                "location": "",
+                "description": "https://t.co/iVIHHQNDuS",
+                "url": null,
+                "entities": {
+                    "description": {
+                        "urls": [
+                            {
+                                "url": "https://t.co/iVIHHQNDuS",
+                                "expanded_url": "https://youtube.com/c/YairNetanyahuTV",
+                                "display_url": "youtube.com/c/YairNetanyah…",
+                                "indices": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "protected": false,
+                "followers_count": 105520,
+                "friends_count": 584,
+                "listed_count": 210,
+                "created_at": "Sun Jun 18 11:57:09 +0000 2017",
+                "favourites_count": 200016,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": false,
+                "verified": true,
+                "statuses_count": 39492,
+                "lang": null,
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "F5F8FA",
+                "profile_background_image_url": null,
+                "profile_background_image_url_https": null,
+                "profile_background_tile": false,
+                "profile_image_url": "http://pbs.twimg.com/profile_images/1326793004594688001/VUwvuMp8_normal.jpg",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1326793004594688001/VUwvuMp8_normal.jpg",
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/876408437814558724/1604954462",
+                "profile_link_color": "1DA1F2",
+                "profile_sidebar_border_color": "C0DEED",
+                "profile_sidebar_fill_color": "DDEEF6",
+                "profile_text_color": "333333",
+                "profile_use_background_image": true,
+                "has_extended_profile": false,
+                "default_profile": true,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 114,
+            "favorite_count": 1595,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "possibly_sensitive_appealable": false,
+            "lang": "iw"
+        },
+        "retweet_count": 30,
+        "favorite_count": 571,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "possibly_sensitive_appealable": false,
+        "lang": "iw"
     },
 	{
 		"created_at":"Tue Oct 20 20:46:20 +0000 2020",

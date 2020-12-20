@@ -16,17 +16,26 @@
 				:videoUrl="videoUrl"
 			/>
         </div>
+
+		<!-- If this a quote tweet, include the quoted tweet -->
+		<QuotedTweetPreview 
+			v-if="is_quote_tweet && quoted_tweet"
+			:qTweetPreview="quoted_tweet"	
+		 />
     </div>
 </template>
 
 <script>
 import ExpandableVideo from '../ExpandableVideo.vue';
 import TweetPreviewImgsGrid from "./TweetPreviewImgsGrid.vue";
+import QuotedTweetPreview from "./QuotedTweetPreview.vue";
 
 export default {
+	name: "TweetPreviewBody",
     components:{
 		TweetPreviewImgsGrid,
-        ExpandableVideo
+		ExpandableVideo,
+		QuotedTweetPreview
     },
     props: {
 		tweetPreview: {
@@ -43,7 +52,9 @@ export default {
             hasMedia: false,
 			photosJson: [],
 			videoThumbnailUrl: "",
-			videoUrl: ""
+			videoUrl: "",
+			is_quote_tweet: false, // Whether the tweet is quote of other tweet
+			quoted_tweet: {}
         }
     },
     created(){
@@ -51,7 +62,15 @@ export default {
 		this.tweetId = tweetPrev.id
         let tweetText = tweetPrev.full_text || tweetPrev.text;
 		this.textHtml = tweetText.replace(/(?:\r\n|\r|\n)/g, '<br>');//Convert string to html
-        this.lang = tweetPrev.lang;
+		this.lang = tweetPrev.lang;
+
+		// Whether the tweet is quote of other tweet
+		if(tweetPrev.is_quote_status === true){
+			this.is_quote_tweet = true
+			this.quoted_tweet = tweetPrev.quoted_status
+		}
+
+		// Check for media
         if(tweetPrev.extended_entities){
 			const extEnt = tweetPrev.extended_entities;
 			if(extEnt.media){

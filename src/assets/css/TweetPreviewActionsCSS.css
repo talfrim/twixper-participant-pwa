@@ -47,6 +47,10 @@
   background-position: right;
 }
 
+.animated{
+	background-position: right;
+}
+
 @keyframes heart-burst {
  from {background-position:left;}
  to { background-position:right;}

@@ -13,23 +13,24 @@ h4{
 }
 h4 .usernameSpan{
 	font-weight: 400;
+	color: rgb(91, 112, 131);
 }
 
 .post {
 	display: grid;
-	grid-template-columns: 12% 88%;
+	grid-template-columns: 12% 86.5%;
 	padding: 1rem 0 1rem 1rem;
 	border-bottom: 0.1rem solid #eee;
 }
 
 @media (max-width: 475px) {
 	.post {
-		grid-template-columns: 16% 84%;
+		grid-template-columns: 16% 82.5%;
 	}
 }
 @media (max-width: 340px) {
 	.post {
-		grid-template-columns: 18% 82%;
+		grid-template-columns: 18% 80.5%;
 	}
 }
 
@@ -74,7 +75,7 @@ h4 .usernameSpan{
 }
 
 .post-text {
-	width: 95vmin;
+	width: 95%;
 	font-size: 1.6rem;
 	margin-bottom: 1rem;
 }
@@ -290,7 +291,7 @@ h4 .usernameSpan{
 	}
 
 	.post-text {
-		width: 95%;
+		width: 97%;
 	}
 
 	.post-img {

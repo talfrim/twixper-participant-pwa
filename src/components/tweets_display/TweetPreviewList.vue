@@ -91,14 +91,12 @@ export default {
 
 <style scoped>
     .posts {
-		/*grid-column: 2 / 3;*/
-		grid-row: 2 / -1;
 		background-color: #fff;
 	}
 
-    .posts {
+    /*.posts {
 			grid-column: 1 / -1;
-        }
+        }*/
         
     .tpl-wrapper{
         height: 100%; /* 100% of the parent's height */

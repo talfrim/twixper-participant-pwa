@@ -1,1 +1,20 @@
-{"name":"Twixper for participant","short_name":"Twixper","theme_color":"#4DBA87","icons":[{"src":"./Browser_icon.png","sizes":"192x192","type":"image/png"}],"start_url":"/","display":"standalone","background_color":"#000000"}
+{
+    "name": "Twixper for participants",
+    "short_name": "Twixper",
+    "theme_color": "#00acee",
+    "intent_filters": {
+        "scope_url_scheme": "https",
+        "scope_url_host": "twitter.com",
+        "scope_url_path": "/"
+    },
+    "icons": [
+        {
+            "src": "./Browser_icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#A9A9A9"
+}

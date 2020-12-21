@@ -37,7 +37,9 @@
                 @error="imageLoadError()"
             />
             <div class="play-container">
+                <PlayButton />
             </div>
+            
         </div>
         <div class="video-container">
             <!-- The following html will be injected when the video is clicked
@@ -53,10 +55,12 @@
 <script>
 import Loader from './Loader.vue'
 import ColorThief from 'colorthief';
+import PlayButton from "../components/buttons/PlayButton"
+
 var colorThief = new ColorThief();
 
 export default {
-    components: { Loader },
+    components: { Loader, PlayButton },
     props:{
         thumbnailImgUrl:{
             type: String,
@@ -256,14 +260,14 @@ body > .exp-video-container.expanded {
 }
 .play-container{
     position: absolute;
-    background: url("../assets/images/playButton.png");
-    height: 13vmin;
-    width: 13vmin;
+    /* background: url("../assets/images/playButton.png"); */
+    /* height: 13vmin;
+    width: 13vmin; */
     top: 38%;
-    left: 42%;
-    background-size: 100% 100%;
+    left: 45%;
+    /* background-size: 100% 100%;
     border: 1px solid white;
-    border-radius: 50%
+    border-radius: 50% */
 }
 
 .video-container{

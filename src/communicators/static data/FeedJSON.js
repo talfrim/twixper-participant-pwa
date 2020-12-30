@@ -53,7 +53,7 @@ export default {
 */
 
 /*CONTAINS BOTH TWEETS WITH "tweet+mode: extended" PARAMETERS AND WITHOUT THIS PARAMETER. */
-export default [
+exports.data = [
     {
         "created_at": "Thu Dec 17 21:42:35 +0000 2020",
         "id": 1339687461107077120,

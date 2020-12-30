@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import {sleepFunc} from "../../assets/globalFunctions";
 import PageHeader from "../../components/PageHeader.vue"
 import Loader from "../../components/Loader.vue"
-import followersPeopleJSON from "../../communicators/FollowersPeopleJSON.js"
 import UserPreviewList from "../../components/user/UserPreviewList.vue"
+
+import {serverGetUserFollowers} from "../../communicators/serverCommunicator"
 
 export default {
     components:{
@@ -37,8 +37,8 @@ export default {
         this.headerText = this.userName + " Followers";
         // Make a request to the server to get the user's followers
         this.showLoader = true;
-        await sleepFunc(700);
-        this.usersResultsArr.push(...(followersPeopleJSON.users));
+        const response = await serverGetUserFollowers(this.userName)
+        this.usersResultsArr.push(...(response.users));
         this.showLoader = false;
     },
     mounted() {

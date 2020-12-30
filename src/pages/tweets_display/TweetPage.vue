@@ -43,7 +43,8 @@
 import PageHeader from "../../components/PageHeader.vue"
 import TweetPreviewBody from "../../components/tweets_display/TweetPreviewBody.vue"
 import TweetPreviewActions from "../../components/tweets_display/TweetPreviewActions.vue"
-import TweetPageJSON from "../../communicators/TweetPageJSON.js"
+
+import TweetPageJSON from "../../communicators/static data/TweetPageJSON"
 
 export default {
     components:{

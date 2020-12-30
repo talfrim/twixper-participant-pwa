@@ -28,13 +28,14 @@
 			>  -->
 			<div
 				class="user-avatar-container"
+				ref="userAvatarContainer"
 				@click="clickedTweet"
 			>
 				<div class="user-avatar" v-lazyload>
 				<!--<img :data-url="author.profileImgUrl">-->
-				<router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
-					tag="img" :data-url="author.profileImgUrl"> 
-				</router-link>
+					<router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+						tag="img" :data-url="author.profileImgUrl"> 
+					</router-link>
 				</div>
 			</div>
 			
@@ -45,7 +46,7 @@
 				> 		 -->
 				<div
 					class="post-user-info"
-					@click="clickedTweet"
+					@click="clickedUserInfo"
 				>
 					<h4>
 						{{author.userFullName}} 
@@ -134,12 +135,15 @@ export default {
 		this.author.isVerified = userJson.verified;		
 	},
 	methods:{
-		clickedTweet(){
-			// Redirect to tweet page
-			this.setBackgroundGrey(this.$refs.tweetPrevWrapper)
-			setTimeout( () =>
-				this.$router.push({ path: '/tweetPage/'+this.tweetId})
-			, 400)
+		clickedTweet(e){
+			// Check if the click is not on the user img
+			if(!e || e.target == this.$refs.userAvatarContainer){
+				// Redirect to tweet page
+				this.setBackgroundGrey(this.$refs.tweetPrevWrapper)
+				setTimeout( () =>
+					this.$router.push({ path: '/tweetPage/'+this.tweetId})
+				, 400)
+			}
 		},
 		clickedRetweet(){
 			// Redirect to the rewtweeter user page
@@ -150,6 +154,9 @@ export default {
 		},
 		setBackgroundGrey(domElement){
 			domElement.style.backgroundColor = "rgba(0,0,0,0.1)"
+		},
+		clickedUserInfo(){
+			this.clickedTweet()
 		}
 	}
 	

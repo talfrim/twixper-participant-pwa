@@ -20,12 +20,11 @@
 </template>
 
 <script>
-import {sleepFunc} from "../../assets/globalFunctions";
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
 import UserPreviewList from "../../components/user/UserPreviewList.vue"
 import Loader from "../../components/Loader.vue";
-import feedJSON from "../../communicators/FeedJSON.js"
-import peopleJSON from "../../communicators/SearchPeopleJSON.js"
+
+import {serverSearchForTweets, serverSearchForUsers} from "../../communicators/serverCommunicator"
 
 export default {
     components: {
@@ -67,20 +66,20 @@ export default {
         async searchForTweets(q){
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
-                await sleepFunc(700);
-                this.tweetsResultsArr.push(...feedJSON);
+                const response = await serverSearchForTweets(q)
+                this.tweetsResultsArr.push(...response);
                 this.showLoader = false;
             }
         },
         async searchForUsers(q){
             if(this.usersResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
-                await sleepFunc(700);
-                this.usersResultsArr.push(...peopleJSON);
+                const response = await serverSearchForUsers(q)
+                this.usersResultsArr.push(...response);
                 this.showLoader = false;
             }
         },
-        async searchForMedia(q){
+        searchForMedia(q){
             
         },
     }

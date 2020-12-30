@@ -12,7 +12,8 @@
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
 import MenuHeader from "../../components/MenuHeader.vue";
 import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
-import feedJSON from "../../communicators/FeedJSON.js"
+
+import {serverGetFeed} from "../../communicators/serverCommunicator"
 
 export default {
     components: {
@@ -26,8 +27,9 @@ export default {
             feedTweetsArr: []
         }
     },
-    created(){
-        this.feedTweetsArr.push(...feedJSON);
+    async created(){
+        const response = await serverGetFeed()
+        this.feedTweetsArr.push(...response);
         //console.log(this.feedTweetsArr);
     },
     mounted(){

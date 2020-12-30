@@ -8,7 +8,8 @@
 
 <script>
 //Temporarly instead of server request
-import UserPageJSON from "../../communicators/UserPageJSON.js"
+import UserPageJSON from "../../communicators/static data/UserPageJSON.js"
+
 import UserIntroduction from "../../components/user/UserIntroduction.vue"
 import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
 

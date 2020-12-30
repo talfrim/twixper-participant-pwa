@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import {sleepFunc} from "../../assets/globalFunctions";
 import PageHeader from "../../components/PageHeader.vue"
 import Loader from "../../components/Loader.vue"
-import friendsPeopleJSON from "../../communicators/FriendsPeopleJSON.js"
 import UserPreviewList from "../../components/user/UserPreviewList.vue"
+
+import {serverGetUserFriends} from "../../communicators/serverCommunicator"
 
 export default {
     components:{
@@ -37,8 +37,8 @@ export default {
         this.headerText = this.userName + " Following";
         // Make a request to the server to get the user's friends
         this.showLoader = true;
-        await sleepFunc(700);
-        this.usersResultsArr.push(...(friendsPeopleJSON.users));
+        const response = await serverGetUserFriends(this.userName)
+        this.usersResultsArr.push(...(response.users));
         this.showLoader = false;
     },
     mounted() {

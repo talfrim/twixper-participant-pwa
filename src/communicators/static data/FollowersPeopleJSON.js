@@ -1,5 +1,5 @@
 // https://api.twitter.com/1.1/followers/list.json?screen_name=ManCity&count=50
-export default {
+exports.data = {
     "users": [
         {
             "id": 1326923711774138370,

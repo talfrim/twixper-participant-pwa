@@ -28,8 +28,6 @@ import './registerServiceWorker'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
-
-
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 import routes from "./routes";
@@ -45,7 +43,7 @@ const router = new VueRouter({
 Vue.config.productionTip = false
 
 // v-closable. WE DONT USE THIS ANYMORE
-let handleOutsideClick
+/*let handleOutsideClick
 let areaInFocus // The area that is in focused
 let areaParentEl// the wrapper that surrounds the area, a listener will be attcached to him
 Vue.directive('closable', {
@@ -93,7 +91,7 @@ Vue.directive('closable', {
     // unbind touchstart listeners from his wrapper
     areaParentEl.removeEventListener('touchstart', handleOutsideClick)
   }
-}) 
+}) */
 //End of v-closable
 
 new Vue({

@@ -70,14 +70,23 @@ export default {
         }
     },
     created(){
+        // Retrieve the tweet Json from localStorage
+        if (localStorage.getItem("tweet" + this.tweetId) !== null) {
+            this.tweetPageJson = JSON.parse(localStorage["tweet" + this.tweetId]);
+        }
+        // Else, tweet not found in ls (maybe it is a retweet), ask the server for it.
+        else{
+            console.log("Tweet "+ this.tweetId + " not found in local storage")
+            this.tweetPageJson = TweetPageJSON
+        }
+
         // Do preparation to the data so it would be more comfortable to display it
-        this.tweetPageJson = TweetPageJSON;
         // If this is a retweet, the tweetPrev should be the original tweet
 		if(this.tweetPageJson.retweeted_status){
 			this.retweet_details = {
 				is_retweet: true,
-				retweet_author_username: TweetPageJSON.user.screen_name,
-				retweet_author_fullName: TweetPageJSON.user.name
+				retweet_author_username: this.tweetPageJson.user.screen_name,
+				retweet_author_fullName: this.tweetPageJson.user.name
             }
             this.tweetPageJson = this.tweetPageJson.retweeted_status
 		}

@@ -31,7 +31,7 @@ export default {
   body{
     /* Prevent the page from scrolling*/ 
     overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
   }
   /*
   .fade-enter-active, .fade-leave-active {

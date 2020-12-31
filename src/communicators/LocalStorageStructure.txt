@@ -1,0 +1,13 @@
+feedTweetsOrder: list of ids of tweets to display in that order in the feed. Seperated by commas.
+searchTweetsOrder: list of ids of tweets to display in that order in search results. Seperated by commas.
+searchUsersOrder: list of screen names of users to display in that order in search results. Seperated by commas.
+userTweetsOrder: list of ids of tweets to display in that order in user public page in tweets section. Seperated by commas.
+userLikesOrder: list of ids of tweets to display in that order in user public page in likes section. Seperated by commas.
+
+userFollowersOrder:
+userFriendsOrder:
+currentUserFollowesFriends: Screen name of the latest user we see his followers or friends.
+
+tweet13587635458776856: Json of a tweet with that tweet id.
+userManCity: Json of a user, with that user screen name.
+currentSearchTab: digit between 0-2. 0 is tweets, 1 is users, 2 is media.

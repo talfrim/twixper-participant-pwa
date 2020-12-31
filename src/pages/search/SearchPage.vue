@@ -25,53 +25,76 @@
 
 
 <script>
-    import Tabs from "../../components/Tabs.vue"
-    import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
-    import SearchBox from "../../components/search/SearchBox.vue"
-    import SearchResults from "../../components/search/SearchResults.vue";
+import Tabs from "../../components/Tabs.vue"
+import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
+import SearchBox from "../../components/search/SearchBox.vue"
+import SearchResults from "../../components/search/SearchResults.vue";
 
-    export default {
-        components: {
-            WriteNewTweet,
-            SearchBox,
-            Tabs,
-            SearchResults
-        },
-        data(){
-            return{
-                cur: 0,
-                currQuery: this.$route.params.query,
-                tabs: [{ name: "Tweets" }, { name: "Users" }, { name: "Media" }],
-            }
-        },
-        mounted() {
-            // Setting the appropiate height of the search-results div
-            window.addEventListener('resize', this.handleResize)
-            this.$refs.resultsDiv.style.height = 
-                    window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
-            
+export default {
+    components: {
+        WriteNewTweet,
+        SearchBox,
+        Tabs,
+        SearchResults
+    },
+    data(){
+        return{
+            cur: 0,
+            currQuery: this.$route.params.query,
+            tabs: [{ name: "Tweets" }, { name: "Users" }, { name: "Media" }],
+        }
+    },
+    watch:{
+        cur(newValue){
+            localStorage["currentSearchTab"] = newValue
+        }
+    },
+    created(){
+        // Retreive the result tab we were on.
+        if (localStorage.getItem("currentSearchTab") !== null){
+            this.cur = parseInt(localStorage["currentSearchTab"])
+        }
+        else{
+            localStorage["currentSearchTab"] = 0
+            this.cur = 0
+        }
+    },
+    mounted() {
+        // Setting the appropiate height of the search-results div
+        window.addEventListener('resize', this.handleResize)
+        this.$refs.resultsDiv.style.height = 
+                window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
+        
+        // If there are search results from local storage, retreive them
+        if (localStorage.getItem("searchTweetsOrder") !== null 
+            || localStorage.getItem("searchUsersOrder") !== null) {
+            this.$refs.searchResults.retreiveResultsFromLs();
+        }
+        // Else, search for query
+        else{
             this.searchForQuery(this.currQuery);
-        },
-        beforeDestroy: function () {
-            window.removeEventListener('resize', this.handleResize)
-        },
-        methods: {
-            searchForQuery(query){
-                if(query.length > 0){
-                    this.currQuery = query;
-                    this.$refs.searchResults.searchForQuery(this.currQuery);
-                }
-            },
-            tabClick(index) {
-                this.cur = index
-            },
-            handleResize(event) {
-                // Setting the appropiate height of the search-results div
-                this.$refs.resultsDiv.style.height = 
-                    window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
+        }
+    },
+    beforeDestroy(){
+        window.removeEventListener('resize', this.handleResize)
+    },
+    methods: {
+        searchForQuery(query){
+            if(query.length > 0){
+                this.currQuery = query;
+                this.$refs.searchResults.searchForQuery(this.currQuery);
             }
+        },
+        tabClick(index) {
+            this.cur = index
+        },
+        handleResize(event) {
+            // Setting the appropiate height of the search-results div
+            this.$refs.resultsDiv.style.height = 
+                window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
         }
     }
+}
 </script>
 
 

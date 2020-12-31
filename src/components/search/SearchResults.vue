@@ -25,6 +25,7 @@ import UserPreviewList from "../../components/user/UserPreviewList.vue"
 import Loader from "../../components/Loader.vue";
 
 import {serverSearchForTweets, serverSearchForUsers} from "../../communicators/serverCommunicator"
+import {emptyFromLsByList, addToLsByList, retrieveListFromLs} from "../../assets/globalFunctions"
 
 export default {
     components: {
@@ -62,12 +63,20 @@ export default {
             this.tweetsResultsArr = [];
             this.usersResultsArr = [];
             this.mediaResultsArr = [];
+            // Empty the relevant tweets and users from local storage.
+            emptyFromLsByList("tweet", "searchTweetsOrder")
+            emptyFromLsByList("user", "searchUsersOrder")
+            localStorage.removeItem("searchTweetsOrder");
+            localStorage.removeItem("searchUsersOrder");
         },
         async searchForTweets(q){
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
                 const response = await serverSearchForTweets(q)
                 this.tweetsResultsArr.push(...response);
+                // Add tweets results to local storage
+                // TODO: Add only the latest 30 or 40 tweets.
+                addToLsByList("tweet", this.tweetsResultsArr, "searchTweetsOrder")
                 this.showLoader = false;
             }
         },
@@ -76,13 +85,20 @@ export default {
                 this.showLoader = true;
                 const response = await serverSearchForUsers(q)
                 this.usersResultsArr.push(...response);
+                // Add users results to local storage
+                addToLsByList("user", this.usersResultsArr, "searchUsersOrder")
                 this.showLoader = false;
             }
         },
         searchForMedia(q){
             
         },
-    }
+        retreiveResultsFromLs(){
+            this.tweetsResultsArr = retrieveListFromLs("tweet", "searchTweetsOrder")
+            this.usersResultsArr = retrieveListFromLs("user", "searchUsersOrder")
+        }
+    },
+   
 }
 
 // Context = this component

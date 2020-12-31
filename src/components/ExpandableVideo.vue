@@ -221,7 +221,7 @@ body > .exp-video-container.expanded {
 
 .exp-video-container{
     transition: .5s opacity;
-    width: 76vmin;
+    /* width: 76vmin; */
     height: 48vmin;
 }
 

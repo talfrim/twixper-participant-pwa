@@ -1,6 +1,6 @@
 <template>
     <div>
-        <MenuHeader v-if="myEl" :parentsEl="myEl"/>
+        <MenuHeader v-if="myEl" :parentsEl="myEl" />
         <WriteNewTweet />
         <div class="tpl-container">
             <TweetPreviewList :feedTweetsArr="feedTweetsArr"></TweetPreviewList>

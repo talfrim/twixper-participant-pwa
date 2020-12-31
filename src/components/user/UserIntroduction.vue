@@ -128,6 +128,9 @@ export default {
         }
         this.joinedDate = userJson.created_at;
         this.following = userJson.following;
+        if(this.following == null){
+            this.following = false
+        }
         this.folowersNumStr = parseTwitterNumbersToStringFunc(userJson.followers_count);
         this.friendsNumStr = parseTwitterNumbersToStringFunc(userJson.friends_count);
         

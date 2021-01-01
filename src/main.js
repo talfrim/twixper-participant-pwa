@@ -28,14 +28,24 @@ import './registerServiceWorker'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
-
-
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 import routes from "./routes";
 const router = new VueRouter({
   routes,
 });
+
+/*router.beforeEach((to, from, next) => {
+  next()
+})*/
+
+router.afterEach((to, from) => {
+  if(to.name == "tweetPage" && from.name == "tweetPage"){
+    // Reload the window when travling to different pages in the same route
+    // For example when viewing a tweet page with a quoated tweet and clicking on the q. tweet.
+    window.location.reload()
+  }
+})
 
 // import { ImagePlugin } from 'bootstrap-vue'
 //import './quasar'
@@ -45,7 +55,7 @@ const router = new VueRouter({
 Vue.config.productionTip = false
 
 // v-closable. WE DONT USE THIS ANYMORE
-let handleOutsideClick
+/*let handleOutsideClick
 let areaInFocus // The area that is in focused
 let areaParentEl// the wrapper that surrounds the area, a listener will be attcached to him
 Vue.directive('closable', {
@@ -93,7 +103,7 @@ Vue.directive('closable', {
     // unbind touchstart listeners from his wrapper
     areaParentEl.removeEventListener('touchstart', handleOutsideClick)
   }
-}) 
+}) */
 //End of v-closable
 
 new Vue({

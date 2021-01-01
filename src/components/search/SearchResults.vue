@@ -1,31 +1,37 @@
 <template>
     <div class="sr-wrapper">
-        <Loader v-if="showLoader"/>
+        <div class="loader-container" v-if="showLoader">
+            <Loader />
+        </div>
         <TweetPreviewList 
             :hidden="!(currTabName === 'Tweets')" 
-            :feedTweetsArr="tweetsResultsArr" 
+            :feedTweetsArr="tweetsResultsArr"
+            lsScrollTop="searchTweetsScrollTop"
+            ref="tpl"
         />
         <UserPreviewList 
             :hidden="!(currTabName === 'Users')" 
             :userPreviews="usersResultsArr"
+            lsScrollTop="searchUsersScrollTop"
+            ref="upl"
         />
         <div 
             :hidden="!(currTabName === 'Media')" 
             class="media-div"
         >
-        <br>
+            <br>
             <h2> Sorry, We currently not supporting media search results.</h2>
         </div>
     </div>
 </template>
 
 <script>
-import {sleepFunc} from "../../assets/globalFunctions";
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList.vue"
 import UserPreviewList from "../../components/user/UserPreviewList.vue"
 import Loader from "../../components/Loader.vue";
-import feedJSON from "../../communicators/FeedJSON.js"
-import peopleJSON from "../../communicators/SearchPeopleJSON.js"
+
+import {serverSearchForTweets, serverSearchForUsers} from "../../communicators/serverCommunicator"
+import {emptyFromLsByList, addToLsByList, retrieveListFromLs} from "../../assets/globalFunctions"
 
 export default {
     components: {
@@ -63,27 +69,46 @@ export default {
             this.tweetsResultsArr = [];
             this.usersResultsArr = [];
             this.mediaResultsArr = [];
+            // Empty the relevant tweets and users from local storage.
+            emptyFromLsByList("tweet", "searchTweetsOrder")
+            emptyFromLsByList("user", "searchUsersOrder")
+            localStorage.removeItem("searchTweetsOrder");
+            localStorage.removeItem("searchUsersOrder");
+            // Reset scroll
+            localStorage["searchTweetsScrollTop"] = 0
+            localStorage["searchUsersScrollTop"] = 0
         },
         async searchForTweets(q){
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
-                await sleepFunc(700);
-                this.tweetsResultsArr.push(...feedJSON);
+                const response = await serverSearchForTweets(q)
+                const response_tweets = response.statuses
+                this.tweetsResultsArr.push(...response_tweets);
+                // Add tweets results to local storage
+                // TODO: Add only the latest 30 or 40 tweets.
+                addToLsByList("tweet", this.tweetsResultsArr, "searchTweetsOrder")
                 this.showLoader = false;
             }
         },
         async searchForUsers(q){
             if(this.usersResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
-                await sleepFunc(700);
-                this.usersResultsArr.push(...peopleJSON);
+                const response = await serverSearchForUsers(q)
+                this.usersResultsArr.push(...response);
+                // Add users results to local storage
+                addToLsByList("user", this.usersResultsArr, "searchUsersOrder")
                 this.showLoader = false;
             }
         },
-        async searchForMedia(q){
+        searchForMedia(q){
             
         },
-    }
+        retreiveResultsFromLs(){
+            this.tweetsResultsArr = retrieveListFromLs("tweet", "searchTweetsOrder")
+            this.usersResultsArr = retrieveListFromLs("user", "searchUsersOrder")
+        }
+    },
+   
 }
 
 // Context = this component
@@ -100,6 +125,9 @@ function private_switchTabsAndSearch(context, q){
             break;
         default:
     }
+    // Update the scroll position on each list
+    context.$refs.tpl.updateListScrollPosition();
+    context.$refs.upl.updateListScrollPosition();
 } 
 </script>
 
@@ -107,5 +135,11 @@ function private_switchTabsAndSearch(context, q){
 .sr-wrapper{
     height: 100%;
     width: 100%;
+}
+
+.loader-container{
+    height: 20%;
+    display: flex;
+    align-items: center;
 }
 </style>

@@ -13,11 +13,12 @@
 </template>
 
 <script>
-import {sleepFunc} from "../../assets/globalFunctions";
 import PageHeader from "../../components/PageHeader.vue"
 import Loader from "../../components/Loader.vue"
-import followersPeopleJSON from "../../communicators/FollowersPeopleJSON.js"
 import UserPreviewList from "../../components/user/UserPreviewList.vue"
+
+import {serverGetUserFollowers} from "../../communicators/serverCommunicator"
+import {addToLsByList, retrieveListFromLs, emptyFromLsByList} from "../../assets/globalFunctions"
 
 export default {
     components:{
@@ -34,12 +35,28 @@ export default {
         }
     },
     async created(){
+        // Erase followers and friends from local storage if they are someone else's
+        if(localStorage["currentUserFollowesFriends"] !== this.userName){
+            emptyFromLsByList("user", "userFollowersOrder")
+            emptyFromLsByList("user", "userFriendsOrder")
+            localStorage.removeItem("userFollowersOrder")
+            localStorage.removeItem("userFriendsOrder")
+        }
+
         this.headerText = this.userName + " Followers";
-        // Make a request to the server to get the user's followers
-        this.showLoader = true;
-        await sleepFunc(700);
-        this.usersResultsArr.push(...(followersPeopleJSON.users));
-        this.showLoader = false;
+        if (localStorage.getItem("userFollowersOrder") !== null) {
+            this.usersResultsArr = retrieveListFromLs("user", "userFollowersOrder")
+        }
+        else{
+            // Make a request to the server to get the user's followers
+            this.showLoader = true;
+            const response = await serverGetUserFollowers(this.userName)
+            this.usersResultsArr.push(...(response.users));
+            // Add to local storage
+            addToLsByList("user", this.usersResultsArr, "userFollowersOrder")
+            localStorage["currentUserFollowesFriends"] = this.userName
+            this.showLoader = false;
+        }
     },
     mounted() {
         // Setting the appropiate height of the results div

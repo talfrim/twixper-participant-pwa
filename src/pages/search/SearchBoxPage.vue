@@ -17,35 +17,46 @@
 </template>
 
 <script>
-    import SearchBox from "../../components/search/SearchBox.vue"
-    import MenuHeader from "../../components/MenuHeader.vue"
-    import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
+import SearchBox from "../../components/search/SearchBox.vue"
+import MenuHeader from "../../components/MenuHeader.vue"
+import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
 
-    export default {
-        components: {
-            SearchBox,
-            MenuHeader,
-            WriteNewTweet
-        },
-        data(){
-            return{
-                //for menu
-                myEl: null,
-                //real data
-                //query:"",
-            }
-        },
-        methods: {
-            redirectToSearch(query) {
-                if(query.length > 0){
-                    this.$router.push({ name: 'search', params: {query: query} })
-                }
-            }
-        },
-        mounted() {
-            this.myEl = this.$el;
+import {emptyFromLsByList} from "../../assets/globalFunctions"
+
+export default {
+    components: {
+        SearchBox,
+        MenuHeader,
+        WriteNewTweet
+    },
+    data(){
+        return{
+            //for menu
+            myEl: null,
+            //real data
+            //query:"",
         }
+    },
+    methods: {
+        redirectToSearch(query) {
+            if(query.length > 0){
+                this.$router.push({ name: 'search', params: {query: query} })
+            }
+        }
+    },
+    created(){
+        // Empty search results from local storage
+        emptyFromLsByList("tweet", "searchTweetsOrder")
+        emptyFromLsByList("user", "searchUsersOrder")
+        localStorage.removeItem("searchTweetsOrder");
+        localStorage.removeItem("searchUsersOrder");
+        // Empty current result tab
+        localStorage.removeItem("currentSearchTab");
+    },
+    mounted() {
+        this.myEl = this.$el;
     }
+}
 </script>
 
 <style scoped>

@@ -1,4 +1,4 @@
-export default 
+exports.data =
 {
     "id": 14573900,
     "id_str": "14573900",

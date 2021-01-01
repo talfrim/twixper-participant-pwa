@@ -1,8 +1,10 @@
 .retweeter-user-info{
+	display: inline-block;
 	font-size: 13px;
 	color: rgb(91, 112, 131);
 	font-weight: 700;
 	margin: 1rem 0 -0.5rem 3rem ;
+	transition: background-color .4s ease;
 }
 .tweet-page-wrapper{
     margin: 2vh 1vw;

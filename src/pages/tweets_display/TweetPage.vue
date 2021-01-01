@@ -3,14 +3,20 @@
         <PageHeader text="Tweet" />
 
         <!-- If this a retweet, add appropiate header -->
-		<router-link
+
+		<!-- <router-link
 			v-if="retweet_details.is_retweet == true"
 			:to="{ name: 'userPage', params: {userName: retweet_details.retweet_author_username} }"
 			tag="div" class="retweeter-user-info"
-		> 	
+		> 	 -->
+        <div v-if="retweet_details.is_retweet == true"
+			class="retweeter-user-info"
+			ref="retweeterDiv"
+			@click="clickedRetweet"
+		>
 			<i class="fas fa-retweet"></i>
 			{{retweet_details.retweet_author_fullName}} Retweeted
-		</router-link>
+		</div>
 
         <div class="tweet-page-wrapper">
             <div class="author-info-container">
@@ -96,6 +102,18 @@ export default {
 		this.author.userName = userJson.screen_name;
 		this.author.profileImgUrl = userJson.profile_image_url_https;
 		this.author.isVerified = userJson.verified;
+    },
+    methods:{
+        clickedRetweet(){
+            // Redirect to the rewtweeter user page
+            this.setBackgroundGrey(this.$refs.retweeterDiv)
+            setTimeout( () =>
+                this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username})
+            , 400)
+        },
+        setBackgroundGrey(domElement){
+            domElement.style.backgroundColor = "rgba(0,0,0,0.1)"
+        },
     }
 }
 </script>

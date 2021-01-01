@@ -12,11 +12,11 @@ export default {
         TweetPreview,
     },
     props:{
-        feedTweetsArr:{
+        feedTweetsArr:{ // Not necessarily feed tweets.
             type: Array,
             required: true
         },
-        lsScrollTop:{ // The key in the ls that holds the scroll position
+        lsScrollTop:{ // The key in the ls that holds the scroll position.
             type: String,
             required: false,
             default: null

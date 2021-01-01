@@ -1,6 +1,8 @@
 <template>
     <div class="sr-wrapper">
-        <Loader v-if="showLoader"/>
+        <div class="loader-container" v-if="showLoader">
+            <Loader />
+        </div>
         <TweetPreviewList 
             :hidden="!(currTabName === 'Tweets')" 
             :feedTweetsArr="tweetsResultsArr"
@@ -132,5 +134,11 @@ function private_switchTabsAndSearch(context, q){
 .sr-wrapper{
     height: 100%;
     width: 100%;
+}
+
+.loader-container{
+    height: 20%;
+    display: flex;
+    align-items: center;
 }
 </style>

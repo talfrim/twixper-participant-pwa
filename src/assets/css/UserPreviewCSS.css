@@ -1,8 +1,9 @@
 .wrapper{
 	display: flex;
 	/*margin: 0 0 2rem 0;*/
-	 padding: 1rem 0; 
-	 border-bottom: 0.1rem solid #eee;
+	padding: 1rem 0; 
+	border-bottom: 0.1rem solid #eee;
+	transition: background-color .4s ease;
 }
 .user-avatar {
 	width: 5rem;

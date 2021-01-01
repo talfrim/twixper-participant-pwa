@@ -1,17 +1,25 @@
 <template> 
-    <div class="wrapper"> 
-        <router-link :to="{ name: 'userPage', params: {userName: username} }"
+    <div class="wrapper" ref="wrapper"> 
+        <!-- <router-link :to="{ name: 'userPage', params: {userName: username} }"
             tag="div" class="user-avatar-container"
-        >    
+        >     -->
+        <div 
+            class="user-avatar-container"
+            @click="clickedOnUser"
+        >
             <div class="user-avatar" v-lazyload>
                 <img :data-url="profileImgUrl"> 
             </div>
-       </router-link>
+       </div>
         <div class="user-content-wrapper">
             <div class="top-segment">
-                <router-link :to="{ name: 'userPage', params: {userName: username} }"
+                <!-- <router-link :to="{ name: 'userPage', params: {userName: username} }"
                     tag="div" class="names-container"
-                >  
+                >   -->
+                <div 
+                    class="names-container"
+                    @click="clickedOnUser"
+                >
                     <div class="user-full-name-container">
                         <span>{{name}}</span>
                         <i v-if="isVerified" class="fas fa-check-circle"></i>
@@ -19,7 +27,7 @@
                     <div class="user-username-container">
                         <span>@{{username}}</span>
                     </div>
-                </router-link>
+                </div>
                 <div class="follow-btn-container">
                     <FollowButton class="follow-btn"
                         :usernameContext="username" 
@@ -27,10 +35,14 @@
                     />
                 </div>
             </div>
-			<router-link :to="{ name: 'userPage', params: {userName: username} }"
-                tag="div" class="user-desc"> 
+			<!-- <router-link :to="{ name: 'userPage', params: {userName: username} }"
+                tag="div" class="user-desc">  -->
+            <div 
+                class="user-desc"
+                @click="clickedOnUser"
+            >
                 {{description}}
-		    </router-link>
+		    </div>
         </div>
     </div>
 </template>
@@ -66,6 +78,18 @@
             this.profileImgUrl = userPrev.profile_image_url_https
             this.isFollowed = userPrev.following  
 			this.isVerified = userPrev.verified
+        },
+        methods:{
+            clickedOnUser(){
+                // Redirect to the rewtweeter user page
+                this.setBackgroundGrey(this.$refs.wrapper)
+                setTimeout( () =>
+                    this.$router.push({ path: '/userPagePublic/'+this.username})
+                , 400)
+            },
+            setBackgroundGrey(domElement){
+                domElement.style.backgroundColor = "rgba(0,0,0,0.1)"
+            },
         }
     }
 </script>

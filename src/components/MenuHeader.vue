@@ -13,7 +13,10 @@
           <a href="#" @click="searchTabClicked"><i class="fas fa-search fa-sm"></i></a>
           <a href="#"><i class="far fa-bell"></i></a>
           <a href="#"><i class="far fa-envelope"></i></a>-->
-          <router-link :to="{ name: 'feed'}">
+          <router-link 
+            :to="{ name: 'feed'}"
+            @click.native="clickedHome"
+          >
             <i class="fas fa-home"></i>
           </router-link>
           <router-link :to="{ name: 'searchBox'}">
@@ -111,64 +114,67 @@ export default {
         this.parentsEl.addEventListener("touchend", () => this.touchEnd());
     },
     methods:{
-        touchStart(event){
-            this.touch.startX = event.touches[0].clientX; // [0] is the first finger touches
-            this.touch.endX = 0;
-            this.touch.startY = event.touches[0].clientY; 
-            this.touch.endY = 0;
-        },
-        touchMove(event){
-            this.touch.endX = event.touches[0].clientX;
-            this.touch.endY = event.touches[0].clientY;
-        },
-        touchEnd(){
-            //console.log(this.touch);
-            //console.log(Math.abs(this.touch.endX - this.touch.startX));
-            //console.log(Math.abs(this.touch.endY - this.touch.startY));
-           // console.log();
+      clickedHome(){
+        this.$emit("clickedHome")
+      },
+      touchStart(event){
+          this.touch.startX = event.touches[0].clientX; // [0] is the first finger touches
+          this.touch.endX = 0;
+          this.touch.startY = event.touches[0].clientY; 
+          this.touch.endY = 0;
+      },
+      touchMove(event){
+          this.touch.endX = event.touches[0].clientX;
+          this.touch.endY = event.touches[0].clientY;
+      },
+      touchEnd(){
+          //console.log(this.touch);
+          //console.log(Math.abs(this.touch.endX - this.touch.startX));
+          //console.log(Math.abs(this.touch.endY - this.touch.startY));
+          // console.log();
 
-            //Check if the user tries to open the sidebar using finger drag gestore
-            if(
-                Math.abs(this.touch.endY - this.touch.startY) > 30 || //Scrolls up
-                Math.abs(this.touch.endX - this.touch.startX) < 45){ //Not scrolling enough
-                    //this.resetPositions();
-                    return;
-            }
-            if(this.touch.endX > this.touch.startX){
-                this.openSidebar();
-            }
-            else{
-                this.closeSidebar();
-            }
-            //this.resetPositions();
-            
-        },
-        resetPositions(){
-            this.touch.startX = 0;
-            this.touch.endX = 0;
-            this.touch.startY = 0;
-            this.touch.endY = 0;
-        },
-        openSidebar(){
-            if(!this.isSidebarOpen){
-                console.log("openSidebar called");
-                this.$refs.sidebar.classList.add('sidebar-display');
-                this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');
-                // Prevent the page from scrolling
-                document.body.style.overflow = 'hidden';
-                this.isSidebarOpen = true;
-            }
-        },
-        closeSidebar(){
-            if(this.isSidebarOpen){
-                console.log("closeSidebar called");
-                this.$refs.sidebar.classList.remove('sidebar-display');
-                this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
-                // Re-enable the scrolling
-                document.body.style.overflow = 'auto'
-                this.isSidebarOpen = false;
-            } 
-        },
+          //Check if the user tries to open the sidebar using finger drag gestore
+          if(
+              Math.abs(this.touch.endY - this.touch.startY) > 30 || //Scrolls up
+              Math.abs(this.touch.endX - this.touch.startX) < 45){ //Not scrolling enough
+                  //this.resetPositions();
+                  return;
+          }
+          if(this.touch.endX > this.touch.startX){
+              this.openSidebar();
+          }
+          else{
+              this.closeSidebar();
+          }
+          //this.resetPositions();
+          
+      },
+      resetPositions(){
+          this.touch.startX = 0;
+          this.touch.endX = 0;
+          this.touch.startY = 0;
+          this.touch.endY = 0;
+      },
+      openSidebar(){
+          if(!this.isSidebarOpen){
+              console.log("openSidebar called");
+              this.$refs.sidebar.classList.add('sidebar-display');
+              this.$refs.sidebarWrapper.classList.add('sidebar-wrapper-display');
+              // Prevent the page from scrolling
+              document.body.style.overflow = 'hidden';
+              this.isSidebarOpen = true;
+          }
+      },
+      closeSidebar(){
+          if(this.isSidebarOpen){
+              console.log("closeSidebar called");
+              this.$refs.sidebar.classList.remove('sidebar-display');
+              this.$refs.sidebarWrapper.classList.remove('sidebar-wrapper-display');
+              // Re-enable the scrolling
+              document.body.style.overflow = 'auto'
+              this.isSidebarOpen = false;
+          } 
+      },
         /*searchTabClicked(){
           this.$router.push("/search")
         },

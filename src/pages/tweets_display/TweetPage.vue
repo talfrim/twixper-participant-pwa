@@ -1,47 +1,51 @@
 <template>
     <div>
         <PageHeader text="Tweet" />
+        <div 
+            class="tweet-container"  
+            v-if="tweetPageJson"
+        >
+            <!-- If this a retweet, add appropiate header -->
 
-        <!-- If this a retweet, add appropiate header -->
+            <!-- <router-link
+                v-if="retweet_details.is_retweet == true"
+                :to="{ name: 'userPage', params: {userName: retweet_details.retweet_author_username} }"
+                tag="div" class="retweeter-user-info"
+            > 	 -->
+            <div v-if="retweet_details.is_retweet == true"
+                class="retweeter-user-info"
+                ref="retweeterDiv"
+                @click="clickedRetweet"
+            >
+                <i class="fas fa-retweet"></i>
+                {{retweet_details.retweet_author_fullName}} Retweeted
+            </div>
 
-		<!-- <router-link
-			v-if="retweet_details.is_retweet == true"
-			:to="{ name: 'userPage', params: {userName: retweet_details.retweet_author_username} }"
-			tag="div" class="retweeter-user-info"
-		> 	 -->
-        <div v-if="retweet_details.is_retweet == true"
-			class="retweeter-user-info"
-			ref="retweeterDiv"
-			@click="clickedRetweet"
-		>
-			<i class="fas fa-retweet"></i>
-			{{retweet_details.retweet_author_fullName}} Retweeted
-		</div>
-
-        <div class="tweet-page-wrapper">
-            <div class="author-info-container">
-                <div class="user-avatar" v-lazyload>
+            <div class="tweet-page-wrapper">
+                <div class="author-info-container">
+                    <div class="user-avatar" v-lazyload>
+                        <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+                            tag="img" :data-url="author.profileImgUrl"> 
+                        </router-link>
+                    </div>
                     <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
-                        tag="img" :data-url="author.profileImgUrl"> 
+                            tag="div" class="names-container"
+                    >  
+                        <div class="user-full-name-container">
+                            <span>{{author.userFullName}}</span>
+                            <i v-if="author.isVerified" class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="user-username-container">
+                            <span>@{{author.userName}}</span>
+                        </div>
                     </router-link>
-                </div>
-                <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
-                        tag="div" class="names-container"
-                >  
-                    <div class="user-full-name-container">
-                        <span>{{author.userFullName}}</span>
-                        <i v-if="author.isVerified" class="fas fa-check-circle"></i>
-                    </div>
-                    <div class="user-username-container">
-                        <span>@{{author.userName}}</span>
-                    </div>
-                </router-link>
-            </div> 
-            <div class="post-content"> 	
-                <TweetPreviewBody :tweetPreview="tweetPageJson" />
-                <TweetPreviewActions :tweetPreview="tweetPageJson" />      
-            </div>   
-        </div>    
+                </div> 
+                <div class="post-content"> 	
+                    <TweetPreviewBody :tweetPreview="tweetPageJson" />
+                    <TweetPreviewActions :tweetPreview="tweetPageJson" />      
+                </div>   
+            </div>    
+        </div>
     </div>
 </template>
 
@@ -50,7 +54,7 @@ import PageHeader from "../../components/PageHeader.vue"
 import TweetPreviewBody from "../../components/tweets_display/TweetPreviewBody.vue"
 import TweetPreviewActions from "../../components/tweets_display/TweetPreviewActions.vue"
 
-import TweetPageJSON from "../../communicators/static data/TweetPageJSON"
+import {serverGetTweetPage} from "../../communicators/serverCommunicator"
 
 export default {
     components:{
@@ -75,7 +79,7 @@ export default {
 			},
         }
     },
-    created(){
+    async created(){
         // Retrieve the tweet Json from localStorage
         if (localStorage.getItem("tweet" + this.tweetId) !== null) {
             this.tweetPageJson = JSON.parse(localStorage["tweet" + this.tweetId]);
@@ -83,7 +87,8 @@ export default {
         // Else, tweet not found in ls, ask the server for it.
         else{
             console.log("Tweet "+ this.tweetId + " not found in local storage")
-            this.tweetPageJson = TweetPageJSON
+            const response = await serverGetTweetPage(this.tweetId)
+            this.tweetPageJson = response
         }
 
         // Do preparation to the data so it would be more comfortable to display it

@@ -7248,4 +7248,237 @@ exports.data = [
         "possibly_sensitive": false,
         "lang": "en"
     },
+    {
+        "created_at": "Fri Jan 01 16:18:00 +0000 2021",
+        "id": 1345041593514876928,
+        "id_str": "1345041593514876928",
+        "full_text": "⚪️ 𝗦𝗣𝗨𝗥𝗦 𝟱-𝟯 𝗖𝗛𝗘𝗟𝗦𝗘𝗔 🔵\n\nA true @premierleague classic at White Hart Lane on New Year's Day in 2015! \n\n#THFC ⚪️ #COYS https://t.co/XuUrX9f6iV",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            116
+        ],
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "THFC",
+                    "indices": [
+                        102,
+                        107
+                    ]
+                },
+                {
+                    "text": "COYS",
+                    "indices": [
+                        111,
+                        116
+                    ]
+                }
+            ],
+            "symbols": [],
+            "user_mentions": [
+                {
+                    "screen_name": "premierleague",
+                    "name": "Premier League",
+                    "id": 343627165,
+                    "id_str": "343627165",
+                    "indices": [
+                        31,
+                        45
+                    ]
+                }
+            ],
+            "urls": [],
+            "media": [
+                {
+                    "id": 1344963164660752386,
+                    "id_str": "1344963164660752386",
+                    "indices": [
+                        117,
+                        140
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/EqpGPsjW8AEcaOM.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/EqpGPsjW8AEcaOM.jpg",
+                    "url": "https://t.co/XuUrX9f6iV",
+                    "display_url": "pic.twitter.com/XuUrX9f6iV",
+                    "expanded_url": "https://twitter.com/SpursOfficial/status/1345041593514876928/video/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 680,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1080,
+                            "h": 1080,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1080,
+                            "h": 1080,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 1344963164660752386,
+                    "id_str": "1344963164660752386",
+                    "indices": [
+                        117,
+                        140
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/EqpGPsjW8AEcaOM.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/EqpGPsjW8AEcaOM.jpg",
+                    "url": "https://t.co/XuUrX9f6iV",
+                    "display_url": "pic.twitter.com/XuUrX9f6iV",
+                    "expanded_url": "https://twitter.com/SpursOfficial/status/1345041593514876928/video/1",
+                    "type": "video",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 680,
+                            "h": 680,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 1080,
+                            "h": 1080,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1080,
+                            "h": 1080,
+                            "resize": "fit"
+                        }
+                    },
+                    "video_info": {
+                        "aspect_ratio": [
+                            1,
+                            1
+                        ],
+                        "duration_millis": 133080,
+                        "variants": [
+                            {
+                                "bitrate": 1280000,
+                                "content_type": "video/mp4",
+                                "url": "https://video.twimg.com/amplify_video/1344963164660752386/vid/720x720/voaNmzOUt4-idhHu.mp4?tag=13"
+                            },
+                            {
+                                "content_type": "application/x-mpegURL",
+                                "url": "https://video.twimg.com/amplify_video/1344963164660752386/pl/sWBOMIm-Xu_kU6VB.m3u8?tag=13"
+                            },
+                            {
+                                "bitrate": 832000,
+                                "content_type": "video/mp4",
+                                "url": "https://video.twimg.com/amplify_video/1344963164660752386/vid/480x480/mlt8mHsirqRhSETr.mp4?tag=13"
+                            },
+                            {
+                                "bitrate": 432000,
+                                "content_type": "video/mp4",
+                                "url": "https://video.twimg.com/amplify_video/1344963164660752386/vid/320x320/YqptlTU5SKRJ41dN.mp4?tag=13"
+                            }
+                        ]
+                    },
+                    "additional_media_info": {
+                        "title": "Highlights | Spurs 5-3 Chelsea (2015)",
+                        "description": "#COYS ",
+                        "embeddable": true,
+                        "monetizable": false
+                    }
+                }
+            ]
+        },
+        "source": "<a href=\"https://studio.twitter.com\" rel=\"nofollow\">Twitter Media Studio</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 121402638,
+            "id_str": "121402638",
+            "name": "Tottenham Hotspur",
+            "screen_name": "SpursOfficial",
+            "location": "Tottenham, London, England",
+            "description": "The official Twitter account of Tottenham Hotspur.",
+            "url": "https://t.co/V8cMqMluK2",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/V8cMqMluK2",
+                            "expanded_url": "http://www.tottenhamhotspur.com",
+                            "display_url": "tottenhamhotspur.com",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 5388184,
+            "friends_count": 404,
+            "listed_count": 11455,
+            "created_at": "Tue Mar 09 11:36:02 +0000 2010",
+            "favourites_count": 4247,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": true,
+            "verified": true,
+            "statuses_count": 94754,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1338444101688172546/Qp3bAeZT_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1338444101688172546/Qp3bAeZT_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/121402638/1608755369",
+            "profile_link_color": "2CB8EB",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": false,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": null,
+            "follow_request_sent": null,
+            "notifications": null,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 38,
+        "favorite_count": 555,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    }
 ]

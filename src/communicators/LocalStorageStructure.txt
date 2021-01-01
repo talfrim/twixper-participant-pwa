@@ -11,10 +11,14 @@ currentUserFollowesFriends: Screen name of the latest user we see his followers 
 tweet13587635458776856: Json of a tweet with that tweet id.
 userManCity: Json of a user, with that user screen name.
 
+currentUserPage: Screen name of the latest user we saw his profile.
 currentSearchTab: digit between 0-2. 0 is tweets, 1 is users, 2 is media.
+currentUserTab: digit between 0-1. 0 is tweets, 1 is likes.
+
 
 feedScrollTop:
 searchTweetsScrollTop:
 searchUsersScrollTop:
+userPageScrollTop:
 userTweetsScrollTop:
 userLikesScrollTop:

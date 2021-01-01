@@ -35,6 +35,18 @@ const router = new VueRouter({
   routes,
 });
 
+/*router.beforeEach((to, from, next) => {
+  next()
+})*/
+
+router.afterEach((to, from) => {
+  if(to.name == "tweetPage" && from.name == "tweetPage"){
+    // Reload the window when travling to different pages in the same route
+    // For example when viewing a tweet page with a quoated tweet and clicking on the q. tweet.
+    window.location.reload()
+  }
+})
+
 // import { ImagePlugin } from 'bootstrap-vue'
 //import './quasar'
 //Vue.use(ImagePlugin)

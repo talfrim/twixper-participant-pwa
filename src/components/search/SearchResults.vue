@@ -82,7 +82,8 @@ export default {
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
                 const response = await serverSearchForTweets(q)
-                this.tweetsResultsArr.push(...response);
+                const response_tweets = response.statuses
+                this.tweetsResultsArr.push(...response_tweets);
                 // Add tweets results to local storage
                 // TODO: Add only the latest 30 or 40 tweets.
                 addToLsByList("tweet", this.tweetsResultsArr, "searchTweetsOrder")

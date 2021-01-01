@@ -9,6 +9,7 @@ var feedJSON = require("./static data/FeedJSON.js").data
 var peopleJSON = require("./static data/SearchPeopleJSON.js").data
 var friendsPeopleJSON = require("./static data/FriendsPeopleJSON.js").data
 var followersPeopleJSON = require("./static data/FollowersPeopleJSON.js").data
+var searchTweetsJSON = require("./static data/SearchTweetsJSON.js").data
 
 // For mocking server delay
 function sleep(ms) { 
@@ -39,7 +40,7 @@ async function getFeed(){
 async function searchForTweets(){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return feedJSON
+        return searchTweetsJSON
     }
     // Else, send the request to the server
 }

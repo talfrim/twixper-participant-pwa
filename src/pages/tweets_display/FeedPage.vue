@@ -17,7 +17,7 @@
                 :feedTweetsArr="feedTweetsArr"
                 lsScrollTop="feedScrollTop"
             />
-            
+
         </div>
     </div>
 </template>
@@ -54,14 +54,6 @@ export default {
         else{
             this.refreshFeed()
         }
-        
-    
-        // TODO: When refreshing the feed, empty the relevant tweets in local storage.
-        /*localStorage.removeItem("feedTweetsOrder");
-        emptyFromLs("tweet")
-        emptyFromLs("user")
-
-        addToLsByList("tweet", this.feedTweetsArr, "feedTweetsOrder")*/
 
     },
     mounted(){

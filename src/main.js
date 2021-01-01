@@ -40,10 +40,12 @@ const router = new VueRouter({
 })*/
 
 router.afterEach((to, from) => {
-  if(to.name == "tweetPage" && from.name == "tweetPage"){
+  if((to.name == "tweetPage" && from.name == "tweetPage")
+      || (to.name == "userPage" && from.name == "userPage" && to.path != from.path)){
     // Reload the window when travling to different pages in the same route
     // For example when viewing a tweet page with a quoated tweet and clicking on the q. tweet.
     window.location.reload()
+    document.documentElement.scrollTop = 0
   }
 })
 

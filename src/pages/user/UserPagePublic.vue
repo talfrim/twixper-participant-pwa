@@ -91,6 +91,7 @@ export default {
             localStorage["currentUserPage"] = this.userName
             localStorage["currentUserTab"] = 0
             localStorage["userPageScrollTop"] = 0
+            // document.documentElement.scrollTop = 0
             this.$refs.userPageTweets.resetUserTweets()
             this.$refs.userPageTweets.switchTabsAndGetTweets()
         }

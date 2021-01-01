@@ -53,7 +53,7 @@
 						<i v-if="author.isVerified" class="fas fa-check-circle"></i> 
 						<span class="usernameSpan">@{{author.userName}}</span>
 					</h4>
-					<span style="margin-left: 1vw">{{time}}</span>
+					<span class="time-span">&#183; {{time}}</span>
 				</div>
 				<TweetPreviewBody 
 					:tweetPreview="myTweetPreview"

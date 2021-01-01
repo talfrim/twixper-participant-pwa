@@ -12,3 +12,9 @@ tweet13587635458776856: Json of a tweet with that tweet id.
 userManCity: Json of a user, with that user screen name.
 
 currentSearchTab: digit between 0-2. 0 is tweets, 1 is users, 2 is media.
+
+feedScrollTop:
+searchTweetsScrollTop:
+searchUsersScrollTop:
+userTweetsScrollTop:
+userLikesScrollTop:

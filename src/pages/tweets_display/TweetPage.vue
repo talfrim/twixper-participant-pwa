@@ -74,7 +74,7 @@ export default {
         if (localStorage.getItem("tweet" + this.tweetId) !== null) {
             this.tweetPageJson = JSON.parse(localStorage["tweet" + this.tweetId]);
         }
-        // Else, tweet not found in ls (maybe it is a retweet), ask the server for it.
+        // Else, tweet not found in ls, ask the server for it.
         else{
             console.log("Tweet "+ this.tweetId + " not found in local storage")
             this.tweetPageJson = TweetPageJSON

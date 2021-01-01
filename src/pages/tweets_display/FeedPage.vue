@@ -3,7 +3,12 @@
         <MenuHeader v-if="myEl" :parentsEl="myEl" />
         <WriteNewTweet />
         <div class="tpl-container">
-            <TweetPreviewList :feedTweetsArr="feedTweetsArr"></TweetPreviewList>
+            <TweetPreviewList 
+                ref="tpl" 
+                :feedTweetsArr="feedTweetsArr"
+                lsScrollTop="feedScrollTop"
+            >
+            </TweetPreviewList>
         </div>
     </div>
 </template>
@@ -14,7 +19,7 @@ import MenuHeader from "../../components/MenuHeader.vue";
 import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
 
 import {serverGetFeed} from "../../communicators/serverCommunicator"
-import {emptyFromLs, addToLsByList} from "../../assets/globalFunctions"
+import {emptyFromLs, addToLsByList, retrieveListFromLs} from "../../assets/globalFunctions"
 
 export default {
     components: {
@@ -25,16 +30,21 @@ export default {
     data(){
         return{
             myEl: null,
-            feedTweetsArr: []
+            feedTweetsArr: [],
         }
     },
-    async created(){
-        // TODO: if there are tweets in ls, get the tweets from ls instead of asking the server. 
+    created(){
+        // If there are tweets in ls, get the tweets from ls instead of asking the server. 
+        if (localStorage.getItem("feedTweetsOrder") !== null) {
+            this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
+        }
+        // Else, ask the server
+        else{
+            this.getFeedFromServer()
+            // Reset scroll
+            localStorage["feedScrollTop"] = 0
+        }
         
-        // And then:
-        const response = await serverGetFeed()
-        this.feedTweetsArr.push(...response);
-
         // Add tweets and users to local storage
         // TODO: When refreshing the feed, empty the relevant tweets in local storage.
         localStorage.removeItem("feedTweetsOrder");
@@ -42,21 +52,17 @@ export default {
         emptyFromLs("user")
 
         addToLsByList("tweet", this.feedTweetsArr, "feedTweetsOrder")
-        /*let tweetsIdsOrder = []
-        // TODO: Add only the latest 30 or 40 tweets.
-        for (let i = 0; i < this.feedTweetsArr.length; i++) {
-            const tweet = this.feedTweetsArr[i]
-            localStorage["tweet" + tweet.id] = JSON.stringify(tweet)
-            tweetsIdsOrder.push(tweet.id)
-            const user = tweet.user
-            localStorage["user" + user.screen_name] = JSON.stringify(user)
-        }
-        localStorage["feedTweetsOrder"] = JSON.stringify(tweetsIdsOrder)*/
-        
+
     },
     mounted(){
         this.myEl = this.$el;
     },
+    methods:{
+        async getFeedFromServer(){
+            const response = await serverGetFeed()
+            this.feedTweetsArr.push(...response);
+        }
+    }
     
 }
 </script>

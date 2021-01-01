@@ -3,17 +3,21 @@
         <Loader v-if="showLoader"/>
         <TweetPreviewList 
             :hidden="!(currTabName === 'Tweets')" 
-            :feedTweetsArr="tweetsResultsArr" 
+            :feedTweetsArr="tweetsResultsArr"
+            lsScrollTop="searchTweetsScrollTop"
+            ref="tpl"
         />
         <UserPreviewList 
             :hidden="!(currTabName === 'Users')" 
             :userPreviews="usersResultsArr"
+            lsScrollTop="searchUsersScrollTop"
+            ref="upl"
         />
         <div 
             :hidden="!(currTabName === 'Media')" 
             class="media-div"
         >
-        <br>
+            <br>
             <h2> Sorry, We currently not supporting media search results.</h2>
         </div>
     </div>
@@ -68,6 +72,9 @@ export default {
             emptyFromLsByList("user", "searchUsersOrder")
             localStorage.removeItem("searchTweetsOrder");
             localStorage.removeItem("searchUsersOrder");
+            // Reset scroll
+            localStorage["searchTweetsScrollTop"] = 0
+            localStorage["searchUsersScrollTop"] = 0
         },
         async searchForTweets(q){
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
@@ -115,6 +122,9 @@ function private_switchTabsAndSearch(context, q){
             break;
         default:
     }
+    // Update the scroll position on each list
+    context.$refs.tpl.updateListScrollPosition();
+    context.$refs.upl.updateListScrollPosition();
 } 
 </script>
 

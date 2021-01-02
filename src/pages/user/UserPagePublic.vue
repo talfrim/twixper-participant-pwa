@@ -88,10 +88,11 @@ export default {
             }
         }
         else{
+            // We see a new user, so empty the previous user tweets
             localStorage["currentUserPage"] = this.userName
             localStorage["currentUserTab"] = 0
             localStorage["userPageScrollTop"] = 0
-            // document.documentElement.scrollTop = 0
+            // document.documentElement.scrollTop = 0 // Already done in beforeRoute
             this.$refs.userPageTweets.resetUserTweets()
             this.$refs.userPageTweets.switchTabsAndGetTweets()
         }

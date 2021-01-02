@@ -93,8 +93,8 @@ export default {
             this.tweetsResultsArr = [];
             this.likesResultsArr = [];
             // Empty the relevant tweets from local storage.
-            emptyFromLsByList("tweet", "searchTweetsOrder")
-            emptyFromLsByList("tweet", "searchUsersOrder")
+            emptyFromLsByList("tweet", "userTweetsOrder")
+            emptyFromLsByList("tweet", "userLikesOrder")
             localStorage.removeItem("userTweetsOrder");
             localStorage.removeItem("userLikesOrder");
             // Reset scroll

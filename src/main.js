@@ -45,7 +45,7 @@ router.afterEach((to, from) => {
     // Reload the window when travling to different pages in the same route
     // For example when viewing a tweet page with a quoated tweet and clicking on the q. tweet.
     window.location.reload()
-    document.documentElement.scrollTop = 0
+    document.documentElement.scrollTop = 0 // Scroll page to top
   }
 })
 

@@ -65,7 +65,10 @@ export default {
         else{
             console.log("User "+ this.userName + " not found in local storage")
             const response = await serverGetUserPage(this.userName)
-            this.userPageJson = response
+            if(response.status == 200){
+                this.userPageJson = response.data
+            }
+            // TODO: ELse, show "Try again later"
         }
         
     },

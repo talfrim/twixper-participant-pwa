@@ -1,8 +1,17 @@
 const actuallySendReqToServer = false
 
+const serverUrl = "http://127.0.0.1:3000"
+const feedEndpoint = "/participants/getFeed"
+const searchTweetsEndpoint = "/participants/searchTweets"
+const searchUsersEndpoint = "/participants/searchUsers"
+const getUserEndpoint = "/participants/getUser"
+const getTweetEndpoint = "/participants/getTweet"
+const getUserFriendsEndpoint = "/participants/getUserFriends"
+const getUserFollowersEndpoint = "/participants/getUserFollowers"
+const getUserTimelineEndpoint = "/participants/getUserTimeline"
+const getUserLikesEndpoint = "/participants/getUserLikes"
+
 const axios = require('axios')
-const serverUrl = "http://"
-const feedEndpoint = ""
 
 // For mocking server responses
 var feedJSON = require("./static data/FeedJSON.js").data
@@ -36,73 +45,135 @@ async function sendGetRequestReturnResponse(requestUrl){
 async function getFeed(){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return feedJSON
+        return {status: 200, data: feedJSON}
     }
     // Else, send the request to the server
+    const requestUrl = serverUrl + feedEndpoint
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
-async function searchForTweets(){
+async function searchForTweets(query){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return searchTweetsJSON
+        return {status: 200, data: searchTweetsJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?q=" + query
+    const requestUrl = serverUrl + searchTweetsEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 async function searchForUsers(query){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return peopleJSON
+        return {status: 200, data: peopleJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?q=" + query
+    const requestUrl = serverUrl + searchUsersEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 async function getUserPage(username){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return userPageJSON
+        return {status: 200, data: userPageJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?username=" + username
+    const requestUrl = serverUrl + getUserEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 async function getTweetPage(tweetId){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return tweetPageJSON
+        return {status: 200, data: tweetPageJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?tweetId=" + tweetId
+    const requestUrl = serverUrl + getTweetEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 async function getUserFriends(username){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return friendsPeopleJSON
+        return {status: 200, data: friendsPeopleJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?username=" + username
+    const requestUrl = serverUrl + getUserFriendsEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 async function getUserFollowers(username){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return followersPeopleJSON
+        return {status: 200, data: followersPeopleJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?username=" + username
+    const requestUrl = serverUrl + getUserFollowersEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 async function getUserTimeline(username){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return userTimelineJSON
+        return {status: 200, data: userTimelineJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?username=" + username
+    const requestUrl = serverUrl + getUserTimelineEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 async function getUserLikes(username){
     if(!actuallySendReqToServer){
         await sleep(600)
-        return userLikesJSON
+        return {status: 200, data: userLikesJSON}
     }
     // Else, send the request to the server
+    const requestQuery = "?username=" + username
+    const requestUrl = serverUrl + getUserLikesEndpoint + requestQuery
+    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
+    if(serverResponse == null){
+        return {status: 0, data: null}
+    }
+    return serverResponse
 }
 
 module.exports = {

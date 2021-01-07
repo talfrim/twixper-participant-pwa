@@ -54,7 +54,6 @@ export default {
         else{
             this.refreshFeed()
         }
-
     },
     mounted(){
         this.myEl = this.$el;

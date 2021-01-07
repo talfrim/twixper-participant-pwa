@@ -1,4 +1,4 @@
-const actuallySendReqToServer = false
+const actuallySendReqToServer = true
 
 const serverUrl = "http://127.0.0.1:3000"
 const feedEndpoint = "/participants/getFeed"
@@ -10,6 +10,8 @@ const getUserFriendsEndpoint = "/participants/getUserFriends"
 const getUserFollowersEndpoint = "/participants/getUserFollowers"
 const getUserTimelineEndpoint = "/participants/getUserTimeline"
 const getUserLikesEndpoint = "/participants/getUserLikes"
+
+const loginEndpoint ="/login"
 
 const axios = require('axios')
 
@@ -27,6 +29,21 @@ var userLikesJSON = require("./static data/UserLikesJSON.js").data
 // For mocking server delay
 function sleep(ms) { 
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function login(){
+    const reqExpCode = "123"
+    const userTwitterToken = "456"
+    const requestUrl = serverUrl + loginEndpoint
+    try{
+        const response = await axios.post(requestUrl, {exp_code: reqExpCode, user_twitter_token: userTwitterToken})
+        console.log(response)
+        return response
+    }
+    catch(error){
+        console.log(error)
+        return {status: 0, data: "Network error, server probably down"}
+    }
 }
 
 async function sendGetRequestReturnResponse(requestUrl){
@@ -171,7 +188,7 @@ async function getUserLikes(username){
     const requestUrl = serverUrl + getUserLikesEndpoint + requestQuery
     const serverResponse = await sendGetRequestReturnResponse(requestUrl)
     if(serverResponse == null){
-        return {status: 0, data: null}
+        return {status: 0, data: "null"}
     }
     return serverResponse
 }
@@ -185,5 +202,7 @@ module.exports = {
     serverGetUserFriends: getUserFriends,
     serverGetUserFollowers: getUserFollowers,
     serverGetUserTimeline: getUserTimeline,
-    serverGetUserLikes: getUserLikes
+    serverGetUserLikes: getUserLikes,
+
+    serverLogin: login,
 }

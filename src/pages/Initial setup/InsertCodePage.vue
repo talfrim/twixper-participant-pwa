@@ -8,8 +8,10 @@
             </div>
           <div class="middle-content">
               <!--  <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img> -->
-            <h4>To start, insert the code you got.</h4>
-            <button type="button" class="btn main-btn" @click="$router.push('feed')">Continue</button>
+            <h4>To start, insert the code you got:</h4>
+            <input type="text">
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <button type="button" class="btn main-btn" @click="clickedBtn">Continue</button>
           </div>
        
         <!-- end of right -->
@@ -17,11 +19,34 @@
 </template>
 
 <script>
-    
+import {serverLogin} from "../../communicators/serverCommunicator"
+
+export default{
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+        async clickedBtn(){
+            const loginResponse = await serverLogin()
+            if(loginResponse.status == 200){
+                this.$router.push('feed')
+            }
+            else{
+                alert(loginResponse.data)
+            }
+        }
+    }
+
+}
 </script>
 
   
 <style scoped>
+input{
+    font-size: 25px;
+}
 img{
     width: 50vh
 }
@@ -64,7 +89,7 @@ img{
     
     .middle-content {
         position: absolute;
-        bottom: 15%;
+        bottom: 0%;
         left: 50%;
         
         transform: translate(-50%, -50%);

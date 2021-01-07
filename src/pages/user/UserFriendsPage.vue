@@ -52,10 +52,13 @@ export default {
             // Else, make a request to the server to get the user's friends
             this.showLoader = true;
             const response = await serverGetUserFriends(this.userName)
-            this.usersResultsArr.push(...(response.users));
-            // Add to local storage
-            addToLsByList("user", this.usersResultsArr, "userFriendsOrder")
-            localStorage["currentUserFollowesFriends"] = this.userName
+            if(response.status == 200){
+                this.usersResultsArr.push(...(response.data.users));
+                // Add to local storage
+                addToLsByList("user", this.usersResultsArr, "userFriendsOrder")
+                localStorage["currentUserFollowesFriends"] = this.userName
+            }
+            // TODO: ELse, show "Try again later"
             this.showLoader = false;
         }
     },

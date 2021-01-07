@@ -82,11 +82,14 @@ export default {
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
                 const response = await serverSearchForTweets(q)
-                const response_tweets = response.statuses
-                this.tweetsResultsArr.push(...response_tweets);
-                // Add tweets results to local storage
-                // TODO: Add only the latest 30 or 40 tweets.
-                addToLsByList("tweet", this.tweetsResultsArr, "searchTweetsOrder")
+                if(response.status == 200){
+                    const response_tweets = response.data.statuses
+                    this.tweetsResultsArr.push(...response_tweets);
+                    // Add tweets results to local storage
+                    // TODO: Add only the latest 30 or 40 tweets.
+                    addToLsByList("tweet", this.tweetsResultsArr, "searchTweetsOrder")
+                }
+                // TODO: ELse, show "Try search later"
                 this.showLoader = false;
             }
         },
@@ -94,9 +97,12 @@ export default {
             if(this.usersResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
                 const response = await serverSearchForUsers(q)
-                this.usersResultsArr.push(...response);
-                // Add users results to local storage
-                addToLsByList("user", this.usersResultsArr, "searchUsersOrder")
+                if(response.status == 200){
+                    this.usersResultsArr.push(...response.data);
+                    // Add users results to local storage
+                    addToLsByList("user", this.usersResultsArr, "searchUsersOrder")
+                }
+                // TODO: ELse, show "Try search later"
                 this.showLoader = false;
             }
         },

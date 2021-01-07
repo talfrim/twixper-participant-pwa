@@ -12,7 +12,7 @@
 }
 
 h4{
-	max-width: 86%;
+	max-width: 71%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -20,6 +20,11 @@ h4{
 h4 .usernameSpan{
 	font-weight: 400;
 	color: rgb(91, 112, 131);
+}
+
+.time-span{
+	color: rgb(91, 112, 131);
+	font-size: 1.5rem;
 }
 
 .post {
@@ -76,9 +81,6 @@ h4 .usernameSpan{
 	margin-right: 0.5rem;
 }
 
-.post-user-info span {
-	font-size: 1.6rem;
-}
 
 .post-text {
 	width: 95%;

@@ -61,10 +61,18 @@ export default {
     },
     methods:{
         async getFeedFromServer(){
+            let success = true
             this.showLoader = true
             const response = await serverGetFeed()
-            this.feedTweetsArr.push(...response);
+            if(response.status == 200){
+                this.feedTweetsArr.push(...response.data);
+            }
+            // TODO: ELse, show "could not reefresh feed, try again later"
+            else{
+                success = false
+            }
             this.showLoader = false
+            return success
         },
         clickedHome(){
             // Clicked home while already in home => refresh the feed
@@ -81,9 +89,11 @@ export default {
             // Reset scroll
             localStorage["feedScrollTop"] = 0
             // Ask the server for feed tweets
-            await this.getFeedFromServer()
-            // Add tweets and users to local storage
-            addToLsByList("tweet", this.feedTweetsArr, "feedTweetsOrder")
+            const getFeedSuccess = await this.getFeedFromServer()
+            if(getFeedSuccess){
+                // Add tweets and users to local storage
+                addToLsByList("tweet", this.feedTweetsArr, "feedTweetsOrder")
+            }
         }
     }
     

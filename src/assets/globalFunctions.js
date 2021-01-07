@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 function parseTwitterDate(tdate) {
     var system_date = new Date(Date.parse(tdate));
     var user_date = new Date();
@@ -16,8 +18,17 @@ function parseTwitterDate(tdate) {
     if (diff <= 129600) {return "1d";}
     if (diff < 604800) {return Math.round(diff / 86400) + "d";}
     if (diff <= 777600) {return "1w";}
-    //return "on " + system_date; //TODO: CHANGE FORMAT TO "19 Oct" for example
-    return "fixMe";
+    // Change format to "19 Oct" for example, if years are the same
+    if (system_date.getFullYear() == user_date.getFullYear()) {
+        return moment(system_date).format("D MMM");
+    }
+    // Change format to "19 Oct 20" for example
+    return moment(system_date).format("D MMM YY");
+}
+
+function parseUserPageDate(tdate){
+    let parsedDate = new Date(Date.parse(tdate))
+    return moment(parsedDate).format("MMMM YYYY");
 }
 
 // from http://widgets.twimg.com/j/1/widget.js
@@ -153,7 +164,7 @@ function retrieveListFromLs(itemsNameToRetrieve, keyOfArrInLs){ // "tweet", "use
 module.exports = {
     parseTwitterDateFunc: parseTwitterDate,
     parseTwitterNumbersToStringFunc: parseNumbersToString,
-
+    parseUserPageDateFunc: parseUserPageDate,
     emptyFromLs: emptyFromLs,
     emptyFromLsByList: emptyFromLsByList,
     addToLsByList: addToLsByList,

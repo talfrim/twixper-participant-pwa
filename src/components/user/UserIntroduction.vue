@@ -79,7 +79,7 @@
 <script>
 import ExpandableImg from "../ExpandableImg.vue";
 import FollowButton from "../buttons/FollowButton.vue";
-import {parseTwitterNumbersToStringFunc} from "../../assets/globalFunctions";
+import {parseTwitterNumbersToStringFunc, parseUserPageDateFunc} from "../../assets/globalFunctions";
 
 export default {
     components:{
@@ -126,7 +126,7 @@ export default {
             this.link.displayUrl = url.display_url;
             this.link.expandedUrl = url.expanded_url;
         }
-        this.joinedDate = userJson.created_at;
+        this.joinedDate = parseUserPageDateFunc(userJson.created_at);
         this.following = userJson.following;
         if(this.following == null){
             this.following = false

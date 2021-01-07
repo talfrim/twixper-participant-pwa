@@ -88,7 +88,10 @@ export default {
         else{
             console.log("Tweet "+ this.tweetId + " not found in local storage")
             const response = await serverGetTweetPage(this.tweetId)
-            this.tweetPageJson = response
+            if(response.status == 200){
+                this.tweetPageJson = response.data
+            }
+            // TODO: ELse, show "Try again later"
         }
 
         // Do preparation to the data so it would be more comfortable to display it

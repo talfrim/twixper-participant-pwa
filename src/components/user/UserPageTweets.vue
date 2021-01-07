@@ -71,10 +71,13 @@ export default {
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
                 const response = await serverGetUserTimeline(this.userName)
-                this.tweetsResultsArr.push(...response);
-                // Add tweets results to local storage
-                // TODO: Add only the latest 30 or 40 tweets.
-                addToLsByList("tweet", this.tweetsResultsArr, "userTweetsOrder")
+                if(response.status == 200){
+                    this.tweetsResultsArr.push(...response.data);
+                    // Add tweets results to local storage
+                    // TODO: Add only the latest 30 or 40 tweets.
+                    addToLsByList("tweet", this.tweetsResultsArr, "userTweetsOrder")
+                }
+                // TODO: ELse, show "Try search later"
                 this.showLoader = false;
             }
         },
@@ -82,10 +85,13 @@ export default {
             if(this.likesResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
                 const response = await serverGetUserLikes(this.userName)
-                this.likesResultsArr.push(...response);
-                // Add tweets results to local storage
-                // TODO: Add only the latest 30 or 40 tweets.
-                addToLsByList("tweet", this.likesResultsArr, "userLikesOrder")
+                if(response.status == 200){
+                    this.likesResultsArr.push(...response.data);
+                    // Add tweets results to local storage
+                    // TODO: Add only the latest 30 or 40 tweets.
+                    addToLsByList("tweet", this.likesResultsArr, "userLikesOrder")
+                }
+                // TODO: ELse, show "Try search later"
                 this.showLoader = false;
             }
         },
@@ -93,8 +99,8 @@ export default {
             this.tweetsResultsArr = [];
             this.likesResultsArr = [];
             // Empty the relevant tweets from local storage.
-            emptyFromLsByList("tweet", "searchTweetsOrder")
-            emptyFromLsByList("tweet", "searchUsersOrder")
+            emptyFromLsByList("tweet", "userTweetsOrder")
+            emptyFromLsByList("tweet", "userLikesOrder")
             localStorage.removeItem("userTweetsOrder");
             localStorage.removeItem("userLikesOrder");
             // Reset scroll

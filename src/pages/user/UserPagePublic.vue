@@ -65,7 +65,10 @@ export default {
         else{
             console.log("User "+ this.userName + " not found in local storage")
             const response = await serverGetUserPage(this.userName)
-            this.userPageJson = response
+            if(response.status == 200){
+                this.userPageJson = response.data
+            }
+            // TODO: ELse, show "Try again later"
         }
         
     },
@@ -88,9 +91,11 @@ export default {
             }
         }
         else{
+            // We see a new user, so empty the previous user tweets
             localStorage["currentUserPage"] = this.userName
             localStorage["currentUserTab"] = 0
             localStorage["userPageScrollTop"] = 0
+            // document.documentElement.scrollTop = 0 // Already done in beforeRoute
             this.$refs.userPageTweets.resetUserTweets()
             this.$refs.userPageTweets.switchTabsAndGetTweets()
         }

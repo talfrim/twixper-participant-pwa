@@ -8,7 +8,7 @@
             </div>
           <div class="middle-content">
               <!--  <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img> -->
-            <h4>To start, insert the code you got:</h4>
+            <h4>To start, insert the experiment code you got:</h4>
             <input type="text">
             <br><br><br><br><br><br><br><br><br><br><br><br>
             <button type="button" class="btn main-btn" @click="clickedBtn">Continue</button>

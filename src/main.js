@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import LazyLoadDirective from "./assets/directives/LazyLoadDirective";
 
+require('dotenv').config()
 Vue.directive("lazyload", LazyLoadDirective);
 
 

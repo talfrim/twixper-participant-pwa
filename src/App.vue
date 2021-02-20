@@ -16,7 +16,9 @@
 
 export default {
   name: 'App',
-  
+  created(){
+    
+  }
   
 }
 </script>

@@ -33,7 +33,7 @@ export default {
     methods:{
         updateListScrollPosition(){
             // Update phyiscally the scroll postion in the container div
-            if (localStorage.getItem(this.lsScrollTop) !== null) {
+            if (localStorage.getItem(this.lsScrollTop) != null) {
                 this.currScrollTop = parseInt(localStorage[this.lsScrollTop])
                 let vm = this
                 vm.$nextTick(() => {

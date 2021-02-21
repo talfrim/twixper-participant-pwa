@@ -47,7 +47,7 @@ export default {
     },
     created(){
         // If there are tweets in ls, get the tweets from ls instead of asking the server. 
-        if (localStorage.getItem("feedTweetsOrder") !== null) {
+        if (localStorage.getItem("feedTweetsOrder") != null) {
             this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
         }
         // Else, ask the server

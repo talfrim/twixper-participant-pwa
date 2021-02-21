@@ -83,14 +83,14 @@ function emptyFromLs(itemsNameToRemove){ // "tweet", "user"
 
 function emptyFromLsByList(itemsNameToRemove, keyOfArrInLs){ // "tweet", "user"
     let arrayOfIds = []
-    if (localStorage.getItem(keyOfArrInLs) !== null) {
+    if (localStorage.getItem(keyOfArrInLs) != null) {
         arrayOfIds = JSON.parse(localStorage[keyOfArrInLs])
     }
 
     // Iterate each id and delete from ls ONLY IF it is not in feed.
     if(itemsNameToRemove == "tweet"){
         let feedTweetsIds = []
-        if (localStorage.getItem("feedTweetsOrder") !== null) {
+        if (localStorage.getItem("feedTweetsOrder") != null) {
             feedTweetsIds = JSON.parse(localStorage["feedTweetsOrder"])
         }
     
@@ -147,12 +147,12 @@ function addToLsByList(itemsNameToAdd, itemsArrToAdd, keyOfArrInLs){ // "tweet",
 function retrieveListFromLs(itemsNameToRetrieve, keyOfArrInLs){ // "tweet", "user"
     let retrievedItemsArr = [] // Array of objects
     let arrayOfIds = []
-    if (localStorage.getItem(keyOfArrInLs) !== null) {
+    if (localStorage.getItem(keyOfArrInLs) != null) {
         arrayOfIds = JSON.parse(localStorage[keyOfArrInLs])
     }
     for (let i = 0; i < arrayOfIds.length; i++) {
         const id = arrayOfIds[i];
-        if(localStorage.getItem(itemsNameToRetrieve + id) !== null) {
+        if(localStorage.getItem(itemsNameToRetrieve + id) != null) {
             const element = JSON.parse(localStorage[itemsNameToRetrieve + id])
             retrievedItemsArr.push(element)
         }

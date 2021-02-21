@@ -4,7 +4,7 @@ const actuallySendReqToServer = true
 const serverUrl = "http://localhost:3000"
 
 const checkCredentialsEndpoint = "/checkUserByCredentials"
-const loginEndpoint ="/login"
+const registerToExperimentEndpoint ="/registerToExperiment"
 
 const feedEndpoint = "/participants/getFeed"
 const searchTweetsEndpoint = "/participants/searchTweets"
@@ -55,20 +55,16 @@ async function checkCredentials(token, tokenSecret){
     return await sendPostRequestReturnResponse(requestUrl, payload)
 }
 
-async function login(){
-    // TODO: FIX ME
-    const reqExpCode = "123"
-    const userTwitterToken = "456"
-    const requestUrl = serverUrl + loginEndpoint
-    try{
-        const response = await axios.post(requestUrl, {exp_code: reqExpCode, user_twitter_token: userTwitterToken})
-        console.log(response)
-        return response
+async function registerToExperiment(expCode){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200}
     }
-    catch(error){
-        console.log(error)
-        return {status: 0, data: "Network error, server probably down"}
+    const requestUrl = serverUrl + registerToExperimentEndpoint
+    const payload = {
+        exp_code: expCode,
     }
+    return await sendPostRequestReturnResponse(requestUrl, payload)
 }
 
 async function sendGetRequestReturnResponse(requestUrl){
@@ -88,7 +84,7 @@ async function sendPostRequestReturnResponse(requestUrl, payload){
     return await axios.post(requestUrl, payload)
         .catch(function (error) {
             if (error.response) { 
-                return error
+                return error.response
             }
             else{ // This is network error
                 return {status: 0, data: "Network error, server probably down"}
@@ -242,5 +238,5 @@ module.exports = {
     serverGetUserLikes: getUserLikes,
 
     serverCheckCredentials: checkCredentials,
-    serverLogin: login,
+    serverRegisterToExperiment: registerToExperiment,
 }

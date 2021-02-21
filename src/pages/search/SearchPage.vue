@@ -51,7 +51,7 @@ export default {
     },
     created(){
         // Retreive the result tab we were on.
-        if (localStorage.getItem("currentSearchTab") !== null){
+        if (localStorage.getItem("currentSearchTab") != null){
             this.cur = parseInt(localStorage["currentSearchTab"])
         }
         else{
@@ -66,8 +66,8 @@ export default {
                 window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
         
         // If there are search results from local storage, retreive them
-        if (localStorage.getItem("searchTweetsOrder") !== null 
-            || localStorage.getItem("searchUsersOrder") !== null) {
+        if (localStorage.getItem("searchTweetsOrder") != null 
+            || localStorage.getItem("searchUsersOrder") != null) {
             this.$refs.searchResults.retreiveResultsFromLs();
         }
         // Else, search for query

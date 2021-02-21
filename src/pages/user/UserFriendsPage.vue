@@ -36,7 +36,7 @@ export default {
     },
     async created(){
         // Erase followers and friends from local storage if they are someone else's
-        if(localStorage["currentUserFollowesFriends"] !== this.userName){
+        if(localStorage["currentUserFollowesFriends"] != this.userName){
             emptyFromLsByList("user", "userFollowersOrder")
             emptyFromLsByList("user", "userFriendsOrder")
             localStorage.removeItem("userFollowersOrder")
@@ -45,7 +45,7 @@ export default {
 
         this.headerText = this.userName + " Following";
         // Trying to retrieve users from local storage
-        if (localStorage.getItem("userFriendsOrder") !== null) {
+        if (localStorage.getItem("userFriendsOrder") != null) {
             this.usersResultsArr = retrieveListFromLs("user", "userFriendsOrder")
         }
         else{

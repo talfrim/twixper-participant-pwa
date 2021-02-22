@@ -8,7 +8,7 @@ function parseTwitterDate(tdate) {
     }
     var diff = Math.floor((user_date - system_date) / 1000);
     //if (diff <= 1) {return "just now";}
-    if (diff < 20) {return diff + "s";}
+    if (diff <= 60) {return diff + "s";}
     //if (diff < 40) {return "half a minute ago";}
     //if (diff < 60) {return "less than a minute ago";}
     //if (diff <= 90) {return "one minute ago";}
@@ -73,6 +73,9 @@ function numberWithCommas(number){
     return parts.join(".");
 }
 
+
+/* ____ Local Storage functions  ____*/
+
 function emptyFromLs(itemsNameToRemove){ // "tweet", "user"
     Object.keys(localStorage).forEach((key) => {
         if(key.startsWith(itemsNameToRemove)){
@@ -122,19 +125,19 @@ function addToLsByList(itemsNameToAdd, itemsArrToAdd, keyOfArrInLs){ // "tweet",
             const user = item.user
             localStorage["user" + user.screen_name] = JSON.stringify(user)
             // Check if this is a retweet, if so, add the original tweet and its user
-            if(item.retweeted_status && item.retweeted_status){
+            /*if(item.retweeted_status && item.retweeted_status){
                 const original = item.retweeted_status
                 localStorage["tweet" + original.id] = JSON.stringify(original)
                 const original_user = original.user
                 localStorage["user" + original_user.screen_name] = JSON.stringify(original_user)
-            }
+            }*/
             // Check if this is a quote, if so, add the original tweet and its user
-            if(item.is_quote_status === true && item.quoted_status){
+            /*if(item.is_quote_status === true && item.quoted_status){
                 const quoted_tweet = item.quoted_status
                 localStorage["tweet" + quoted_tweet.id] = JSON.stringify(quoted_tweet)
                 const quoted_user = quoted_tweet.user
                 localStorage["user" + quoted_user.screen_name] = JSON.stringify(quoted_user)
-            }
+            }*/
         }
         else if(itemsNameToAdd == "user"){
             localStorage["user" + item.screen_name] = JSON.stringify(item)

@@ -68,25 +68,28 @@ async function registerToExperiment(expCode){
 }
 
 async function sendGetRequestReturnResponse(requestUrl){
-    try{
-        // console.log(requestUrl)
-        const response = await axios.get(requestUrl)
-        // console.log(response)
-        return response
-    }
-    catch(error){
-        console.log(error)
-        return null
-    }
+    return await axios.get(requestUrl)
+        .catch(function (error) {
+            if (error.response) { 
+                console.log(error.response)
+                return error.response
+            }
+            else{ // This is network error
+                console.log(error)
+                return {status: 0, data: "Network error, server probably down"}
+            }
+        });
 }
 
 async function sendPostRequestReturnResponse(requestUrl, payload){
     return await axios.post(requestUrl, payload)
         .catch(function (error) {
             if (error.response) { 
+                console.log(error.response)
                 return error.response
             }
             else{ // This is network error
+                console.log(error)
                 return {status: 0, data: "Network error, server probably down"}
             }
         });
@@ -99,11 +102,7 @@ async function getFeed(){
     }
     // Else, send the request to the server
     const requestUrl = serverUrl + feedEndpoint
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function searchForTweets(query){
@@ -114,11 +113,7 @@ async function searchForTweets(query){
     // Else, send the request to the server
     const requestQuery = "?q=" + query
     const requestUrl = serverUrl + searchTweetsEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function searchForUsers(query){
@@ -129,11 +124,7 @@ async function searchForUsers(query){
     // Else, send the request to the server
     const requestQuery = "?q=" + query
     const requestUrl = serverUrl + searchUsersEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserPage(username){
@@ -144,11 +135,7 @@ async function getUserPage(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getTweetPage(tweetId){
@@ -159,11 +146,7 @@ async function getTweetPage(tweetId){
     // Else, send the request to the server
     const requestQuery = "?tweetId=" + tweetId
     const requestUrl = serverUrl + getTweetEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserFriends(username){
@@ -174,11 +157,7 @@ async function getUserFriends(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserFriendsEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserFollowers(username){
@@ -189,11 +168,7 @@ async function getUserFollowers(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserFollowersEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserTimeline(username){
@@ -204,11 +179,7 @@ async function getUserTimeline(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserTimelineEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserLikes(username){
@@ -219,11 +190,7 @@ async function getUserLikes(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserLikesEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: "null"}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 module.exports = {

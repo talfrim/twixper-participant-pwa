@@ -113,6 +113,7 @@ export default {
                                 const responseData = response.data
                                 if(responseData.twitter_user_found == true && responseData.user_registered_to_experiment == true){
                                     // Already registered to experiment
+                                    localStorage['registeredToExperiment'] = true
                                     vm.$router.push('feed')
                                 }
                                 else{ // Need to register to experiment

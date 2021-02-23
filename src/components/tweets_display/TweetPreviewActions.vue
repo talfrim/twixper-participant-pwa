@@ -87,9 +87,15 @@ export default {
                             if(response.data.code == 139){
                                 vm.$toasted.show('Tweet already liked');
                             }
-                            else{
-                                vm.$toasted.show('Could not like the tweet. Please try again later');
+                            else if (response.data.code == 88){
+                                vm.$toasted.show('(API limit exceeded) Could not like the tweet. Please try again later.');
                             }
+                            else{
+                                vm.$toasted.show('API unknown issue) Could not like the tweet. Please try again later');
+                            }
+                        }
+                        else{ // Error is not in the api
+                            vm.$toasted.show('Could not like the tweet. Please try again later');
                         }
                     }
                     vm.enableActions()
@@ -125,9 +131,15 @@ export default {
                             if(response.data.code == 144){
                                 vm.$toasted.show('Tweet already unliked');
                             }
-                            else{
-                                vm.$toasted.show('Could not unlike the tweet. Please try again later');
+                            else if (response.data.code == 88){
+                                vm.$toasted.show('(API limit exceeded) Could not unlike the tweet. Please try again later.');
                             }
+                            else{
+                                vm.$toasted.show('(API unknown issue) Could not unlike the tweet. Please try again later');
+                            }
+                        }
+                        else{ // Error is not in the api
+                            vm.$toasted.show('Could not unlike the tweet. Please try again later');
                         }
                     }
                     vm.enableActions()

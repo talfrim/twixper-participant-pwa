@@ -6,7 +6,9 @@
             <SearchBox @searched="redirectToSearch" />
         </div>
         <div class="list-container">
-            Recent searches - coming soon
+            Currently displays the same static search results. Real search is coming soon.
+            <br><br>
+            <i>Recent searches - coming soon</i>
            <!-- <ul> elements should be taken from local storage- we will save last 3 every time
                 <li><a href="#">Bibi</a></li>
                     <li><a href="#">Netanyahu</a></li>
@@ -67,10 +69,11 @@ export default {
 }
 
 .list-container {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    margin: 25px 5% 0 5%;
+}
+.list-container i{
     color: grey;
-    font-style: italic;
-    margin-top: 25px;
 }
 
  ul {

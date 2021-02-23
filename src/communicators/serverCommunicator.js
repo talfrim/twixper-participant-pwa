@@ -18,6 +18,8 @@ const getUserLikesEndpoint = "/participants/getUserLikes"
 
 const likeTweetEndpoint = "/participants/likeTweet"
 const unlikeTweetEndpoint = "/participants/unlikeTweet"
+const publishTweetEndpoint = "/participants/publishTweet"
+
 
 const axios = require('axios')
 axios.defaults.withCredentials=true;
@@ -232,6 +234,16 @@ async function unlikeTweet(tweetId){
     return await sendPostRequestReturnResponse(requestUrl, {})
 }
 
+async function publishTweet(payload){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestUrl = serverUrl + publishTweetEndpoint
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
 module.exports = {
     serverCheckCredentials: checkCredentials,
     serverRegisterToExperiment: registerToExperiment,
@@ -248,5 +260,5 @@ module.exports = {
 
     serverLikeTweet: likeTweet,
     serverUnlikeTweet: unlikeTweet,
-
+    serverPublishTweet: publishTweet,
 }

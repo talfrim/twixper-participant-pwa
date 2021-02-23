@@ -1,5 +1,5 @@
 <template>
-    <div class="post-icons-container">
+    <div class="post-icons-container" ref="container">
         <div class="post-icon">
             <i class="far fa-comment"></i>
         </div>
@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import {parseTwitterNumbersToStringFunc} from "../../assets/globalFunctions";
+import {parseTwitterNumbersToStringFunc, editTweetInLs} from "../../assets/globalFunctions";
+import {serverLikeTweet, serverUnlikeTweet} from "../../communicators/serverCommunicator"
 
 export default {
     props: {
@@ -32,6 +33,8 @@ export default {
     },
     data () {
         return{
+            actionsDisabled: false, // For waiting for server response
+            tweetId: "-1",
             likes: -1,
 			retweets: -1,
 			isLiked: false,
@@ -40,10 +43,11 @@ export default {
     },
     created(){
         const tweetPrev = this.tweetPreview;
-        //TODO: When the number is bigger than 9999, format it to K
-		this.likes = tweetPrev.favorite_count;
+
+        this.likes = tweetPrev.favorite_count;
 		this.retweets = tweetPrev.retweet_count;
 
+        this.tweetId = tweetPrev.id_str
 		this.isLiked = tweetPrev.favorited;
 		this.isRetweeteed = tweetPrev.retweeted;
     },
@@ -57,26 +61,96 @@ export default {
             return parseTwitterNumbersToStringFunc(number);
         },
         likeTweet(){
+            if(this.actionsDisabled){
+                return;
+            }
 			if(!this.isLiked){//Like the tweet
-				//TODO: Call the communicator to tell the API we liked a tweet
                 this.$refs.heart.classList.add('is_animating');
-				this.$toasted.show('Tweet liked');
 
-				
-				this.likes ++;
-				this.isLiked = true;
+                this.disableActions()
+                
+                // Call the communicator to tell the API we liked a tweet
+                let vm = this
+                serverLikeTweet(this.tweetId).then(function (response) {
+                    console.log(response);
+                    if(response.status == 200 || response.status == 201){
+                        vm.likes ++;
+				        vm.isLiked = true;
+                        vm.$toasted.show('Tweet liked');
+                        // Edit the tweet in the LS - favorited: true
+                        editTweetInLs(vm.tweetId, "favorited", true)
+                    }
+                    else{
+                        vm.$refs.heart.classList.remove('is_animating');
+                        vm.$refs.heart.classList.remove('animated');
+                        if(response.status == 502){
+                            if(response.data.code == 139){
+                                vm.$toasted.show('Tweet already liked');
+                            }
+                            else{
+                                vm.$toasted.show('Could not like the tweet. Please try again later');
+                            }
+                        }
+                    }
+                    vm.enableActions()
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    vm.$refs.heart.classList.remove('is_animating');
+                    vm.$refs.heart.classList.remove('animated');
+                    vm.$toasted.show('Could not like the tweet. Please try again later');
+                    vm.enableActions()
+                });
 			}
 			else{ //Unlike the tweet
-				//TODO: Call the communicator to tell the API we unliked a tweet
                 this.$refs.heart.classList.remove('is_animating');
                 this.$refs.heart.classList.remove('animated');
 
-				this.$toasted.show('Tweet unliked');
+                this.disableActions()
 
-				this.likes --;
-				this.isLiked = false;
+                // Call the communicator to tell the API we liked a tweet
+                let vm = this
+                serverUnlikeTweet(this.tweetId).then(function (response) {
+                    console.log(response);
+                    if(response.status == 200 || response.status == 201){
+                        vm.likes --;
+				        vm.isLiked = false;
+                        vm.$toasted.show('Tweet unliked');
+                        // Edit the tweet in the LS - favorited: false
+                        editTweetInLs(vm.tweetId, "favorited", false)
+                    }
+                    else{
+                        vm.$refs.heart.classList.add('animated');
+                        if(response.status == 502){
+                            if(response.data.code == 144){
+                                vm.$toasted.show('Tweet already unliked');
+                            }
+                            else{
+                                vm.$toasted.show('Could not unlike the tweet. Please try again later');
+                            }
+                        }
+                    }
+                    vm.enableActions()
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    vm.$refs.heart.classList.add('animated');
+                    vm.$toasted.show('Could not unlike the tweet. Please try again later');
+                    vm.enableActions()
+                });
+				
 			}
 		},
+        disableActions(){
+            this.actionsDisabled = true
+            // setTimeout( () =>
+                this.$refs.container.classList.add('disabled')
+            // , 300)
+        },
+        enableActions(){
+            this.actionsDisabled = false
+            this.$refs.container.classList.remove('disabled');
+        }
     } 
 }
 </script>

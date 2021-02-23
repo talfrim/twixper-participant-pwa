@@ -120,8 +120,8 @@ function addToLsByList(itemsNameToAdd, itemsArrToAdd, keyOfArrInLs){ // "tweet",
     for (let i = 0; i < itemsArrToAdd.length; i++) {
         const item = itemsArrToAdd[i]
         if(itemsNameToAdd == "tweet"){
-            localStorage["tweet" + item.id] = JSON.stringify(item)
-            order.push(item.id)
+            localStorage["tweet" + item.id_str] = JSON.stringify(item)
+            order.push(item.id_str)
             const user = item.user
             localStorage["user" + user.screen_name] = JSON.stringify(user)
             // Check if this is a retweet, if so, add the original tweet and its user
@@ -164,12 +164,22 @@ function retrieveListFromLs(itemsNameToRetrieve, keyOfArrInLs){ // "tweet", "use
     return retrievedItemsArr
 }
 
+function editTweetInLs(tweetId, field, newVal){
+    if(localStorage.getItem("tweet" + tweetId) != null) {
+        let tweet = JSON.parse(localStorage["tweet" + tweetId])
+        tweet[field] = newVal
+        localStorage.setItem("tweet" + tweetId, JSON.stringify(tweet))
+    }
+}
+
 module.exports = {
     parseTwitterDateFunc: parseTwitterDate,
     parseTwitterNumbersToStringFunc: parseNumbersToString,
     parseUserPageDateFunc: parseUserPageDate,
+    
     emptyFromLs: emptyFromLs,
     emptyFromLsByList: emptyFromLsByList,
     addToLsByList: addToLsByList,
-    retrieveListFromLs: retrieveListFromLs
+    retrieveListFromLs: retrieveListFromLs,
+    editTweetInLs: editTweetInLs,
 };

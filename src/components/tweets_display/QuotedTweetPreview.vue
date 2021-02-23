@@ -51,7 +51,7 @@ export default {
     },
     created(){
         const tweetPrev = this.qTweetPreview;
-        this.tweetId = tweetPrev.id;
+        this.tweetId = tweetPrev.id_str;
         this.time = parseTwitterDateFunc(tweetPrev.created_at);
 
         const userJson = tweetPrev.user;

@@ -16,6 +16,8 @@ const getUserFollowersEndpoint = "/participants/getUserFollowers"
 const getUserTimelineEndpoint = "/participants/getUserTimeline"
 const getUserLikesEndpoint = "/participants/getUserLikes"
 
+const likeTweetEndpoint = "/participants/likeTweet"
+const unlikeTweetEndpoint = "/participants/unlikeTweet"
 
 const axios = require('axios')
 axios.defaults.withCredentials=true;
@@ -35,6 +37,39 @@ var userLikesJSON = require("./static data/UserLikesJSON.js").data
 function sleep(ms) { 
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+async function sendGetRequestReturnResponse(requestUrl){
+    return await axios.get(requestUrl)
+        .catch(function (error) {
+            if (error.response) { 
+                console.log(error.response)
+                return error.response
+            }
+            else{ // This is network error
+                console.log(error)
+                return {status: 0, data: "Network error, server probably down"}
+            }
+        });
+}
+
+async function sendPostRequestReturnResponse(requestUrl, payload){
+    return await axios.post(requestUrl, payload)
+        .catch(function (error) {
+            if (error.response) { 
+                console.log(error.response)
+                return error.response
+            }
+            else{ // This is network error
+                console.log(error)
+                return {status: 0, data: "Network error, server probably down"}
+            }
+        });
+}
+
+
+/* ----------------------------------------
+    Guest requests
+   ---------------------------------------- */
 
 async function checkCredentials(token, tokenSecret){
     if(!actuallySendReqToServer){
@@ -67,33 +102,10 @@ async function registerToExperiment(expCode){
     return await sendPostRequestReturnResponse(requestUrl, payload)
 }
 
-async function sendGetRequestReturnResponse(requestUrl){
-    return await axios.get(requestUrl)
-        .catch(function (error) {
-            if (error.response) { 
-                console.log(error.response)
-                return error.response
-            }
-            else{ // This is network error
-                console.log(error)
-                return {status: 0, data: "Network error, server probably down"}
-            }
-        });
-}
 
-async function sendPostRequestReturnResponse(requestUrl, payload){
-    return await axios.post(requestUrl, payload)
-        .catch(function (error) {
-            if (error.response) { 
-                console.log(error.response)
-                return error.response
-            }
-            else{ // This is network error
-                console.log(error)
-                return {status: 0, data: "Network error, server probably down"}
-            }
-        });
-}
+/* ----------------------------------------
+    Requests for data from Twitter to display
+   ---------------------------------------- */
 
 async function getFeed(){
     if(!actuallySendReqToServer){
@@ -193,7 +205,37 @@ async function getUserLikes(username){
     return await sendGetRequestReturnResponse(requestUrl)
 }
 
+
+/* ----------------------------------------
+    Requests for making active actions in Twitter
+   ---------------------------------------- */
+
+async function likeTweet(tweetId){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestQuery = "?tweetId=" + tweetId
+    const requestUrl = serverUrl + likeTweetEndpoint + requestQuery
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
+async function unlikeTweet(tweetId){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestQuery = "?tweetId=" + tweetId
+    const requestUrl = serverUrl + unlikeTweetEndpoint + requestQuery
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
 module.exports = {
+    serverCheckCredentials: checkCredentials,
+    serverRegisterToExperiment: registerToExperiment,
+
     serverGetFeed: getFeed,
     serverSearchForTweets: searchForTweets,
     serverSearchForUsers: searchForUsers,
@@ -204,6 +246,7 @@ module.exports = {
     serverGetUserTimeline: getUserTimeline,
     serverGetUserLikes: getUserLikes,
 
-    serverCheckCredentials: checkCredentials,
-    serverRegisterToExperiment: registerToExperiment,
+    serverLikeTweet: likeTweet,
+    serverUnlikeTweet: unlikeTweet,
+
 }

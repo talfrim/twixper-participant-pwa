@@ -6,11 +6,13 @@
             <SearchBox @searched="redirectToSearch" />
         </div>
         <div class="list-container">
-            <ul> <!--elements should be taken from local storage- we will save last 3 every time-->
+            Recent searches - coming soon
+           <!-- <ul> elements should be taken from local storage- we will save last 3 every time
                 <li><a href="#">Bibi</a></li>
-                <li><a href="#">Netanyahu</a></li>
-                <li><a href="#">Twixper social media </a></li>
-            </ul>
+                    <li><a href="#">Netanyahu</a></li>
+                    <li><a href="#">Twixper social media </a></li>
+
+            </ul> -->
         </div>
         
     </div>
@@ -63,9 +65,14 @@ export default {
 .page-wrapper{
     height: 100vh;
 }
-/*.list-container {
-    margin-top: 17%;
-}*/
+
+.list-container {
+    font-size: 1.5rem;
+    color: grey;
+    font-style: italic;
+    margin-top: 25px;
+}
+
  ul {
   list-style-type: none;
   margin: 0;

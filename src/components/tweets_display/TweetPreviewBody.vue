@@ -67,7 +67,7 @@ export default {
     },
     created(){
 		const tweetPrev = this.tweetPreview;
-		this.tweetId = tweetPrev.id
+		this.tweetId = tweetPrev.id_str
         let tweetText = tweetPrev.full_text || tweetPrev.text;
 		this.textHtml = tweetText.replace(/(?:\r\n|\r|\n)/g, '<br>');//Convert string to html
 		this.lang = tweetPrev.lang;

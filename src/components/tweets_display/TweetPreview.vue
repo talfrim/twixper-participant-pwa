@@ -103,7 +103,7 @@ export default {
 	created(){
 		this.myTweetPreview = this.tweetPreview
 		let tweetPrev = this.myTweetPreview;
-		this.tweetId = tweetPrev.id;
+		this.tweetId = tweetPrev.id_str;
 		this.time = parseTwitterDateFunc(tweetPrev.created_at);
 
 		// If this is a retweet, the tweetPrev should be the original tweet

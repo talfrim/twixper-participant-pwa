@@ -3,6 +3,11 @@
 	margin-top: 1.2rem;
 	display: grid;
 	grid-template-columns: 2fr 3fr 3fr 2fr;
+	transition: opacity 0.5s ease;
+}
+
+.disabled{
+	opacity: 0.4
 }
 
 .post-icons-container i {

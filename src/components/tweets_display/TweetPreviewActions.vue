@@ -81,20 +81,26 @@ export default {
                         editTweetInLs(vm.tweetId, "favorited", true)
                     }
                     else{
-                        vm.$refs.heart.classList.remove('is_animating');
-                        vm.$refs.heart.classList.remove('animated');
                         if(response.status == 502){
-                            if(response.data.code == 139){
+                            if(response.data.code == 139){ // Already liked
                                 vm.$toasted.show('Tweet already liked');
                             }
-                            else if (response.data.code == 88){
-                                vm.$toasted.show('(API limit exceeded) Could not like the tweet. Please try again later.');
-                            }
-                            else{
-                                vm.$toasted.show('API unknown issue) Could not like the tweet. Please try again later');
+                            else{ 
+                                // Cancel like animation
+                                vm.$refs.heart.classList.remove('is_animating');
+                                vm.$refs.heart.classList.remove('animated');
+                                if (response.data.code == 88){
+                                    vm.$toasted.show('(API limit exceeded) Could not like the tweet. Please try again later.');
+                                }
+                                else{
+                                    vm.$toasted.show('API unknown issue) Could not like the tweet. Please try again later');
+                                }
                             }
                         }
                         else{ // Error is not in the api
+                            // Cancel like animation
+                            vm.$refs.heart.classList.remove('is_animating');
+                            vm.$refs.heart.classList.remove('animated');
                             vm.$toasted.show('Could not like the tweet. Please try again later');
                         }
                     }
@@ -126,19 +132,24 @@ export default {
                         editTweetInLs(vm.tweetId, "favorited", false)
                     }
                     else{
-                        vm.$refs.heart.classList.add('animated');
                         if(response.status == 502){
-                            if(response.data.code == 144){
+                            if(response.data.code == 144){ // Already unliked
                                 vm.$toasted.show('Tweet already unliked');
                             }
-                            else if (response.data.code == 88){
-                                vm.$toasted.show('(API limit exceeded) Could not unlike the tweet. Please try again later.');
-                            }
-                            else{
-                                vm.$toasted.show('(API unknown issue) Could not unlike the tweet. Please try again later');
+                            else{ 
+                                // Cancel unlike animation
+                                vm.$refs.heart.classList.add('animated');
+                                if (response.data.code == 88){
+                                    vm.$toasted.show('(API limit exceeded) Could not unlike the tweet. Please try again later.');
+                                }
+                                else{
+                                    vm.$toasted.show('(API unknown issue) Could not unlike the tweet. Please try again later');
+                                }
                             }
                         }
                         else{ // Error is not in the api
+                            // Cancel unlike animation
+                            vm.$refs.heart.classList.add('animated');
                             vm.$toasted.show('Could not unlike the tweet. Please try again later');
                         }
                     }

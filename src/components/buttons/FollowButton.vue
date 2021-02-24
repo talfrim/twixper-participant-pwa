@@ -53,7 +53,7 @@ export default {
 
 
                 this.isFollowing = true;
-                this.$toasted.show('Followed');
+                this.$toasted.show('Followed (not really)');
                 console.log("Follow user "+ this.usernameContext)
             }
             else{ // Unfollow
@@ -63,7 +63,7 @@ export default {
 
                 
                 this.isFollowing = false;
-                this.$toasted.show('Unfollowed');
+                this.$toasted.show('Unfollowed (not really)');
                 console.log("Unfollow user "+ this.usernameContext)
             }
 

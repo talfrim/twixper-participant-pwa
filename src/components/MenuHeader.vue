@@ -17,7 +17,7 @@
             :to="{ name: 'feed'}"
             @click.native="clickedHome"
           >
-            <i class="fas fa-home"></i>
+            <i class="fas fa-home" ref="homeI"></i>
           </router-link>
           <router-link :to="{ name: 'searchBox'}">
             <i class="fas fa-search fa-sm"></i>
@@ -116,6 +116,12 @@ export default {
     methods:{
       clickedHome(){
         this.$emit("clickedHome")
+      },
+      activeHomeStyle(){
+        this.$refs.homeI.classList.add("active")
+      },
+      inctiveHomeStyle(){
+        this.$refs.homeI.classList.remove("active")
       },
       touchStart(event){
           this.touch.startX = event.touches[0].clientX; // [0] is the first finger touches

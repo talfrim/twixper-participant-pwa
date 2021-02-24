@@ -4,6 +4,7 @@
             v-if="myEl" 
             :parentsEl="myEl" 
             @clickedHome="clickedHome"
+            ref="menuHeader"
         />
         <WriteNewTweet />
         <div class="tpl-container">
@@ -57,6 +58,11 @@ export default {
     },
     mounted(){
         this.myEl = this.$el;
+        // Using nextTick to wait for the menueHeader to render
+        this.$nextTick(() => {this.$refs.menuHeader.activeHomeStyle()})
+    },
+    beforeDestroy(){
+        this.$refs.menuHeader.inctiveHomeStyle()
     },
     methods:{
         async getFeedFromServer(){

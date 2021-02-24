@@ -47,6 +47,11 @@ export default{
             else{
                 if(registerToExpResponse.data && registerToExpResponse.data.message){
                     alert(registerToExpResponse.data.message)
+                    if(registerToExpResponse.data.name == "UserAlreadyRegistered"){
+                        // Setting the registration in local storage
+                        localStorage['registeredToExperiment'] = true
+                        this.$router.push('feed')
+                    }
                 }
                 else if(typeof registerToExpResponse.data === 'string'){
                     alert(registerToExpResponse.data)

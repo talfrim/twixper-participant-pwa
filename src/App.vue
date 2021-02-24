@@ -83,12 +83,12 @@ export default {
 @media (max-width: 600px){
   /* Overriding toast notifications external css */
   .toasted{
-    width: 28% !important;
+    width: 55% !important;
     justify-content: center !important;
     
     border-radius: 3rem !important;
     top: -4rem !important ;
-    left: 30%;
+    left: 18%;
     opacity: 0.85 !important;
     
   }

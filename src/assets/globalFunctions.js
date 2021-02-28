@@ -82,6 +82,9 @@ function emptyFromLs(itemsNameToRemove){ // "tweet", "user"
             localStorage.removeItem(key);
         }
     });
+    if(itemsNameToRemove == "tweet"){
+        localStorage.removeItem("feedTweetsOrder")
+    }
 }
 
 function emptyFromLsByList(itemsNameToRemove, keyOfArrInLs){ // "tweet", "user"

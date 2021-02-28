@@ -121,6 +121,7 @@
     border: 0.1rem solid #eee;
     border-radius: 1.5rem;
     font-size: 1.6rem;
+    resize: none;
 }
 
 .modal-input:focus {

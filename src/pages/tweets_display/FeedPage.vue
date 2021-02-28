@@ -30,7 +30,7 @@ import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
 import Loader from "../../components/Loader"
 
 import {serverGetFeed} from "../../communicators/serverCommunicator"
-import {emptyFromLs, addToLsByList, retrieveListFromLs} from "../../assets/globalFunctions"
+import {emptyCacheFromLs, addToLsByList, retrieveListFromLs} from "../../assets/globalFunctions"
 
 export default {
     components: {
@@ -87,8 +87,7 @@ export default {
         async refreshFeed(){
             // When refreshing the feed, empty the relevant tweets in local storage.
             localStorage.removeItem("feedTweetsOrder");
-            emptyFromLs("tweet")
-            emptyFromLs("user")
+            emptyCacheFromLs()
             // Empty the tweets array
             this.feedTweetsArr = [] 
             // Reset scroll

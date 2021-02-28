@@ -76,15 +76,13 @@ function numberWithCommas(number){
 
 /* ____ Local Storage functions  ____*/
 
-function emptyFromLs(itemsNameToRemove){ // "tweet", "user"
+function emptyCacheFromLs(){ 
     Object.keys(localStorage).forEach((key) => {
-        if(key.startsWith(itemsNameToRemove)){
+        if(key != "providedCredentials"
+        && key != "registeredToExperiment"){
             localStorage.removeItem(key);
         }
     });
-    if(itemsNameToRemove == "tweet"){
-        localStorage.removeItem("feedTweetsOrder")
-    }
 }
 
 function emptyFromLsByList(itemsNameToRemove, keyOfArrInLs){ // "tweet", "user"
@@ -180,7 +178,7 @@ module.exports = {
     parseTwitterNumbersToStringFunc: parseNumbersToString,
     parseUserPageDateFunc: parseUserPageDate,
     
-    emptyFromLs: emptyFromLs,
+    emptyCacheFromLs: emptyCacheFromLs,
     emptyFromLsByList: emptyFromLsByList,
     addToLsByList: addToLsByList,
     retrieveListFromLs: retrieveListFromLs,

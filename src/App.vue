@@ -24,6 +24,10 @@ export default {
 </script>
 
 <style>
+  /* 
+    Twitter's border color: 
+    border-color: rgb(196, 207, 214);
+  */
   * {
 		margin: 0;
 		padding: 0;

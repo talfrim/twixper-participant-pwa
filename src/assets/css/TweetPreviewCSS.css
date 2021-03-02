@@ -60,7 +60,13 @@ h4 .usernameSpan{
 	height: 100%;
 	object-fit: cover;
 	border-radius: 50%;
-	border: 1px solid silver;
+	visibility: hidden; 
+    opacity: 0;
+    transition: opacity .5s;
+}
+.user-avatar img.user-img-display{
+	opacity: 1;
+    visibility: visible;
 }
 
 .post-user-info {

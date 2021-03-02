@@ -188,7 +188,7 @@ export default {
     /*border: 0.1rem solid silver;*/
     visibility: hidden; 
     opacity: 0;
-    transition: opacity .5s, visibility .5s;
+    transition: opacity .5s;
 }
 .photo-display{
     opacity: 1;

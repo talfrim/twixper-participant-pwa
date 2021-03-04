@@ -152,7 +152,7 @@ export default {
     /*grid-template-columns: repeat(auto-fit, minmax(7rem, 18rem));*/
     /* row-gap: 0.2rem;
     column-gap: 0.2rem; */
-    gap: 0.2rem;
+    /* gap: 0.2rem; */
 
 }
 

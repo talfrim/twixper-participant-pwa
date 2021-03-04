@@ -18,6 +18,7 @@
 		</div>
 
         <TweetPreviewBody 
+            :isQuotedTweet="true"
             :tweetPreview="qTweetPreview" 
             @clickedTweet="clickedTweet"
         />
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import {parseTwitterDateFunc, sleepFunc} from "../../assets/globalFunctions";
+import {parseTwitterDateFunc} from "../../assets/globalFunctions";
 
 export default {
     components:{

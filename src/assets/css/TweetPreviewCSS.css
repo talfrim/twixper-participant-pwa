@@ -36,7 +36,7 @@ h4 .usernameSpan{
 
 @media (max-width: 475px) {
 	.post {
-		grid-template-columns: 16% 82.5%;
+		grid-template-columns: 16% 81.5%; /* 82.5 */
 	}
 }
 @media (max-width: 340px) {

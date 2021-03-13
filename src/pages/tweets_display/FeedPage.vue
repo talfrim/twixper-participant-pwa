@@ -4,6 +4,7 @@
             v-if="myEl" 
             :parentsEl="myEl" 
             @clickedHome="clickedHome"
+            ref="menuHeader"
         />
         <WriteNewTweet />
         <div class="tpl-container">
@@ -29,7 +30,7 @@ import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
 import Loader from "../../components/Loader"
 
 import {serverGetFeed} from "../../communicators/serverCommunicator"
-import {emptyFromLs, addToLsByList, retrieveListFromLs} from "../../assets/globalFunctions"
+import {emptyCacheFromLs, addToLsByList, retrieveListFromLs} from "../../assets/globalFunctions"
 
 export default {
     components: {
@@ -46,6 +47,9 @@ export default {
         }
     },
     created(){
+        if(localStorage.getItem("registeredToExperiment") == null){
+            this.$router.push("welcomePage")
+        }
         // If there are tweets in ls, get the tweets from ls instead of asking the server. 
         if (localStorage.getItem("feedTweetsOrder") != null) {
             this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
@@ -57,6 +61,13 @@ export default {
     },
     mounted(){
         this.myEl = this.$el;
+        // Using nextTick to wait for the menueHeader to render
+        this.$nextTick(() => {this.$refs.menuHeader.activeHomeStyle()})
+    },
+    beforeDestroy(){
+        if(this.$refs.menuHeader){
+            this.$refs.menuHeader.inctiveHomeStyle()
+        }
     },
     methods:{
         async getFeedFromServer(){
@@ -65,6 +76,11 @@ export default {
             const response = await serverGetFeed()
             if(response.status == 200){
                 this.feedTweetsArr.push(...response.data);
+            }
+            else if (response.status == 401){
+                // Unauthorized
+                console.log("Unauthorized get feed")
+                this.$router.push("welcomePage")
             }
             // TODO: ELse, show "could not reefresh feed, try again later"
             else{
@@ -81,8 +97,7 @@ export default {
         async refreshFeed(){
             // When refreshing the feed, empty the relevant tweets in local storage.
             localStorage.removeItem("feedTweetsOrder");
-            emptyFromLs("tweet")
-            emptyFromLs("user")
+            emptyCacheFromLs()
             // Empty the tweets array
             this.feedTweetsArr = [] 
             // Reset scroll

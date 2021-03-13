@@ -3,8 +3,11 @@ const actuallySendReqToServer = true
 // const serverUrl = "http://127.0.0.1:3000"
 const serverUrl = "http://localhost:3000"
 
+const twitterRequestTokenEndpoint = "/twitterAuthRequestToken"
+const twitterAccessTokenEndpoint = "/twitterAuthAccessToken"
 const checkCredentialsEndpoint = "/checkUserByCredentials"
 const registerToExperimentEndpoint ="/registerToExperiment"
+const validateSessionEndpoint = "/participantValidateSession"
 
 const feedEndpoint = "/participants/getFeed"
 const searchTweetsEndpoint = "/participants/searchTweets"
@@ -70,8 +73,42 @@ async function sendPostRequestReturnResponse(requestUrl, payload){
 
 
 /* ----------------------------------------
+    Validate session request
+   ---------------------------------------- */
+
+async function validateSession(){
+    // Asks the server if I have valid cookie
+    // For testing
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {hasSession: true}}
+    }
+    // Else, send the request to the server
+    const requestUrl = serverUrl + validateSessionEndpoint
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
+
+/* ----------------------------------------
     Guest requests
    ---------------------------------------- */
+
+async function getTwitterAuthRequestToken(oauthCb){
+    const requestUrl = serverUrl + twitterRequestTokenEndpoint
+    const payload = {
+        oauth_callback: oauthCb,
+    }
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
+async function getTwitterAuthAccessToken(token, verifier){
+    const requestUrl = serverUrl + twitterAccessTokenEndpoint
+    const payload = {
+        oauth_token: token,
+        oauth_verifier: verifier
+    }
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
 
 async function checkCredentials(token, tokenSecret){
     if(!actuallySendReqToServer){
@@ -245,6 +282,9 @@ async function publishTweet(payload){
 }
 
 module.exports = {
+    serverGetTwitterAuthRequestToken: getTwitterAuthRequestToken,
+    serverGetTwitterAuthAccessToken: getTwitterAuthAccessToken,
+    serverValidateSession: validateSession,
     serverCheckCredentials: checkCredentials,
     serverRegisterToExperiment: registerToExperiment,
 

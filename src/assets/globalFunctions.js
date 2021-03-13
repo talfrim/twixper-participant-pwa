@@ -1,4 +1,11 @@
+var tweetParser = require('./tweetParser.js')
+
 var moment = require('moment');
+
+
+function getHtmlTextFromTweet(tweet, isQuotedTweet = false){
+    return tweetParser.getHtmlTextFromTweet(tweet, isQuotedTweet)
+}
 
 function parseTwitterDate(tdate) {
     var system_date = new Date(Date.parse(tdate));
@@ -74,11 +81,14 @@ function numberWithCommas(number){
 }
 
 
-/* ____ Local Storage functions  ____*/
+/* ----------------------------------------
+    Local Storage functions
+   ---------------------------------------- */
 
-function emptyFromLs(itemsNameToRemove){ // "tweet", "user"
+function emptyCacheFromLs(){ 
     Object.keys(localStorage).forEach((key) => {
-        if(key.startsWith(itemsNameToRemove)){
+        if(key != "providedCredentials"
+        && key != "registeredToExperiment"){
             localStorage.removeItem(key);
         }
     });
@@ -173,11 +183,12 @@ function editTweetInLs(tweetId, field, newVal){
 }
 
 module.exports = {
+    getHtmlTextFromTweetFunc: getHtmlTextFromTweet,
     parseTwitterDateFunc: parseTwitterDate,
     parseTwitterNumbersToStringFunc: parseNumbersToString,
     parseUserPageDateFunc: parseUserPageDate,
     
-    emptyFromLs: emptyFromLs,
+    emptyCacheFromLs: emptyCacheFromLs,
     emptyFromLsByList: emptyFromLsByList,
     addToLsByList: addToLsByList,
     retrieveListFromLs: retrieveListFromLs,

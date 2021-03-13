@@ -4,6 +4,7 @@
         @click="$emit('clicked-btn')" 
         ref="btn"
         :class="{btnOn: btnModeOn === true}"
+        :disabled="disabled"
     >
         {{btnText}}
     </button>
@@ -18,6 +19,11 @@ export default {
             default: "btn name"
         },
         btnModeOn:{
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        disabled:{
             type: Boolean,
             required: false,
             default: false

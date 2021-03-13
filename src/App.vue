@@ -13,17 +13,52 @@
 </template>
 
 <script>
+import {serverValidateSession} from "./communicators/serverCommunicator"
+import {emptyCacheFromLs} from "./assets/globalFunctions"
 
 export default {
   name: 'App',
-  // created(){
-   
-  // }
+  mounted(){
+    if(this.$route.name == "default" 
+      && localStorage.getItem("registeredToExperiment") == null
+      ){
+      return
+    }
+    // Check if the cookie of our server is valid
+    let vm = this
+    serverValidateSession().then(function (response) {
+      if(response.status == 200){
+        if(response.data.hasSession == true){ // The cookie is valid
+
+        }
+        else{ // The cookie is invalid.
+          localStorage.removeItem('providedCredentials')
+          localStorage.removeItem('registeredToExperiment')
+          emptyCacheFromLs()
+          // Redirect to welcom page if the current rout is not "welcome" or "insert code"
+          if(vm.$route.name != "welcomePage" && vm.$route.name != "insertExpCode"){
+            vm.$router.push("welcomePage")
+          }
+        }
+      }
+      else{
+        // Server error
+        console.log("Server error while checking the cookie")
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
   
 }
 </script>
 
 <style>
+  /* 
+    Twitter's border color: 
+    border-color: rgb(196, 207, 214);
+  */
   * {
 		margin: 0;
 		padding: 0;
@@ -83,12 +118,12 @@ export default {
 @media (max-width: 600px){
   /* Overriding toast notifications external css */
   .toasted{
-    width: 28% !important;
+    width: 55% !important;
     justify-content: center !important;
     
     border-radius: 3rem !important;
     top: -4rem !important ;
-    left: 30%;
+    left: 18%;
     opacity: 0.85 !important;
     
   }

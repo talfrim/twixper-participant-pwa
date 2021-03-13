@@ -20,7 +20,7 @@
 
 <script>
 import {serverRegisterToExperiment} from "../../communicators/serverCommunicator"
-import {emptyFromLs} from "../../assets/globalFunctions"
+import {emptyCacheFromLs} from "../../assets/globalFunctions"
 
 export default{
     data(){
@@ -36,8 +36,7 @@ export default{
                 // Setting the registration in local storage
                 localStorage['registeredToExperiment'] = true
                 // Reset local storage twitter data
-                emptyFromLs("tweet")
-                emptyFromLs("user")
+                emptyCacheFromLs()
                 this.$router.push('feed')
             }
             else if (registerToExpResponse.status == 401){
@@ -47,6 +46,11 @@ export default{
             else{
                 if(registerToExpResponse.data && registerToExpResponse.data.message){
                     alert(registerToExpResponse.data.message)
+                    if(registerToExpResponse.data.name == "UserAlreadyRegistered"){
+                        // Setting the registration in local storage
+                        localStorage['registeredToExperiment'] = true
+                        this.$router.push('feed')
+                    }
                 }
                 else if(typeof registerToExpResponse.data === 'string'){
                     alert(registerToExpResponse.data)

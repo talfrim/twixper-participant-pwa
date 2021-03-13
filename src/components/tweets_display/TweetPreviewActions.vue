@@ -80,6 +80,11 @@ export default {
                         // Edit the tweet in the LS - favorited: true
                         editTweetInLs(vm.tweetId, "favorited", true)
                     }
+                    else if (response.status == 401){
+                        // Unauthorized
+                        console.log("Unauthorized like")
+                        this.$router.push("welcomePage")
+                    }
                     else{
                         if(response.status == 502){
                             if(response.data.code == 139){ // Already liked
@@ -130,6 +135,11 @@ export default {
                         vm.$toasted.show('Tweet unliked');
                         // Edit the tweet in the LS - favorited: false
                         editTweetInLs(vm.tweetId, "favorited", false)
+                    }
+                    else if (response.status == 401){
+                        // Unauthorized
+                        console.log("Unauthorized unlike")
+                        this.$router.push("welcomePage")
                     }
                     else{
                         if(response.status == 502){

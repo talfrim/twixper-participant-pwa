@@ -47,6 +47,9 @@ export default {
         }
     },
     created(){
+        if(localStorage.getItem("registeredToExperiment") == null){
+            this.$router.push("welcomePage")
+        }
         // If there are tweets in ls, get the tweets from ls instead of asking the server. 
         if (localStorage.getItem("feedTweetsOrder") != null) {
             this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
@@ -62,7 +65,9 @@ export default {
         this.$nextTick(() => {this.$refs.menuHeader.activeHomeStyle()})
     },
     beforeDestroy(){
-        this.$refs.menuHeader.inctiveHomeStyle()
+        if(this.$refs.menuHeader){
+            this.$refs.menuHeader.inctiveHomeStyle()
+        }
     },
     methods:{
         async getFeedFromServer(){
@@ -71,6 +76,11 @@ export default {
             const response = await serverGetFeed()
             if(response.status == 200){
                 this.feedTweetsArr.push(...response.data);
+            }
+            else if (response.status == 401){
+                // Unauthorized
+                console.log("Unauthorized get feed")
+                this.$router.push("welcomePage")
             }
             // TODO: ELse, show "could not reefresh feed, try again later"
             else{

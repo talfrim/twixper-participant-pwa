@@ -24,13 +24,15 @@
             </div>
 
             <div v-if="!showWelcome" class="insert-code-wrapper">
-                <h4>Please insert the code you got from Twitter:</h4>
+                <h3>Please insert the code you got from Twitter:</h3>
+                <br>
                 <input type="text" v-model="twitterCode">
                 <br><br>
                 <ButtonCustom 
+                    :disabled="insertCodeBtnDisabled"
                     @clicked-btn="clickedInsertCode" 
-                    btnText="Ok"
-                    :btnModeOn="true"
+                    :btnText="insertCodeBtnText"
+                    :btnModeOn="!insertCodeBtnDisabled"
                 />
             </div>
         </div>
@@ -38,12 +40,16 @@
 </template>
 
 <script>
-import {serverCheckCredentials} from "../../communicators/serverCommunicator"
+import {serverCheckCredentials, serverGetTwitterAuthRequestToken, serverGetTwitterAuthAccessToken} 
+    from "../../communicators/serverCommunicator"
+
 import ButtonCustom from "../../components/buttons/ButtonCustom"
 
-var Codebird = require("codebird");
-var cb = new Codebird();
-cb.setConsumerKey(process.env.VUE_APP_API_KEY, process.env.VUE_APP_API_SECRET_KEY);
+// var Codebird = require("codebird");
+// var cb = new Codebird();
+// cb.setConsumerKey(process.env.VUE_APP_API_KEY, process.env.VUE_APP_API_SECRET_KEY);
+// cb.setUseProxy(false)
+// cb.setProxy(process.env.VUE_APP_SERVER_URL);
 
 export default {
     components:{
@@ -53,14 +59,28 @@ export default {
         return{
             showWelcome: true,
             twitterCode: "",
+            insertCodeBtnText: "Ok",
+            insertCodeBtnDisabled: false,
+            oauthToken: null
         }
     },
     methods:{
-        clickedSignIn(){
+        async clickedSignIn(){
+            // gets a request token
+            const response = await serverGetTwitterAuthRequestToken("oob")
+            if(response.status != 200){
+                alert("Error, please try again later")
+                return
+            }
+            // Show the "insert pin section"
             this.showWelcome = false
 
-            // gets a request token
-            cb.__call("oauth_requestToken", { oauth_callback: "oob" }, function(
+            const urlParams = new URLSearchParams(response.data);
+            this.oauthToken = urlParams.get("oauth_token")
+            const auth_url = "https://api.twitter.com/oauth/authorize?oauth_token=" + this.oauthToken
+            // Redirect to "auth app" page
+            window.open(auth_url)
+            /*cb.__call("oauth_requestToken", { oauth_callback: "oob" }, function(
                     reply,
                     rate,
                     err
@@ -83,14 +103,44 @@ export default {
                         window.codebird_auth = window.open(auth_url);
                     });
                 }
-            });
+            });*/
         },
-        clickedInsertCode(){
+        async clickedInsertCode(){
             //after pin entered 
             const pin = this.twitterCode
-            const vm = this
-            let success = false;
-            cb.__call(
+            this.insertCodeBtnDisabled = true
+            this.insertCodeBtnText = "·  ·  ·"
+            // gets an access token
+            const response = await serverGetTwitterAuthAccessToken(this.oauthToken, pin)
+            if(response.status != 200){
+                alert("Incorrect PIN code. Please wait for the page to refresh and try again")
+                window.location.reload()
+                return
+            }
+            const urlParams = new URLSearchParams(response.data);
+            const oauthToken = urlParams.get("oauth_token")
+            const oauthTokenSecret = urlParams.get("oauth_token_secret")
+            // we send it to server and check his answer
+            const credentialsResponse = await serverCheckCredentials(oauthToken, oauthTokenSecret)
+            if(credentialsResponse.status == 200){
+                // Setting the authorization in local storage
+                localStorage['providedCredentials'] = true
+                const responseData = credentialsResponse.data
+                if(responseData.twitter_user_found == true && responseData.user_registered_to_experiment == true){
+                    // Already registered to experiment
+                    localStorage['registeredToExperiment'] = true
+                    this.$router.push('feed')
+                }
+                else{ // Need to register to experiment
+                    this.$router.push('insertExpCode')
+                }
+            }
+            else{
+                alert("There was an error while processing the authorization. Please wait for the page to refresh and try again")
+                window.location.reload()
+                return
+            }
+            /*cb.__call(
                 "oauth_accessToken",
                 { oauth_verifier: pin },
                 async function(reply, rate, err) {
@@ -135,7 +185,7 @@ export default {
                         window.location.reload()
                     }
                 }
-            );
+            );*/
         }
     }
 }

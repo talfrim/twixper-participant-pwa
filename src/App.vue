@@ -13,12 +13,43 @@
 </template>
 
 <script>
+import {serverValidateSession} from "./communicators/serverCommunicator"
+import {emptyCacheFromLs} from "./assets/globalFunctions"
 
 export default {
   name: 'App',
-  // created(){
-   
-  // }
+  mounted(){
+    if(this.$route.name == "default" 
+      && localStorage.getItem("registeredToExperiment") == null
+      ){
+      return
+    }
+    // Check if the cookie of our server is valid
+    let vm = this
+    serverValidateSession().then(function (response) {
+      if(response.status == 200){
+        if(response.data.hasSession == true){ // The cookie is valid
+
+        }
+        else{ // The cookie is invalid.
+          localStorage.removeItem('providedCredentials')
+          localStorage.removeItem('registeredToExperiment')
+          emptyCacheFromLs()
+          // Redirect to welcom page if the current rout is not "welcome" or "insert code"
+          if(vm.$route.name != "welcomePage" && vm.$route.name != "insertExpCode"){
+            vm.$router.push("welcomePage")
+          }
+        }
+      }
+      else{
+        // Server error
+        console.log("Server error while checking the cookie")
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
   
 }
 </script>

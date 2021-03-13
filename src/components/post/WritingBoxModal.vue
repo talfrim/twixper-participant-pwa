@@ -131,6 +131,11 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
             vm.$toasted.show('Tweet posted');
             vm.closeModal()
           }
+          else if (response.status == 401){
+            // Unauthorized
+            console.log("Unauthorized write tweet")
+            this.$router.push("welcomePage")
+          }
           else{
             if(response.status == 502){
               if(response.data.code == 186){

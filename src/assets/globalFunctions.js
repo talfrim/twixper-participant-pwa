@@ -7,6 +7,10 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet = false){
     return tweetParser.getHtmlTextFromTweet(tweet, isQuotedTweet)
 }
 
+function getDateNow(){
+    return moment().format("MM/DD/YYYY HH:mm:ss");
+}
+
 function parseTwitterDate(tdate) {
     var system_date = new Date(Date.parse(tdate));
     var user_date = new Date();
@@ -88,7 +92,9 @@ function numberWithCommas(number){
 function emptyCacheFromLs(){ 
     Object.keys(localStorage).forEach((key) => {
         if(key != "providedCredentials"
-        && key != "registeredToExperiment"){
+        && key != "registeredToExperiment"
+        && !key.startsWith("action")
+        ){
             localStorage.removeItem(key);
         }
     });
@@ -184,6 +190,7 @@ function editTweetInLs(tweetId, field, newVal){
 
 module.exports = {
     getHtmlTextFromTweetFunc: getHtmlTextFromTweet,
+    getDateNowFunc: getDateNow,
     parseTwitterDateFunc: parseTwitterDate,
     parseTwitterNumbersToStringFunc: parseNumbersToString,
     parseUserPageDateFunc: parseUserPageDate,

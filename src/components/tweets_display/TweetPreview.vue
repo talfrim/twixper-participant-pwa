@@ -1,5 +1,10 @@
 <template>
-	<div class="tweet-preview-wrapper" ref="tweetPrevWrapper">
+	<div
+		v-passiveWatchTweet
+		:data-tweetid="tweetId"
+		class="tweet-preview-wrapper" 
+		ref="tweetPrevWrapper"
+	>
 		<!-- If this a retweet, add appropiate header -->
 		<!-- <router-link
 			v-if="retweet_details.is_retweet == true"

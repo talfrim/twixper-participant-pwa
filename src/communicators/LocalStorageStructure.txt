@@ -24,3 +24,8 @@ searchUsersScrollTop:
 userPageScrollTop:
 userTweetsScrollTop:
 userLikesScrollTop:
+
+action_view_{tweet id}
+action_view_full{tweet id}
+action_login
+action_logout

@@ -23,6 +23,7 @@ const likeTweetEndpoint = "/participants/likeTweet"
 const unlikeTweetEndpoint = "/participants/unlikeTweet"
 const publishTweetEndpoint = "/participants/publishTweet"
 
+const sendActionsEndpoint = "/participants/sendActions"
 
 const axios = require('axios')
 axios.defaults.withCredentials=true;
@@ -281,6 +282,21 @@ async function publishTweet(payload){
     return await sendPostRequestReturnResponse(requestUrl, payload)
 }
 
+
+/* ----------------------------------------
+    Requests for logging actions
+   ---------------------------------------- */
+
+async function sendActions(payload){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestUrl = serverUrl + sendActionsEndpoint
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
 module.exports = {
     serverGetTwitterAuthRequestToken: getTwitterAuthRequestToken,
     serverGetTwitterAuthAccessToken: getTwitterAuthAccessToken,
@@ -301,4 +317,6 @@ module.exports = {
     serverLikeTweet: likeTweet,
     serverUnlikeTweet: unlikeTweet,
     serverPublishTweet: publishTweet,
+
+    serverSendActions: sendActions
 }

@@ -128,9 +128,9 @@ new Vue({
   },
   watch:{
     numOfActions(newVal){
-      if(newVal > 60){
+      if(newVal > 50){
         // We should never get to this, but if so, free some actions
-        console.log("** There are more than 60 actions in LS **")
+        console.log("** There are more than 50 actions in LS **")
         sendActions(30)
       }
     }

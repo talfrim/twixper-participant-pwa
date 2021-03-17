@@ -19,7 +19,7 @@ export default {
             }
             console.log("watched "+ tweetId)
             // Set the action in the local storage
-            const tweetObj = localStorage.getItem("tweet" + tweetId)
+            const tweetObj = JSON.parse(localStorage.getItem("tweet" + tweetId))
             const date = getDateNowFunc()
             const action = {
                 action_type: "view tweet",
@@ -28,7 +28,9 @@ export default {
             }
             // Call for the method in root to set the action
             const actionLSKey = "action_view_" + tweetId
-            el.__vue__.$root.setAction(actionLSKey, action)
+            if(el.__vue__){
+              el.__vue__.$root.setAction(actionLSKey, action)
+            }
         }, 500)
       }
   

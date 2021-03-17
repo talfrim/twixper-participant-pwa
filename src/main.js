@@ -178,6 +178,10 @@ new Vue({
  * @returns the amount of actions that were actually sent.
  */
 function sendActions(amountToSend){
+  if(localStorage.getItem("registeredToExperiment") == null){
+    console.log("Not sending because not registered")
+    return
+  }
   // Sends the first "amountToSend" actions to the server
   let actionsToSend = []
   let numOfSentActions = 0

@@ -29,7 +29,8 @@ export default {
     serverValidateSession().then(function (response) {
       if(response.status == 200){
         if(response.data.hasSession == true){ // The cookie is valid
-
+          localStorage["registeredToExperiment"] = true
+          localStorage["providedCredentials"] = true
         }
         else{ // The cookie is invalid.
           localStorage.removeItem('providedCredentials')

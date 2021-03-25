@@ -49,7 +49,7 @@
 }
 
 .modal-header {
-    padding: 1.5rem 2.5rem;
+    padding: 1.2rem 2.5rem;
     display: flex;
     align-items: center;
     border-bottom: 0.1rem solid #eee;
@@ -61,8 +61,26 @@
     cursor: pointer;
 }
 
-.modal-header button {
+.chars-remain-span{
     margin-left: auto;
+    padding-right: 5px;
+    font-weight: 600;
+}
+.validCharRemain{
+    color: green;
+    font-size: 1.4rem;
+}
+.dangerCharRemain{
+    color: orange;
+    font-size: 1.7rem;
+}
+.invalidCharRemain{
+    color: red;
+    font-size: 2rem;
+}
+
+.publish-btn{
+    /* margin-left: auto; */
     width: 8rem;
     padding: 0.8rem 0.5rem;
     background-color: #1aa1f5;
@@ -73,9 +91,13 @@
     opacity: 0.5;
 }
 
+.btnEnabled{
+    opacity: 1;
+}
+
 .modal-body {
     display: flex;
-    padding: 2rem 1.5rem 1rem 1.5rem;
+    padding: 1.5rem 1rem 0.5rem 1rem;
 }
 
 .modal-img {
@@ -94,11 +116,12 @@
 
 .modal-input {
     width: 53rem;
-    padding: 1rem 0 8rem 1rem;
+    padding: 1rem 6px 8rem 1rem;
     background-color: #d6e1e9;
     border: 0.1rem solid #eee;
     border-radius: 1.5rem;
     font-size: 1.6rem;
+    resize: none;
 }
 
 .modal-input:focus {
@@ -108,14 +131,14 @@
 
 .modal-body i {
     position: absolute;
-    bottom: 8.5rem;
+    bottom: 7rem;
     right: 2.8rem;
     font-size: 2rem;
     color: #1aa1f5;
 }
 
 .modal-footer {
-    padding: 0 2rem 2rem 8rem;
+    padding: 0 2rem 1.2rem 8rem;
 }
 
 .modal-icons {

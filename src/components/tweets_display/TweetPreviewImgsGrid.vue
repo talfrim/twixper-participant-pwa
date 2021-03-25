@@ -76,8 +76,8 @@ export default {
         }
         else if (this.photosObjects.length ==  2){ // Two photos
             // Set border radius
-            this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 15%"
-            this.$refs.photoContainer1[0].style.borderRadius = "0 15% 15% 0"
+            this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 16px"
+            this.$refs.photoContainer1[0].style.borderRadius = "0 16px 16px 0"
         }
         else{ // Three or four photos
             this.$refs.imgsWrapper.style.gridTemplateRows = "24vmin 24vmin";
@@ -89,16 +89,16 @@ export default {
                 this.$refs.imgsWrapper.style.gridTemplateAreas = 
                                                 "\"img1 img2\" \"img1 img3\"";
                 // Set border radius
-                this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 15%"
-                this.$refs.photoContainer1[0].style.borderRadius = "0 15% 0 0"
-                this.$refs.photoContainer2[0].style.borderRadius = "0 0 15% 0"
+                this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 16px"
+                this.$refs.photoContainer1[0].style.borderRadius = "0 16px 0 0"
+                this.$refs.photoContainer2[0].style.borderRadius = "0 0 16px 0"
             }
             else if (this.photosObjects.length ==  4){ // Four photos
                 // Set border radius
-                this.$refs.photoContainer0[0].style.borderRadius = "15% 0 0 0"
-                this.$refs.photoContainer1[0].style.borderRadius = "0 15% 0 0"
-                this.$refs.photoContainer2[0].style.borderRadius = "0 0 0 15%"
-                this.$refs.photoContainer3[0].style.borderRadius = "0 0 15% 0"
+                this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 0"
+                this.$refs.photoContainer1[0].style.borderRadius = "0 16px 0 0"
+                this.$refs.photoContainer2[0].style.borderRadius = "0 0 0 16px"
+                this.$refs.photoContainer3[0].style.borderRadius = "0 0 16px 0"
             }
         } 
     },
@@ -152,13 +152,13 @@ export default {
     /*grid-template-columns: repeat(auto-fit, minmax(7rem, 18rem));*/
     /* row-gap: 0.2rem;
     column-gap: 0.2rem; */
-    gap: 0.2rem;
+    /* gap: 0.2rem; */
 
 }
 
 .photo-container{
-    border: 1px solid silver;
-    border-radius: 15%;
+    border: 1px solid rgb(196, 207, 214);
+    border-radius: 16px;
 }
 
 </style>

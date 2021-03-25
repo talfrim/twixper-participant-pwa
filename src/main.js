@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import LazyLoadDirective from "./assets/directives/LazyLoadDirective";
+import PassiveWatchTweetDirective from "./assets/directives/PassiveWatchTweetDirective";
 
+require('dotenv').config()
 Vue.directive("lazyload", LazyLoadDirective);
+Vue.directive("passiveWatchTweet", PassiveWatchTweetDirective)
 
 
 /*
@@ -108,7 +111,108 @@ Vue.directive('closable', {
 }) */
 //End of v-closable
 
+
+import {serverSendActions} from "./communicators/serverCommunicator"
+import {getDateNowFunc} from "./assets/globalFunctions"
+
+let shared_data = {
+  
+}
 new Vue({
   router,
+  data(){
+    return{
+      store: shared_data,
+      numOfActions: 0,
+    }
+  },
+  watch:{
+    numOfActions(newVal){
+      if(newVal > 50){
+        // We should never get to this, but if so, free some actions
+        console.log("** There are more than 50 actions in LS **")
+        sendActions(30)
+      }
+    }
+  },
+  created(){
+    // Count how many actions are in LS
+    Object.keys(localStorage).forEach((key) => {
+      if(key.startsWith("action")){
+        this.numOfActions ++
+      }
+    });
+    // Call for "sendActions" on startup when there are more than 0 actions.
+    if(this.numOfActions > 0){
+      sendActions(30)
+    }
+
+    // Set login action
+    const actionDate = getDateNowFunc()
+    const loginAction = {
+      action_type: "login",
+      action_date: actionDate,
+    }
+    const actionLSKey = "action_login"
+    this.setAction(actionLSKey, loginAction)
+
+    // Call for "sendActions" every 20 seconds
+    setInterval(() => {
+      console.log("checking actions")
+      const numOfSentActions = sendActions(25)
+      this.numOfActions -= numOfSentActions
+    }, 20000)
+  },
+  methods:{
+    setAction(actionLSKey, action){
+      localStorage[actionLSKey] = JSON.stringify(action)
+      this.numOfActions ++
+    },
+  },
   render: h => h(App),
 }).$mount('#app');
+
+/**
+ * Sends actions to server. Returns the amount of actions that were actually sent.
+ * @param {Integer} amountToSend number of actions to send
+ * @returns the amount of actions that were actually sent.
+ */
+function sendActions(amountToSend){
+  if(localStorage.getItem("registeredToExperiment") == null){
+    console.log("Not sending because not registered")
+    return
+  }
+  // Sends the first "amountToSend" actions to the server
+  let actionsToSend = []
+  let numOfSentActions = 0
+  let actionLSKeysToRemove = []
+  Object.keys(localStorage).forEach((key) => {
+    if(numOfSentActions < amountToSend && key.startsWith("action")){
+      actionsToSend.push(JSON.parse(localStorage[key]))
+      actionLSKeysToRemove.push(key)
+      numOfSentActions ++
+    }
+  });
+  if(actionsToSend.length > 0){
+    console.log("sending actions")
+    serverSendActions(actionsToSend)
+    actionLSKeysToRemove.forEach(key => {
+      localStorage.removeItem(key)
+    });
+  }
+  return numOfSentActions
+}
+
+/**
+ * Called before exiting the app.
+ */
+window.onbeforeunload = function(){
+  // Set logout action
+  const actionDate = getDateNowFunc()
+    const logoutAction = {
+      action_type: "logout",
+      action_date: actionDate,
+    }
+  localStorage["action_logout"] = JSON.stringify(logoutAction)
+  // Not sending to server because it does not work in "before unload" and just deletes from LS.
+}

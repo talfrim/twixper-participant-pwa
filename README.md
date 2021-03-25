@@ -1,4 +1,5 @@
-# hello-world
+# Twixper_participant
+Ripository for the Twitter clone app for participants in experiments. 
 
 ## Project setup
 ```
@@ -19,6 +20,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

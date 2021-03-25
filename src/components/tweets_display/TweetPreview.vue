@@ -1,5 +1,10 @@
 <template>
-	<div class="tweet-preview-wrapper" ref="tweetPrevWrapper">
+	<div
+		v-passiveWatchTweet
+		:data-tweetid="tweetId"
+		class="tweet-preview-wrapper" 
+		ref="tweetPrevWrapper"
+	>
 		<!-- If this a retweet, add appropiate header -->
 		<!-- <router-link
 			v-if="retweet_details.is_retweet == true"
@@ -33,9 +38,16 @@
 			>
 				<div class="user-avatar" v-lazyload>
 				<!--<img :data-url="author.profileImgUrl">-->
-					<router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+					<!-- <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
 						tag="img" :data-url="author.profileImgUrl"> 
-					</router-link>
+					</router-link> -->
+					<img 
+						@load="userImgLoaded()"
+						@error="userImgLoaded()"
+						@click="clickedUserImg()"
+						:data-url="author.profileImgUrl"
+						ref="userImg"
+					>
 				</div>
 			</div>
 			
@@ -97,13 +109,16 @@ export default {
 				profileImgUrl: "",
 				isVerified: false
 			},
-			
+			isDestroyed: false,
 		};
+	},
+	beforeDestroy(){
+		this.isDestroyed = true
 	},
 	created(){
 		this.myTweetPreview = this.tweetPreview
 		let tweetPrev = this.myTweetPreview;
-		this.tweetId = tweetPrev.id;
+		this.tweetId = tweetPrev.id_str;
 		this.time = parseTwitterDateFunc(tweetPrev.created_at);
 
 		// If this is a retweet, the tweetPrev should be the original tweet
@@ -135,6 +150,16 @@ export default {
 		this.author.isVerified = userJson.verified;		
 	},
 	methods:{
+		userImgLoaded(){
+          if(this.isDestroyed){
+            return;
+          }
+          this.$refs.userImg.classList.add("user-img-display");
+		},
+		clickedUserImg(){
+			// Redirect to the author user page
+			this.$router.push({ path: '/userPagePublic/'+ this.author.userName})
+		},
 		clickedTweet(e){
 			// Check if the click is not on the user img
 			if(!e || e.target == this.$refs.userAvatarContainer){

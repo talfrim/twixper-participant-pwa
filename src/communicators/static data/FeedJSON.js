@@ -55,6 +55,537 @@ export default {
 /*CONTAINS BOTH TWEETS WITH "tweet+mode: extended" PARAMETERS AND WITHOUT THIS PARAMETER. */
 exports.data = [
     {
+        "created_at": "Wed Mar 03 15:31:13 +0000 2021",
+        "id": 1367135482593837057,
+        "id_str": "1367135482593837057",
+        "full_text": "Let's get it! 💙\n\nYou can follow today's game live on CITY+ with a subscription - https://t.co/BfVGtMgtQW https://t.co/YM571qZL8k",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            104
+        ],
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [
+                {
+                    "url": "https://t.co/BfVGtMgtQW",
+                    "expanded_url": "https://www.mancity.com/citytv/city-plus/live",
+                    "display_url": "mancity.com/citytv/city-pl…",
+                    "indices": [
+                        81,
+                        104
+                    ]
+                },
+                {
+                    "url": "https://t.co/YM571qZL8k",
+                    "expanded_url": "https://twitter.com/ManCityWomen/status/1367135182180990981",
+                    "display_url": "twitter.com/ManCityWomen/s…",
+                    "indices": [
+                        105,
+                        128
+                    ]
+                }
+            ]
+        },
+        "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 14573900,
+            "id_str": "14573900",
+            "name": "Manchester City",
+            "screen_name": "ManCity",
+            "location": "Etihad Stadium",
+            "description": "𝐸𝓈𝓉. 1894  💙 This Is Our City 🏆 6 x League Champions 🙌 #ManCity ℹ️ @ManCityHelp",
+            "url": "https://t.co/iRkmKWEETz",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/iRkmKWEETz",
+                            "expanded_url": "http://www.mancity.com/app",
+                            "display_url": "mancity.com/app",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 9249835,
+            "friends_count": 51547,
+            "listed_count": 15035,
+            "created_at": "Mon Apr 28 19:28:08 +0000 2008",
+            "favourites_count": 14267,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 138479,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": true,
+            "profile_background_color": "060606",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1339132670169804801/SeYDEWVq_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1339132670169804801/SeYDEWVq_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/14573900/1606121387",
+            "profile_link_color": "81B2D5",
+            "profile_sidebar_border_color": "000000",
+            "profile_sidebar_fill_color": "EFEFEF",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": true,
+        "quoted_status_id": 1367135182180990981,
+        "quoted_status_id_str": "1367135182180990981",
+        "quoted_status_permalink": {
+            "url": "https://t.co/YM571qZL8k",
+            "expanded": "https://twitter.com/ManCityWomen/status/1367135182180990981",
+            "display": "twitter.com/ManCityWomen/s…"
+        },
+        "quoted_status": {
+            "created_at": "Wed Mar 03 15:30:02 +0000 2021",
+            "id": 1367135182180990981,
+            "id_str": "1367135182180990981",
+            "full_text": "Your City team to face Fiorentina! 💙\n\nXI | Roebuck, Bronze, Houghton (C), Dahlkemper, Greenwood, Coombs, Weir, Stanway, Kelly, Hemp, White\n\nSUBS | Taieb, Keating, Walsh, Mannion, Mewis, Lavelle, Beckie, Morgan, Davies\n\n🔷 #ManCity | https://t.co/HkTzfLv0HJ https://t.co/PTnCJbtyKk",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                255
+            ],
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "ManCity",
+                        "indices": [
+                            221,
+                            229
+                        ]
+                    }
+                ],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https://t.co/HkTzfLv0HJ",
+                        "expanded_url": "http://mancity.com",
+                        "display_url": "mancity.com",
+                        "indices": [
+                            232,
+                            255
+                        ]
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 1367131957264601090,
+                        "id_str": "1367131957264601090",
+                        "indices": [
+                            256,
+                            279
+                        ],
+                        "media_url": "http://pbs.twimg.com/media/EvkHRZHXUAIc7Y_.jpg",
+                        "media_url_https": "https://pbs.twimg.com/media/EvkHRZHXUAIc7Y_.jpg",
+                        "url": "https://t.co/PTnCJbtyKk",
+                        "display_url": "pic.twitter.com/PTnCJbtyKk",
+                        "expanded_url": "https://twitter.com/ManCityWomen/status/1367135182180990981/photo/1",
+                        "type": "photo",
+                        "sizes": {
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 680,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "large": {
+                                "w": 1080,
+                                "h": 1080,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 1080,
+                                "h": 1080,
+                                "resize": "fit"
+                            }
+                        }
+                    }
+                ]
+            },
+            "extended_entities": {
+                "media": [
+                    {
+                        "id": 1367131957264601090,
+                        "id_str": "1367131957264601090",
+                        "indices": [
+                            256,
+                            279
+                        ],
+                        "media_url": "http://pbs.twimg.com/media/EvkHRZHXUAIc7Y_.jpg",
+                        "media_url_https": "https://pbs.twimg.com/media/EvkHRZHXUAIc7Y_.jpg",
+                        "url": "https://t.co/PTnCJbtyKk",
+                        "display_url": "pic.twitter.com/PTnCJbtyKk",
+                        "expanded_url": "https://twitter.com/ManCityWomen/status/1367135182180990981/photo/1",
+                        "type": "photo",
+                        "sizes": {
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "small": {
+                                "w": 680,
+                                "h": 680,
+                                "resize": "fit"
+                            },
+                            "large": {
+                                "w": 1080,
+                                "h": 1080,
+                                "resize": "fit"
+                            },
+                            "medium": {
+                                "w": 1080,
+                                "h": 1080,
+                                "resize": "fit"
+                            }
+                        }
+                    }
+                ]
+            },
+            "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 344643933,
+                "id_str": "344643933",
+                "name": "Man City Women",
+                "screen_name": "ManCityWomen",
+                "location": "Manchester",
+                "description": "The official Manchester City Women match day account | Follow the women’s team beyond the game @ManCity | Supporter Services @ManCityHelp",
+                "url": null,
+                "entities": {
+                    "description": {
+                        "urls": []
+                    }
+                },
+                "protected": false,
+                "followers_count": 142772,
+                "friends_count": 908,
+                "listed_count": 652,
+                "created_at": "Fri Jul 29 11:07:23 +0000 2011",
+                "favourites_count": 1789,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": true,
+                "verified": true,
+                "statuses_count": 23782,
+                "lang": null,
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "FFFFFF",
+                "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_tile": false,
+                "profile_image_url": "http://pbs.twimg.com/profile_images/1339132770459717635/wVW7wVyk_normal.jpg",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1339132770459717635/wVW7wVyk_normal.jpg",
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/344643933/1569141465",
+                "profile_link_color": "002760",
+                "profile_sidebar_border_color": "FFFFFF",
+                "profile_sidebar_fill_color": "DDEEF6",
+                "profile_text_color": "000000",
+                "profile_use_background_image": true,
+                "has_extended_profile": false,
+                "default_profile": false,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 70,
+            "favorite_count": 713,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "possibly_sensitive_appealable": false,
+            "lang": "en"
+        },
+        "retweet_count": 36,
+        "favorite_count": 594,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "possibly_sensitive_appealable": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Thu Mar 04 04:40:17 +0000 2021",
+        "id": 1367334055188992000,
+        "id_str": "1367334055188992000",
+        "full_text": "WHAAAAAATTTT?! 😃@JanetJackson https://t.co/SzUzxqgqoy",
+        "truncated": false,
+        "display_text_range": [
+            0,
+            29
+        ],
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [
+                {
+                    "screen_name": "JanetJackson",
+                    "name": "Janet Jackson",
+                    "id": 52939106,
+                    "id_str": "52939106",
+                    "indices": [
+                        16,
+                        29
+                    ]
+                }
+            ],
+            "urls": [
+                {
+                    "url": "https://t.co/SzUzxqgqoy",
+                    "expanded_url": "https://twitter.com/variety/status/1367218673837109252",
+                    "display_url": "twitter.com/variety/status…",
+                    "indices": [
+                        30,
+                        53
+                    ]
+                }
+            ]
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 23314049,
+            "id_str": "23314049",
+            "name": "yvette nicole brown",
+            "screen_name": "YNB",
+            "location": "Fiddling with your mind",
+            "description": "Just a scripted-line saying, game show playing, TV show talking, notebook hawking super blerd! ❤✊🏽 Wrote #AlwaysABridesmaid on @netflix",
+            "url": "https://t.co/mbvt4lPcpt",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/mbvt4lPcpt",
+                            "expanded_url": "http://fairfight.com",
+                            "display_url": "fairfight.com",
+                            "indices": [
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 481557,
+            "friends_count": 3124,
+            "listed_count": 3941,
+            "created_at": "Sun Mar 08 14:47:33 +0000 2009",
+            "favourites_count": 53992,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 186294,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1342216202387484672/NfYjdpWn_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1342216202387484672/NfYjdpWn_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/23314049/1608844201",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "has_extended_profile": false,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false,
+            "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": true,
+        "quoted_status_id": 1367218673837109252,
+        "quoted_status_id_str": "1367218673837109252",
+        "quoted_status_permalink": {
+            "url": "https://t.co/SzUzxqgqoy",
+            "expanded": "https://twitter.com/variety/status/1367218673837109252",
+            "display": "twitter.com/variety/status…"
+        },
+        "quoted_status": {
+            "created_at": "Wed Mar 03 21:01:48 +0000 2021",
+            "id": 1367218673837109252,
+            "id_str": "1367218673837109252",
+            "full_text": "Janet Jackson Two-Night Documentary Event Set at Lifetime and A&amp;E https://t.co/KTPuq79d28",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                93
+            ],
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [
+                    {
+                        "url": "https://t.co/KTPuq79d28",
+                        "expanded_url": "https://variety.com/2021/tv/news/janet-jackson-documentary-lifetime-ae-1234920992/",
+                        "display_url": "variety.com/2021/tv/news/j…",
+                        "indices": [
+                            70,
+                            93
+                        ]
+                    }
+                ]
+            },
+            "source": "<a href=\"http://publicize.wp.com/\" rel=\"nofollow\">WordPress.com</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 17525171,
+                "id_str": "17525171",
+                "name": "Variety",
+                "screen_name": "Variety",
+                "location": "Los Angeles, CA",
+                "description": "The business of entertainment.",
+                "url": "https://t.co/8QkvN6A5Nf",
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "https://t.co/8QkvN6A5Nf",
+                                "expanded_url": "http://www.variety.com",
+                                "display_url": "variety.com",
+                                "indices": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    "description": {
+                        "urls": []
+                    }
+                },
+                "protected": false,
+                "followers_count": 2571070,
+                "friends_count": 247705,
+                "listed_count": 17617,
+                "created_at": "Thu Nov 20 23:02:29 +0000 2008",
+                "favourites_count": 1217,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": true,
+                "verified": true,
+                "statuses_count": 322036,
+                "lang": null,
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "FFFFFF",
+                "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_tile": false,
+                "profile_image_url": "http://pbs.twimg.com/profile_images/1060236422500704257/jltNN1hQ_normal.jpg",
+                "profile_image_url_https": "https://pbs.twimg.com/profile_images/1060236422500704257/jltNN1hQ_normal.jpg",
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/17525171/1614814860",
+                "profile_link_color": "60728A",
+                "profile_sidebar_border_color": "FFFFFF",
+                "profile_sidebar_fill_color": "FFFFFF",
+                "profile_text_color": "333333",
+                "profile_use_background_image": true,
+                "has_extended_profile": false,
+                "default_profile": false,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 707,
+            "favorite_count": 1807,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "possibly_sensitive_appealable": false,
+            "lang": "en"
+        },
+        "retweet_count": 9,
+        "favorite_count": 141,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "possibly_sensitive_appealable": false,
+        "lang": "en"
+    },
+    {
         "created_at": "Thu Dec 17 21:42:35 +0000 2020",
         "id": 1339687461107077120,
         "id_str": "1339687461107077120",
@@ -2106,452 +2637,6 @@ exports.data = [
         "possibly_sensitive": false,
         "lang": "en"
     },
-	{
-        "created_at": "Tue Oct 06 20:14:49 +0000 2020",
-        "id": 1313573447121993728,
-        "id_str": "1313573447121993728",
-        "text": "É sempre um sentimento especial representar o nosso país!🇵🇹👏🏽💪🏽\n#todosportugal https://t.co/yTYT5CKZtK",
-        "truncated": false,
-        "entities": {
-            "hashtags": [
-                {
-                    "text": "todosportugal",
-                    "indices": [
-                        64,
-                        78
-                    ]
-                }
-            ],
-            "symbols": [],
-            "user_mentions": [],
-            "urls": [],
-            "media": [
-                {
-                    "id": 1313573442092965889,
-                    "id_str": "1313573442092965889",
-                    "indices": [
-                        79,
-                        102
-                    ],
-                    "media_url": "http://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
-                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
-                    "url": "https://t.co/yTYT5CKZtK",
-                    "display_url": "pic.twitter.com/yTYT5CKZtK",
-                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
-                    "type": "photo",
-                    "sizes": {
-                        "thumb": {
-                            "w": 150,
-                            "h": 150,
-                            "resize": "crop"
-                        },
-                        "small": {
-                            "w": 680,
-                            "h": 640,
-                            "resize": "fit"
-                        },
-                        "medium": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        },
-                        "large": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        }
-                    }
-                }
-            ]
-        },
-        "extended_entities": {
-            "media": [
-                {
-                    "id": 1313573442092965889,
-                    "id_str": "1313573442092965889",
-                    "indices": [
-                        79,
-                        102
-                    ],
-                    "media_url": "http://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
-                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgJWoAEYSoQ.jpg",
-                    "url": "https://t.co/yTYT5CKZtK",
-                    "display_url": "pic.twitter.com/yTYT5CKZtK",
-                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
-                    "type": "photo",
-                    "sizes": {
-                        "thumb": {
-                            "w": 150,
-                            "h": 150,
-                            "resize": "crop"
-                        },
-                        "small": {
-                            "w": 680,
-                            "h": 640,
-                            "resize": "fit"
-                        },
-                        "medium": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        },
-                        "large": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        }
-                    }
-                },
-                {
-                    "id": 1313573442134908934,
-                    "id_str": "1313573442134908934",
-                    "indices": [
-                        79,
-                        102
-                    ],
-                    "media_url": "http://pbs.twimg.com/media/EjrAFgTWoAY3zbg.jpg",
-                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgTWoAY3zbg.jpg",
-                    "url": "https://t.co/yTYT5CKZtK",
-                    "display_url": "pic.twitter.com/yTYT5CKZtK",
-                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
-                    "type": "photo",
-                    "sizes": {
-                        "thumb": {
-                            "w": 150,
-                            "h": 150,
-                            "resize": "crop"
-                        },
-                        "medium": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        },
-                        "large": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        },
-                        "small": {
-                            "w": 680,
-                            "h": 640,
-                            "resize": "fit"
-                        }
-                    }
-                },
-                {
-                    "id": 1313573442097156100,
-                    "id_str": "1313573442097156100",
-                    "indices": [
-                        79,
-                        102
-                    ],
-                    "media_url": "http://pbs.twimg.com/media/EjrAFgKWkAQAkpJ.jpg",
-                    "media_url_https": "https://pbs.twimg.com/media/EjrAFgKWkAQAkpJ.jpg",
-                    "url": "https://t.co/yTYT5CKZtK",
-                    "display_url": "pic.twitter.com/yTYT5CKZtK",
-                    "expanded_url": "https://twitter.com/Cristiano/status/1313573447121993728/photo/1",
-                    "type": "photo",
-                    "sizes": {
-                        "thumb": {
-                            "w": 150,
-                            "h": 150,
-                            "resize": "crop"
-                        },
-                        "small": {
-                            "w": 680,
-                            "h": 640,
-                            "resize": "fit"
-                        },
-                        "medium": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        },
-                        "large": {
-                            "w": 1080,
-                            "h": 1017,
-                            "resize": "fit"
-                        }
-                    }
-                }
-            ]
-        },
-        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
-        "in_reply_to_status_id": null,
-        "in_reply_to_status_id_str": null,
-        "in_reply_to_user_id": null,
-        "in_reply_to_user_id_str": null,
-        "in_reply_to_screen_name": null,
-        "user": {
-            "id": 155659213,
-            "id_str": "155659213",
-            "name": "Cristiano Ronaldo",
-            "screen_name": "Cristiano",
-            "location": "Turim, Piemonte",
-            "description": "This Privacy Policy addresses the collection and use of personal information - https://t.co/Jp6yh1T58c",
-            "url": "https://t.co/VcAXB9ryty",
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "https://t.co/VcAXB9ryty",
-                            "expanded_url": "http://www.facebook.com/cristiano",
-                            "display_url": "facebook.com/cristiano",
-                            "indices": [
-                                0,
-                                23
-                            ]
-                        }
-                    ]
-                },
-                "description": {
-                    "urls": [
-                        {
-                            "url": "https://t.co/Jp6yh1T58c",
-                            "expanded_url": "http://www.cristianoronaldo.com/terms",
-                            "display_url": "cristianoronaldo.com/terms",
-                            "indices": [
-                                79,
-                                102
-                            ]
-                        }
-                    ]
-                }
-            },
-            "protected": false,
-            "followers_count": 88696370,
-            "friends_count": 51,
-            "listed_count": 83635,
-            "created_at": "Mon Jun 14 19:09:20 +0000 2010",
-            "favourites_count": 2,
-            "utc_offset": null,
-            "time_zone": null,
-            "geo_enabled": true,
-            "verified": true,
-            "statuses_count": 3594,
-            "lang": null,
-            "contributors_enabled": false,
-            "is_translator": false,
-            "is_translation_enabled": true,
-            "profile_background_color": "080101",
-            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
-            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
-            "profile_background_tile": false,
-            "profile_image_url": "http://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_normal.jpg",
-            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_normal.jpg",
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/155659213/1564759975",
-            "profile_link_color": "1643C9",
-            "profile_sidebar_border_color": "FFFFFF",
-            "profile_sidebar_fill_color": "838387",
-            "profile_text_color": "0D0D0D",
-            "profile_use_background_image": true,
-            "has_extended_profile": false,
-            "default_profile": false,
-            "default_profile_image": false,
-            "following": false,
-            "follow_request_sent": false,
-            "notifications": false,
-            "translator_type": "regular"
-        },
-        "geo": null,
-        "coordinates": null,
-        "place": null,
-        "contributors": null,
-        "is_quote_status": false,
-        "retweet_count": 8809,
-        "favorite_count": 160978,
-        "favorited": false,
-        "retweeted": false,
-        "possibly_sensitive": false,
-        "lang": "pt"
-	}, 
-	{
-        "created_at": "Sat Oct 24 09:30:00 +0000 2020",
-        "id": 1319934155170279424,
-        "id_str": "1319934155170279424",
-        "text": "🚨 TWO HOURS 🚨\n\nWhat're you guys up to ahead of the game? \n\n🔷 #ManCity | https://t.co/axa0klUGiM https://t.co/R0ti2mIphv",
-        "truncated": false,
-        "entities": {
-            "hashtags": [
-                {
-                    "text": "ManCity",
-                    "indices": [
-                        61,
-                        69
-                    ]
-                }
-            ],
-            "symbols": [],
-            "user_mentions": [],
-            "urls": [
-                {
-                    "url": "https://t.co/axa0klUGiM",
-                    "expanded_url": "http://mancity.com",
-                    "display_url": "mancity.com",
-                    "indices": [
-                        72,
-                        95
-                    ]
-                }
-            ],
-            "media": [
-                {
-                    "id": 1319653486926114817,
-                    "id_str": "1319653486926114817",
-                    "indices": [
-                        96,
-                        119
-                    ],
-                    "media_url": "http://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
-                    "media_url_https": "https://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
-                    "url": "https://t.co/R0ti2mIphv",
-                    "display_url": "pic.twitter.com/R0ti2mIphv",
-                    "expanded_url": "https://twitter.com/ManCity/status/1319934155170279424/photo/1",
-                    "type": "photo",
-                    "sizes": {
-                        "thumb": {
-                            "w": 150,
-                            "h": 150,
-                            "resize": "crop"
-                        },
-                        "medium": {
-                            "w": 1200,
-                            "h": 675,
-                            "resize": "fit"
-                        },
-                        "large": {
-                            "w": 1920,
-                            "h": 1080,
-                            "resize": "fit"
-                        },
-                        "small": {
-                            "w": 680,
-                            "h": 383,
-                            "resize": "fit"
-                        }
-                    }
-                }
-            ]
-        },
-        "extended_entities": {
-            "media": [
-                {
-                    "id": 1319653486926114817,
-                    "id_str": "1319653486926114817",
-                    "indices": [
-                        96,
-                        119
-                    ],
-                    "media_url": "http://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
-                    "media_url_https": "https://pbs.twimg.com/media/ElBZ2sLWMAEa6gx.jpg",
-                    "url": "https://t.co/R0ti2mIphv",
-                    "display_url": "pic.twitter.com/R0ti2mIphv",
-                    "expanded_url": "https://twitter.com/ManCity/status/1319934155170279424/photo/1",
-                    "type": "photo",
-                    "sizes": {
-                        "thumb": {
-                            "w": 150,
-                            "h": 150,
-                            "resize": "crop"
-                        },
-                        "medium": {
-                            "w": 1200,
-                            "h": 675,
-                            "resize": "fit"
-                        },
-                        "large": {
-                            "w": 1920,
-                            "h": 1080,
-                            "resize": "fit"
-                        },
-                        "small": {
-                            "w": 680,
-                            "h": 383,
-                            "resize": "fit"
-                        }
-                    }
-                }
-            ]
-        },
-        "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
-        "in_reply_to_status_id": null,
-        "in_reply_to_status_id_str": null,
-        "in_reply_to_user_id": null,
-        "in_reply_to_user_id_str": null,
-        "in_reply_to_screen_name": null,
-        "user": {
-            "id": 14573900,
-            "id_str": "14573900",
-            "name": "Manchester City",
-            "screen_name": "ManCity",
-            "location": "Etihad Stadium",
-            "description": "𝐸𝓈𝓉. 1894  💙 This Is Our City 🏆 6 x League Champions 🙌 #ManCity ℹ️ @ManCityHelp",
-            "url": "https://t.co/rZckZ8PABr",
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "https://t.co/rZckZ8PABr",
-                            "expanded_url": "http://www.mancity.com/city+",
-                            "display_url": "mancity.com/city+",
-                            "indices": [
-                                0,
-                                23
-                            ]
-                        }
-                    ]
-                },
-                "description": {
-                    "urls": []
-                }
-            },
-            "protected": false,
-            "followers_count": 8588075,
-            "friends_count": 51895,
-            "listed_count": 14587,
-            "created_at": "Mon Apr 28 19:28:08 +0000 2008",
-            "favourites_count": 13615,
-            "utc_offset": null,
-            "time_zone": null,
-            "geo_enabled": false,
-            "verified": true,
-            "statuses_count": 134354,
-            "lang": null,
-            "contributors_enabled": false,
-            "is_translator": false,
-            "is_translation_enabled": true,
-            "profile_background_color": "060606",
-            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
-            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
-            "profile_background_tile": false,
-            "profile_image_url": "http://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
-            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1319230083371065344/_WS47oVD_normal.jpg",
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/14573900/1602505147",
-            "profile_link_color": "81B2D5",
-            "profile_sidebar_border_color": "000000",
-            "profile_sidebar_fill_color": "EFEFEF",
-            "profile_text_color": "333333",
-            "profile_use_background_image": true,
-            "has_extended_profile": true,
-            "default_profile": false,
-            "default_profile_image": false,
-            "following": false,
-            "follow_request_sent": false,
-            "notifications": false,
-            "translator_type": "none"
-        },
-        "geo": null,
-        "coordinates": null,
-        "place": null,
-        "contributors": null,
-        "is_quote_status": false,
-        "retweet_count": 45,
-        "favorite_count": 780,
-        "favorited": false,
-        "retweeted": false,
-        "possibly_sensitive": false,
-        "lang": "en"
-    },
     {
         "created_at": "Tue Oct 27 13:44:56 +0000 2020",
         "id": 1321085476237910021,
@@ -2911,93 +2996,6 @@ exports.data = [
         "possibly_sensitive_appealable": false,
         "lang": "iw"
     },
-	{
-		"created_at":"Tue Oct 20 20:46:20 +0000 2020",
-		"id":1318654807821963300,
-		"id_str":"1318654807821963264",
-		"text":"כלים טיפולים בקהילה, ובמקרי קצה - שימוש בכלי המשפט הפלילי שקיימים גם היום.",
-		"truncated":false,
-		"entities":{
-			"hashtags":[
-				
-			],
-			"symbols":[
-				
-			],
-			"user_mentions":[
-				
-			],
-			"urls":[
-				
-			]
-		},
-		"source":"<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
-		"in_reply_to_status_id":1318654805833863200,
-		"in_reply_to_status_id_str":"1318654805833863170",
-		"in_reply_to_user_id":3185280620,
-		"in_reply_to_user_id_str":"3185280620",
-		"in_reply_to_screen_name":"bezalelsm",
-		"user":{
-			"id":3185280620,
-			"id_str":"3185280620",
-			"name":"בצלאל סמוטריץ'",
-			"screen_name":"bezalelsm",
-			"location":"ישראל",
-			"description":"‏‏יושב ראש מפלגת האיחוד הלאומי.",
-			"url":null,
-			"entities":{
-				"description":{
-					"urls":[
-						
-					]
-				}
-			},
-			"protected":false,
-			"followers_count":127533,
-			"friends_count":131,
-			"listed_count":238,
-			"created_at":"Mon May 04 14:14:28 +0000 2015",
-			"favourites_count":43278,
-			"utc_offset":null,
-			"time_zone":null,
-			"geo_enabled":false,
-			"verified":true,
-			"statuses_count":10107,
-			"lang":null,
-			"contributors_enabled":false,
-			"is_translator":false,
-			"is_translation_enabled":false,
-			"profile_background_color":"000000",
-			"profile_background_image_url":"http://abs.twimg.com/images/themes/theme1/bg.png",
-			"profile_background_image_url_https":"https://abs.twimg.com/images/themes/theme1/bg.png",
-			"profile_background_tile":false,
-			"profile_image_url":"http://pbs.twimg.com/profile_images/1218118064069279744/OHvBVXbg_normal.jpg",
-			"profile_image_url_https":"https://pbs.twimg.com/profile_images/1218118064069279744/OHvBVXbg_normal.jpg",
-			"profile_banner_url":"https://pbs.twimg.com/profile_banners/3185280620/1581068979",
-			"profile_link_color":"89C9FA",
-			"profile_sidebar_border_color":"000000",
-			"profile_sidebar_fill_color":"000000",
-			"profile_text_color":"000000",
-			"profile_use_background_image":false,
-			"has_extended_profile":false,
-			"default_profile":false,
-			"default_profile_image":false,
-			"following":true,
-			"follow_request_sent":false,
-			"notifications":false,
-			"translator_type":"none"
-		},
-		"geo":null,
-		"coordinates":null,
-		"place":null,
-		"contributors":null,
-		"is_quote_status":false,
-		"retweet_count":2,
-		"favorite_count":92,
-		"favorited":false,
-		"retweeted":false,
-		"lang":"iw"
-	},
 {
         "created_at": "Thu Dec 17 20:11:12 +0000 2020",
         "id": 1339664462270390273,
@@ -4132,220 +4130,6 @@ exports.data = [
         "possibly_sensitive_appealable": false,
         "lang": "en"
     },
-    {
-		"created_at":"Tue Oct 20 21:52:46 +0000 2020",
-		"id":1318671527919915000,
-		"id_str":"1318671527919915011",
-		"text":"RT @JenniBns: Alfred Nakache was an Algerian-French Jewish swimmer. North African champion, he then swam for France and broke the 200m butt…",
-		"truncated":false,
-		"entities":{
-			"hashtags":[
-				
-			],
-			"symbols":[
-				
-			],
-			"user_mentions":[
-				{
-					"screen_name":"JenniBns",
-					"name":"Jenny 🐚",
-					"id":978762768370323500,
-					"id_str":"978762768370323458",
-					"indices":[
-						3,
-						12
-					]
-				}
-			],
-			"urls":[
-				
-			]
-		},
-		"source":"<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
-		"in_reply_to_status_id":null,
-		"in_reply_to_status_id_str":null,
-		"in_reply_to_user_id":null,
-		"in_reply_to_user_id_str":null,
-		"in_reply_to_screen_name":null,
-		"user":{
-			"id":2986232390,
-			"id_str":"2986232390",
-			"name":"צבי האוזר",
-			"screen_name":"ZviHauser",
-			"location":"",
-			"description":"יושב ראש ועדת החוץ והבטחון בכנסת ישראל. מזכיר הממשלה ה-16. אוהב העם והארץ. אבא של מיכאל ויואב. גם באינסטגרם: https://t.co/KSaaotALFJ",
-			"url":"https://t.co/iVbcdqwz8c",
-			"entities":{
-				"url":{
-					"urls":[
-						{
-							"url":"https://t.co/iVbcdqwz8c",
-							"expanded_url":"https://t.me/zvihauserupdates",
-							"display_url":"t.me/zvihauserupdat…",
-							"indices":[
-								0,
-								23
-							]
-						}
-					]
-				},
-				"description":{
-					"urls":[
-						{
-							"url":"https://t.co/KSaaotALFJ",
-							"expanded_url":"https://bit.ly/2PGcrR3",
-							"display_url":"bit.ly/2PGcrR3",
-							"indices":[
-								109,
-								132
-							]
-						}
-					]
-				}
-			},
-			"protected":false,
-			"followers_count":34182,
-			"friends_count":632,
-			"listed_count":109,
-			"created_at":"Fri Jan 16 23:47:20 +0000 2015",
-			"favourites_count":8536,
-			"utc_offset":null,
-			"time_zone":null,
-			"geo_enabled":true,
-			"verified":true,
-			"statuses_count":3548,
-			"lang":null,
-			"contributors_enabled":false,
-			"is_translator":false,
-			"is_translation_enabled":false,
-			"profile_background_color":"C0DEED",
-			"profile_background_image_url":"http://abs.twimg.com/images/themes/theme1/bg.png",
-			"profile_background_image_url_https":"https://abs.twimg.com/images/themes/theme1/bg.png",
-			"profile_background_tile":false,
-			"profile_image_url":"http://pbs.twimg.com/profile_images/929418833412214786/hRJwajKe_normal.jpg",
-			"profile_image_url_https":"https://pbs.twimg.com/profile_images/929418833412214786/hRJwajKe_normal.jpg",
-			"profile_banner_url":"https://pbs.twimg.com/profile_banners/2986232390/1556658698",
-			"profile_link_color":"1DA1F2",
-			"profile_sidebar_border_color":"C0DEED",
-			"profile_sidebar_fill_color":"DDEEF6",
-			"profile_text_color":"333333",
-			"profile_use_background_image":true,
-			"has_extended_profile":true,
-			"default_profile":true,
-			"default_profile_image":false,
-			"following":true,
-			"follow_request_sent":false,
-			"notifications":false,
-			"translator_type":"none"
-		},
-		"geo":null,
-		"coordinates":null,
-		"place":null,
-		"contributors":null,
-		"retweeted_status":{
-			"created_at":"Mon Oct 19 19:00:39 +0000 2020",
-			"id":1318265826504544300,
-			"id_str":"1318265826504544257",
-			"text":"Alfred Nakache was an Algerian-French Jewish swimmer. North African champion, he then swam for France and broke the… https://t.co/vg7rHFxku4",
-			"truncated":true,
-			"entities":{
-				"hashtags":[
-					
-				],
-				"symbols":[
-					
-				],
-				"user_mentions":[
-					
-				],
-				"urls":[
-					{
-						"url":"https://t.co/vg7rHFxku4",
-						"expanded_url":"https://twitter.com/i/web/status/1318265826504544257",
-						"display_url":"twitter.com/i/web/status/1…",
-						"indices":[
-							117,
-							140
-						]
-					}
-				]
-			},
-			"source":"<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
-			"in_reply_to_status_id":null,
-			"in_reply_to_status_id_str":null,
-			"in_reply_to_user_id":null,
-			"in_reply_to_user_id_str":null,
-			"in_reply_to_screen_name":null,
-			"user":{
-				"id":978762768370323500,
-				"id_str":"978762768370323458",
-				"name":"Jenny 🐚",
-				"screen_name":"JenniBns",
-				"location":"🇿🇦 Mother City",
-				"description":"🇮🇱✡︎ | Iraqi Jew sharing Mizrahi History 📚| Sidekick : @rinouch935 | צברית בדם | بنت الرافدين | #MakeMesopotamiaGreatAgain",
-				"url":null,
-				"entities":{
-					"description":{
-						"urls":[
-							
-						]
-					}
-				},
-				"protected":false,
-				"followers_count":3847,
-				"friends_count":617,
-				"listed_count":9,
-				"created_at":"Tue Mar 27 22:36:43 +0000 2018",
-				"favourites_count":26277,
-				"utc_offset":null,
-				"time_zone":null,
-				"geo_enabled":true,
-				"verified":false,
-				"statuses_count":17773,
-				"lang":null,
-				"contributors_enabled":false,
-				"is_translator":false,
-				"is_translation_enabled":false,
-				"profile_background_color":"000000",
-				"profile_background_image_url":"http://abs.twimg.com/images/themes/theme1/bg.png",
-				"profile_background_image_url_https":"https://abs.twimg.com/images/themes/theme1/bg.png",
-				"profile_background_tile":false,
-				"profile_image_url":"http://pbs.twimg.com/profile_images/1311390428764217347/_loFX1sf_normal.jpg",
-				"profile_image_url_https":"https://pbs.twimg.com/profile_images/1311390428764217347/_loFX1sf_normal.jpg",
-				"profile_banner_url":"https://pbs.twimg.com/profile_banners/978762768370323458/1572560429",
-				"profile_link_color":"ABB8C2",
-				"profile_sidebar_border_color":"000000",
-				"profile_sidebar_fill_color":"000000",
-				"profile_text_color":"000000",
-				"profile_use_background_image":false,
-				"has_extended_profile":true,
-				"default_profile":false,
-				"default_profile_image":false,
-				"following":false,
-				"follow_request_sent":false,
-				"notifications":false,
-				"translator_type":"none"
-			},
-			"geo":null,
-			"coordinates":null,
-			"place":null,
-			"contributors":null,
-			"is_quote_status":false,
-			"retweet_count":141,
-			"favorite_count":424,
-			"favorited":false,
-			"retweeted":false,
-			"possibly_sensitive":false,
-			"possibly_sensitive_appealable":false,
-			"lang":"en"
-		},
-		"is_quote_status":false,
-		"retweet_count":141,
-		"favorite_count":0,
-		"favorited":false,
-		"retweeted":false,
-		"lang":"en"
-	},
     {
         "created_at": "Thu Dec 17 21:29:29 +0000 2020",
         "id": 1339684162010312704,

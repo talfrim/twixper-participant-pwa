@@ -58,7 +58,7 @@ export default {
     },
     async created(){
         // Retrieve the user Json from localStorage
-        if (localStorage.getItem("user" + this.userName) !== null) {
+        if (localStorage.getItem("user" + this.userName) != null) {
             this.userPageJson = JSON.parse(localStorage["user" + this.userName]);
         }
         // Else, user not found in ls, ask the server for it.
@@ -76,7 +76,7 @@ export default {
         // Check if already saw this user, else reset his tweets
         if(this.userName === localStorage["currentUserPage"]){
             // Retreive the user tab we were on.
-            if (localStorage.getItem("currentUserTab") !== null){
+            if (localStorage.getItem("currentUserTab") != null){
                 this.curTab = parseInt(localStorage["currentUserTab"])
             }
             else{
@@ -86,7 +86,7 @@ export default {
             this.$refs.userPageTweets.retreiveUserPageTweetsFromLs()
 
             // Retreive page scroll position
-            if(localStorage.getItem("userPageScrollTop") !== null){
+            if(localStorage.getItem("userPageScrollTop") != null){
                 document.documentElement.scrollTop = localStorage["userPageScrollTop"]
             }
         }

@@ -38,6 +38,8 @@ import ExpandableVideo from '../ExpandableVideo.vue';
 import TweetPreviewImgsGrid from "./TweetPreviewImgsGrid.vue";
 import QuotedTweetPreview from "./QuotedTweetPreview.vue";
 
+import {getHtmlTextFromTweetFunc} from "../../assets/globalFunctions"
+
 export default {
 	name: "TweetPreviewBody",
     components:{
@@ -49,6 +51,11 @@ export default {
 		tweetPreview: {
 			type: Object,
 			required: true
+		},
+		isQuotedTweet:{
+			type: Boolean,
+			required: false,
+			default: false
 		}
     }, 
     data(){
@@ -67,9 +74,8 @@ export default {
     },
     created(){
 		const tweetPrev = this.tweetPreview;
-		this.tweetId = tweetPrev.id
-        let tweetText = tweetPrev.full_text || tweetPrev.text;
-		this.textHtml = tweetText.replace(/(?:\r\n|\r|\n)/g, '<br>');//Convert string to html
+		this.tweetId = tweetPrev.id_str
+		this.textHtml = getHtmlTextFromTweetFunc(tweetPrev, this.isQuotedTweet)
 		this.lang = tweetPrev.lang;
 
 		// Whether the tweet is quote of other tweet

@@ -44,7 +44,7 @@ export default {
         }
 
         this.headerText = this.userName + " Followers";
-        if (localStorage.getItem("userFollowersOrder") !== null) {
+        if (localStorage.getItem("userFollowersOrder") != null) {
             this.usersResultsArr = retrieveListFromLs("user", "userFollowersOrder")
         }
         else{

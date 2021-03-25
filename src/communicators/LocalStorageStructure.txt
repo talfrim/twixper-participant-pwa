@@ -1,3 +1,6 @@
+providedCredentials: boolean, whether the current participant already authorized us.
+registeredToExperiment: boolean, whether the current participant is registered.
+
 feedTweetsOrder: list of ids of tweets to display in that order in the feed.
 searchTweetsOrder: list of ids of tweets to display in that order in search results.
 searchUsersOrder: list of screen names of users to display in that order in search results.
@@ -15,10 +18,14 @@ currentUserPage: Screen name of the latest user we saw his profile.
 currentSearchTab: digit between 0-2. 0 is tweets, 1 is users, 2 is media.
 currentUserTab: digit between 0-1. 0 is tweets, 1 is likes.
 
-
 feedScrollTop:
 searchTweetsScrollTop:
 searchUsersScrollTop:
 userPageScrollTop:
 userTweetsScrollTop:
 userLikesScrollTop:
+
+action_view_{tweet id}
+action_view_full{tweet id}
+action_login
+action_logout

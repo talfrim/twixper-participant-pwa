@@ -80,8 +80,11 @@ export default {
         }
     },
     async created(){
+        if(localStorage.getItem("registeredToExperiment") == null){
+            this.$router.push("welcomePage")
+        }
         // Retrieve the tweet Json from localStorage
-        if (localStorage.getItem("tweet" + this.tweetId) !== null) {
+        if (localStorage.getItem("tweet" + this.tweetId) != null) {
             this.tweetPageJson = JSON.parse(localStorage["tweet" + this.tweetId]);
         }
         // Else, tweet not found in ls, ask the server for it.

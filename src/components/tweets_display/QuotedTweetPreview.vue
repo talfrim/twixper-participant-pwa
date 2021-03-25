@@ -18,6 +18,7 @@
 		</div>
 
         <TweetPreviewBody 
+            :isQuotedTweet="true"
             :tweetPreview="qTweetPreview" 
             @clickedTweet="clickedTweet"
         />
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import {parseTwitterDateFunc, sleepFunc} from "../../assets/globalFunctions";
+import {parseTwitterDateFunc} from "../../assets/globalFunctions";
 
 export default {
     components:{
@@ -51,7 +52,7 @@ export default {
     },
     created(){
         const tweetPrev = this.qTweetPreview;
-        this.tweetId = tweetPrev.id;
+        this.tweetId = tweetPrev.id_str;
         this.time = parseTwitterDateFunc(tweetPrev.created_at);
 
         const userJson = tweetPrev.user;

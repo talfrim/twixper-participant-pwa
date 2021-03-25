@@ -8,8 +8,8 @@
             </div>
           <div class="middle-content">
               <!--  <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img> -->
-            <h4>To start, insert the code you got:</h4>
-            <input type="text">
+            <h4>To start, insert the experiment code you got:</h4>
+            <input v-model="expCode" type="text">
             <br><br><br><br><br><br><br><br><br><br><br><br>
             <button type="button" class="btn main-btn" @click="clickedBtn">Continue</button>
           </div>
@@ -19,22 +19,45 @@
 </template>
 
 <script>
-import {serverLogin} from "../../communicators/serverCommunicator"
+import {serverRegisterToExperiment} from "../../communicators/serverCommunicator"
+import {emptyCacheFromLs} from "../../assets/globalFunctions"
 
 export default{
     data(){
         return{
-
+            expCode: ""
         }
     },
     methods:{
         async clickedBtn(){
-            const loginResponse = await serverLogin()
-            if(loginResponse.status == 200){
+            const registerToExpResponse = await serverRegisterToExperiment(this.expCode)
+            console.log(registerToExpResponse);
+            if(registerToExpResponse.status == 200){
+                // Setting the registration in local storage
+                localStorage['registeredToExperiment'] = true
+                // Reset local storage twitter data
+                emptyCacheFromLs()
                 this.$router.push('feed')
             }
+            else if (registerToExpResponse.status == 401){
+                alert("Unathorized. Login with twitter first");
+                this.$router.push("welcomePage")
+            }
             else{
-                alert(loginResponse.data)
+                if(registerToExpResponse.data && registerToExpResponse.data.message){
+                    alert(registerToExpResponse.data.message)
+                    if(registerToExpResponse.data.name == "UserAlreadyRegistered"){
+                        // Setting the registration in local storage
+                        localStorage['registeredToExperiment'] = true
+                        this.$router.push('feed')
+                    }
+                }
+                else if(typeof registerToExpResponse.data === 'string'){
+                    alert(registerToExpResponse.data)
+                }
+                else{
+                    alert("Network error. Please try again later.")
+                }
             }
         }
     }

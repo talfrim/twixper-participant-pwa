@@ -6,11 +6,15 @@
             <SearchBox @searched="redirectToSearch" />
         </div>
         <div class="list-container">
-            <ul> <!--elements should be taken from local storage- we will save last 3 every time-->
+            Currently displays the same static search results. Real search is coming soon.
+            <br><br>
+            <i>Recent searches - coming soon</i>
+           <!-- <ul> elements should be taken from local storage- we will save last 3 every time
                 <li><a href="#">Bibi</a></li>
-                <li><a href="#">Netanyahu</a></li>
-                <li><a href="#">Twixper social media </a></li>
-            </ul>
+                    <li><a href="#">Netanyahu</a></li>
+                    <li><a href="#">Twixper social media </a></li>
+
+            </ul> -->
         </div>
         
     </div>
@@ -63,9 +67,15 @@ export default {
 .page-wrapper{
     height: 100vh;
 }
-/*.list-container {
-    margin-top: 17%;
-}*/
+
+.list-container {
+    font-size: 1.6rem;
+    margin: 25px 5% 0 5%;
+}
+.list-container i{
+    color: grey;
+}
+
  ul {
   list-style-type: none;
   margin: 0;

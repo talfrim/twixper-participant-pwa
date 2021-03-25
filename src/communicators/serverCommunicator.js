@@ -1,6 +1,14 @@
 const actuallySendReqToServer = true
 
-const serverUrl = "http://127.0.0.1:3000"
+// const serverUrl = "http://127.0.0.1:3000"
+const serverUrl = "http://localhost:3000"
+
+const twitterRequestTokenEndpoint = "/twitterAuthRequestToken"
+const twitterAccessTokenEndpoint = "/twitterAuthAccessToken"
+const checkCredentialsEndpoint = "/checkUserByCredentials"
+const registerToExperimentEndpoint ="/registerToExperiment"
+const validateSessionEndpoint = "/participantValidateSession"
+
 const feedEndpoint = "/participants/getFeed"
 const searchTweetsEndpoint = "/participants/searchTweets"
 const searchUsersEndpoint = "/participants/searchUsers"
@@ -11,9 +19,14 @@ const getUserFollowersEndpoint = "/participants/getUserFollowers"
 const getUserTimelineEndpoint = "/participants/getUserTimeline"
 const getUserLikesEndpoint = "/participants/getUserLikes"
 
-const loginEndpoint ="/login"
+const likeTweetEndpoint = "/participants/likeTweet"
+const unlikeTweetEndpoint = "/participants/unlikeTweet"
+const publishTweetEndpoint = "/participants/publishTweet"
+
+const sendActionsEndpoint = "/participants/sendActions"
 
 const axios = require('axios')
+axios.defaults.withCredentials=true;
 
 // For mocking server responses
 var feedJSON = require("./static data/FeedJSON.js").data
@@ -31,33 +44,108 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function login(){
-    const reqExpCode = "123"
-    const userTwitterToken = "456"
-    const requestUrl = serverUrl + loginEndpoint
-    try{
-        const response = await axios.post(requestUrl, {exp_code: reqExpCode, user_twitter_token: userTwitterToken})
-        console.log(response)
-        return response
-    }
-    catch(error){
-        console.log(error)
-        return {status: 0, data: "Network error, server probably down"}
-    }
+async function sendGetRequestReturnResponse(requestUrl){
+    return await axios.get(requestUrl)
+        .catch(function (error) {
+            if (error.response) { 
+                console.log(error.response)
+                return error.response
+            }
+            else{ // This is network error
+                console.log(error)
+                return {status: 0, data: "Network error, server probably down"}
+            }
+        });
 }
 
-async function sendGetRequestReturnResponse(requestUrl){
-    try{
-        // console.log(requestUrl)
-        const response = await axios.get(requestUrl)
-        // console.log(response)
-        return response
-    }
-    catch(error){
-        console.log(error)
-        return null
-    }
+async function sendPostRequestReturnResponse(requestUrl, payload){
+    return await axios.post(requestUrl, payload)
+        .catch(function (error) {
+            if (error.response) { 
+                console.log(error.response)
+                return error.response
+            }
+            else{ // This is network error
+                console.log(error)
+                return {status: 0, data: "Network error, server probably down"}
+            }
+        });
 }
+
+
+/* ----------------------------------------
+    Validate session request
+   ---------------------------------------- */
+
+async function validateSession(){
+    // Asks the server if I have valid cookie
+    // For testing
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {hasSession: true}}
+    }
+    // Else, send the request to the server
+    const requestUrl = serverUrl + validateSessionEndpoint
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
+
+/* ----------------------------------------
+    Guest requests
+   ---------------------------------------- */
+
+async function getTwitterAuthRequestToken(oauthCb){
+    const requestUrl = serverUrl + twitterRequestTokenEndpoint
+    const payload = {
+        oauth_callback: oauthCb,
+    }
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
+async function getTwitterAuthAccessToken(token, verifier){
+    const requestUrl = serverUrl + twitterAccessTokenEndpoint
+    const payload = {
+        oauth_token: token,
+        oauth_verifier: verifier
+    }
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
+async function checkCredentials(token, tokenSecret){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: 
+            {
+                twitter_user_found : "true",
+                user_registered_to_experiment : "true"
+            }
+        }
+    }
+    // Else, send the request to the server
+    const requestUrl = serverUrl + checkCredentialsEndpoint
+    const payload = {
+        oauth_token: token,
+        oauth_token_secret: tokenSecret
+    }
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
+async function registerToExperiment(expCode){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200}
+    }
+    const requestUrl = serverUrl + registerToExperimentEndpoint
+    const payload = {
+        exp_code: expCode,
+    }
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
+
+/* ----------------------------------------
+    Requests for data from Twitter to display
+   ---------------------------------------- */
 
 async function getFeed(){
     if(!actuallySendReqToServer){
@@ -66,11 +154,7 @@ async function getFeed(){
     }
     // Else, send the request to the server
     const requestUrl = serverUrl + feedEndpoint
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function searchForTweets(query){
@@ -81,11 +165,7 @@ async function searchForTweets(query){
     // Else, send the request to the server
     const requestQuery = "?q=" + query
     const requestUrl = serverUrl + searchTweetsEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function searchForUsers(query){
@@ -96,11 +176,7 @@ async function searchForUsers(query){
     // Else, send the request to the server
     const requestQuery = "?q=" + query
     const requestUrl = serverUrl + searchUsersEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserPage(username){
@@ -111,11 +187,7 @@ async function getUserPage(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getTweetPage(tweetId){
@@ -126,11 +198,7 @@ async function getTweetPage(tweetId){
     // Else, send the request to the server
     const requestQuery = "?tweetId=" + tweetId
     const requestUrl = serverUrl + getTweetEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserFriends(username){
@@ -141,11 +209,7 @@ async function getUserFriends(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserFriendsEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserFollowers(username){
@@ -156,11 +220,7 @@ async function getUserFollowers(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserFollowersEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserTimeline(username){
@@ -171,11 +231,7 @@ async function getUserTimeline(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserTimelineEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: null}
-    }
-    return serverResponse
+    return await sendGetRequestReturnResponse(requestUrl)
 }
 
 async function getUserLikes(username){
@@ -186,14 +242,68 @@ async function getUserLikes(username){
     // Else, send the request to the server
     const requestQuery = "?username=" + username
     const requestUrl = serverUrl + getUserLikesEndpoint + requestQuery
-    const serverResponse = await sendGetRequestReturnResponse(requestUrl)
-    if(serverResponse == null){
-        return {status: 0, data: "null"}
+    return await sendGetRequestReturnResponse(requestUrl)
+}
+
+
+/* ----------------------------------------
+    Requests for making active actions in Twitter
+   ---------------------------------------- */
+
+async function likeTweet(tweetId){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
     }
-    return serverResponse
+    // Else, send the request to the server
+    const requestQuery = "?tweetId=" + tweetId
+    const requestUrl = serverUrl + likeTweetEndpoint + requestQuery
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
+async function unlikeTweet(tweetId){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestQuery = "?tweetId=" + tweetId
+    const requestUrl = serverUrl + unlikeTweetEndpoint + requestQuery
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
+async function publishTweet(payload){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestUrl = serverUrl + publishTweetEndpoint
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
+
+
+/* ----------------------------------------
+    Requests for logging actions
+   ---------------------------------------- */
+
+async function sendActions(payload){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestUrl = serverUrl + sendActionsEndpoint
+    return await sendPostRequestReturnResponse(requestUrl, payload)
 }
 
 module.exports = {
+    serverGetTwitterAuthRequestToken: getTwitterAuthRequestToken,
+    serverGetTwitterAuthAccessToken: getTwitterAuthAccessToken,
+    serverValidateSession: validateSession,
+    serverCheckCredentials: checkCredentials,
+    serverRegisterToExperiment: registerToExperiment,
+
     serverGetFeed: getFeed,
     serverSearchForTweets: searchForTweets,
     serverSearchForUsers: searchForUsers,
@@ -204,5 +314,9 @@ module.exports = {
     serverGetUserTimeline: getUserTimeline,
     serverGetUserLikes: getUserLikes,
 
-    serverLogin: login,
+    serverLikeTweet: likeTweet,
+    serverUnlikeTweet: unlikeTweet,
+    serverPublishTweet: publishTweet,
+
+    serverSendActions: sendActions
 }

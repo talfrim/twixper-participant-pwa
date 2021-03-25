@@ -1,4 +1,15 @@
+var tweetParser = require('./tweetParser.js')
+
 var moment = require('moment');
+
+
+function getHtmlTextFromTweet(tweet, isQuotedTweet = false){
+    return tweetParser.getHtmlTextFromTweet(tweet, isQuotedTweet)
+}
+
+function getDateNow(){
+    return moment().format("MM/DD/YYYY HH:mm:ss");
+}
 
 function parseTwitterDate(tdate) {
     var system_date = new Date(Date.parse(tdate));
@@ -8,7 +19,7 @@ function parseTwitterDate(tdate) {
     }
     var diff = Math.floor((user_date - system_date) / 1000);
     //if (diff <= 1) {return "just now";}
-    if (diff < 20) {return diff + "s";}
+    if (diff <= 60) {return diff + "s";}
     //if (diff < 40) {return "half a minute ago";}
     //if (diff < 60) {return "less than a minute ago";}
     //if (diff <= 90) {return "one minute ago";}
@@ -73,9 +84,17 @@ function numberWithCommas(number){
     return parts.join(".");
 }
 
-function emptyFromLs(itemsNameToRemove){ // "tweet", "user"
+
+/* ----------------------------------------
+    Local Storage functions
+   ---------------------------------------- */
+
+function emptyCacheFromLs(){ 
     Object.keys(localStorage).forEach((key) => {
-        if(key.startsWith(itemsNameToRemove)){
+        if(key != "providedCredentials"
+        && key != "registeredToExperiment"
+        && !key.startsWith("action")
+        ){
             localStorage.removeItem(key);
         }
     });
@@ -83,14 +102,14 @@ function emptyFromLs(itemsNameToRemove){ // "tweet", "user"
 
 function emptyFromLsByList(itemsNameToRemove, keyOfArrInLs){ // "tweet", "user"
     let arrayOfIds = []
-    if (localStorage.getItem(keyOfArrInLs) !== null) {
+    if (localStorage.getItem(keyOfArrInLs) != null) {
         arrayOfIds = JSON.parse(localStorage[keyOfArrInLs])
     }
 
     // Iterate each id and delete from ls ONLY IF it is not in feed.
     if(itemsNameToRemove == "tweet"){
         let feedTweetsIds = []
-        if (localStorage.getItem("feedTweetsOrder") !== null) {
+        if (localStorage.getItem("feedTweetsOrder") != null) {
             feedTweetsIds = JSON.parse(localStorage["feedTweetsOrder"])
         }
     
@@ -117,24 +136,24 @@ function addToLsByList(itemsNameToAdd, itemsArrToAdd, keyOfArrInLs){ // "tweet",
     for (let i = 0; i < itemsArrToAdd.length; i++) {
         const item = itemsArrToAdd[i]
         if(itemsNameToAdd == "tweet"){
-            localStorage["tweet" + item.id] = JSON.stringify(item)
-            order.push(item.id)
+            localStorage["tweet" + item.id_str] = JSON.stringify(item)
+            order.push(item.id_str)
             const user = item.user
             localStorage["user" + user.screen_name] = JSON.stringify(user)
             // Check if this is a retweet, if so, add the original tweet and its user
-            if(item.retweeted_status && item.retweeted_status){
+            /*if(item.retweeted_status && item.retweeted_status){
                 const original = item.retweeted_status
                 localStorage["tweet" + original.id] = JSON.stringify(original)
                 const original_user = original.user
                 localStorage["user" + original_user.screen_name] = JSON.stringify(original_user)
-            }
+            }*/
             // Check if this is a quote, if so, add the original tweet and its user
-            if(item.is_quote_status === true && item.quoted_status){
+            /*if(item.is_quote_status === true && item.quoted_status){
                 const quoted_tweet = item.quoted_status
                 localStorage["tweet" + quoted_tweet.id] = JSON.stringify(quoted_tweet)
                 const quoted_user = quoted_tweet.user
                 localStorage["user" + quoted_user.screen_name] = JSON.stringify(quoted_user)
-            }
+            }*/
         }
         else if(itemsNameToAdd == "user"){
             localStorage["user" + item.screen_name] = JSON.stringify(item)
@@ -147,12 +166,12 @@ function addToLsByList(itemsNameToAdd, itemsArrToAdd, keyOfArrInLs){ // "tweet",
 function retrieveListFromLs(itemsNameToRetrieve, keyOfArrInLs){ // "tweet", "user"
     let retrievedItemsArr = [] // Array of objects
     let arrayOfIds = []
-    if (localStorage.getItem(keyOfArrInLs) !== null) {
+    if (localStorage.getItem(keyOfArrInLs) != null) {
         arrayOfIds = JSON.parse(localStorage[keyOfArrInLs])
     }
     for (let i = 0; i < arrayOfIds.length; i++) {
         const id = arrayOfIds[i];
-        if(localStorage.getItem(itemsNameToRetrieve + id) !== null) {
+        if(localStorage.getItem(itemsNameToRetrieve + id) != null) {
             const element = JSON.parse(localStorage[itemsNameToRetrieve + id])
             retrievedItemsArr.push(element)
         }
@@ -161,12 +180,24 @@ function retrieveListFromLs(itemsNameToRetrieve, keyOfArrInLs){ // "tweet", "use
     return retrievedItemsArr
 }
 
+function editTweetInLs(tweetId, field, newVal){
+    if(localStorage.getItem("tweet" + tweetId) != null) {
+        let tweet = JSON.parse(localStorage["tweet" + tweetId])
+        tweet[field] = newVal
+        localStorage.setItem("tweet" + tweetId, JSON.stringify(tweet))
+    }
+}
+
 module.exports = {
+    getHtmlTextFromTweetFunc: getHtmlTextFromTweet,
+    getDateNowFunc: getDateNow,
     parseTwitterDateFunc: parseTwitterDate,
     parseTwitterNumbersToStringFunc: parseNumbersToString,
     parseUserPageDateFunc: parseUserPageDate,
-    emptyFromLs: emptyFromLs,
+    
+    emptyCacheFromLs: emptyCacheFromLs,
     emptyFromLsByList: emptyFromLsByList,
     addToLsByList: addToLsByList,
-    retrieveListFromLs: retrieveListFromLs
+    retrieveListFromLs: retrieveListFromLs,
+    editTweetInLs: editTweetInLs,
 };

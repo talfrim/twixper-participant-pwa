@@ -28,13 +28,15 @@ export default {
     let vm = this
     serverValidateSession().then(function (response) {
       if(response.status == 200){
-        if(response.data.hasSession == true){ // The cookie is valid
+        if(response.data.hasSession == true){ // The auth headers are valid
           localStorage["registeredToExperiment"] = true
           localStorage["providedCredentials"] = true
         }
-        else{ // The cookie is invalid.
+        else{ // The auth headers are invalid.
           localStorage.removeItem('providedCredentials')
           localStorage.removeItem('registeredToExperiment')
+          localStorage.removeItem('user_twitter_token_enc')
+          localStorage.removeItem('user_twitter_token_secret_enc')
           emptyCacheFromLs()
           // Redirect to welcom page if the current rout is not "welcome" or "insert code"
           if(vm.$route.name != "welcomePage" && vm.$route.name != "insertExpCode"){

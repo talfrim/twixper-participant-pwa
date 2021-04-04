@@ -1,7 +1,6 @@
-const actuallySendReqToServer = true
-
-// const serverUrl = "http://127.0.0.1:3000"
-const serverUrl = "http://localhost:3000"
+const config = require('../config')
+const actuallySendReqToServer = config.actuallySendReqToServer
+const serverUrl = config.serverUrl
 
 const twitterRequestTokenEndpoint = "/twitterAuthRequestToken"
 const twitterAccessTokenEndpoint = "/twitterAuthAccessToken"
@@ -44,8 +43,20 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function sendGetRequestReturnResponse(requestUrl){
-    return await axios.get(requestUrl)
+// Create auth header object
+function createAuthHeaderObj(){
+    let headerObj = {}
+    if(localStorage.getItem("user_twitter_token_enc") != null
+     && localStorage.getItem("user_twitter_token_secret_enc") != null){
+        headerObj["User-Twitter-Token-Enc"] = localStorage.getItem("user_twitter_token_enc")
+        headerObj["User-Twitter-Token-Secret-Enc"] = localStorage.getItem("user_twitter_token_secret_enc")
+    }
+    return headerObj
+}
+
+async function sendGetRequestReturnResponse(requestUrl, options = {}){
+    options.headers = createAuthHeaderObj()
+    return await axios.get(requestUrl, options)
         .catch(function (error) {
             if (error.response) { 
                 console.log(error.response)
@@ -58,8 +69,9 @@ async function sendGetRequestReturnResponse(requestUrl){
         });
 }
 
-async function sendPostRequestReturnResponse(requestUrl, payload){
-    return await axios.post(requestUrl, payload)
+async function sendPostRequestReturnResponse(requestUrl, payload, options = {}){
+    options.headers = createAuthHeaderObj()
+    return await axios.post(requestUrl, payload, options)
         .catch(function (error) {
             if (error.response) { 
                 console.log(error.response)
@@ -127,7 +139,14 @@ async function checkCredentials(token, tokenSecret){
         oauth_token: token,
         oauth_token_secret: tokenSecret
     }
-    return await sendPostRequestReturnResponse(requestUrl, payload)
+    const response = await sendPostRequestReturnResponse(requestUrl, payload)
+    if(response.status == 200){
+        console.log(response.headers)
+        // Set "user_twitter_token_enc" and "user_twitter_token_secret_enc" in LS from the response header.
+        localStorage.setItem("user_twitter_token_enc", response.headers["user-twitter-token-enc"])
+        localStorage.setItem("user_twitter_token_secret_enc", response.headers["user-twitter-token-secret-enc"])
+    }
+    return response
 }
 
 async function registerToExperiment(expCode){

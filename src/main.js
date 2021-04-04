@@ -147,14 +147,16 @@ new Vue({
       sendActions(30)
     }
 
-    // Set login action
+    // Set login action if this is valid user
     const actionDate = getDateNowFunc()
     const loginAction = {
       action_type: "login",
       action_date: actionDate,
     }
     const actionLSKey = "action_login"
-    this.setAction(actionLSKey, loginAction)
+    if(localStorage.getItem('registeredToExperiment') != null){
+      this.setAction(actionLSKey, loginAction)
+    }
 
     // Call for "sendActions" every 20 seconds
     setInterval(() => {
@@ -213,6 +215,8 @@ window.onbeforeunload = function(){
       action_type: "logout",
       action_date: actionDate,
     }
-  localStorage["action_logout"] = JSON.stringify(logoutAction)
+  if(localStorage.getItem('registeredToExperiment') != null){
+    localStorage["action_logout"] = JSON.stringify(logoutAction)
+  }
   // Not sending to server because it does not work in "before unload" and just deletes from LS.
 }

@@ -77,7 +77,7 @@ export default {
             if(response.status == 200){
                 this.feedTweetsArr.push(...response.data);
             }
-            else if (response.status == 401){
+            else if (response.status == 401 || response.status == 428){
                 // Unauthorized
                 console.log("Unauthorized get feed")
                 this.$router.push("welcomePage")

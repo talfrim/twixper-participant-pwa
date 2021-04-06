@@ -141,7 +141,6 @@ async function checkCredentials(token, tokenSecret){
     }
     const response = await sendPostRequestReturnResponse(requestUrl, payload)
     if(response.status == 200){
-        console.log(response.headers)
         // Set "user_twitter_token_enc" and "user_twitter_token_secret_enc" in LS from the response header.
         localStorage.setItem("user_twitter_token_enc", response.headers["user-twitter-token-enc"])
         localStorage.setItem("user_twitter_token_secret_enc", response.headers["user-twitter-token-secret-enc"])

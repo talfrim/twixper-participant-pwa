@@ -8,7 +8,7 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet = false){
 }
 
 function getDateNow(){
-    return moment().format("MM/DD/YYYY HH:mm:ss");
+    return moment.utc().format("MM/DD/YYYY HH:mm:ss UTC");
 }
 
 function parseTwitterDate(tdate) {

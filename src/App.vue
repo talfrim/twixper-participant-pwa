@@ -31,6 +31,7 @@ export default {
         if(response.data.hasSession == true){ // The auth headers are valid
           localStorage["registeredToExperiment"] = true
           localStorage["providedCredentials"] = true
+          vm.$root.sessionValidated()
         }
         else{ // The auth headers are invalid.
           localStorage.removeItem('providedCredentials')

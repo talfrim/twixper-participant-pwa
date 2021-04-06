@@ -37,6 +37,8 @@ export default{
                 localStorage['registeredToExperiment'] = true
                 // Reset local storage twitter data
                 emptyCacheFromLs()
+                // Telling the root the session validated (so it will start to collect actions)
+                this.$root.sessionValidated()
                 this.$router.push('feed')
             }
             else if (registerToExpResponse.status == 401){

@@ -142,30 +142,33 @@ new Vue({
         this.numOfActions ++
       }
     });
-    // Call for "sendActions" on startup when there are more than 0 actions.
-    if(this.numOfActions > 0){
-      sendActions(30)
-    }
-
-    // Set login action if this is valid user
-    const actionDate = getDateNowFunc()
-    const loginAction = {
-      action_type: "login",
-      action_date: actionDate,
-    }
-    const actionLSKey = "action_login"
-    if(localStorage.getItem('registeredToExperiment') != null){
-      this.setAction(actionLSKey, loginAction)
-    }
-
-    // Call for "sendActions" every 20 seconds
-    setInterval(() => {
-      console.log("checking actions")
-      const numOfSentActions = sendActions(25)
-      this.numOfActions -= numOfSentActions
-    }, 20000)
+    // Wait for session validation before sending actions. See "sessionValidated" method.
+   
   },
   methods:{
+    sessionValidated(){
+      console.log("session validated")
+      // Call for "sendActions" on startup when there are more than 0 actions.
+      if(this.numOfActions > 0){
+        sendActions(30)
+      }
+
+      // Set login action
+      const actionDate = getDateNowFunc()
+      const loginAction = {
+        action_type: "login",
+        action_date: actionDate,
+      }
+      const actionLSKey = "action_login"
+      this.setAction(actionLSKey, loginAction)
+
+      // Call for "sendActions" every 20 seconds
+      setInterval(() => {
+        console.log("checking actions")
+        const numOfSentActions = sendActions(25)
+        this.numOfActions -= numOfSentActions
+      }, 20000)
+    },
     setAction(actionLSKey, action){
       localStorage[actionLSKey] = JSON.stringify(action)
       this.numOfActions ++
@@ -196,7 +199,7 @@ function sendActions(amountToSend){
     }
   });
   if(actionsToSend.length > 0){
-    console.log("sending actions")
+    console.log("sending " + actionsToSend.length + " actions")
     serverSendActions(actionsToSend)
     actionLSKeysToRemove.forEach(key => {
       localStorage.removeItem(key)

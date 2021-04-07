@@ -183,7 +183,7 @@ img{
     
     @media (max-width: 1300px) {
         .middle-content {
-            width: 60%;
+            width: 70%;
         }
     }
     

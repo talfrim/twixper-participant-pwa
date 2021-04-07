@@ -246,6 +246,11 @@ img{
     font-size: 1.3rem;
 }
 
+.insert-code-wrapper{
+    margin-top: 20%;
+}
+
+
 .t-btn-container{
     display: flex;
     justify-content: center;
@@ -320,7 +325,7 @@ input{
     padding-left: 2%;
     animation: 
         typing 4s steps(40, end),
-        blink-caret .75s step-end infinite;
+        blink-caret 1.2s step-end infinite;
 }
 /* The typing effect */
 @keyframes typing {

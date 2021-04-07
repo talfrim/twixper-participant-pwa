@@ -120,7 +120,7 @@ export default {
     font-family: "Segoe UI";
 }
 .user-tweets-container{
-    height: 85vh;
+    height: 91vh;
     width: 100vw;
 }
 </style>

@@ -26,11 +26,13 @@
                 <div class="alpha-alert-wrapper">
                     <div class="alpha-alert">
                         This is an alpha version. It is not fully working and tested yet. <br/>
-                        The current features are not implemented yet: <br/> 
+                        The following features are not implemented yet: <br/> 
                         <br/>
                         - Search (currently showing static content). <br/> 
                         - Follow / unfollow. <br/> 
-                        - Side menu. <br/> 
+                        - Side menu. <br/>
+                        - Comment. <br/>
+                        - Retweet. 
                     </div>  
                 </div>
                 <div class="footer-basic">
@@ -299,7 +301,7 @@ input{
 }
 
 .alpha-alert-wrapper {
-    padding: 15%;
+    padding: 10%;
 }
 .footer-basic {
     bottom: 0%;

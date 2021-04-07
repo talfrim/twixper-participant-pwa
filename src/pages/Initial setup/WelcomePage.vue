@@ -2,16 +2,18 @@
     <div class="background">
         <div class="page-wrapper">
             <div v-if="showWelcome" class="sign-wrapper">
-                <div>
-                    <h1>
-                        Welcome to Twixper!
-                    </h1>
+               
+                    <img 
+                        class="logo-img" 
+                        src="../../assets/images/logo_no_desc.png"
+                    />           
+                    <br>    
                     <br>
-                    <div>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti eius exercitationem fuga culpa sapiente praesentium cum porro quis, commodi distinctio laborum, totam minima! Optio velit temporibus, placeat, minima consequatur ipsa corrupti accusantium unde neque pariatur odio blanditiis voluptatem non consectetur quibusdam. Fuga nostrum magnam, praesentium laudantium asperiores ullam dignissimos accusantium ea optio quaerat! Veritatis voluptate, aut nesciunt a, ab accusantium molestiae cumque quia nihil, consequatur commodi asperiores nisi! In accusantium iusto placeat odit quaerat sapiente sunt quos? Perferendis dolores sed sequi nisi ipsam molestias error ratione quas ducimus ea quisquam magni consequuntur aperiam, esse, dicta perspiciatis recusandae voluptate ab mollitia.
+                    <div class="text-wrapper">
+                        <h1>
+                            Help discover <span class=blue-text>amazing </span>findings. It's easy. <span class=cursor> </span>
+                        </h1>  
                     </div>
-                    <br>
-                </div>
 
                 <div class="t-btn-container">
                     <a 
@@ -21,9 +23,30 @@
                     <i class="fab fa-twitter-square"></i> Sign in with Twitter
                     </a>
                 </div>
+                <div class="alpha-alert-wrapper">
+                    <div class="alpha-alert">
+                        This is an alpha version. It is not fully working and tested yet. <br/>
+                        The following features are not implemented yet: <br/> 
+                        <br/>
+                        - Search (currently showing static content). <br/> 
+                        - Follow / unfollow. <br/> 
+                        - Side menu. <br/>
+                        - Comment. <br/>
+                        - Retweet. 
+                    </div>  
+                </div>
+                <div class="footer-basic">
+                    <footer>
+                        <p class="copyright">
+                            Twixper will record data regarding your usage and it will be available to the researchers that own the experiment.
+                            Twixper might make changes in content you would normally see in twitter. 
+                            We never post on behalf of your name or change things you write.</p>
+                    </footer>
+                </div>
             </div>
 
             <div v-if="!showWelcome" class="insert-code-wrapper">
+                <br/>
                 <h3>Please insert the code you got from Twitter:</h3>
                 <br>
                 <input type="text" v-model="twitterCode">
@@ -205,12 +228,20 @@ export default {
     height: 70vh;
     display: flex;
     justify-content: center;
-    align-items: center;
     margin: 0 3%;
+}
+
+img{
+    margin-top: 10%;
+    padding-bottom: 2%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
 }
 
 .sign-wrapper, .insert-code-wrapper{
     text-align: center;
+    justify-content: center;
     // margin: 10% 5%;
     font-size: 1.3rem;
 }
@@ -218,6 +249,7 @@ export default {
 .t-btn-container{
     display: flex;
     justify-content: center;
+    margin-top: 11%;
 }
 
 .t-btn {
@@ -250,4 +282,65 @@ input{
     background-color: #1aa1f5;
     color: #fff;
 }
+
+.text-wrapper{
+    overflow: hidden;
+    font-size: 1.3rem;
+    padding: 0% 7%;
+    font-family:"National 2", "Helvetica Neue", Helvetica, Arial, "MS Gothic", sans-serif;
+
+}
+
+.alpha-alert {
+    padding: 5%;
+    border:2px dashed #f00;
+    border-radius: 10%;
+    font-size: 1.7rem;
+    text-align: left;
+
+}
+
+.alpha-alert-wrapper {
+    padding: 10%;
+}
+.footer-basic {
+    bottom: 0%;
+    position: fixed;
+    padding: 3% 8%;
+
+}
+
+.blue-text {
+    color:#1aa1f5;
+    
+}
+
+.cursor {
+    border-right: .15em solid #1aa1f5; /* The typwriter cursor */
+    padding-left: 2%;
+    animation: 
+        typing 4s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #1aa1f5; }
+}
+
+.copyright {
+  margin-top:15px;
+  text-align:center;
+
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
 </style>

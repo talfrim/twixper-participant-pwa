@@ -7,7 +7,12 @@
 }
 .banner-img-container{
     /* min-height: 19vh; */
+    height: 19vh;
     width: 100vw;
+}
+.banner-img-container .expeandable-img{
+    height: 100%;
+    width: auto;
 }
 .profile-img-container{
     height: 21vmin;

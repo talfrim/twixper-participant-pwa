@@ -142,6 +142,12 @@ function addToLsByList(itemsNameToAdd, itemsArrToAdd, keyOfArrInLs){ // "tweet",
             order.push(item.id_str)
             const user = item.user
             localStorage["user" + user.screen_name] = JSON.stringify(user)
+            // Check if this is a retweet, if so, add the original user
+            if(item.retweeted_status && item.retweeted_status){
+                const original = item.retweeted_status
+                const original_user = original.user
+                localStorage["user" + original_user.screen_name] = JSON.stringify(original_user)
+            }
             // Check if this is a retweet, if so, add the original tweet and its user
             /*if(item.retweeted_status && item.retweeted_status){
                 const original = item.retweeted_status

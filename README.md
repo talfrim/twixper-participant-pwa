@@ -1,5 +1,5 @@
 # Twixper_participant
-Ripository for the Twitter clone app for participants in experiments. 
+Repository for the Twitter clone app for participants in experiments. 
 
 ## Project setup
 ```

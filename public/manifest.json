@@ -17,5 +17,6 @@
     "start_url": "/",
     "display": "fullscreen",
     "orientation": "portrait",
-    "background_color": "#A9A9A9"
+    "background_color": "#A9A9A9",
+    "scope": "https://twixper-client-participants.herokuapp.com/"
 }

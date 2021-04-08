@@ -11,7 +11,7 @@
                     <br>
                     <div class="text-wrapper">
                         <h1>
-                            Help 22 discover <span class=blue-text>amazing </span>findings. It's easy. <span class=cursor> </span>
+                            Help discover <span class=blue-text>amazing </span>findings. It's easy. <span class=cursor> </span>
                         </h1>  
                     </div>
 

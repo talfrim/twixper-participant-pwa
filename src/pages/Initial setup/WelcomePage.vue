@@ -11,17 +11,22 @@
                     <br>
                     <div class="text-wrapper">
                         <h1>
-                            Help discover <span class=blue-text>amazing </span>findings. It's easy. <span class=cursor> </span>
+                            Help 22 discover <span class=blue-text>amazing </span>findings. It's easy. <span class=cursor> </span>
                         </h1>  
                     </div>
 
                 <div class="t-btn-container">
                     <a 
-                        class="twitter t-btn"
+                        ref="twitterBtn"
+                        class="t-btn"
+                        :href="authUrl"
+                        target="_blank"
                         @click="clickedSignIn"
                     >
-                    <i class="fab fa-twitter-square"></i> Sign in with Twitter
+
+                        <i class="fab fa-twitter-square"></i> Sign in with Twitter
                     </a>
+                    <!--@click="clickedSignIn" onclick="window.open(this.href)"-->
                 </div>
                 <div class="alpha-alert-wrapper">
                     <div class="alpha-alert">
@@ -84,25 +89,52 @@ export default {
             twitterCode: "",
             insertCodeBtnText: "Ok",
             insertCodeBtnDisabled: false,
-            oauthToken: null
+            signInDisabled: false,
+            oauthToken: null,
+            authUrl: null
+            
         }
+    },
+    created() {
+        let vm = this
+        // gets a request token
+        serverGetTwitterAuthRequestToken("oob")
+        .then(function (response){
+            if(response.status == 200){
+                const urlParams = new URLSearchParams(response.data);
+                const oauthToken = urlParams.get("oauth_token")
+                vm.oauthToken = oauthToken
+                vm.authUrl = "https://api.twitter.com/oauth/authorize?oauth_token=" + oauthToken
+                setTimeout(()=>{
+                    vm.$nextTick(()=>{vm.$refs.twitterBtn.classList.add("show")})
+                }, 10)
+            }
+            else{
+                alert("Error while loading the sign-in button. Please refresh to try again.")
+            }
+        })
+        .catch(function (error){
+            alert("Error while loading the sign-in button. Please refresh to try again.")
+        })
     },
     methods:{
         async clickedSignIn(){
-            // gets a request token
-            const response = await serverGetTwitterAuthRequestToken("oob")
-            if(response.status != 200){
-                alert("Error, please try again later")
-                return
-            }
+            // this.signInDisabled = true
+            // // gets a request token
+            // const response = await serverGetTwitterAuthRequestToken("oob")
+            // this.signInDisabled = false
+            // if(response.status != 200){
+            //     alert("Error, please try again later")
+            //     return
+            // }
             // Show the "insert pin section"
             this.showWelcome = false
 
-            const urlParams = new URLSearchParams(response.data);
-            this.oauthToken = urlParams.get("oauth_token")
-            const auth_url = "https://api.twitter.com/oauth/authorize?oauth_token=" + this.oauthToken
-            // Redirect to "auth app" page
-            window.open(auth_url)
+            // const urlParams = new URLSearchParams(response.data);
+            // this.oauthToken = urlParams.get("oauth_token")
+            // const auth_url = "https://api.twitter.com/oauth/authorize?oauth_token=" + this.oauthToken
+            // // Redirect to "auth app" page
+            // window.open(auth_url, '_blank')
             /*cb.__call("oauth_requestToken", { oauth_callback: "oob" }, function(
                     reply,
                     rate,
@@ -254,7 +286,11 @@ img{
 .t-btn-container{
     display: flex;
     justify-content: center;
-    margin-top: 11%;
+    margin-top: 9%;
+}
+
+.loader-container{
+    position: relative;
 }
 
 .t-btn {
@@ -268,12 +304,18 @@ img{
     gap: 10px;
     font-size: 15px;
     text-decoration: none;
+    background-color: #55ACEE;
+    color: white;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 600ms ease;
+}
+.t-btn.show{
+    visibility: visible;
+    opacity: 1;
 }
 
-.twitter {
-  background-color: #55ACEE;
-  color: white;
-}
+
 
 i{
     font-size: 30px;

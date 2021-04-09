@@ -1,7 +1,7 @@
 {
     "name": "Twixper for participants",
     "short_name": "Twixper",
-    "theme_color": "#00acee",,
+    "theme_color": "#00acee",
     "icons": [
         {
             "src":"./img/icons/android-chrome-192x192.png",

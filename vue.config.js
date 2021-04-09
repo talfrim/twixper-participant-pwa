@@ -3,7 +3,10 @@ module.exports = {
     devtool: 'source-map'
   },
 
-  pluginOptions: {
+  
+}
+/*
+pluginOptions: {
     quasar: {
       importStrategy: 'kebab',
       rtlSupport: false
@@ -13,4 +16,4 @@ module.exports = {
   transpileDependencies: [
     'quasar'
   ]
-}
+*/

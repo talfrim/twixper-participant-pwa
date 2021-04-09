@@ -24,7 +24,7 @@
                         @click="clickedSignIn"
                     >
 
-                        <i class="fab fa-twitter-square"></i> Sign in with Twitter
+                            <i class="fab fa-twitter-square"></i> Sign in with Twitter
                     </a>
                     <!--@click="clickedSignIn" onclick="window.open(this.href)"-->
                 </div>

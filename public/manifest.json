@@ -1,12 +1,7 @@
 {
     "name": "Twixper for participants",
     "short_name": "Twixper",
-    "theme_color": "#00acee",
-    "intent_filters": {
-        "scope_url_scheme": "https",
-        "scope_url_host": "twitter.com",
-        "scope_url_path": "/"
-    },
+    "theme_color": "#00acee",,
     "icons": [
         {
             "src":"./img/icons/android-chrome-192x192.png",

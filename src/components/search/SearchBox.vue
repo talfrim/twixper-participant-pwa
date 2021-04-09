@@ -3,7 +3,7 @@
         <input
             class="search-box" 
             v-model="query" 
-            placeholder="Search tweets or users"
+            placeholder="Search tweets or people"
             v-on:keyup.enter="searchClicked"
         />
 

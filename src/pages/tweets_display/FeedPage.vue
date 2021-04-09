@@ -17,6 +17,7 @@
                 ref="tpl" 
                 :feedTweetsArr="feedTweetsArr"
                 lsScrollTop="feedScrollTop"
+                @refreshPulled="refreshFeed()"
             />
 
         </div>
@@ -116,7 +117,7 @@ export default {
 
 <style scoped>
 .tpl-container{
-    height: 90vh;
+    height: calc(100vh - 6.5rem); /* was 90vh */
 }
 
 .loader-container{

@@ -41,7 +41,7 @@ export default {
         return{
             cur: 0,
             currQuery: this.$route.params.query,
-            tabs: [{ name: "Tweets" }, { name: "Users" }, { name: "Media" }],
+            tabs: [{ name: "Tweets" }, { name: "People" }, { name: "Media" }],
         }
     },
     watch:{

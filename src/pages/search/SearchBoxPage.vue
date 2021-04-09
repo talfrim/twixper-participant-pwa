@@ -65,7 +65,7 @@ export default {
 
 <style scoped>
 .page-wrapper{
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .list-container {

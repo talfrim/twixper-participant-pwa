@@ -1,5 +1,10 @@
 <template>
-    <div class="users-wrapper" @scroll="scrolled" ref="usersWrapper">
+    <div 
+        class="users-wrapper"
+        @scroll="scrolled" 
+        ref="usersWrapper"
+        id="usersWrapper"
+     >
         <UserPreview 
             :userPreview="u" 
             v-for="(u,i) in userPreviews" 
@@ -9,6 +14,7 @@
 
 <script>
 import UserPreview from "./UserPreview.vue";
+const PullToRefresh = require('pulltorefreshjs');
 
 export default {
     components: {
@@ -27,11 +33,34 @@ export default {
     },
     data() {
         return {
-            currScrollTop: 0   
+            currScrollTop: 0,
+            ptr: null
         }
     },
     mounted(){
         this.updateListScrollPosition()
+        let vm = this
+        this.ptr = PullToRefresh.init({
+            mainElement: '#usersWrapper',
+            triggerElement: '#usersWrapper',
+            shouldPullToRefresh(){
+                return !this.mainElement.scrollTop
+            },
+            instructionsPullToRefresh: 'Pull down to refresh content',
+            instructionsReleaseToRefresh: 'Release to refresh content',
+            instructionsRefreshing: ' ',
+            distMax: 85,
+            distThreshold: 70,
+            distReload: 70,
+            refreshTimeout: 0,
+            onRefresh() {
+                console.log("refresh")
+                vm.$emit("refreshPulled")
+            }
+        });
+    },
+    beforeDestroy(){
+        this.ptr.destroy()
     },
     methods:{
         updateListScrollPosition(){
@@ -58,5 +87,6 @@ export default {
     height: 100%; /* 100% of the parent's height */
     overflow-y: scroll;
     overflow-x: hidden;
+    overscroll-behavior-y: contain; /* Prevent refresh from Chrome */
 }
 </style>

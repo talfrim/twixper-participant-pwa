@@ -24,8 +24,15 @@
                         @click="clickedSignIn"
                     >
 
-                            <i class="fab fa-twitter-square"></i> Sign in with Twitter
+                        <i class="fab fa-twitter-square"></i> 
+                        <span v-if="authUrl">Sign in with Twitter </span>
+                        <span v-else> Please wait... </span>
                     </a>
+                    <!-- <span
+                        v-else    
+                    >
+                        Please wait...
+                    </span> -->
                     <!--@click="clickedSignIn" onclick="window.open(this.href)"-->
                 </div>
                 <div class="alpha-alert-wrapper">
@@ -33,7 +40,7 @@
                         This is an alpha version. It is not fully working and tested yet. <br/>
                         The following features are not implemented yet: <br/> 
                         <br/>
-                        - Search (currently showing static content). <br/> 
+                        - Search, user page tweets (currently showing static content). <br/> 
                         - Follow / unfollow. <br/> 
                         - Side menu. <br/>
                         - Comment. <br/>
@@ -184,6 +191,8 @@ export default {
                 if(responseData.twitter_user_found == true && responseData.user_registered_to_experiment == true){
                     // Already registered to experiment
                     localStorage['registeredToExperiment'] = true
+                    // Telling the root the session validated (so it will start to collect actions)
+                    this.$root.sessionValidated()
                     this.$router.push('feed')
                 }
                 else{ // Need to register to experiment
@@ -298,27 +307,27 @@ img{
     padding: 5px 1px;
     border: none;
     border-radius: 6px;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    // justify-content: center;
     align-items: center;
-    gap: 10px;
+    i{
+        font-size: 30px;
+    }
     font-size: 15px;
     text-decoration: none;
     background-color: #55ACEE;
     color: white;
-    visibility: hidden;
-    opacity: 0;
+
+    // visibility: hidden;
+    pointer-events: none;
+    opacity: 0.3;
     transition: opacity 600ms ease;
 }
 .t-btn.show{
-    visibility: visible;
+    // visibility: visible;
+    pointer-events: all;
     opacity: 1;
-}
-
-
-
-i{
-    font-size: 30px;
 }
 
 input{

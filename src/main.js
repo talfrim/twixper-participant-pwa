@@ -131,7 +131,8 @@ new Vue({
       if(newVal > 50){
         // We should never get to this, but if so, free some actions
         console.log("** There are more than 50 actions in LS **")
-        sendActions(30)
+        const numOfSentActions = sendActions(30)
+        this.numOfActions -= numOfSentActions
       }
     }
   },
@@ -150,7 +151,8 @@ new Vue({
       console.log("session validated")
       // Call for "sendActions" on startup when there are more than 0 actions.
       if(this.numOfActions > 0){
-        sendActions(30)
+        const numOfSentActions = sendActions(30)
+        this.numOfActions -= numOfSentActions
       }
 
       // Set login action

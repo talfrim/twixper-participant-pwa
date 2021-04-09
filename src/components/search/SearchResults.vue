@@ -10,7 +10,7 @@
             ref="tpl"
         />
         <UserPreviewList 
-            :hidden="!(currTabName === 'Users')" 
+            :hidden="!(currTabName === 'People')" 
             :userPreviews="usersResultsArr"
             lsScrollTop="searchUsersScrollTop"
             ref="upl"
@@ -123,7 +123,7 @@ function private_switchTabsAndSearch(context, q){
         case "Tweets":
             context.searchForTweets(q);
             break;
-        case "Users":
+        case "People":
             context.searchForUsers(q);
             break;
         case "Media":

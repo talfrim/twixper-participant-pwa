@@ -56,6 +56,11 @@ export default {
 			type: Boolean,
 			required: false,
 			default: false
+		},
+		isTweetPageStyle:{
+			type: Boolean,
+			required: false,
+			default: false
 		}
     }, 
     data(){
@@ -108,6 +113,10 @@ export default {
     },
     mounted(){
 		this.setTextParagraph();
+		if(this.isTweetPageStyle){
+			// Increase the text's font size
+			this.$refs.textParagraph.style.fontSize = "2.1rem"
+		}
 	},
 	methods: {
 		setTextParagraph(){

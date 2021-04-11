@@ -1,5 +1,5 @@
 .tweet-preview-wrapper{
-	transition: background-color .4s ease;
+	transition: background-color 300ms ease;
 }
 
 .retweeter-user-info{
@@ -8,7 +8,7 @@
 	color: rgb(91, 112, 131);
 	font-weight: 700;
 	margin: 1rem 0 -0.5rem 3rem ;
-	transition: background-color .4s ease;
+	transition: background-color 300ms ease;
 }
 
 h4{

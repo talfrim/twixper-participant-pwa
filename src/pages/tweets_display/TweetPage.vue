@@ -41,8 +41,13 @@
                     </router-link>
                 </div> 
                 <div class="post-content"> 	
-                    <TweetPreviewBody :tweetPreview="tweetPageJson" />
-                    <TweetPreviewActions :tweetPreview="tweetPageJson" />      
+                    <TweetPreviewBody 
+                        :tweetPreview="tweetPageJson"
+                        :isTweetPageStyle="true"
+                     />
+                    <TweetPreviewActions 
+                        :tweetPreview="tweetPageJson"
+                     />      
                 </div>   
             </div>    
         </div>
@@ -120,7 +125,7 @@ export default {
             this.setBackgroundGrey(this.$refs.retweeterDiv)
             setTimeout( () =>
                 this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username})
-            , 400)
+            , 300)
         },
         setBackgroundGrey(domElement){
             domElement.style.backgroundColor = "rgba(0,0,0,0.1)"

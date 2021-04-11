@@ -167,7 +167,7 @@ export default {
 				this.setBackgroundGrey(this.$refs.tweetPrevWrapper)
 				setTimeout( () =>
 					this.$router.push({ path: '/tweetPage/'+this.tweetId})
-				, 400)
+				, 300)
 			}
 		},
 		clickedRetweet(){
@@ -175,7 +175,7 @@ export default {
 			this.setBackgroundGrey(this.$refs.retweeterDiv)
 			setTimeout( () =>
 				this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username})
-			, 400)
+			, 300)
 		},
 		setBackgroundGrey(domElement){
 			domElement.style.backgroundColor = "rgba(0,0,0,0.1)"

@@ -14,10 +14,17 @@
 
 <script>
 import {serverValidateSession} from "./communicators/serverCommunicator"
-import {emptyCacheFromLs} from "./assets/globalFunctions"
+import {emptyCacheFromLs, emptyActionsFromLs} from "./assets/globalFunctions"
 
 export default {
   name: 'App',
+  created(){
+    if(localStorage.getItem("registeredToExperiment") != null){
+      /* Push another "history" to the page so "router.beforeEach" 
+        will work within the app's pages scope. */
+     this.$router.push("feed") 
+    }
+  },
   mounted(){
     if(this.$route.name == "default" 
       && localStorage.getItem("registeredToExperiment") == null
@@ -39,6 +46,7 @@ export default {
           localStorage.removeItem('user_twitter_token_enc')
           localStorage.removeItem('user_twitter_token_secret_enc')
           emptyCacheFromLs()
+          emptyActionsFromLs()
           // Redirect to welcom page if the current rout is not "welcome" or "insert code"
           if(vm.$route.name != "welcomePage" && vm.$route.name != "insertExpCode"){
             vm.$router.push("welcomePage")

@@ -83,6 +83,7 @@ export default {
         }
     },
     created(){
+        window.addEventListener('popstate', this.windowPopstate)
         this.videoContainerInnerHtml = "<video width=\"100%\" height=\"70%\" controls autoplay class=\"video\">"
             +"<source src=\"" + this.videoUrl +  "\" type=\"video/mp4\">"
             +"Your browser does not support the video tag.</video>"
@@ -95,10 +96,15 @@ export default {
         this.cloned.removeEventListener('touchstart', this.onExpandedClick)
         // Remove the cloned element and the references
         this.cloned.remove()
+        // Tell root exp. media is closed
+        this.$root.setExpandableMediaMode(false)
       }
+        window.removeEventListener('popstate', this.windowPopstate)
     },
     watch: {
        expanded (expanded) {
+            // Set exp. mode in root
+            this.$root.setExpandableMediaMode(expanded)
             this.$nextTick(() => {
             // Run this if when we're expanding the image
             if (expanded) {
@@ -151,6 +157,11 @@ export default {
        }
     },
     methods:{
+        windowPopstate(){
+            // Called when the user tries to navigate back (or forward) in browser.
+            // Close the exp. video if it is opened
+            this.expanded = false
+        },
         clickedImgDiv(){
             if(this.isImageLoaded){
                 this.expanded = true;

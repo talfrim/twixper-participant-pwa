@@ -38,11 +38,11 @@ export default {
     },
     data () {
         return {
-            isImageLoaded: false,
-            expanded: false,
-            closeButtonRef: null,
-            backgroundColor: "rgba(171, 166, 166, 0.95)", //defauld background
-            isDestroyed: false // Is the component destroyed
+          isImageLoaded: false,
+          expanded: false,
+          closeButtonRef: null,
+          backgroundColor: "rgba(171, 166, 166, 0.95)", //defauld background
+          isDestroyed: false // Is the component destroyed
         }
     },
     beforeDestroy(){
@@ -54,10 +54,20 @@ export default {
         this.cloned.removeEventListener('touchstart', this.onExpandedImageClick)
         // Remove the cloned element and the references
         this.cloned.remove()
+        // Tell root exp. media is closed
+        this.$root.setExpandableMediaMode(false)
       }
-      
+      window.removeEventListener('popstate', this.windowPopstate)
+    },
+    created(){
+      window.addEventListener('popstate', this.windowPopstate)
     },
     methods: {
+      windowPopstate(){
+        // Called when the user tries to navigate back (or forward) in browser.
+        // Close the exp. img if it is opened
+        this.expanded = false
+      },
         clickedImgDiv(){
             if(this.isImageLoaded){
                 this.expanded = true;
@@ -122,44 +132,46 @@ export default {
     },
     watch: {
         expanded (expanded) {
-            this.$nextTick(() => {
-            // Run this if when we're expanding the image
-            if (expanded) {
-                // Clone the entire expandable-image element
-                this.cloned = this.$el.cloneNode(true)
-                // Store a reference for the close button
-                this.closeButtonRef = this.cloned.querySelector('.close-button')
-                // Call closeImage when the close button is clicked
-                this.closeButtonRef.addEventListener('click', this.closeImage)
-                //Clicking on the background closes the image
-                this.cloned.addEventListener('touchstart', this.onExpandedImageClick)
-                // Add the cloned element into <body>
-                document.body.appendChild(this.cloned)
-                //Change the background to the dominent color of the image
-                this.cloned.style.background = this.backgroundColor;
-                // Prevent the page from scrolling
-                //document.body.style.overflow = 'hidden'
-                setTimeout(() => {
-                // Show the cloned element
-                this.cloned.style.opacity = 1
-                }, 0)
-            } else {
-                // This section will run when the image is closing
-                // Hide the expanded image
-                this.cloned.style.opacity = 0
-                setTimeout(() => {
-                // Then, remove the click event listener from the close button
-                this.closeButtonRef.removeEventListener('click', this.closeImage)
-                this.cloned.removeEventListener('touchstart', this.onExpandedImageClick)
-                // Remove the cloned element and the references
-                this.cloned.remove()
-                this.cloned = null
-                this.closeButtonRef = null
-                // Re-enable the scrolling
-                //document.body.style.overflow = 'auto'
-                }, 250)
-            }
-            })
+          // Set exp. mode in root
+          this.$root.setExpandableMediaMode(expanded)
+          this.$nextTick(() => {
+          // Run this if when we're expanding the image
+          if (expanded) {
+            // Clone the entire expandable-image element
+            this.cloned = this.$el.cloneNode(true)
+            // Store a reference for the close button
+            this.closeButtonRef = this.cloned.querySelector('.close-button')
+            // Call closeImage when the close button is clicked
+            this.closeButtonRef.addEventListener('click', this.closeImage)
+            //Clicking on the background closes the image
+            this.cloned.addEventListener('touchstart', this.onExpandedImageClick)
+            // Add the cloned element into <body>
+            document.body.appendChild(this.cloned)
+            //Change the background to the dominent color of the image
+            this.cloned.style.background = this.backgroundColor;
+            // Prevent the page from scrolling
+            //document.body.style.overflow = 'hidden'
+            setTimeout(() => {
+            // Show the cloned element
+            this.cloned.style.opacity = 1
+            }, 0)
+          } else {
+            // This section will run when the image is closing
+            // Hide the expanded image
+            this.cloned.style.opacity = 0
+            setTimeout(() => {
+            // Then, remove the click event listener from the close button
+            this.closeButtonRef.removeEventListener('click', this.closeImage)
+            this.cloned.removeEventListener('touchstart', this.onExpandedImageClick)
+            // Remove the cloned element and the references
+            this.cloned.remove()
+            this.cloned = null
+            this.closeButtonRef = null
+            // Re-enable the scrolling
+            //document.body.style.overflow = 'auto'
+            }, 250)
+          }
+          })
         }
     }    
 }

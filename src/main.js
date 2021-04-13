@@ -38,9 +38,21 @@ const router = new VueRouter({
   routes,
 });
 
-/*router.beforeEach((to, from, next) => {
-  next()
-})*/
+router.beforeEach((to, from, next) => {
+  /* If an expandable media (such as img or video) is opened, 
+    we close it and not redirecting to another page. */
+  if(router.app.$root.isExpandableMediaOpened == null){ // Vue instance not defined yet
+    next()
+  }
+  else{
+    if(router.app.$root.isExpandableMediaOpened){
+      next(false)
+    }
+    else{
+      next()
+    }
+  }
+})
 
 router.afterEach((to, from) => {
   if((to.name == "tweetPage" && from.name == "tweetPage")
@@ -116,7 +128,7 @@ import {serverSendActions} from "./communicators/serverCommunicator"
 import {getDateNowFunc} from "./assets/globalFunctions"
 
 let shared_data = {
-  
+
 }
 new Vue({
   router,
@@ -124,6 +136,7 @@ new Vue({
     return{
       store: shared_data,
       numOfActions: 0,
+      isExpandableMediaOpened: false
     }
   },
   watch:{
@@ -137,18 +150,21 @@ new Vue({
     }
   },
   created(){
-    // Count how many actions are in LS
-    Object.keys(localStorage).forEach((key) => {
-      if(key.startsWith("action")){
-        this.numOfActions ++
-      }
-    });
+    
     // Wait for session validation before sending actions. See "sessionValidated" method.
    
   },
   methods:{
     sessionValidated(){
-      console.log("session validated")
+      // Count how many actions are in LS
+      Object.keys(localStorage).forEach((key) => {
+        if(key.startsWith("action")){
+          this.numOfActions ++
+        }
+      });
+
+      console.log("session validated. There are " + this.numOfActions + " actions")
+
       // Call for "sendActions" on startup when there are more than 0 actions.
       if(this.numOfActions > 0){
         const numOfSentActions = sendActions(30)
@@ -175,6 +191,9 @@ new Vue({
       localStorage[actionLSKey] = JSON.stringify(action)
       this.numOfActions ++
     },
+    setExpandableMediaMode(isExpandableMediaOpened){
+      this.isExpandableMediaOpened = isExpandableMediaOpened
+    }
   },
   render: h => h(App),
 }).$mount('#app');

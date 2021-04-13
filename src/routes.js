@@ -4,7 +4,7 @@ import insertExpCode from './pages/Initial setup/InsertExpCodePage'
 
 const routes = [
     {
-      /* The initial page will always be insert code page. Later, it should be changed so the user will go to the app if he is logged in.
+      /* The initial page will always be insert code page. The user will go to the app if he is logged in.
       This can be done like here: https://stackoverflow.com/questions/53578974/conditional-route-in-vue-js */
       path: "/",
       name: "default",

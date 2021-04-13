@@ -102,6 +102,14 @@ function emptyCacheFromLs(){
     });
 }
 
+function emptyActionsFromLs(){
+    Object.keys(localStorage).forEach((key) => {
+        if(key.startsWith("action")){
+            localStorage.removeItem(key);
+        }
+    });
+}
+
 function emptyFromLsByList(itemsNameToRemove, keyOfArrInLs){ // "tweet", "user"
     let arrayOfIds = []
     if (localStorage.getItem(keyOfArrInLs) != null) {
@@ -204,6 +212,7 @@ module.exports = {
     parseUserPageDateFunc: parseUserPageDate,
     
     emptyCacheFromLs: emptyCacheFromLs,
+    emptyActionsFromLs: emptyActionsFromLs,
     emptyFromLsByList: emptyFromLsByList,
     addToLsByList: addToLsByList,
     retrieveListFromLs: retrieveListFromLs,

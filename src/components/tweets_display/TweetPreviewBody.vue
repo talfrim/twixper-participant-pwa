@@ -115,7 +115,7 @@ export default {
 		this.setTextParagraph();
 		if(this.isTweetPageStyle){
 			// Increase the text's font size
-			this.$refs.textParagraph.style.fontSize = "2.1rem"
+			this.$refs.textParagraph.style.fontSize = "2.3rem"
 		}
 	},
 	methods: {

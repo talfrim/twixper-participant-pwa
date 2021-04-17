@@ -41,7 +41,7 @@
     width: 92%;
     background-color: #fff;
     position: absolute;
-    top: 42%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 1.5rem;
@@ -97,13 +97,14 @@
 
 .modal-body {
     display: flex;
-    padding: 1.5rem 1rem 0.5rem 1rem;
+    height: 160px;
+    padding: 1rem 1rem 0.5rem 0.5rem;
 }
 
 .modal-img {
     width: 4rem;
     height: 4rem;
-    margin-right: 1.5rem;
+    margin-right: 0.5rem;
     flex-shrink: 0;
 }
 

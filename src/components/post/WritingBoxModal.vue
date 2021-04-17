@@ -48,6 +48,7 @@
           type="text"
           :placeholder="placeholder"
           class="modal-input dark-mode-2 light-text border"
+          @keyup="inputKeyUp()"
           ref="modalInput"
         />
         <!-- <i class="far fa-smile"></i> -->
@@ -97,7 +98,7 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
         this.charsRemain = this.maxChars - newVal.length
       },
       charsRemain(newVal){
-        if(newVal > 0 && newVal <= this.maxChars){
+        if(newVal > 0 && newVal < this.maxChars){
           this.enablePublish = true
         }
         else{
@@ -110,8 +111,16 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
     },
     beforeDestroy(){
       this.$refs.modalWrapper.removeEventListener('touchstart', this.handleOutsideClick);
+      // Tell root modal is closed
+      this.$root.setExpandableMediaMode(false)
+      window.removeEventListener('popstate', this.windowPopstate)
     },
     methods:{
+      windowPopstate(){
+        // Called when the user tries to navigate back (or forward) in browser.
+        // Close the modal if it is opened
+        this.closeModal();
+      },
       clickedPostBtn(){
         if(!this.enablePublish || this.text.length > this.maxChars){
           return;
@@ -162,6 +171,9 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
             vm.$toasted.show('Could not post the tweet. Please try ahgain later.');
         });
       },
+      inputKeyUp(){
+        this.text = this.$refs.modalInput.value
+      },
       handleOutsideClick(e){
         // Close the modal if we clicked on outside element
         e.stopPropagation();
@@ -173,11 +185,17 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
         // console.log("modal display called");
         this.$refs.modal.style.display = 'block';
         this.$refs.modalWrapper.classList.add('modal-wrapper-display');
+        // Set exp. mode in root
+        this.$root.setExpandableMediaMode(true)
+        window.addEventListener('popstate', this.windowPopstate)
       },
       closeModal(){
         // console.log("modal close called");
         this.$refs.modal.style.display = 'none';
         this.$refs.modalWrapper.classList.remove('modal-wrapper-display');
+        // Tell root modal is closed
+        this.$root.setExpandableMediaMode(false)
+        window.removeEventListener('popstate', this.windowPopstate)
 
         // if (this.$refs.modalInput.value !== '') {
         //   this.$refs.modalInput.value = '';

@@ -17,8 +17,11 @@
                 />
             </div>
         </div>
-        <div class="follow-btn-container">
+        <div 
+            class="follow-btn-container"
+        >
             <FollowButton 
+                v-if="showFollowButton"
                 :usernameContext="userName" 
                 :following="following" 
             />
@@ -108,7 +111,8 @@ export default {
             joinedDate: null,
             following: false,
             folowersNumStr: -1,
-            friendsNumStr: -1
+            friendsNumStr: -1,
+            showFollowButton: true,
         }
     },
     created(){
@@ -133,6 +137,28 @@ export default {
         }
         this.folowersNumStr = parseTwitterNumbersToStringFunc(userJson.followers_count);
         this.friendsNumStr = parseTwitterNumbersToStringFunc(userJson.friends_count);
+        
+        // Check if this is the participant's user page
+        if(localStorage.getItem("user_twitter_entity") != null){
+            const pTwitterEnt = JSON.parse(localStorage['user_twitter_entity'])
+            if(pTwitterEnt.screen_name == this.userName){ // This is the participant's user page
+                // Do not show follow button
+                this.showFollowButton = false
+                // Update the participant's details in LS
+                const newPTwitterEnt = {
+                    "id_str": userJson.id_str,
+                    "screen_name": userJson.screen_name,
+                    "name": userJson.name,
+                    "friends_count": userJson.friends_count, 
+                    "followers_count": userJson.followers_count,
+                    "profile_image_url_https": userJson.profile_image_url_https
+                }
+                localStorage['user_twitter_entity'] = JSON.stringify(newPTwitterEnt)
+            }
+        }
+        else{
+            // Should not get here
+        }
         
     },
     

@@ -95,6 +95,7 @@ export default {
     background-color: white;
     height: 100%; /* 100% of the parent's height */
     overflow-y: scroll;
+    overscroll-behavior-y: contain; /* Prevent refresh from Chrome */
 } 
 
 </style>

@@ -1,7 +1,10 @@
 <!-- Contains the paage header name and a "back" button -->
 <template>
     <div>
-        <i class="fas fa-arrow-left"></i>
+        <i
+            @click="goBack()"
+            class="fas fa-arrow-left">
+        </i>
         <span> {{text}} </span>
     </div>
 </template>
@@ -13,6 +16,11 @@ export default {
             type: String,
             required: false,
             default: "This is header text"
+        }
+    },
+    methods:{
+        goBack() {
+            window.history.back();
         }
     }
 }

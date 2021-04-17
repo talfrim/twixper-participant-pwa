@@ -11,7 +11,11 @@
             <h4>To start, insert the experiment code you got:</h4>
             <input v-model="expCode" type="text">
             <br><br><br><br><br><br><br><br><br><br><br><br>
-            <button type="button" class="btn main-btn" @click="clickedBtn">Continue</button>
+            <button 
+            :disabled="btnDisabled"
+            type="button"
+             class="btn main-btn" 
+             @click="clickedBtn">Continue</button>
           </div>
        
         <!-- end of right -->
@@ -25,16 +29,19 @@ import {emptyCacheFromLs} from "../../assets/globalFunctions"
 export default{
     data(){
         return{
-            expCode: ""
+            expCode: "",
+            btnDisabled: false
         }
     },
     methods:{
         async clickedBtn(){
+            this.btnDisabled = true
             const registerToExpResponse = await serverRegisterToExperiment(this.expCode)
             console.log(registerToExpResponse);
             if(registerToExpResponse.status == 200){
                 // Setting the registration in local storage
                 localStorage['registeredToExperiment'] = true
+                localStorage['user_twitter_entity'] = JSON.stringify(registerToExpResponse.data.participant_twitter_info)
                 // Reset local storage twitter data
                 emptyCacheFromLs()
                 // Telling the root the session validated (so it will start to collect actions)
@@ -61,6 +68,7 @@ export default{
                     alert("Network error. Please try again later.")
                 }
             }
+            this.btnDisabled = false
         }
     }
 

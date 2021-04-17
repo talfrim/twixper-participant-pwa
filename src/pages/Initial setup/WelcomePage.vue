@@ -42,7 +42,7 @@
                         <br/>
                         - Search, user page tweets (currently showing static content). <br/> 
                         - Follow / unfollow. <br/> 
-                        - Side menu. <br/>
+                        <!-- - Side menu. <br/> -->
                         - Comment. <br/>
                         - Retweet. 
                     </div>  
@@ -191,6 +191,9 @@ export default {
                 if(responseData.twitter_user_found == true && responseData.user_registered_to_experiment == true){
                     // Already registered to experiment
                     localStorage['registeredToExperiment'] = true
+                    if(localStorage.getItem('user_twitter_entity') == null){
+                        localStorage['user_twitter_entity'] = JSON.stringify(responseData.participant_twitter_info)
+                    }
                     // Telling the root the session validated (so it will start to collect actions)
                     this.$root.sessionValidated()
                     this.$router.push('feed')

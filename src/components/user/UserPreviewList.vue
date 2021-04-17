@@ -87,5 +87,6 @@ export default {
     height: 100%; /* 100% of the parent's height */
     overflow-y: scroll;
     overflow-x: hidden;
+    overscroll-behavior-y: contain; /* Prevent refresh from Chrome */
 }
 </style>

@@ -19,7 +19,7 @@ import {emptyCacheFromLs, emptyActionsFromLs} from "./assets/globalFunctions"
 export default {
   name: 'App',
   created(){
-    if(localStorage.getItem("registeredToExperiment") != null){
+    if(localStorage.getItem("registeredToExperiment") != null && this.$route.name == "default"){
       /* Push another "history" to the page so "router.beforeEach" 
         will work within the app's pages scope. */
      this.$router.push("feed") 
@@ -38,6 +38,9 @@ export default {
         if(response.data.hasSession == true){ // The auth headers are valid
           localStorage["registeredToExperiment"] = true
           localStorage["providedCredentials"] = true
+          if(localStorage.getItem('user_twitter_entity') == null){
+            localStorage['user_twitter_entity'] = JSON.stringify(response.data.participant_twitter_info)
+          }
           vm.$root.sessionValidated()
         }
         else{ // The auth headers are invalid.
@@ -45,6 +48,7 @@ export default {
           localStorage.removeItem('registeredToExperiment')
           localStorage.removeItem('user_twitter_token_enc')
           localStorage.removeItem('user_twitter_token_secret_enc')
+          localStorage.removeItem('user_twitter_entity')
           emptyCacheFromLs()
           emptyActionsFromLs()
           // Redirect to welcom page if the current rout is not "welcome" or "insert code"
@@ -80,7 +84,7 @@ export default {
   body{
     /* Prevent the page from scrolling*/ 
     overflow-x: hidden;
-    overscroll-behavior-y: contain; /* Prevent refresh from Chrome */
+    /* overscroll-behavior-y: contain; Prevent refresh from Chrome */
     /* overflow-y: hidden; */
   }
   /*

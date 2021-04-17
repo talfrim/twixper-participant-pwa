@@ -146,7 +146,8 @@ export default {
 		const userJson = tweetPrev.user;
 		this.author.userFullName = userJson.name;
 		this.author.userName = userJson.screen_name;
-		this.author.profileImgUrl = userJson.profile_image_url_https;
+		// In order to get high quality img:  replace("_normal", "").
+		this.author.profileImgUrl = userJson.profile_image_url_https.replace("_normal", "");
 		this.author.isVerified = userJson.verified;		
 	},
 	methods:{

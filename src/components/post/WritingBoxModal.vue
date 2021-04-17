@@ -41,7 +41,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-img">
-          <img src="../../assets/images/facebook-user-icon-17.jpg" />
+          <img :src="pTwitterProfileImgSrc" />
         </div>
         <textarea
           v-model="text"
@@ -86,6 +86,7 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
     },
     data() {
       return {
+        pTwitterProfileImgSrc: "../../assets/images/facebook-user-icon-17.jpg",
         text: "",
         maxChars: 280,
         charsRemain: 280,
@@ -104,6 +105,19 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
         else{
           this.enablePublish = false
         }
+      }
+    },
+    created(){
+      // Get the participant's twiiter profile img from local storage
+      if(localStorage.getItem('user_twitter_entity') != null){
+        this.pTwitterEnt = JSON.parse(localStorage['user_twitter_entity'])
+        // In order to get high quality img:  replace("_normal", "").
+        const profileImgUrl = this.pTwitterEnt.profile_image_url_https
+        this.pTwitterProfileImgSrc = profileImgUrl.replace("_normal", "")
+      }
+      else{
+        // Should not get here
+        console.log("Why 'user_twitter_entity' is not in LS??")
       }
     },
     mounted(){

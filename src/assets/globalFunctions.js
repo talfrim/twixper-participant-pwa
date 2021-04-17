@@ -95,6 +95,7 @@ function emptyCacheFromLs(){
         && key != "registeredToExperiment"
         && key != "user_twitter_token_enc"
         && key != "user_twitter_token_secret_enc"
+        && key != "user_twitter_entity"
         && !key.startsWith("action")
         ){
             localStorage.removeItem(key);
@@ -107,6 +108,12 @@ function emptyActionsFromLs(){
         if(key.startsWith("action")){
             localStorage.removeItem(key);
         }
+    });
+}
+
+function emptyLs(){
+    Object.keys(localStorage).forEach((key) => {
+        localStorage.removeItem(key);
     });
 }
 
@@ -214,6 +221,7 @@ module.exports = {
     emptyCacheFromLs: emptyCacheFromLs,
     emptyActionsFromLs: emptyActionsFromLs,
     emptyFromLsByList: emptyFromLsByList,
+    emptyLs: emptyLs,
     addToLsByList: addToLsByList,
     retrieveListFromLs: retrieveListFromLs,
     editTweetInLs: editTweetInLs,

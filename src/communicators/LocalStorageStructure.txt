@@ -1,5 +1,6 @@
 user_twitter_token_enc:
 user_twitter_token_secret_enc: 
+user_twitter_entity: Object of the participant's twitter info
 
 providedCredentials: boolean, whether the current participant already authorized us.
 registeredToExperiment: boolean, whether the current participant is registered.

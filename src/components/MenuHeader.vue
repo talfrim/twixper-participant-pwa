@@ -3,9 +3,9 @@
    <nav class="feeds-nav dark-mode-1">
        <div class="user" @click="openSidebar()">
           <div class="user-img-wrapper">
-            <img src="../assets/images/facebook-user-icon-17.jpg" />
+            <img :src="pTwitterEnt.profile_image_url_https" />
           </div>
-          <a href="#" class="user-link light-text">Jane Smith</a>
+          <a href="#" class="user-link light-text">{{pTwitterEnt.name}}</a>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="icons">
@@ -37,26 +37,53 @@
             <h2 class="light-text">Account info</h2>
             <i class="fas fa-times" @click="closeSidebar()"></i>
           </div>
-          <div class="sidebar-user">
-            <div class="sidebar-user-img">
-              <img src="../assets/images/facebook-user-icon-17.jpg" />
+          <div 
+            ref="userNameImgContainer"
+            @click="clickedUserNameImgContainer"
+            class="sidebar-user-name-img-container" 
+          >
+            <div class="sidebar-user">
+              <div class="sidebar-user-img">
+                <img :src="pTwitterEnt.profile_image_url_https" />
+              </div>
+              <!-- <span>+</span> -->
             </div>
-            <span>+</span>
-          </div>
-          <div class="sidebar-user-info light-text">
-            <h4>Jane Smith</h4>
-            <p>@janesmith</p>
+            <div class="sidebar-user-info light-text">
+              <h4>{{pTwitterEnt.name}}</h4>
+              <p>@{{pTwitterEnt.screen_name}}</p>
+            </div>
           </div>
           <div class="following light-text">
-            <p class="following-paragraph"><span>711</span> Following</p>
-            <p class="following-paragraph"><span>7.5K</span> Followers</p>
+            <router-link :to="{ name: 'friendsPage', params: {userName: pTwitterEnt.screen_name} }"
+              tag="p" class="following-paragraph"> 
+              <span>{{parseNumberBeforeDisplay(pTwitterEnt.friends_count)}}</span> 
+              <span class="following-title">Following</span>
+            </router-link>
+            
+            <router-link :to="{ name: 'followersPage', params: {userName: pTwitterEnt.screen_name} }"
+              tag="p" class="following-paragraph"> 
+              <span>{{parseNumberBeforeDisplay(pTwitterEnt.followers_count)}}</span> 
+              <span class="following-title">Followers</span>
+            </router-link>
           </div>
           <div class="sidebar-list-1 border">
             <ul>
               <li>
-                <a href="#"> <i class="fas fa-user"></i> Profile </a>
+                <a @click="clickedProfile()"> <i class="fas fa-user"></i> Profile </a>
               </li>
               <li>
+                <hr>
+              </li>
+              <li class="disabled-li">
+                <a >Settings and Privacy</a>
+              </li>
+              <li class="disabled-li">
+                <a >Help Center</a>
+              </li>
+              <li>
+                <a @click="clickedLogout()"><i class="fas fa-door-open"></i>Log Out</a>
+              </li>
+              <!-- <li>
                 <a href="#"> <i class="far fa-list-alt"></i> Lists </a>
               </li>
               <li>
@@ -67,19 +94,19 @@
               </li>
               <li>
                 <a href="#"> <i class="fas fa-chart-line"></i> Analytics </a>
-              </li>
+              </li> -->
             </ul>
           </div>
-          <div class="sidebar-list-2">
+          <!-- <div class="sidebar-list-2">
             <ul>
               <li><a href="#">Settings and Privacy</a></li>
               <li><a href="#">Help Center</a></li>
-              <li><a href="#">Log Out</a></li>
+              <li><i class="fas fa-chart-line"></i><a href="#">Log Out</a></li>
             </ul>
-          </div>
-          <div class="sidebar-footer">
+          </div> -->
+          <!-- <div class="sidebar-footer">
             <i class="fas fa-times" @click="closeSidebar()"></i>
-          </div>  
+          </div>   -->
         </div>
         
       </div>
@@ -88,6 +115,8 @@
 </template>
 
 <script>
+import {parseTwitterNumbersToStringFunc, emptyLs} from "../assets/globalFunctions";
+
 export default {
     props:{
         parentsEl:{
@@ -96,14 +125,34 @@ export default {
     },
     data(){
         return{
-            touch:{
-                startX: 0,
-                endX: 0,
-                startY: 0,
-                endY: 0,
-            },
-            isSidebarOpen: false
+          pTwitterEnt:{
+            screen_name: "janesmith",
+            name: "Jane Smith",
+            friends_count: -1, 
+            followers_count: -1,
+            profile_image_url_https: "../assets/images/facebook-user-icon-17.jpg"
+          },
+          touch:{
+            startX: 0,
+            endX: 0,
+            startY: 0,
+            endY: 0,
+          },
+          isSidebarOpen: false
         }
+    },
+    created(){
+      // Get the participant's twiiter info from local storage
+      if(localStorage.getItem('user_twitter_entity') != null){
+        this.pTwitterEnt = JSON.parse(localStorage['user_twitter_entity'])
+        // In order to get high quality img:  replace("_normal", "").
+        const profileImgUrl = this.pTwitterEnt.profile_image_url_https
+        this.pTwitterEnt.profile_image_url_https = profileImgUrl.replace("_normal", "")
+      }
+      else{
+        // Should not get here
+        console.log("Why 'user_twitter_entity' is not in LS??")
+      }
     },
     mounted(){
         //Add listeners to touch-on-screen events
@@ -114,6 +163,29 @@ export default {
         this.parentsEl.addEventListener("touchend", () => this.touchEnd());
     },
     methods:{
+      clickedProfile(){
+        // Redirect to the participant's user page
+			  this.$router.push({ path: '/userPagePublic/'+ this.pTwitterEnt.screen_name})
+      },
+      clickedUserNameImgContainer(){
+        this.setBackgroundGrey(this.$refs.userNameImgContainer)
+        setTimeout( () =>
+          this.$router.push({ path: '/userPagePublic/'+this.pTwitterEnt.screen_name})
+        , 300)
+      },
+      setBackgroundGrey(domElement){
+        domElement.style.backgroundColor = "rgba(0,0,0,0.1)"
+      },
+      clickedLogout(){
+        // Ask if the user is sure to logout
+        const answer = window.confirm('Are you sure you want to log out?')
+        if (answer) {
+          emptyLs()
+          this.$router.push("welcomePage")
+        } else {
+          return
+        }
+      },
       clickedHome(){
         this.$emit("clickedHome")
       },
@@ -122,6 +194,9 @@ export default {
       },
       inctiveHomeStyle(){
         this.$refs.homeI.classList.remove("active")
+      },
+      parseNumberBeforeDisplay(number){
+        return parseTwitterNumbersToStringFunc(number);
       },
       touchStart(event){
           this.touch.startX = event.touches[0].clientX; // [0] is the first finger touches

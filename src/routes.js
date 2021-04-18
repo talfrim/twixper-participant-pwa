@@ -8,7 +8,8 @@ const routes = [
       This can be done like here: https://stackoverflow.com/questions/53578974/conditional-route-in-vue-js */
       path: "/",
       name: "default",
-      get component(){
+      component: () => import("./pages/tweets_display/FeedPage"), 
+      /*get component(){
         if (localStorage.getItem("registeredToExperiment") != null) {
           // The participant is registered to an experiment
           return feedPage
@@ -18,7 +19,7 @@ const routes = [
           return insertExpCode
         }
         else return welcomePage
-      }
+      }*/
     },
     {
       path: "/insertExpCode",

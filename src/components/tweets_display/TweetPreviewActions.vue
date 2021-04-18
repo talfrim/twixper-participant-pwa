@@ -83,7 +83,7 @@ export default {
                     else if (response.status == 401){
                         // Unauthorized
                         console.log("Unauthorized like")
-                        this.$router.push("welcomePage")
+                        this.$router.replace("welcomePage")
                     }
                     else{
                         if(response.status == 502){

@@ -49,21 +49,25 @@ export default {
     },
     created(){
         if(localStorage.getItem("registeredToExperiment") == null){
-            this.$router.push("welcomePage")
+            this.$router.replace("welcomePage")
         }
-        // If there are tweets in ls, get the tweets from ls instead of asking the server. 
-        if (localStorage.getItem("feedTweetsOrder") != null) {
-            this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
-        }
-        // Else, ask the server
         else{
-            this.refreshFeed()
+            // If there are tweets in ls, get the tweets from ls instead of asking the server. 
+            if (localStorage.getItem("feedTweetsOrder") != null) {
+                this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
+            }
+            // Else, ask the server
+            else{
+                this.refreshFeed()
+            }
         }
     },
     mounted(){
-        this.myEl = this.$el;
-        // Using nextTick to wait for the menueHeader to render
-        this.$nextTick(() => {this.$refs.menuHeader.activeHomeStyle()})
+        if(localStorage.getItem("registeredToExperiment") != null){
+            this.myEl = this.$el;
+            // Using nextTick to wait for the menueHeader to render
+            this.$nextTick(() => {this.$refs.menuHeader.activeHomeStyle()})
+        }
     },
     beforeDestroy(){
         if(this.$refs.menuHeader){
@@ -81,7 +85,7 @@ export default {
             else if (response.status == 401 || response.status == 428){
                 // Unauthorized
                 console.log("Unauthorized get feed")
-                this.$router.push("welcomePage")
+                this.$router.replace("welcomePage")
             }
             // TODO: ELse, show "could not reefresh feed, try again later"
             else{

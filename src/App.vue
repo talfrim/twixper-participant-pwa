@@ -19,11 +19,31 @@ import {emptyCacheFromLs, emptyActionsFromLs} from "./assets/globalFunctions"
 export default {
   name: 'App',
   created(){
-    if(localStorage.getItem("registeredToExperiment") != null && this.$route.name == "default"){
+    // if(localStorage.getItem("registeredToExperiment") != null && this.$route.name == "default"){
       /* Push another "history" to the page so "router.beforeEach" 
         will work within the app's pages scope. */
-     this.$router.push("feed") 
-    }
+     this.$router.push("feed")
+    // }
+    // this.$router.push("feed")
+    // console.log(this.$route.name)
+    // if(this.$route.name == "default"){
+    //   /* Push another "history" to the page so "router.beforeEach" 
+    //     will work within the app's pages scope. */
+    //   if(localStorage.getItem("registeredToExperiment") != null){
+    //     console.log("Pushing feed")
+    //     this.$router.push("feed")
+    //   }
+    //   else{
+    //     if(localStorage.getItem("providedCredentials" != null)){
+    //       console.log("Pushing insertExpCode")
+    //       this.$router.push("insertExpCode")
+    //     }
+    //     else{
+    //       console.log("Pushing welcome")
+    //       this.$router.push("welcomePage")
+    //     }
+    //   }
+    // }
   },
   mounted(){
     if(this.$route.name == "default" 
@@ -53,7 +73,7 @@ export default {
           emptyActionsFromLs()
           // Redirect to welcom page if the current rout is not "welcome" or "insert code"
           if(vm.$route.name != "welcomePage" && vm.$route.name != "insertExpCode"){
-            vm.$router.push("welcomePage")
+            vm.$router.replace("welcomePage")
           }
         }
       }
@@ -65,7 +85,7 @@ export default {
     .catch(function (error) {
       console.log(error);
     })
-  }
+  },
   
 }
 </script>

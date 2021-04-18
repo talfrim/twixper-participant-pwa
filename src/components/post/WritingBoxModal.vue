@@ -157,7 +157,7 @@ import {serverPublishTweet} from "../../communicators/serverCommunicator"
           else if (response.status == 401){
             // Unauthorized
             console.log("Unauthorized write tweet")
-            this.$router.push("welcomePage")
+            this.$router.replace("welcomePage")
           }
           else{
             if(response.status == 502){

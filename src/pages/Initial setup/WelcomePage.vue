@@ -196,10 +196,10 @@ export default {
                     }
                     // Telling the root the session validated (so it will start to collect actions)
                     this.$root.sessionValidated()
-                    this.$router.push('feed')
+                    this.$router.replace('feed')
                 }
                 else{ // Need to register to experiment
-                    this.$router.push('insertExpCode')
+                    this.$router.replace('insertExpCode')
                 }
             }
             else{

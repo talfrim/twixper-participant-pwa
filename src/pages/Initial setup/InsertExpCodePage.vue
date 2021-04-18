@@ -46,11 +46,11 @@ export default{
                 emptyCacheFromLs()
                 // Telling the root the session validated (so it will start to collect actions)
                 this.$root.sessionValidated()
-                this.$router.push('feed')
+                this.$router.replace('feed')
             }
             else if (registerToExpResponse.status == 401){
                 alert("Unathorized. Login with twitter first");
-                this.$router.push("welcomePage")
+                this.$router.replace("welcomePage")
             }
             else{
                 if(registerToExpResponse.data && registerToExpResponse.data.message){
@@ -58,7 +58,9 @@ export default{
                     if(registerToExpResponse.data.name == "UserAlreadyRegistered"){
                         // Setting the registration in local storage
                         localStorage['registeredToExperiment'] = true
-                        this.$router.push('feed')
+                        // Telling the root the session validated (so it will start to collect actions)
+                        this.$root.sessionValidated()
+                        this.$router.replace('feed')
                     }
                 }
                 else if(typeof registerToExpResponse.data === 'string'){

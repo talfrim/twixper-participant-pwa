@@ -24,7 +24,7 @@
 
 <script>
 import {serverRegisterToExperiment} from "../../communicators/serverCommunicator"
-import {emptyCacheFromLs} from "../../assets/globalFunctions"
+import {emptyCacheFromLs, emptyLs} from "../../assets/globalFunctions"
 
 export default{
     data(){
@@ -50,17 +50,25 @@ export default{
             }
             else if (registerToExpResponse.status == 401){
                 alert("Unathorized. Login with twitter first");
+                emptyLs()
                 this.$router.replace("welcomePage")
             }
             else{
                 if(registerToExpResponse.data && registerToExpResponse.data.message){
-                    alert(registerToExpResponse.data.message)
                     if(registerToExpResponse.data.name == "UserAlreadyRegistered"){
                         // Setting the registration in local storage
                         localStorage['registeredToExperiment'] = true
                         // Telling the root the session validated (so it will start to collect actions)
                         this.$root.sessionValidated()
                         this.$router.replace('feed')
+                    }
+                    else if (registerToExpResponse.data.name == "InvalidAuthInfo"){
+                        alert("Unathorized. Login with twitter first");
+                        emptyLs()
+                        this.$router.replace("welcomePage")
+                    }
+                    else{
+                        alert(registerToExpResponse.data.message)
                     }
                 }
                 else if(typeof registerToExpResponse.data === 'string'){

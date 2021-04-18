@@ -49,7 +49,12 @@ export default {
     },
     created(){
         if(localStorage.getItem("registeredToExperiment") == null){
-            this.$router.replace("welcomePage")
+            if(localStorage['providedCredentials'] != null){
+                this.$router.replace("insertExpCode")
+            }
+            else{
+                this.$router.replace("welcomePage")
+            }
         }
         else{
             // If there are tweets in ls, get the tweets from ls instead of asking the server. 

@@ -46,9 +46,7 @@ export default {
     // }
   },
   mounted(){
-    if(this.$route.name == "default" 
-      && localStorage.getItem("registeredToExperiment") == null
-      ){
+    if(localStorage.getItem("registeredToExperiment") == null){
       return
     }
     // Check if the cookie of our server is valid

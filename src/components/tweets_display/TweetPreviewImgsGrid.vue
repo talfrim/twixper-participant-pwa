@@ -75,7 +75,7 @@ export default {
 
         }
         else{ // Two or more photos
-            this.$refs.imgsWrapper.style.gridTemplateColumns = "39vmin 39vmin";
+            this.$refs.imgsWrapper.style.gridTemplateColumns = "50% 50%";
             if (this.photosObjects.length ==  2){ // Two photos
                 // Set border radius
                 this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 16px"
@@ -147,7 +147,7 @@ export default {
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
     /* grid-template-columns: auto auto; */
-    grid-template-columns: 78vmin;
+    grid-template-columns: 100%;
     grid-template-rows: 48vmin;
     /* grid-template-rows: auto auto; */
     /* grid-auto-rows: minmax(0,24vmin); */

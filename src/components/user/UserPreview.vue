@@ -75,7 +75,8 @@
             this.name = userPrev.name
             this.username = userPrev.screen_name
             this.description = userPrev.description
-            this.profileImgUrl = userPrev.profile_image_url_https
+            // In order to get high quality img:  replace("_normal", "").
+            this.profileImgUrl = userPrev.profile_image_url_https.replace("_normal", "")
             this.isFollowed = userPrev.following  
 			this.isVerified = userPrev.verified
         },

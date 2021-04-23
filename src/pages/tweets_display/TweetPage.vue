@@ -1,6 +1,9 @@
 <template>
     <div>
         <PageHeader text="Tweet" />
+        <div class="loader-container" v-if="showLoader">
+            <Loader />
+        </div>
         <div 
             class="tweet-container"  
             v-if="tweetPageJson"
@@ -58,6 +61,7 @@
 import PageHeader from "../../components/PageHeader.vue"
 import TweetPreviewBody from "../../components/tweets_display/TweetPreviewBody.vue"
 import TweetPreviewActions from "../../components/tweets_display/TweetPreviewActions.vue"
+import Loader from "../../components/Loader"
 
 import {serverGetTweetPage} from "../../communicators/serverCommunicator"
 
@@ -65,10 +69,12 @@ export default {
     components:{
         PageHeader,
 		TweetPreviewBody,
-		TweetPreviewActions
+		TweetPreviewActions,
+        Loader
 	},
     data() {
         return{
+            showLoader: false,
             tweetId : this.$route.params.tweetId, // Use it in the request to the server to get the data
             tweetPageJson: null,
             retweet_details:{
@@ -89,18 +95,20 @@ export default {
             this.$router.push("welcomePage")
         }
         // Retrieve the tweet Json from localStorage
-        if (localStorage.getItem("tweet" + this.tweetId) != null) {
-            this.tweetPageJson = JSON.parse(localStorage["tweet" + this.tweetId]);
-        }
+        // if (localStorage.getItem("tweet" + this.tweetId) != null) {
+        //     this.tweetPageJson = JSON.parse(localStorage["tweet" + this.tweetId]);
+        // }
         // Else, tweet not found in ls, ask the server for it.
-        else{
-            console.log("Tweet "+ this.tweetId + " not found in local storage")
+        // else{
+            // console.log("Tweet "+ this.tweetId + " not found in local storage")
+            this.showLoader = true
             const response = await serverGetTweetPage(this.tweetId)
             if(response.status == 200){
                 this.tweetPageJson = response.data
             }
+            this.showLoader = false
             // TODO: ELse, show "Try again later"
-        }
+        // }
 
         // Do preparation to the data so it would be more comfortable to display it
         // If this is a retweet, the tweetPrev should be the original tweet

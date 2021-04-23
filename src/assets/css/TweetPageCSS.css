@@ -1,3 +1,9 @@
+.loader-container{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+}
+
 .retweeter-user-info{
 	display: inline-block;
 	font-size: 13px;

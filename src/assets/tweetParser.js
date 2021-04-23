@@ -50,27 +50,31 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
     if(!isQuotedTweet){ // Not rendering # and @ inside quoated tweet.
         // Wrap hashtags with blue color
         let wrappedHashtags = []
-        hashtags.forEach(obj => {
-            const hashtagText = obj.text
-            if(!wrappedHashtags.includes(hashtagText)){
-                wrappedHashtags.push(hashtagText)
-                const injection = '<span style="color:rgb(27, 149, 224)">#' + hashtagText + '</span>'
-                const regEx = new RegExp("#" + hashtagText , "ig");
-                textHtml = textHtml.replace(regEx, injection)
-            }
-        });
-
+        if(hashtags){
+            hashtags.forEach(obj => {
+                const hashtagText = obj.text
+                if(!wrappedHashtags.includes(hashtagText)){
+                    wrappedHashtags.push(hashtagText)
+                    const injection = '<span style="color:rgb(27, 149, 224)">#' + hashtagText + '</span>'
+                    const regEx = new RegExp("#" + hashtagText , "ig");
+                    textHtml = textHtml.replace(regEx, injection)
+                }
+            });
+        }
+        
         // Wrap mentions with blue color
         let wrappedMentioned = []
-        mentioned.forEach(obj => {
-            const mentionedText = obj.screen_name
-            if(!wrappedMentioned.includes(mentionedText)){
-                wrappedMentioned.push(mentionedText)
-                const injection = '<span style="color:rgb(27, 149, 224)">@' + mentionedText + '</span>'
-                const regEx = new RegExp("@" + mentionedText, "ig");
-                textHtml = textHtml.replace(regEx, injection)
-            }
-        });
+        if(mentioned){
+            mentioned.forEach(obj => {
+                const mentionedText = obj.screen_name
+                if(!wrappedMentioned.includes(mentionedText)){
+                    wrappedMentioned.push(mentionedText)
+                    const injection = '<span style="color:rgb(27, 149, 224)">@' + mentionedText + '</span>'
+                    const regEx = new RegExp("@" + mentionedText, "ig");
+                    textHtml = textHtml.replace(regEx, injection)
+                }
+            });
+        }
     }
 
     // // Wrap hashtags with blue color

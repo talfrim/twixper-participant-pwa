@@ -74,32 +74,35 @@ export default {
         if(this.photosObjects.length ==  1){ //Only one photo
 
         }
-        else if (this.photosObjects.length ==  2){ // Two photos
-            // Set border radius
-            this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 16px"
-            this.$refs.photoContainer1[0].style.borderRadius = "0 16px 16px 0"
-        }
-        else{ // Three or four photos
-            this.$refs.imgsWrapper.style.gridTemplateRows = "24vmin 24vmin";
-            if(this.photosObjects.length ==  3){ //Three photos
-                //Position them nicely 
-                this.$refs.photoContainer0[0].style.gridArea = "img1";
-                this.$refs.photoContainer1[0].style.gridArea = "img2";
-                this.$refs.photoContainer2[0].style.gridArea = "img3";
-                this.$refs.imgsWrapper.style.gridTemplateAreas = 
-                                                "\"img1 img2\" \"img1 img3\"";
+        else{ // Two or more photos
+            this.$refs.imgsWrapper.style.gridTemplateColumns = "39vmin 39vmin";
+            if (this.photosObjects.length ==  2){ // Two photos
                 // Set border radius
                 this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 16px"
-                this.$refs.photoContainer1[0].style.borderRadius = "0 16px 0 0"
-                this.$refs.photoContainer2[0].style.borderRadius = "0 0 16px 0"
+                this.$refs.photoContainer1[0].style.borderRadius = "0 16px 16px 0"
             }
-            else if (this.photosObjects.length ==  4){ // Four photos
-                // Set border radius
-                this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 0"
-                this.$refs.photoContainer1[0].style.borderRadius = "0 16px 0 0"
-                this.$refs.photoContainer2[0].style.borderRadius = "0 0 0 16px"
-                this.$refs.photoContainer3[0].style.borderRadius = "0 0 16px 0"
-            }
+            else{ // Three or four photos
+                this.$refs.imgsWrapper.style.gridTemplateRows = "24vmin 24vmin";
+                if(this.photosObjects.length ==  3){ //Three photos
+                    //Position them nicely 
+                    this.$refs.photoContainer0[0].style.gridArea = "img1";
+                    this.$refs.photoContainer1[0].style.gridArea = "img2";
+                    this.$refs.photoContainer2[0].style.gridArea = "img3";
+                    this.$refs.imgsWrapper.style.gridTemplateAreas = 
+                                                    "\"img1 img2\" \"img1 img3\"";
+                    // Set border radius
+                    this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 16px"
+                    this.$refs.photoContainer1[0].style.borderRadius = "0 16px 0 0"
+                    this.$refs.photoContainer2[0].style.borderRadius = "0 0 16px 0"
+                }
+                else if (this.photosObjects.length ==  4){ // Four photos
+                    // Set border radius
+                    this.$refs.photoContainer0[0].style.borderRadius = "16px 0 0 0"
+                    this.$refs.photoContainer1[0].style.borderRadius = "0 16px 0 0"
+                    this.$refs.photoContainer2[0].style.borderRadius = "0 0 0 16px"
+                    this.$refs.photoContainer3[0].style.borderRadius = "0 0 16px 0"
+                }
+            } 
         } 
     },
     methods:{
@@ -143,7 +146,8 @@ export default {
 .imgsWrapper{
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
-    grid-template-columns: auto auto;
+    /* grid-template-columns: auto auto; */
+    grid-template-columns: 78vmin;
     grid-template-rows: 48vmin;
     /* grid-template-rows: auto auto; */
     /* grid-auto-rows: minmax(0,24vmin); */

@@ -25,7 +25,7 @@ img{
 }
 #container
 {
- position: absolute;
+ /* position: absolute; */
  display:flex;
  justify-content:center ;
  align-items:center;

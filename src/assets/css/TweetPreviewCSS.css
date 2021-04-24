@@ -92,6 +92,7 @@ h4 .usernameSpan{
 	width: 95%;
 	font-size: 1.6rem;
 	margin-bottom: 1rem;
+	overflow-x: hidden; /* In case there is a very long word that takes more than 1 whole line */
 }
 
 .post-img {

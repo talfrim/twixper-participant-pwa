@@ -21,10 +21,10 @@ export default {
     },
     methods:{
         goBack() {
-            this.$nextTick(() => {this.$refs.arrowIcon.style.backgroundColor = "rgba(0,0,0,0.5)"})
+            this.$nextTick(() => {this.$refs.arrowIcon.style.backgroundColor = "rgba(0,0,0,0.2)"})
             setTimeout( () => {
                 window.history.back();
-            }, 50)
+            }, 20)
         }
     }
 }

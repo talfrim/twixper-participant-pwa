@@ -56,9 +56,9 @@ export default {
         z-index: 1;
 	}
 
-.post-btn:hover {
+/* .post-btn:hover {
     background-color: #117abb;
-}
+} */
 
 @media (max-width: 600px) {
     .post-text {

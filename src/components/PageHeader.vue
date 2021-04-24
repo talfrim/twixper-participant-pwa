@@ -21,7 +21,7 @@ export default {
     },
     methods:{
         goBack() {
-            this.$nextTick(() => {this.$refs.arrowIcon.style.backgroundColor = "rgba(0,0,0,0.1)"})
+            this.$nextTick(() => {this.$refs.arrowIcon.style.backgroundColor = "rgba(0,0,0,0.5)"})
             setTimeout( () => {
                 window.history.back();
             }, 50)

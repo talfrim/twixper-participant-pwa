@@ -195,11 +195,13 @@ export default {
                         localStorage['user_twitter_entity'] = JSON.stringify(responseData.participant_twitter_info)
                     }
                     // Telling the root the session validated (so it will start to collect actions)
-                    this.$root.sessionValidated()
-                    this.$router.replace('feed')
+                    // this.$root.sessionValidated()
+                    // this.$router.replace('feed')
+                    window.location.reload()
                 }
                 else{ // Need to register to experiment
-                    this.$router.replace('insertExpCode')
+                    // this.$router.replace('insertExpCode')
+                    window.location.reload()
                 }
             }
             else{

@@ -45,8 +45,9 @@ export default{
                 // Reset local storage twitter data
                 emptyCacheFromLs()
                 // Telling the root the session validated (so it will start to collect actions)
-                this.$root.sessionValidated()
-                this.$router.replace('feed')
+                // this.$root.sessionValidated()
+                // this.$router.replace('feed')
+                window.location.reload()
             }
             else if (registerToExpResponse.status == 401){
                 alert("Unathorized. Login with twitter first");
@@ -59,8 +60,9 @@ export default{
                         // Setting the registration in local storage
                         localStorage['registeredToExperiment'] = true
                         // Telling the root the session validated (so it will start to collect actions)
-                        this.$root.sessionValidated()
-                        this.$router.replace('feed')
+                        // this.$root.sessionValidated()
+                        // this.$router.replace('feed')
+                        window.location.reload()
                     }
                     else if (registerToExpResponse.data.name == "InvalidAuthInfo"){
                         alert("Unathorized. Login with twitter first");

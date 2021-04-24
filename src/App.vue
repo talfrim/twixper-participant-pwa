@@ -20,11 +20,14 @@ export default {
   name: 'App',
   created(){
     // if(localStorage.getItem("registeredToExperiment") != null && this.$route.name == "default"){
-      /* Push another "history" to the page so "router.beforeEach" 
-        will work within the app's pages scope. */
-    if(this.$route.name == "default"){
-      this.$router.push("feed")
-    }
+    /* Push another "history" to the page so "router.beforeEach" 
+      will work within the app's pages scope. */
+    setTimeout(() => {
+      if(this.$route.name == "default"){
+        this.$router.push("feed")
+      }
+    }, 2000)
+    
     // }
     // this.$router.push("feed")
     // console.log(this.$route.name)

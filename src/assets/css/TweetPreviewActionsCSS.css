@@ -2,7 +2,7 @@
 .post-icons-container {
 	margin-top: 1.2rem;
 	display: grid;
-	grid-template-columns: 2fr 3fr 3fr 2fr;
+	grid-template-columns: 3fr 3fr 3fr 2fr;
 	transition: opacity 0.5s ease;
 }
 

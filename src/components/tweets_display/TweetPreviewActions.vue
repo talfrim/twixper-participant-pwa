@@ -2,6 +2,7 @@
     <div class="post-icons-container" ref="container">
         <div class="post-icon">
             <i class="far fa-comment"></i>
+            <span v-if="comments"> {{parseNumberBeforeDisplay(comments)}} </span>
         </div>
 
         <div class="post-icon">
@@ -37,6 +38,7 @@ export default {
             tweetId: "-1",
             likes: -1,
 			retweets: -1,
+            comments: null,
 			isLiked: false,
 			isRetweeteed: false,
         }
@@ -50,6 +52,9 @@ export default {
         this.tweetId = tweetPrev.id_str
 		this.isLiked = tweetPrev.favorited;
 		this.isRetweeteed = tweetPrev.retweeted;
+        if(tweetPrev.reply_count != null){
+            this.comments = tweetPrev.reply_count
+        }
     },
     mounted(){
         if(this.isLiked){

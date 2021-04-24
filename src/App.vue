@@ -22,13 +22,19 @@ export default {
     // if(localStorage.getItem("registeredToExperiment") != null && this.$route.name == "default"){
     /* Push another "history" to the page so "router.beforeEach" 
       will work within the app's pages scope. */
+    
+    let vm = this
     window.addEventListener('load', function() {
-      window.history.pushState({ noBackExitsApp: true }, '')
+      if(vm.$route.name == "default"){
+        window.history.pushState({ noBackExitsApp: true }, '')
+      }
     })
 
     window.addEventListener('popstate', function(event) {
       // if (event.state && event.state.noBackExitsApp) {
-        window.history.pushState({ noBackExitsApp: true }, '')
+        if(!vm.$route.name || vm.$route.name == "feed" || vm.$route.name == "default"){
+          window.history.pushState({ noBackExitsApp: true }, '')
+        }
       // }
     })
 

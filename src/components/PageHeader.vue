@@ -1,7 +1,8 @@
 <!-- Contains the paage header name and a "back" button -->
 <template>
     <div>
-        <i
+        <i  
+            ref="arrowIcon"
             @click="goBack()"
             class="fas fa-arrow-left">
         </i>
@@ -20,13 +21,16 @@ export default {
     },
     methods:{
         goBack() {
-            window.history.back();
+            this.$nextTick(() => {this.$refs.arrowIcon.style.backgroundColor = "rgba(0,0,0,0.1)"})
+            setTimeout( () => {
+                window.history.back();
+            }, 50)
         }
     }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 div{
     width: 100vw;
     height: 5.5rem;
@@ -36,9 +40,12 @@ div{
     align-items: center;
 }
 i{
-    padding: 0 40px 0 20px;
+    margin: 0 25px 0 10px;
+    padding: 10px;
     color: rgb(29,161,242);
     font-size: 16px;
+    border-radius: 50%;
+    transition: background-color 300ms ease;
 }
 span{
     font-size: 20px;

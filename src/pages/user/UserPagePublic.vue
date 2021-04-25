@@ -12,7 +12,7 @@
             <PageHeader
                 v-if="showPageHeader && userFullName"
                 :text="userFullName" 
-                backgroundColor="rgb(20 104 156)"
+                backgroundColor="rgb(0, 172, 238)"
                 textColor="white"
             />
         </div>

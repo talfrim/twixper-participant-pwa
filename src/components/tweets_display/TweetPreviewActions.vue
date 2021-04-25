@@ -2,7 +2,7 @@
     <div class="post-icons-container" ref="container">
         <div class="post-icon">
             <i class="far fa-comment"></i>
-            <span v-if="comments"> {{parseNumberBeforeDisplay(comments)}} </span>
+            <span v-if="comments != null"> {{parseNumberBeforeDisplay(comments)}} </span>
         </div>
 
         <div class="post-icon">

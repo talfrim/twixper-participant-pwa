@@ -7,12 +7,14 @@
             :hidden="!(currTabName === 'Tweets')" 
             :feedTweetsArr="tweetsResultsArr"
             lsScrollTop="userTweetsScrollTop"
+            :restrictHeight="false"
             ref="tpl"
         />
         <TweetPreviewList 
             :hidden="!(currTabName === 'Likes')" 
             :feedTweetsArr="likesResultsArr"
             lsScrollTop="userLikesScrollTop"
+            :restrictHeight="false"
             ref="lpl"
         />
     </div>
@@ -63,7 +65,7 @@ export default {
                     break;
                 default:
             }
-            // Update the scroll position on each list
+            // Update the scroll position on each list (not relevent since the upgrade to page scroll)
             this.$refs.tpl.updateListScrollPosition();
             this.$refs.lpl.updateListScrollPosition();
         },
@@ -116,14 +118,15 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .upt-wrapper{
-    height: 100%;
+    // height: 100%; /* Not mandatory */
+    min-height: 101vh; // So that the page won't jump to top when waiting for tweets
     width: 100%;
 }
 
 .loader-container{
-    height: 20%;
+    height: 8vh;
     display: flex;
     align-items: center;
 }

@@ -34,11 +34,14 @@ export default {
     data() {
         return {
             currScrollTop: 0,
-            ptr: null
+            //ptr: null 
         }
     },
     mounted(){
         this.updateListScrollPosition()
+        /*
+        Currently we are not doing ptr for users list
+        
         let vm = this
         this.ptr = PullToRefresh.init({
             mainElement: '#usersWrapper',
@@ -46,8 +49,8 @@ export default {
             shouldPullToRefresh(){
                 return !this.mainElement.scrollTop
             },
-            instructionsPullToRefresh: 'Pull down to refresh content',
-            instructionsReleaseToRefresh: 'Release to refresh content',
+            instructionsPullToRefresh: 'Pull down to refresh',
+            instructionsReleaseToRefresh: 'Release to refresh',
             instructionsRefreshing: ' ',
             distMax: 85,
             distThreshold: 70,
@@ -57,11 +60,11 @@ export default {
                 console.log("refresh")
                 vm.$emit("refreshPulled")
             }
-        });
+        });*/
     },
-    beforeDestroy(){
+    /*beforeDestroy(){
         this.ptr.destroy()
-    },
+    },*/
     methods:{
         updateListScrollPosition(){
             // Update phyiscally the scroll postion in the container div

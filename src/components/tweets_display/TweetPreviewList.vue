@@ -34,6 +34,16 @@ export default {
             type: String,
             required: false,
             default: null
+        },
+        enablePtr:{ // Whether to enable "pull to refresh"
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        restrictHeight:{ // Whether to strict the list's heigth to 100% of the parent container
+            type: Boolean,
+            required: false,
+            default: true
         }
     },
     data() {
@@ -43,29 +53,36 @@ export default {
         }
     },
     mounted(){
+        if(this.restrictHeight){
+            this.$refs.tplWrapper.classList.add("restrictedHeight")
+        }
         this.updateListScrollPosition()
-        let vm = this
-        this.ptr = PullToRefresh.init({
-            mainElement: '#tplWrapper',
-            triggerElement: '#tplWrapper',
-            shouldPullToRefresh(){
-                return !this.mainElement.scrollTop
-            },
-            instructionsPullToRefresh: 'Pull down to refresh content',
-            instructionsReleaseToRefresh: 'Release to refresh content',
-            instructionsRefreshing: ' ',
-            distMax: 85,
-            distThreshold: 70,
-            distReload: 70,
-            refreshTimeout: 0,
-            onRefresh() {
-                console.log("refresh")
-                vm.$emit("refreshPulled")
-            }
-        });
+        if(this.enablePtr){
+            let vm = this
+            this.ptr = PullToRefresh.init({
+                mainElement: '#tplWrapper',
+                triggerElement: '#tplWrapper',
+                shouldPullToRefresh(){
+                    return !this.mainElement.scrollTop
+                },
+                instructionsPullToRefresh: 'Pull down to refresh',
+                instructionsReleaseToRefresh: 'Release to refresh',
+                instructionsRefreshing: ' ',
+                distMax: 85,
+                distThreshold: 70,
+                distReload: 70,
+                refreshTimeout: 0,
+                onRefresh() {
+                    console.log("refresh")
+                    vm.$emit("refreshPulled")
+                }
+            });
+        }
     },
     beforeDestroy(){
-        this.ptr.destroy()
+        if(this.enablePtr && this.ptr){
+            this.ptr.destroy()
+        }
     },
     methods:{
         updateListScrollPosition(){
@@ -93,9 +110,11 @@ export default {
 
 .tpl-wrapper{
     background-color: white;
-    height: 100%; /* 100% of the parent's height */
-    overflow-y: scroll;
     overscroll-behavior-y: contain; /* Prevent refresh from Chrome */
+    &.restrictedHeight{
+        height: 100%; /* 100% of the parent's height */
+        overflow-y: scroll;
+    }
 } 
 
 </style>

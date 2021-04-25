@@ -121,7 +121,7 @@ export default {
   }
   body{
     /* Prevent the page from scrolling*/ 
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     /* overscroll-behavior-y: contain; Prevent refresh from Chrome */
     /* overflow-y: hidden; */
   }

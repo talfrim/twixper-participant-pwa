@@ -18,6 +18,7 @@
                 :feedTweetsArr="feedTweetsArr"
                 lsScrollTop="feedScrollTop"
                 @refreshPulled="refreshFeed()"
+                :enablePtr="true"
             />
 
         </div>

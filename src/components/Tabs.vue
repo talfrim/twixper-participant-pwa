@@ -99,19 +99,25 @@ export default {
         this.left = left * -1
       }
     },
-    
     tabClick(e, index) {
       //this.motion = true
       this.setCurrentTab(index)
       this.$emit('tabClick', index)
-    }
+    },
+    /*getHeight(){
+      return this.$refs.wrapper.clientHeight
+    }*/
   }
 }
 </script>
 
-<style scoped >
+<style lang="scss" scoped >
 .slide-tab {
   overflow: hidden;
+  position: sticky;
+  top: 5.5rem; // Leave space for page header. Maybe later set default to 0 and add class for 5.5rem
+  background: white;
+  z-index: 999;
 }
 .tab-wrapper {
     display: inline-block;

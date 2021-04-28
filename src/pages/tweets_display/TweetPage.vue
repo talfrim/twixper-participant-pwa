@@ -101,6 +101,12 @@ export default {
 			},
         }
     },
+    beforeDestroy(){
+        // Deleting the comments from LS
+        this.comments.forEach(commentObj => {
+            localStorage.removeItem('tweet' + commentObj.id_str)
+        });
+    },
     async created(){
         if(localStorage.getItem("registeredToExperiment") == null){
             this.$router.push("welcomePage")
@@ -127,6 +133,12 @@ export default {
 
         // Do preparation to the data so it would be more comfortable to display it
         this.comments = this.tweetPageJson.comments || []
+        // Add the comments to LS
+        this.comments.forEach(commentObj => {
+            if(localStorage.getItem('tweet' + commentObj.id_str) == null){
+                localStorage['tweet' + commentObj.id_str] = JSON.stringify(commentObj)
+            }
+        });
         // If this is a retweet, the tweetPrev should be the original tweet
 		if(this.tweetPageJson.retweeted_status){
 			this.retweet_details = {

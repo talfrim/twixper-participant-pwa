@@ -40,6 +40,10 @@ export default {
         userName:{
             type: String,
             required: true
+        },
+        userId:{
+            type: String,
+            required: true
         }
     },
     data(){
@@ -72,7 +76,7 @@ export default {
         async getTweets(){
             if(this.tweetsResultsArr.length <= 0){ // Don't send request to server if we already have results
                 this.showLoader = true;
-                const response = await serverGetUserTimeline(this.userName)
+                const response = await serverGetUserTimeline(this.userId)
                 if(response.status == 200){
                     this.tweetsResultsArr.push(...response.data);
                     // Add tweets results to local storage

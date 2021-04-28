@@ -4,7 +4,7 @@
   <section class="feeds-page"> -->
     <!-- feeds content -->
     <!-- <transition name="slide-left"> -->
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     <!-- </transition> -->
     
   <!--</section>

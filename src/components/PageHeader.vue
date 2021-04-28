@@ -56,9 +56,9 @@ div{
     position: sticky;
     top: 0;
     width: 100vw;
-    height: 5.5rem;
+    height: 6rem;
     background-color: white;
-    border-bottom: 1px solid rgb(204, 214, 221) ;
+    border-bottom: 1px solid rgb(235, 238, 240) ;
     display: flex;
     align-items: center;
     z-index: 999;

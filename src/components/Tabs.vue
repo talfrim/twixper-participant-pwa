@@ -115,8 +115,9 @@ export default {
 .slide-tab {
   overflow: hidden;
   position: sticky;
-  top: 5.5rem; // Leave space for page header. Maybe later set default to 0 and add class for 5.5rem
+  top: 6rem; // Leave space for page header. Maybe later set default to 0 and add class for 6rem
   background: white;
+  border-bottom: 1px solid rgb(235, 238, 240) ;
   z-index: 999;
 }
 .tab-wrapper {
@@ -136,7 +137,8 @@ export default {
     text-align: center;
     font-weight: 700;
     color: rgb(101, 119, 134);
-    border-bottom: 1px solid rgb(204, 214, 221) ;
+    // border-bottom: 1px solid rgb(204, 214, 221) ;
+    // border-bottom: 3px solid transparent ;
 }
 .active {
     color: rgb(29,161,242);

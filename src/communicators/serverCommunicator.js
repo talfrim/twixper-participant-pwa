@@ -241,13 +241,13 @@ async function getUserFollowers(username){
     return await sendGetRequestReturnResponse(requestUrl)
 }
 
-async function getUserTimeline(username){
+async function getUserTimeline(userId){
     if(!actuallySendReqToServer){
         await sleep(600)
         return {status: 200, data: userTimelineJSON}
     }
     // Else, send the request to the server
-    const requestQuery = "?username=" + username
+    const requestQuery = "?userId=" + userId
     const requestUrl = serverUrl + getUserTimelineEndpoint + requestQuery
     return await sendGetRequestReturnResponse(requestUrl)
 }

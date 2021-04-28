@@ -3,7 +3,9 @@
         <div class="page-header" ref="pageHeader">
             <PageHeader :text="headerText" />
         </div>
-        <Loader v-if="showLoader"/>
+        <div class="loader-container" v-if="showLoader">
+            <Loader />
+        </div>
         <div class="users-container" ref="resultsDiv">
             <UserPreviewList 
                 :userPreviews="usersResultsArr"
@@ -72,5 +74,9 @@ export default {
 </script>
 
 <style scoped>
-
+.loader-container{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+}
 </style>

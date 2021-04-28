@@ -94,6 +94,8 @@ export default {
                         if(response.status == 502){
                             if(response.data.code == 139){ // Already liked
                                 vm.$toasted.show('Tweet already liked');
+                                // Edit the tweet in the LS - favorited: true
+                                editTweetInLs(vm.tweetId, "favorited", true)
                             }
                             else{ 
                                 // Cancel like animation
@@ -150,6 +152,8 @@ export default {
                         if(response.status == 502){
                             if(response.data.code == 144){ // Already unliked
                                 vm.$toasted.show('Tweet already unliked');
+                                // Edit the tweet in the LS - favorited: false
+                                editTweetInLs(vm.tweetId, "favorited", false)
                             }
                             else{ 
                                 // Cancel unlike animation

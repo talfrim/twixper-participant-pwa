@@ -54,7 +54,7 @@
         },
         data() {
             return {
-                id: "",
+                idStr: "",
                 name: "",
                 username: "",
                 description: "",
@@ -71,7 +71,7 @@
         }, 
         created(){
             const userPrev = this.userPreview
-            this.id = userPrev.id
+            this.idStr = userPrev.id_str
             this.name = userPrev.name
             this.username = userPrev.screen_name
             this.description = userPrev.description
@@ -85,7 +85,7 @@
                 // Redirect to the rewtweeter user page
                 this.setBackgroundGrey(this.$refs.wrapper)
                 setTimeout( () =>
-                    this.$router.push({ path: '/userPagePublic/'+this.username})
+                    this.$router.push({ path: '/userPagePublic/'+this.username + "/" + this.idStr})
                 , 400)
             },
             setBackgroundGrey(domElement){

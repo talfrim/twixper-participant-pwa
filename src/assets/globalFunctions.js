@@ -111,6 +111,14 @@ function emptyActionsFromLs(){
     });
 }
 
+function emptyTweetPagesFromLs(){
+    Object.keys(localStorage).forEach((key) => {
+        if(key.startsWith("tweetPage")){
+            localStorage.removeItem(key);
+        }
+    });
+}
+
 function emptyLs(){
     Object.keys(localStorage).forEach((key) => {
         localStorage.removeItem(key);
@@ -227,6 +235,7 @@ module.exports = {
     emptyCacheFromLs: emptyCacheFromLs,
     emptyActionsFromLs: emptyActionsFromLs,
     emptyFromLsByList: emptyFromLsByList,
+    emptyTweetPagesFromLs: emptyTweetPagesFromLs,
     emptyLs: emptyLs,
     addToLsByList: addToLsByList,
     retrieveListFromLs: retrieveListFromLs,

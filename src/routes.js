@@ -57,7 +57,7 @@ const routes = [
       component: () => import("./pages/messaging/MessagingPage"), 
     },
     {
-      path: "/userPagePublic/:userName",
+      path: "/userPagePublic/:userName/:userId",
       name: "userPage",
       component: () => import("./pages/user/UserPagePublic"), 
     },

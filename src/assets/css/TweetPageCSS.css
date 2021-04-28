@@ -1,3 +1,8 @@
+.tweet-page-wrapper{
+    height: 100vh;
+    overflow-y: scroll;
+}
+
 .loader-container{
     height: 8vh;
     display: flex;
@@ -12,7 +17,7 @@
 	margin: 1rem 0 -0.5rem 3rem ;
 	transition: background-color .4s ease;
 }
-.tweet-page-wrapper{
+.tweet-container{
     margin: 2vh 3vw;
     background-color: white;
 }

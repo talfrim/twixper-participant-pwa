@@ -128,6 +128,7 @@ export default {
           pTwitterEnt:{
             screen_name: "janesmith",
             name: "Jane Smith",
+            id_str: -1,
             friends_count: -1, 
             followers_count: -1,
             profile_image_url_https: "../assets/images/facebook-user-icon-17.jpg"
@@ -165,12 +166,12 @@ export default {
     methods:{
       clickedProfile(){
         // Redirect to the participant's user page
-			  this.$router.push({ path: '/userPagePublic/'+ this.pTwitterEnt.screen_name})
+			  this.$router.push({ path: '/userPagePublic/'+ this.pTwitterEnt.screen_name + "/" + this.pTwitterEnt.id_str })
       },
       clickedUserNameImgContainer(){
         this.setBackgroundGrey(this.$refs.userNameImgContainer)
         setTimeout( () =>
-          this.$router.push({ path: '/userPagePublic/'+this.pTwitterEnt.screen_name})
+          this.$router.push({ path: '/userPagePublic/'+this.pTwitterEnt.screen_name + "/" + this.pTwitterEnt.id_str})
         , 300)
       },
       setBackgroundGrey(domElement){

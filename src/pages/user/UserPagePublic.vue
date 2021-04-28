@@ -34,6 +34,7 @@
             <UserPageTweets 
                 :currTabName="tabs[curTab].name" 
                 :userName="userName"
+                :userId="userId"
                 ref="userPageTweets"
             />
         </div>
@@ -61,6 +62,7 @@ export default {
     data(){
         return{
             userName: this.$route.params.userName, // Use it in the request to the server to get the data
+            userId: this.$route.params.userId, // Use it in the request to the server to get the data
             userPageJson: null,
             showPageHeader: false,
             userFullName: null,
@@ -93,7 +95,7 @@ export default {
         // Else, user not found in ls, ask the server for it.
         else{
             console.log("User "+ this.userName + " not found in local storage")
-            const response = await serverGetUserPage(this.userName)
+            const response = await serverGetUserPage(this.userId)
             if(response.status == 200){
                 this.userPageJson = response.data
             }
@@ -121,7 +123,7 @@ export default {
                 const scrollTop = localStorage["userPageScrollTop"]
                 // document.documentElement.scrollTop = scrollTop
                 this.$nextTick(() => {this.$refs.userPageWrapper.scrollTop = scrollTop})
-                if(scrollTop > 150){
+                if(scrollTop > 120){
                     this.showPageHeader = true
                 }
             }
@@ -142,7 +144,6 @@ export default {
     },
     methods:{
         tabClick(index) {
-            console.log(index)
             // Save the scroll position of current tab
             const oldScrollTop = parseInt(this.$refs.userPageWrapper.scrollTop)
             if(this.curTab == 0){
@@ -174,8 +175,8 @@ export default {
         },
         scrolled(){
             const scrollTop = this.$refs.userPageWrapper.scrollTop
-            // Show the page header if the scroll is over 150
-            if(scrollTop > 150){
+            // Show the page header if the scroll is over 120
+            if(scrollTop > 120){
                 this.showPageHeader = true
             }
             else{
@@ -202,7 +203,6 @@ export default {
 .user-page-wrapper{
     height: 100vh;
     overflow-y: scroll;
-
 }
 
 .page-header-container{

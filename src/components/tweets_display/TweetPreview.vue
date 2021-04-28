@@ -101,11 +101,13 @@ export default {
 			retweet_details:{
 				is_retweet: false,
 				retweet_author_username: "",
-				retweet_author_fullName: ""
+				retweet_author_fullName: "",
+				retweet_author_idStr: ""
 			},
 			author:{
 				userFullName: "",
 				userName: "",
+				idStr: "",
 				profileImgUrl: "",
 				isVerified: false
 			},
@@ -126,7 +128,8 @@ export default {
 			this.retweet_details = {
 				is_retweet: true,
 				retweet_author_username: tweetPrev.user.screen_name,
-				retweet_author_fullName: tweetPrev.user.name
+				retweet_author_fullName: tweetPrev.user.name,
+				retweet_author_idStr: tweetPrev.user.id_str
 			}
 			tweetPrev = tweetPrev.retweeted_status
 			/* The time of the retweet: */
@@ -144,6 +147,7 @@ export default {
 		
 
 		const userJson = tweetPrev.user;
+		this.author.idStr = userJson.id_str;
 		this.author.userFullName = userJson.name;
 		this.author.userName = userJson.screen_name;
 		// In order to get high quality img:  replace("_normal", "").
@@ -158,8 +162,12 @@ export default {
           this.$refs.userImg.classList.add("user-img-display");
 		},
 		clickedUserImg(){
+			// Disable navigation to current location
+			if(this.author.idStr == this.$route.params.userId){
+				return
+			}
 			// Redirect to the author user page
-			this.$router.push({ path: '/userPagePublic/'+ this.author.userName})
+			this.$router.push({ path: '/userPagePublic/'+ this.author.userName + "/" + this.author.idStr})
 		},
 		clickedTweet(e){
 			// Check if the click is not on the user img
@@ -172,14 +180,25 @@ export default {
 			}
 		},
 		clickedRetweet(){
-			// Redirect to the rewtweeter user page
 			this.setBackgroundGrey(this.$refs.retweeterDiv)
+			// Disable navigation to current location
+			if(this.retweet_details.retweet_author_idStr == this.$route.params.userId){
+				setTimeout( () =>{
+					this.unsetBackgroundGrey(this.$refs.retweeterDiv)
+				}, 300)
+				return
+			}
+			// Redirect to the rewtweeter user page
 			setTimeout( () =>
-				this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username})
+				this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username
+				+ "/" + this.retweet_details.retweet_author_idStr })
 			, 300)
 		},
 		setBackgroundGrey(domElement){
 			domElement.style.backgroundColor = "rgba(0,0,0,0.1)"
+		},
+		unsetBackgroundGrey(domElement){
+			domElement.style.backgroundColor = "unset"
 		},
 		clickedUserInfo(){
 			this.clickedTweet()

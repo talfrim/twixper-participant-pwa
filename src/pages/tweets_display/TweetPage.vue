@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="tweet-page-wrapper">
         <PageHeader text="Tweet" />
         <div class="loader-container" v-if="showLoader">
             <Loader />
         </div>
         <div 
-            class="tweet-container"  
+            class="tweet-wrapper"  
             v-if="tweetPageJson"
         >
             <!-- If this a retweet, add appropiate header -->
@@ -24,7 +24,7 @@
                 {{retweet_details.retweet_author_fullName}} Retweeted
             </div>
 
-            <div class="tweet-page-wrapper">
+            <div class="tweet-container">
                 <div class="author-info-container">
                     <div class="user-avatar" v-lazyload>
                         <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
@@ -80,7 +80,8 @@ export default {
             retweet_details:{
 				is_retweet: false,
 				retweet_author_username: "",
-				retweet_author_fullName: ""
+				retweet_author_fullName: "",
+                retweet_author_idStr: ""
 			},
             author:{
 				userFullName: "",
@@ -94,21 +95,25 @@ export default {
         if(localStorage.getItem("registeredToExperiment") == null){
             this.$router.push("welcomePage")
         }
-        // Retrieve the tweet Json from localStorage
-        // if (localStorage.getItem("tweet" + this.tweetId) != null) {
-        //     this.tweetPageJson = JSON.parse(localStorage["tweet" + this.tweetId]);
-        // }
+        // Retrieve the tweet page Json from localStorage
+        if (localStorage.getItem("tweetPage" + this.tweetId) != null) {
+            this.tweetPageJson = JSON.parse(localStorage["tweetPage" + this.tweetId]);
+        }
         // Else, tweet not found in ls, ask the server for it.
-        // else{
+        else{
             // console.log("Tweet "+ this.tweetId + " not found in local storage")
             this.showLoader = true
             const response = await serverGetTweetPage(this.tweetId)
+            this.showLoader = false
             if(response.status == 200){
                 this.tweetPageJson = response.data
+                localStorage["tweetPage" + this.tweetId] = JSON.stringify(this.tweetPageJson)
             }
-            this.showLoader = false
-            // TODO: ELse, show "Try again later"
-        // }
+            else{
+                // TODO: ELse, show "Try again later"
+                return
+            }
+        }
 
         // Do preparation to the data so it would be more comfortable to display it
         // If this is a retweet, the tweetPrev should be the original tweet
@@ -116,7 +121,8 @@ export default {
 			this.retweet_details = {
 				is_retweet: true,
 				retweet_author_username: this.tweetPageJson.user.screen_name,
-				retweet_author_fullName: this.tweetPageJson.user.name
+				retweet_author_fullName: this.tweetPageJson.user.name,
+                retweet_author_idStr: this.tweetPageJson.user.id_str
             }
             this.tweetPageJson = this.tweetPageJson.retweeted_status
 		}
@@ -133,7 +139,8 @@ export default {
             // Redirect to the rewtweeter user page
             this.setBackgroundGrey(this.$refs.retweeterDiv)
             setTimeout( () =>
-                this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username})
+                this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username
+                + "/" + this.retweet_details.retweet_author_idStr})
             , 300)
         },
         setBackgroundGrey(domElement){

@@ -38,9 +38,13 @@ const router = new VueRouter({
   routes,
 });
 
+
+import {serverSendActions} from "./communicators/serverCommunicator"
+import {getDateNowFunc, emptyTweetPagesFromLs} from "./assets/globalFunctions"
+
 router.beforeEach((to, from, next) => {
   /* If an expandable media (such as img or video) is opened, 
-    we close it and not redirecting to another page. */
+  we close it and not redirecting to another page. */
   if(router.app.$root.isExpandableMediaOpened == null){ // Vue instance not defined yet
     next()
   }
@@ -55,12 +59,18 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from) => {
-  if((to.name == "tweetPage" && from.name == "tweetPage")
+  // The problem was fixed with better solution without refreshing the page, using ":key="$route.fullPath""
+  /*if((to.name == "tweetPage" && from.name == "tweetPage")
       || (to.name == "userPage" && from.name == "userPage" && to.path != from.path)){
     // Reload the window when travling to different pages in the same route
     // For example when viewing a tweet page with a quoated tweet and clicking on the q. tweet.
     window.location.reload()
     document.documentElement.scrollTop = 0 // Scroll page to top
+  }*/
+  if (to.name == "feed" || to.name == "default"){
+    // Empty the tweet pages from ls (they are heavy)
+    emptyTweetPagesFromLs()
+    localStorage.removeItem("currentUserPage")
   }
 })
 
@@ -124,9 +134,6 @@ Vue.directive('closable', {
 //End of v-closable
 
 
-import {serverSendActions} from "./communicators/serverCommunicator"
-import {getDateNowFunc} from "./assets/globalFunctions"
-
 let shared_data = {
 
 }
@@ -141,10 +148,10 @@ new Vue({
   },
   watch:{
     numOfActions(newVal){
-      if(newVal > 50){
+      if(newVal > 70){
         // We should never get to this, but if so, free some actions
-        console.log("** There are more than 50 actions in LS **")
-        const numOfSentActions = sendActions(30)
+        console.log("** There are more than 70 actions in LS **")
+        const numOfSentActions = sendActions(45)
         this.numOfActions -= numOfSentActions
       }
     }
@@ -167,7 +174,7 @@ new Vue({
 
       // Call for "sendActions" on startup when there are more than 0 actions.
       if(this.numOfActions > 0){
-        const numOfSentActions = sendActions(30)
+        const numOfSentActions = sendActions(45)
         this.numOfActions -= numOfSentActions
       }
 
@@ -180,12 +187,12 @@ new Vue({
       const actionLSKey = "action_login"
       this.setAction(actionLSKey, loginAction)
 
-      // Call for "sendActions" every 20 seconds
+      // Call for "sendActions" every 40 seconds
       setInterval(() => {
         console.log("checking actions")
-        const numOfSentActions = sendActions(25)
+        const numOfSentActions = sendActions(45)
         this.numOfActions -= numOfSentActions
-      }, 20000)
+      }, 40000)
     },
     setAction(actionLSKey, action){
       localStorage[actionLSKey] = JSON.stringify(action)

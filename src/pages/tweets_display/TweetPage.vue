@@ -27,11 +27,11 @@
             <div class="tweet-container">
                 <div class="author-info-container">
                     <div class="user-avatar" v-lazyload>
-                        <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+                        <router-link :to="{ name: 'userPage', params: {userName: author.userName, userId: author.idStr} }"
                             tag="img" :data-url="author.profileImgUrl"> 
                         </router-link>
                     </div>
-                    <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
+                    <router-link :to="{ name: 'userPage', params: {userName: author.userName, userId: author.idStr} }"
                             tag="div" class="names-container"
                     >  
                         <div class="user-full-name-container">
@@ -50,9 +50,16 @@
                      />
                     <TweetPreviewActions 
                         :tweetPreview="tweetPageJson"
+                        :isTweetPageStyle="true"
                      />      
                 </div>   
-            </div>    
+            </div>   
+            <!-- Comments -->
+            <TweetPreviewList 
+                :feedTweetsArr="comments"
+                :restrictHeight="false"
+                ref="tpl"
+            /> 
         </div>
     </div>
 </template>
@@ -62,6 +69,7 @@ import PageHeader from "../../components/PageHeader.vue"
 import TweetPreviewBody from "../../components/tweets_display/TweetPreviewBody.vue"
 import TweetPreviewActions from "../../components/tweets_display/TweetPreviewActions.vue"
 import Loader from "../../components/Loader"
+import TweetPreviewList from "../../components/tweets_display/TweetPreviewList"
 
 import {serverGetTweetPage} from "../../communicators/serverCommunicator"
 
@@ -70,13 +78,15 @@ export default {
         PageHeader,
 		TweetPreviewBody,
 		TweetPreviewActions,
-        Loader
+        Loader,
+        TweetPreviewList
 	},
     data() {
         return{
             showLoader: false,
             tweetId : this.$route.params.tweetId, // Use it in the request to the server to get the data
             tweetPageJson: null,
+            comments: null,
             retweet_details:{
 				is_retweet: false,
 				retweet_author_username: "",
@@ -116,6 +126,7 @@ export default {
         }
 
         // Do preparation to the data so it would be more comfortable to display it
+        this.comments = this.tweetPageJson.comments || []
         // If this is a retweet, the tweetPrev should be the original tweet
 		if(this.tweetPageJson.retweeted_status){
 			this.retweet_details = {
@@ -133,6 +144,7 @@ export default {
         // In order to get high quality img:  replace("_normal", "")
 		this.author.profileImgUrl = userJson.profile_image_url_https.replace("_normal", "");
 		this.author.isVerified = userJson.verified;
+		this.author.idStr = userJson.id_str;
     },
     methods:{
         clickedRetweet(){

@@ -1,4 +1,50 @@
 
+.post-icons-container-page-style{
+	margin-top: 1rem;
+	& > div{
+		padding: 1.4rem 0.5rem;
+		border-bottom: 1px solid rgb(235, 240, 242);
+	}
+}
+
+.stats-container, .time-container{
+	font-size: 1.7rem;
+}
+.time-container, .title{
+	color: rgb(101, 119, 134);
+}
+.stats-container{
+	display: flex;
+	gap: 1rem;
+}
+.number{
+	font-weight: 650;
+}
+
+.icons-container{
+	display: flex;
+	justify-content: space-around;
+	font-size: 2.2rem;
+	color: #868383; /* lime on retweet */
+}
+
+.heart-page-style {
+	width: 7.5rem;
+	background-image:url('../../assets/images/heartAnimationTransparent.gif');
+	background-position: left;
+	background-repeat:no-repeat;
+	background-size:2900%;
+}
+
+i.fa-retweet.page-style{
+	transform: translateX(1.5rem);
+}
+i.fa-share-alt{
+	opacity: 0.3;
+}
+
+/* Styles for non-page-sstyle mode */
+
 .post-icons-container {
 	margin-top: 1.2rem;
 	display: grid;
@@ -13,7 +59,7 @@
 .post-icons-container i {
 	font-size: 1.6rem;
 	color: #868383; /* lime on retweet */
-	margin-right: 1.5rem;
+	margin-right: 1.2rem;
 	transition: color 400ms ease-in;
 }
 

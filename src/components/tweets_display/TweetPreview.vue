@@ -170,7 +170,7 @@ export default {
 			this.$router.push({ path: '/userPagePublic/'+ this.author.userName + "/" + this.author.idStr})
 		},
 		clickedTweet(e){
-			// Check if the click is not on the user img
+			// Check if the click is in the area around the user img and not on the user img
 			if(!e || e.target == this.$refs.userAvatarContainer){
 				// Redirect to tweet page
 				this.setBackgroundGrey(this.$refs.tweetPrevWrapper)
@@ -202,7 +202,7 @@ export default {
 		},
 		clickedUserInfo(){
 			this.clickedTweet()
-		}
+		},
 	}
 	
 	

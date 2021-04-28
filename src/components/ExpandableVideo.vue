@@ -84,9 +84,10 @@ export default {
     },
     created(){
         window.addEventListener('popstate', this.windowPopstate)
-        this.videoContainerInnerHtml = "<video width=\"100%\" height=\"70%\" controls autoplay class=\"video\">"
+        this.videoContainerInnerHtml = "<video width=\"100%\" height=\"100%\" controls autoplay class=\"video\">"
             +"<source src=\"" + this.videoUrl +  "\" type=\"video/mp4\">"
             +"Your browser does not support the video tag.</video>"
+        // height was 70%
     },
     beforeDestroy(){
         this.isDestroyed = true;
@@ -301,6 +302,7 @@ body > .exp-video-container.expanded > .close-button {
   right: 10px;
   display: none;
   cursor: pointer;  
+  z-index: 999;
 }
 svg {
   filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.5));

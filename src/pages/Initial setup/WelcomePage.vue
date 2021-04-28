@@ -40,7 +40,7 @@
                         This is an alpha version. It is not fully working and tested yet. <br/>
                         The following features are not implemented yet: <br/> 
                         <br/>
-                        - Search, user page tweets (currently showing static content). <br/> 
+                        - Search (currently showing static content). <br/> 
                         - Follow / unfollow. <br/> 
                         <!-- - Side menu. <br/> -->
                         - Comment. <br/>

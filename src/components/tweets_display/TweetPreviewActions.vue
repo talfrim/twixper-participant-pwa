@@ -1,5 +1,36 @@
 <template>
-    <div class="post-icons-container" ref="container">
+    <div 
+        v-if="isTweetPageStyle"
+        class="post-icons-container-page-style" 
+    >
+        <div class="time-container">
+            {{time}}
+        </div>
+        <div class="stats-container">
+            <div class="retweets-container">
+                <span class="number">{{retweets}}</span> 
+                <span class="title"> Retweets & Quotes</span>
+            </div>
+            <div class="likes-container">
+                <span class="number">{{likes}}</span> 
+                <span class="title"> Likes </span>
+            </div>
+        </div>
+        <div class="icons-container" ref="container">
+            <i class="far fa-comment"></i>
+            <i class="fas fa-retweet page-style"></i>
+            <div class="heart-container" @click="likeTweet()" >
+                <div class="heart-page-style" ref="heart"></div> 
+            </div>
+            <i class="fas fa-share-alt"></i>
+        </div>
+
+    </div>
+    <div 
+        v-else
+        class="post-icons-container" 
+        ref="container"
+    >
         <div class="post-icon">
             <i class="far fa-comment"></i>
             <span v-if="comments != null"> {{parseNumberBeforeDisplay(comments)}} </span>
@@ -22,7 +53,7 @@
 </template>
 
 <script>
-import {parseTwitterNumbersToStringFunc, editTweetInLs} from "../../assets/globalFunctions";
+import {parseTwitterNumbersToStringFunc, parseTwitterTweetPageDateFunc, editTweetInLs} from "../../assets/globalFunctions";
 import {serverLikeTweet, serverUnlikeTweet} from "../../communicators/serverCommunicator"
 
 export default {
@@ -30,11 +61,17 @@ export default {
 		tweetPreview: {
 			type: Object,
 			required: true
-		}
+		},
+        isTweetPageStyle:{
+            type: Boolean,
+            required: false,
+            default: false
+        }
     },
     data () {
         return{
             actionsDisabled: false, // For waiting for server response
+            time: "",
             tweetId: "-1",
             likes: -1,
 			retweets: -1,
@@ -46,6 +83,7 @@ export default {
     created(){
         const tweetPrev = this.tweetPreview;
 
+        this.time = parseTwitterTweetPageDateFunc(tweetPrev.created_at)
         this.likes = tweetPrev.favorite_count;
 		this.retweets = tweetPrev.retweet_count;
 
@@ -197,6 +235,6 @@ export default {
 }
 </script>
 
-<style scoped src="../../assets/css/TweetPreviewActionsCSS.css">
+<style lang="scss" scoped src="../../assets/css/TweetPreviewActionsCSS.scss">
 
 </style>

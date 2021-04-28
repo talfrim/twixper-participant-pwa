@@ -6,10 +6,21 @@
 		> 	 -->
 		<div
 			class="router-link"
-			@click="clickedTweet"
-		>
-			<p class="post-text light-text" ref="textParagraph">
-		
+		>	
+			<p 
+				v-if="replyToUserName"
+				ref="replyContainer"
+				class="reply-header-container"
+				@click="clickedReplyHeader"
+			>
+				<span class="title">Replying to </span> 
+				<span class="user-link">@{{replyToUserName}}</span> 
+			</p>
+
+			<p 
+				@click="clickedTweet"
+				class="post-text light-text" 
+				ref="textParagraph">
 			</p>
 		</div>	
 
@@ -74,7 +85,9 @@ export default {
 			videoThumbnailUrl: "",
 			videoUrl: "",
 			is_quote_tweet: false, // Whether the tweet is quote of other tweet
-			quoted_tweet: {}
+			quoted_tweet: {},
+			replyToUserName: null,
+			replyToUserIdStr: null
         }
     },
     created(){
@@ -84,6 +97,12 @@ export default {
 		this.lang = tweetPrev.lang;
 
 		// Whether the tweet is quote of other tweet
+		if(tweetPrev.in_reply_to_screen_name != null){
+			this.replyToUserName = tweetPrev.in_reply_to_screen_name
+			this.replyToUserIdStr = tweetPrev.in_reply_to_user_id_str
+		}
+
+		// Whether the tweet is a reply
 		if(tweetPrev.is_quote_status === true){
 			this.is_quote_tweet = true
 			this.quoted_tweet = tweetPrev.quoted_status
@@ -128,8 +147,22 @@ export default {
 				this.$refs.textParagraph.style.direction = "rtl";
 			} 
 		},
-		clickedTweet(){
+		clickedTweet(e){
 			this.$emit('clickedTweet')
+		},
+		clickedReplyHeader(){
+			this.$refs.replyContainer.style.backgroundColor = "rgba(0,0,0,0.1)"
+			// Disable navigation to current location
+			if(this.$route.name== "userPage" && this.replyToUserIdStr == this.$route.params.userId){
+				setTimeout( () =>{
+					this.$refs.replyContainer.style.backgroundColor = "unset"
+				}, 300)
+				return
+			}
+			// Redirect to user page
+			setTimeout( () =>
+				this.$router.push({ path: '/userPagePublic/'+this.replyToUserName+ "/" + this.replyToUserIdStr})
+			, 300)
 		}
 	}, 
 }

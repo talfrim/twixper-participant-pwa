@@ -72,12 +72,12 @@ h4 .usernameSpan{
 .post-user-info {
 	display: flex;
 	align-items: center;
-	margin: 0.5rem 0 1rem 0;
+	margin: 0.5rem 0 0.5rem 0;
 	max-width: 95%;
 }
 
 .post-user-info h4 {
-	font-size: 1.6rem;
+	font-size: 1.65rem;
 	margin-right: 0.5rem;
 }
 
@@ -88,11 +88,24 @@ h4 .usernameSpan{
 }
 
 
-.post-text {
+.post-text, .reply-header-container {
 	width: 95%;
-	font-size: 1.6rem;
-	margin-bottom: 1rem;
+	font-size: 1.67rem;
 	overflow-x: hidden; /* In case there is a very long word that takes more than 1 whole line */
+}
+.reply-header-container{
+	width: fit-content;
+	margin-bottom: 0.5rem;
+	transition: background-color 300ms ease;
+}
+.reply-header-container .title{
+	color: rgb(101, 119, 134)
+}
+.reply-header-container .user-link{
+	color:rgb(27, 149, 224)
+}
+.post-text{
+	margin-bottom: 1rem;
 }
 
 .post-img {

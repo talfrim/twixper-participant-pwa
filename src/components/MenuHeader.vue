@@ -13,8 +13,10 @@
           <a href="#" @click="searchTabClicked"><i class="fas fa-search fa-sm"></i></a>
           <a href="#"><i class="far fa-bell"></i></a>
           <a href="#"><i class="far fa-envelope"></i></a>-->
+
+          <!-- feed -->
           <router-link 
-            :to="{ name: 'feed'}"
+            :to="{ name: 'default'}"
             @click.native="clickedHome"
           >
             <i class="fas fa-home" ref="homeI"></i>

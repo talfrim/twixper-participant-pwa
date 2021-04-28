@@ -11,6 +11,7 @@ function strInsertAtPosition(originalStr, insertedStr, position) {
 function getHtmlTextFromTweet(tweet, isQuotedTweet){
     const tweetText = tweet.full_text || tweet.text;
     let textHtml = tweetText
+    const textStartIndex = tweet.display_text_range[0]
     const textEndIndex = tweet.display_text_range[1]
     const entities = tweet.entities
     const hashtags = entities.hashtags
@@ -27,6 +28,10 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
             }
         });
     }
+
+    // Trim text from the start (sometimes contains mentions that are actually not part of the text)
+    textHtml = textHtml.substring(textStartIndex)
+
     if(urls != null){
         urls.forEach(obj => {
             if(obj.indices[1] > textEndIndex){

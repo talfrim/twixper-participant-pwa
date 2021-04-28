@@ -11,6 +11,11 @@ function getDateNow(){
     return moment.utc().format("MM/DD/YYYY HH:mm:ss UTC");
 }
 
+function parseTwitterTweetPageDate(tdate) {
+    const date = new Date(tdate)
+    return moment(date).format("HH:mm · DD MMM YY")
+}
+
 function parseTwitterDate(tdate) {
     var system_date = new Date(Date.parse(tdate));
     var user_date = new Date();
@@ -229,6 +234,7 @@ module.exports = {
     getHtmlTextFromTweetFunc: getHtmlTextFromTweet,
     getDateNowFunc: getDateNow,
     parseTwitterDateFunc: parseTwitterDate,
+    parseTwitterTweetPageDateFunc: parseTwitterTweetPageDate,
     parseTwitterNumbersToStringFunc: parseNumbersToString,
     parseUserPageDateFunc: parseUserPageDate,
     

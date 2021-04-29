@@ -24,7 +24,7 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
         media.forEach(obj => {
             const displayUrl = obj.display_url
             if(obj.indices[1] > textEndIndex
-                || (obj.indices[1] == textEndIndex && displayUrl.startsWith("twitter.com")))
+                || (obj.indices[1] == textEndIndex && displayUrl.includes("twitter.com")))
             { 
                 // Exceeds the text-display indices or this is an non-relevant twitter link
                 const mediaLength = obj.indices[1] - obj.indices[0] + 1

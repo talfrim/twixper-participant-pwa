@@ -6,11 +6,12 @@
             <div id="image-container">
                 <img src="../../assets/images/twixperEdited.png" >
             </div>
+            <br><br><br>
           <div class="middle-content">
               <!--  <b-img src="https://i.imgur.com/N4Cgvu2.png" fluid alt="Responsive image" ></b-img> -->
             <h4>To start, insert the experiment code you got:</h4>
             <input v-model="expCode" type="text">
-            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br>
             <button 
             :disabled="btnDisabled"
             type="button"
@@ -93,62 +94,34 @@ input{
     font-size: 25px;
 }
 img{
-    width: 50vh
+    width: 100%
 }
 #image-container{
     text-align: center;
-    position: relative;
-    top: 35vw;
-    max-height: 20%;
 }
-    .code-page {
-        width: 100%;
-        height: 100vh;
-        /* display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1fr min-content; */
-        background-color: #f0f8fd;
-    }
+.code-page {
+    /* width: 100%; */
+    height: 100vh;
+    padding: 20% 10%;
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr min-content; */
+    background-color: #f0f8fd;
+}
     
-      .right {
-        grid-column: 2 / -1;
-        grid-row: 1 / 2;
-        position: relative;
-    }
-    
-    .btn-top {
-        width: 8rem;
-        background-color: #fff;
-        color: #1aa1f5;
-        border: 0.1rem solid #1aa1f5;
-        border-radius: 3rem;
-        font-size: 1.4rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .btn-top:hover {
-        background-color: #d9ebf7;
-    }
-    
-    .middle-content {
-        position: absolute;
-        bottom: 0%;
-        left: 50%;
-        
-        transform: translate(-50%, -50%);
+
+     .middle-content {
         display: flex;
         flex-direction: column;
-        width: 70%;
+        justify-content: center;
     }
-    
+    /*
     .middle-content i {
         font-size: 4rem;
         color: #1aa1f5;
         margin-bottom: 2rem;
     }
-    
+     */
     .middle-content h1 {
         font-size: 2.8rem;
         margin-bottom: 4rem;
@@ -165,13 +138,15 @@ img{
         padding: 0.5rem;
         border: 0.1rem solid #1aa1f5;
         border-radius: 4rem;
-        font-size: 1.6rem;
+        font-size: 2rem;
         cursor: pointer;
         transition: background-color 0.3s;
     }
     
     .btn
      {
+         width: 150px;
+         height: 30px;
         background-color: #1aa1f5;
         color: #fff;
     }
@@ -180,60 +155,7 @@ img{
         background-color: #0f5d8d;
     }
     
-    .log-in {
-        background-color: #fff;
-    }
     
-    .log-in:hover {
-        background-color: #d9ebf7;
-    }
-    
-    @media (max-width: 1100px) {
-        .code-page {
-            grid-template-columns: 1fr;
-        }
-    
-        .right {
-            grid-column: 1 / 2;
-            grid-row: 1/ 2;
-            width: 70%;
-            margin: auto;
-        }
-    }
-    
-    @media (max-width: 1300px) {
-        .middle-content {
-            width: 70%;
-        }
-    }
-    
-    @media (max-width: 800px) {
-        .right {
-            width: 80%;
-        }
-    
-        .middle-content i {
-            display: none;
-        }
-    
-        .middle-content h1 {
-            margin-bottom: 2rem;
-        }
-    
-        .middle-content h4 {
-            margin-bottom: 1rem;
-        }
-    }
-    
-    @media (max-width: 600px) {
-        .main-page {
-            grid-template-rows: 1fr min-content;
-        }
-      
-        .right {
-            grid-row: 1 / 2;
-            width: 90%;
-        }
-    }
+  
     
 </style>

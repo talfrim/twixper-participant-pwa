@@ -66,6 +66,9 @@ export default {
       return
     }
     // Check if the cookie of our server is valid
+    if(localStorage.getItem("registeredToExperiment") == null){
+      return
+    }
     let vm = this
     serverValidateSession().then(function (response) {
       if(response.status == 200){
@@ -85,10 +88,11 @@ export default {
           localStorage.removeItem('user_twitter_entity')
           emptyCacheFromLs()
           emptyActionsFromLs()
-          // Redirect to welcom page if the current rout is not "welcome" or "insert code"
-          if(vm.$route.name != "welcomePage" && vm.$route.name != "insertExpCode"){
-            vm.$router.replace("welcomePage")
-          }
+          // Redirect to welcome page if the current rout is not "welcome" or "insert code"
+          window.location.reload()
+          // if(vm.$route.name != "welcomePage" && vm.$route.name != "insertExpCode"){
+          //   vm.$router.replace("welcomePage")
+          // }
         }
       }
       else{

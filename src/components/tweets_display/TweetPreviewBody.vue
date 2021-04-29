@@ -196,9 +196,9 @@ export default {
 						break;
 					}
 					case "url":{
-						const url = value
-						console.log(url)
-						// TODO: redirect to url. Safari will probably block it
+						// Already redirecting to the link because it is under "<a>" tag
+						/*const url = value
+						console.log(url)*/
 						setTimeout( () =>{
 							this.unsetBackgroundGrey(target)
 						}, 300)

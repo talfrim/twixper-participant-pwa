@@ -50,8 +50,8 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
                 // Replace urls with "url.display_url"
                 const url = obj.url
                 // Edit the url
-                let injection = '<span class="text-keyword" data-type="url"'
-                + 'data-value="' + url + '">' + displayUrl + '</span>'
+                let injection = '<a href="' + url + '" target="_blank" class="text-keyword" data-type="url"'
+                + 'data-value="' + url + '">' + displayUrl + '</a>'
                 if(isQuotedTweet){ // Not rendering links when they are inside quoated tweet.
                     injection = displayUrl
                 }

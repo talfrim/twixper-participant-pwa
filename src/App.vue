@@ -141,6 +141,9 @@ export default {
     color:rgb(27, 149, 224);
     transition: background-color 300ms ease;
   }
+  a.text-keyword{
+    text-decoration: none;
+  }
   
 @media (max-width: 600px){
   /* Overriding toast notifications external css */

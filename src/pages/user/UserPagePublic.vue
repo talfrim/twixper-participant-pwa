@@ -17,7 +17,7 @@
             />
         </div>
         <div class="loader-container" v-if="showUserIntroLoader">
-            <Loader />
+            <!-- <Loader /> -->
         </div>
         <UserIntroduction 
             ref="userIntroduction"
@@ -64,7 +64,7 @@ export default {
         Tabs,
         UserPageTweets,
         PageHeader,
-        Loader
+        // Loader
     },
     data(){
         return{

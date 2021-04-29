@@ -150,18 +150,10 @@ export default {
     grid-template-columns: 100%;
     grid-template-rows: 48vmin;
     /* grid-template-rows: auto auto; */
-    /* grid-auto-rows: minmax(0,24vmin); */
-    /* grid-template-rows: minmax(24vmin, 48vmin) minmax(0, 48vmin); */
-    /*grid-template-rows: 1fr 1fr;*/
-    /*grid-template-columns: repeat(auto-fit, minmax(7rem, 18rem));*/
-    /* row-gap: 0.2rem;
-    column-gap: 0.2rem; */
-    /* gap: 0.2rem; */
-
 }
 
 .photo-container{
-    border: 1px solid rgb(196, 207, 214);
+    border: 1px solid #ebeef0;
     border-radius: 16px;
 }
 

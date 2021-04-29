@@ -40,7 +40,6 @@
                         This is an alpha version. It is not fully working and tested yet. <br/>
                         The following features are not implemented yet: <br/> 
                         <br/>
-                        - Search (currently showing static content). <br/> 
                         - Follow / unfollow. <br/> 
                         - Comment. <br/>
                         - Retweet. 

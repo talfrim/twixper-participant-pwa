@@ -56,6 +56,10 @@ export default {
     },
     watch:{
         currTabName(newTabName){
+            if(!this.query){
+                this.query = this.$route.query.q
+            }
+            console.log(this.query)
             private_switchTabsAndSearch(this, this.query);
         }
     },
@@ -64,6 +68,7 @@ export default {
             this.resetResults();
             private_switchTabsAndSearch(this, q);
             this.query = q;
+            localStorage["currentSearchQuery"] = this.query
         },
         resetResults(){
             this.tweetsResultsArr = [];
@@ -74,6 +79,8 @@ export default {
             emptyFromLsByList("user", "searchUsersOrder")
             localStorage.removeItem("searchTweetsOrder");
             localStorage.removeItem("searchUsersOrder");
+            localStorage.removeItem("currentSearchQuery");
+            localStorage.removeItem("currentSearchTab");
             // Reset scroll
             localStorage["searchTweetsScrollTop"] = 0
             localStorage["searchUsersScrollTop"] = 0

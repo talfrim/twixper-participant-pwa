@@ -42,7 +42,6 @@
                         <br/>
                         - Search (currently showing static content). <br/> 
                         - Follow / unfollow. <br/> 
-                        <!-- - Side menu. <br/> -->
                         - Comment. <br/>
                         - Retweet. 
                     </div>  

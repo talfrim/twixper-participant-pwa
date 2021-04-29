@@ -22,7 +22,11 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
     // Trim url media at the end of the text
     if(media != null && media.length > 0){
         media.forEach(obj => {
-            if(obj.indices[1] > textEndIndex){ // Exceeds the text-display indices.
+            const displayUrl = obj.display_url
+            if(obj.indices[1] > textEndIndex
+                || (obj.indices[1] == textEndIndex && displayUrl.startsWith("twitter.com")))
+            { 
+                // Exceeds the text-display indices or this is an non-relevant twitter link
                 const mediaLength = obj.indices[1] - obj.indices[0] + 1
                 textHtml = textHtml.slice(0, -1 * mediaLength);
             }
@@ -34,16 +38,20 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
 
     if(urls != null){
         urls.forEach(obj => {
-            if(obj.indices[1] > textEndIndex){
+            const displayUrl = obj.display_url
+            if(obj.indices[1] > textEndIndex
+                || (obj.indices[1] == textEndIndex && displayUrl.startsWith("twitter.com")))
+            { 
+                // Exceeds the text-display indices or this is an non-relevant twitter link
                 const urlLength = obj.indices[1] - obj.indices[0] + 1
                 textHtml = textHtml.slice(0, -1 * urlLength);
             }
             else{
                 // Replace urls with "url.display_url"
                 const url = obj.url
-                const displayUrl = obj.display_url
                 // Edit the url
-                let injection = '<span style="color:rgb(27, 149, 224)">' + displayUrl + '</span>'
+                let injection = '<span class="text-keyword" data-type="url"'
+                + 'data-value="' + url + '">' + displayUrl + '</span>'
                 if(isQuotedTweet){ // Not rendering links when they are inside quoated tweet.
                     injection = displayUrl
                 }
@@ -60,7 +68,8 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
                 const hashtagText = obj.text
                 if(!wrappedHashtags.includes(hashtagText)){
                     wrappedHashtags.push(hashtagText)
-                    const injection = '<span style="color:rgb(27, 149, 224)">#' + hashtagText + '</span>'
+                    const injection = '<span class="text-keyword" data-type="hashtag"'
+                    + 'data-value="#' + hashtagText + '">#' + hashtagText + '</span>'
                     const regEx = new RegExp("#" + hashtagText , "ig");
                     textHtml = textHtml.replace(regEx, injection)
                 }
@@ -72,9 +81,11 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
         if(mentioned){
             mentioned.forEach(obj => {
                 const mentionedText = obj.screen_name
+                const mentionedId = obj.id_str
                 if(!wrappedMentioned.includes(mentionedText)){
                     wrappedMentioned.push(mentionedText)
-                    const injection = '<span style="color:rgb(27, 149, 224)">@' + mentionedText + '</span>'
+                    const injection = '<span class="text-keyword" data-type="userMention"'
+                    + 'data-value="' + mentionedText + '" data-valueid="' + mentionedId +'">@' + mentionedText + '</span>'
                     const regEx = new RegExp("@" + mentionedText, "ig");
                     textHtml = textHtml.replace(regEx, injection)
                 }

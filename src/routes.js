@@ -42,7 +42,7 @@ const routes = [
       component: () => import("./pages/search/SearchBoxPage"), 
     },
     {
-      path: "/search/:query",
+      path: "/search", // /:query
       name: "search",
       component: () => import("./pages/search/SearchPage"), 
     },

@@ -181,7 +181,8 @@ async function searchForTweets(query){
         return {status: 200, data: searchTweetsJSON}
     }
     // Else, send the request to the server
-    const requestQuery = "?q=" + query
+    const convertedQuery = encodeURIComponent(query)
+    const requestQuery = "?q=" + convertedQuery
     const requestUrl = serverUrl + searchTweetsEndpoint + requestQuery
     return await sendGetRequestReturnResponse(requestUrl)
 }
@@ -192,7 +193,8 @@ async function searchForUsers(query){
         return {status: 200, data: peopleJSON}
     }
     // Else, send the request to the server
-    const requestQuery = "?q=" + query
+    const convertedQuery = encodeURIComponent(query)
+    const requestQuery = "?q=" + convertedQuery
     const requestUrl = serverUrl + searchUsersEndpoint + requestQuery
     return await sendGetRequestReturnResponse(requestUrl)
 }

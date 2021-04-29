@@ -82,6 +82,7 @@ export default {
                     // Add tweets results to local storage
                     // TODO: Add only the latest 30 or 40 tweets.
                     addToLsByList("tweet", this.tweetsResultsArr, "userTweetsOrder")
+                    this.$emit('tweets-arrived')
                 }
                 // TODO: ELse, show "Try search later"
                 this.showLoader = false;
@@ -96,6 +97,7 @@ export default {
                     // Add tweets results to local storage
                     // TODO: Add only the latest 30 or 40 tweets.
                     addToLsByList("tweet", this.likesResultsArr, "userLikesOrder")
+                    this.$emit('likes-arrived')
                 }
                 // TODO: ELse, show "Try search later"
                 this.showLoader = false;

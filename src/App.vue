@@ -1,14 +1,10 @@
 <template>
   <div id="app">
-   <!-- feeds page
-  <section class="feeds-page"> -->
-    <!-- feeds content -->
-    <!-- <transition name="slide-left"> -->
+
+    <!-- <div class="router-view-container"> -->
       <router-view :key="$route.fullPath"/>
-    <!-- </transition> -->
-    
-  <!--</section>
-   end of feeds page -->
+    <!-- </div> -->
+   
   </div>
 </template>
 
@@ -108,7 +104,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   /* 
     Twitter's border color: 
     border-color: rgb(196, 207, 214);
@@ -125,50 +121,22 @@ export default {
     /* overscroll-behavior-y: contain; Prevent refresh from Chrome */
     /* overflow-y: hidden; */
   }
-  /*
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to    { //.fade-leave-active below version 2.1.8
-    opacity: 0;
+  /*.router-view-container{
+    
+    & > div{ // The router-view itself
+      max-width: 500px;
+    }
   }*/
-
- /* Transition Effect */
-  .slide-left-enter-active,
-  .slide-left-leave-active,
-  .slide-right-enter-active,
-  .slide-right-leave-active {
-    /*transition-duration: 0.5s;
-    transition-property: height, opacity, transform;
-    transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-    overflow: hidden;*/
-    transition-duration: .3s;
-    transition-property:  opacity;
-    transition-timing-function: ease-in;
-    overflow: hidden;
-  }
-
-  .slide-left-enter,
-  .slide-right-leave-active {
-    opacity: 0;
-    /*transform: translate(2em, 0);*/
-  }
-
-  .slide-left-leave-active,
-  .slide-right-enter {
-    opacity: 0;
-    /*transform: translate(-2em, 0);*/
-  }
-
-  /* End of transition effect */
+  
 
 	html {
 		font-size: 62.5%;
 	}
 
-	/*body {
-		background-color: #f0f8fd;
-  }*/
+	.text-keyword{
+    color:rgb(27, 149, 224);
+    transition: background-color 300ms ease;
+  }
   
 @media (max-width: 600px){
   /* Overriding toast notifications external css */

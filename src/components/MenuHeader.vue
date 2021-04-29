@@ -184,7 +184,8 @@ export default {
         const answer = window.confirm('Are you sure you want to log out?')
         if (answer) {
           emptyLs()
-          this.$router.replace("welcomePage")
+          // this.$router.replace("/")
+          window.location.reload()
         } else {
           return
         }

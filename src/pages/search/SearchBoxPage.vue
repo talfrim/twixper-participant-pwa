@@ -44,7 +44,7 @@ export default {
     methods: {
         redirectToSearch(query) {
             if(query.length > 0){
-                this.$router.push({ name: 'search', params: {query: query} })
+                this.$router.push({ name: 'search', query: {q: query} })
             }
         }
     },
@@ -56,6 +56,7 @@ export default {
         localStorage.removeItem("searchUsersOrder");
         // Empty current result tab
         localStorage.removeItem("currentSearchTab");
+        localStorage.removeItem("currentSearchQuery");
     },
     mounted() {
         this.myEl = this.$el;

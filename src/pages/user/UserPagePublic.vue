@@ -16,6 +16,9 @@
                 textColor="white"
             />
         </div>
+        <div class="loader-container" v-if="showUserIntroLoader">
+            <Loader />
+        </div>
         <UserIntroduction 
             ref="userIntroduction"
             v-if="userPageJson"
@@ -35,6 +38,8 @@
                 :currTabName="tabs[curTab].name" 
                 :userName="userName"
                 :userId="userId"
+                @tweets-arrived="tweetsArrived"
+                @likes-arrived="tweetsArrived"
                 ref="userPageTweets"
             />
         </div>
@@ -46,6 +51,7 @@ import PageHeader from "../../components/PageHeader.vue"
 import UserIntroduction from "../../components/user/UserIntroduction.vue"
 import WriteNewTweet from "../../components/post/WriteNewTweet.vue";
 import Tabs from "../../components/Tabs.vue"
+import Loader from "../../components/Loader.vue"
 import UserPageTweets from "../../components/user/UserPageTweets"
 
 import {serverGetUserPage} from "../../communicators/serverCommunicator"
@@ -57,7 +63,8 @@ export default {
         WriteNewTweet,
         Tabs,
         UserPageTweets,
-        PageHeader
+        PageHeader,
+        Loader
     },
     data(){
         return{
@@ -68,6 +75,7 @@ export default {
             userFullName: null,
             curTab: 0,
             tabs: [{ name: "Tweets" }, { name: "Likes" }],
+            showUserIntroLoader: false
         }
     },
     watch:{
@@ -91,19 +99,20 @@ export default {
         // Retrieve the user Json from localStorage
         if (localStorage.getItem("user" + this.userName) != null) {
             this.userPageJson = JSON.parse(localStorage["user" + this.userName]);
+            this.userFullName = this.userPageJson.name
         }
-        // Else, user not found in ls, ask the server for it.
+        // Else, user not found in ls. wait for his tweets from the server
+        else{
+            this.showUserIntroLoader = true
+        }
+        /*// Else, user not found in ls, ask the server for it.
         else{
             console.log("User "+ this.userName + " not found in local storage")
             const response = await serverGetUserPage(this.userId)
             if(response.status == 200){
                 this.userPageJson = response.data
             }
-            // TODO: ELse, show "Try again later"
-        }
-        if(this.userPageJson){
-            this.userFullName = this.userPageJson.name
-        }
+        }*/
     },
     mounted(){
         // Check if already saw this user, else reset his tweets
@@ -143,6 +152,32 @@ export default {
         // document.removeEventListener('scroll', this.scrollPage)
     },
     methods:{
+        tweetsArrived(){
+            // Retrieve the user Json from localStorage
+            if(!this.userPageJson){
+                console.log("User "+ this.userName + " found only after waiting for his tweets")
+                if (localStorage.getItem("user" + this.userName) != null) {
+                    this.userPageJson = JSON.parse(localStorage["user" + this.userName]);
+                    this.userFullName = this.userPageJson.name
+                    this.showUserIntroLoader = false
+                }
+                // Else, user not found in ls, ask the server for it.
+                else{
+                    console.log("User "+ this.userName + " not found in local storage"
+                        + " even after waiting for his tweets")
+                    let vm = this
+                    serverGetUserPage(this.userId)
+                        .then(function (response){
+                            if(response.status == 200){
+                                vm.userPageJson = response.data
+                            }
+                            vm.showUserIntroLoader = false
+                            // TODO: ELse, show "Try again later"
+                        })
+                }
+            }
+            
+        },
         tabClick(index) {
             // Save the scroll position of current tab
             const oldScrollTop = parseInt(this.$refs.userPageWrapper.scrollTop)
@@ -203,6 +238,12 @@ export default {
 .user-page-wrapper{
     height: 100vh;
     overflow-y: scroll;
+}
+
+.loader-container{
+    height: 8vh;
+    display: flex;
+    align-items: center;
 }
 
 .page-header-container{

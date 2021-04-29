@@ -22,6 +22,7 @@ tweetPage13587635458776856: Json of a tweet page with that tweet id.
 currentUserPage: Screen name of the latest user we saw his profile.
 currentSearchTab: digit between 0-2. 0 is tweets, 1 is users, 2 is media.
 currentUserTab: digit between 0-1. 0 is tweets, 1 is likes.
+currentSearchQuery
 
 feedScrollTop:
 searchTweetsScrollTop:

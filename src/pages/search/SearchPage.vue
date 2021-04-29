@@ -2,7 +2,7 @@
     <div class="page-wrapper">
         <WriteNewTweet position="bottom"/>
         <div class="top-container" ref="topDiv">
-            <SearchBox @searched="searchForQuery" :text="$route.params.query"/>
+            <SearchBox @searched="clickedSearched" :text="currQuery"/>
             <Tabs :tabs="tabs" :current="cur" @tabClick="tabClick">
                 <template v-slot:tab="{ tab}">
                     <div>
@@ -40,7 +40,7 @@ export default {
     data(){
         return{
             cur: 0,
-            currQuery: this.$route.params.query,
+            currQuery: this.$route.query.q,
             tabs: [{ name: "Tweets" }, { name: "People" }, { name: "Media" }],
         }
     },
@@ -51,7 +51,8 @@ export default {
     },
     created(){
         // Retreive the result tab we were on.
-        if (localStorage.getItem("currentSearchTab") != null){
+        if (localStorage.getItem("currentSearchTab") != null 
+            && localStorage["currentSearchQuery"] == this.currQuery){
             this.cur = parseInt(localStorage["currentSearchTab"])
         }
         else{
@@ -65,24 +66,26 @@ export default {
         this.$refs.resultsDiv.style.height = 
                 window.innerHeight - this.$refs.topDiv.offsetHeight - 2 + "px";
         
-        // If there are search results from local storage, retreive them
-        if (localStorage.getItem("searchTweetsOrder") != null 
-            || localStorage.getItem("searchUsersOrder") != null) {
+        // If there are search results from local storage and the query is the same, retreive them
+        if ((localStorage.getItem("searchTweetsOrder") != null 
+            || localStorage.getItem("searchUsersOrder") != null)
+            && localStorage["currentSearchQuery"] == this.currQuery) {
             this.$refs.searchResults.retreiveResultsFromLs();
         }
         // Else, search for query
         else{
-            this.searchForQuery(this.currQuery);
+            // this.searchForQuery(this.currQuery);
+            this.$refs.searchResults.searchForQuery(this.currQuery);
         }
     },
     beforeDestroy(){
         window.removeEventListener('resize', this.handleResize)
     },
     methods: {
-        searchForQuery(query){
-            if(query.length > 0){
-                this.currQuery = query;
-                this.$refs.searchResults.searchForQuery(this.currQuery);
+        clickedSearched(query){
+            if(query.length > 0 && query != this.currQuery){
+                this.$refs.searchResults.resetResults()
+                this.$router.replace({ name: 'search', query: {q: query}})
             }
         },
         tabClick(index) {

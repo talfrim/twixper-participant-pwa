@@ -148,14 +148,73 @@ export default {
 			} 
 		},
 		clickedTweet(e){
-			this.$emit('clickedTweet')
+			// Check the target
+			const target = e.target
+			// console.log(target)
+			if(target == this.$refs.textParagraph){
+				// Clicked on the text 
+				this.$emit('clickedTweet')
+				return
+			}
+			if(target.classList.contains("text-keyword")){
+				// This is #, @ or url
+				this.setBackgroundGrey(target)
+				const type = target.dataset.type
+				const value = target.dataset.value
+				switch (type) {
+					case "userMention":{
+						const username = value
+						const userId = target.dataset.valueid
+						// Avoid navigation to current location
+						if(this.$route.name== "userPage" && userId == this.$route.params.userId){
+							setTimeout( () =>{
+								this.unsetBackgroundGrey(target)
+							}, 300)
+						}
+						else{
+							// Redirect to user page
+							setTimeout( () =>
+								this.$router.push({ path: '/userPagePublic/'+username+ "/" + userId})
+								, 300)
+						}
+						break;
+					}
+					case "hashtag":{
+						const hashtag = value
+						// Avoid navigation to current location
+						if(this.$route.name== "search" && hashtag == this.$route.query.q){
+							setTimeout( () =>{
+								this.unsetBackgroundGrey(target)
+							}, 300)
+						}
+						else{
+							// Redirect to search page
+							setTimeout( () =>
+								this.$router.push({ name: 'search', query: {q: hashtag}})
+							, 300)
+						}
+						break;
+					}
+					case "url":{
+						const url = value
+						console.log(url)
+						// TODO: redirect to url. Safari will probably block it
+						setTimeout( () =>{
+							this.unsetBackgroundGrey(target)
+						}, 300)
+						break;
+					}
+					default:
+						break;
+				}
+			}
 		},
 		clickedReplyHeader(){
-			this.$refs.replyContainer.style.backgroundColor = "rgba(0,0,0,0.1)"
-			// Disable navigation to current location
+			this.setBackgroundGrey(this.$refs.replyContainer)
+			// Avoid navigation to current location
 			if(this.$route.name== "userPage" && this.replyToUserIdStr == this.$route.params.userId){
 				setTimeout( () =>{
-					this.$refs.replyContainer.style.backgroundColor = "unset"
+					this.unsetBackgroundGrey(this.$refs.replyContainer)
 				}, 300)
 				return
 			}
@@ -163,7 +222,13 @@ export default {
 			setTimeout( () =>
 				this.$router.push({ path: '/userPagePublic/'+this.replyToUserName+ "/" + this.replyToUserIdStr})
 			, 300)
-		}
+		},
+		setBackgroundGrey(domElement){
+			domElement.style.backgroundColor = "rgba(0,0,0,0.1)"
+		},
+		unsetBackgroundGrey(domElement){
+			domElement.style.backgroundColor = "unset"
+		},
 	}, 
 }
 </script>

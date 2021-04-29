@@ -62,9 +62,6 @@ export default {
     // }
   },
   mounted(){
-    if(localStorage.getItem("registeredToExperiment") == null){
-      return
-    }
     // Check if the cookie of our server is valid
     if(localStorage.getItem("registeredToExperiment") == null){
       return

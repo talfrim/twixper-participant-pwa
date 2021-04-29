@@ -49,23 +49,13 @@ export default {
         }
     },
     created(){
-        if(localStorage.getItem("registeredToExperiment") == null){
-            if(localStorage['providedCredentials'] != null){
-                this.$router.replace("insertExpCode")
-            }
-            else{
-                this.$router.replace("welcomePage")
-            }
+        // If there are tweets in ls, get the tweets from ls instead of asking the server. 
+        if (localStorage.getItem("feedTweetsOrder") != null) {
+            this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
         }
+        // Else, ask the server
         else{
-            // If there are tweets in ls, get the tweets from ls instead of asking the server. 
-            if (localStorage.getItem("feedTweetsOrder") != null) {
-                this.feedTweetsArr = retrieveListFromLs("tweet", "feedTweetsOrder")
-            }
-            // Else, ask the server
-            else{
-                this.refreshFeed()
-            }
+            this.refreshFeed()
         }
     },
     mounted(){
@@ -91,7 +81,8 @@ export default {
             else if (response.status == 401 || response.status == 428){
                 // Unauthorized
                 console.log("Unauthorized get feed")
-                this.$router.replace("welcomePage")
+                localStorage.removeItem("registeredToExperiment") 
+                window.location.reload()
             }
             // TODO: ELse, show "could not reefresh feed, try again later"
             else{

@@ -108,9 +108,6 @@ export default {
         });
     },
     async created(){
-        if(localStorage.getItem("registeredToExperiment") == null){
-            this.$router.push("welcomePage")
-        }
         // Retrieve the tweet page Json from localStorage
         if (localStorage.getItem("tweetPage" + this.tweetId) != null) {
             this.tweetPageJson = JSON.parse(localStorage["tweetPage" + this.tweetId]);

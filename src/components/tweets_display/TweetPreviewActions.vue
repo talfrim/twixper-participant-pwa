@@ -126,7 +126,8 @@ export default {
                     else if (response.status == 401){
                         // Unauthorized
                         console.log("Unauthorized like")
-                        this.$router.replace("welcomePage")
+                        localStorage.removeItem("registeredToExperiment")
+                        window.location.reload()
                     }
                     else{
                         if(response.status == 502){
@@ -184,7 +185,8 @@ export default {
                     else if (response.status == 401){
                         // Unauthorized
                         console.log("Unauthorized unlike")
-                        this.$router.push("welcomePage")
+                        localStorage.removeItem("registeredToExperiment")
+                        window.location.reload()
                     }
                     else{
                         if(response.status == 502){

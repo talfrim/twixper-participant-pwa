@@ -53,7 +53,8 @@ export default{
             else if (registerToExpResponse.status == 401){
                 alert("Unathorized. Login with twitter first");
                 emptyLs()
-                this.$router.replace("welcomePage")
+                localStorage.removeItem("providedCredentials")
+                window.location.reload()
             }
             else{
                 if(registerToExpResponse.data && registerToExpResponse.data.message){
@@ -68,7 +69,8 @@ export default{
                     else if (registerToExpResponse.data.name == "InvalidAuthInfo"){
                         alert("Unathorized. Login with twitter first");
                         emptyLs()
-                        this.$router.replace("welcomePage")
+                        localStorage.removeItem("providedCredentials") 
+                        window.location.reload()
                     }
                     else{
                         alert(registerToExpResponse.data.message)

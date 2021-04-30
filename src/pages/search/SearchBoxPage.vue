@@ -6,8 +6,6 @@
             <SearchBox @searched="redirectToSearch" />
         </div>
         <div class="list-container">
-            Currently displays the same static search results. Real search is coming soon.
-            <br><br>
             <i>Recent searches - coming soon</i>
            <!-- <ul> elements should be taken from local storage- we will save last 3 every time
                 <li><a href="#">Bibi</a></li>

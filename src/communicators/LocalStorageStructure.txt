@@ -18,6 +18,7 @@ currentUserFollowesFriends: Screen name of the latest user we see his followers 
 tweet13587635458776856: Json of a tweet with that tweet id.
 userManCity: Json of a user, with that user screen name.
 tweetPage13587635458776856: Json of a tweet page with that tweet id.
+tweetLinkPreview13587635458776856: Json of a link preview for that tweeet.
 
 currentUserPage: Screen name of the latest user we saw his profile.
 currentSearchTab: digit between 0-2. 0 is tweets, 1 is users, 2 is media.

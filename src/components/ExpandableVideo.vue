@@ -242,7 +242,7 @@ body > .exp-video-container.expanded {
     height: 48vmin; */
     width: 100%;
     height: 100%;
-    border: 1px solid rgb(196, 207, 214);
+    border: 1px solid #ebeef0;
     border-radius: 16px;
     position: relative;
 } 

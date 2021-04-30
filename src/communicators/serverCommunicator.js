@@ -17,6 +17,7 @@ const getUserFriendsEndpoint = "/participants/getUserFriends"
 const getUserFollowersEndpoint = "/participants/getUserFollowers"
 const getUserTimelineEndpoint = "/participants/getUserTimeline"
 const getUserLikesEndpoint = "/participants/getUserLikes"
+const getLinkPreviewEndpoint = "/participants/getLinkPreview"
 
 const likeTweetEndpoint = "/participants/likeTweet"
 const unlikeTweetEndpoint = "/participants/unlikeTweet"
@@ -265,6 +266,22 @@ async function getUserLikes(username){
     return await sendGetRequestReturnResponse(requestUrl)
 }
 
+async function getLinkPreview(url){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {
+            "domain": "mancity.com",
+            "title": "Newcastle game moved for TV coverage",
+            "img": "https://mediacdn.mancity.com/cf/media/t5dbjtoj/gettyimages-1312941411.jpg"
+        }}
+    }
+    // Else, send the request to the server
+    const payload = {
+        "url": url
+    }
+    const requestUrl = serverUrl + getLinkPreviewEndpoint
+    return await sendPostRequestReturnResponse(requestUrl, payload)
+}
 
 /* ----------------------------------------
     Requests for making active actions in Twitter
@@ -333,6 +350,7 @@ module.exports = {
     serverGetUserFollowers: getUserFollowers,
     serverGetUserTimeline: getUserTimeline,
     serverGetUserLikes: getUserLikes,
+    serverGetLinkPreview: getLinkPreview,
 
     serverLikeTweet: likeTweet,
     serverUnlikeTweet: unlikeTweet,

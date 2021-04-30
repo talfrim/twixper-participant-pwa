@@ -86,7 +86,7 @@ export default {
             showLoader: false,
             tweetId : this.$route.params.tweetId, // Use it in the request to the server to get the data
             tweetPageJson: null,
-            comments: null,
+            comments: [],
             retweet_details:{
 				is_retweet: false,
 				retweet_author_username: "",

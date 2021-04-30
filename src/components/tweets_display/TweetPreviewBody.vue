@@ -35,6 +35,12 @@
 				:videoUrl="videoUrl"
 			/>
         </div>
+		<div class="post-content-media" v-if="canDisplayLinkPreview && linkPreviewUrl">
+            <LinkPreview
+				:url="linkPreviewUrl"
+				:tweetId="tweetId"
+			/>
+        </div>
 
 		<!-- If this a quote tweet, include the quoted tweet -->
 		<QuotedTweetPreview 
@@ -48,6 +54,7 @@
 import ExpandableVideo from '../ExpandableVideo.vue';
 import TweetPreviewImgsGrid from "./TweetPreviewImgsGrid.vue";
 import QuotedTweetPreview from "./QuotedTweetPreview.vue";
+import LinkPreview from "./LinkPreview.vue";
 
 import {getHtmlTextFromTweetFunc} from "../../assets/globalFunctions"
 
@@ -56,7 +63,8 @@ export default {
     components:{
 		TweetPreviewImgsGrid,
 		ExpandableVideo,
-		QuotedTweetPreview
+		QuotedTweetPreview,
+		LinkPreview
     },
     props: {
 		tweetPreview: {
@@ -87,7 +95,9 @@ export default {
 			is_quote_tweet: false, // Whether the tweet is quote of other tweet
 			quoted_tweet: {},
 			replyToUserName: null,
-			replyToUserIdStr: null
+			replyToUserIdStr: null,
+			canDisplayLinkPreview: false, // Can display only if there is no other media
+			linkPreviewUrl: null,
         }
     },
     created(){
@@ -129,6 +139,34 @@ export default {
 				}
 			}
 		}
+
+		// Check if we should add link preview
+		if(!this.isQuotedTweet && !this.hasMedia){
+			const urls = tweetPrev.entities.urls
+			if(urls != null && urls.length > 0){
+				const urlObj = urls[0]
+				const displayUrl = urlObj.display_url
+				if(!displayUrl.includes("twitter.com")){
+					// Check if the url end as the tweet text end
+					const urlEndIndex = urlObj.indices[1]
+					const textEndIndex = tweetPrev.display_text_range[1]
+					if(urlEndIndex == textEndIndex){
+						// This link should render as a link preview
+						this.canDisplayLinkPreview = true
+						this.linkPreviewUrl = urlObj.expanded_url
+						// Find and trim the url from the text
+						const url = urlObj.url
+						const urlIndex = this.textHtml.indexOf('<a href="' + url + '"')
+						if(urlIndex != -1){
+							this.textHtml = this.textHtml.substring(0, urlIndex)
+						}
+					}
+				}
+			}
+		}
+
+		// Remove trailing "\n"
+    	this.textHtml = this.textHtml.replace(/<br>+$/, "")
     },
     mounted(){
 		this.setTextParagraph();

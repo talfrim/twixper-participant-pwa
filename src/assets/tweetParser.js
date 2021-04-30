@@ -27,28 +27,38 @@ function getHtmlTextFromTweet(tweet, isQuotedTweet){
                 || (obj.indices[1] == textEndIndex && displayUrl.includes("twitter.com")))
             { 
                 // Exceeds the text-display indices or this is an non-relevant twitter link
-                const mediaLength = obj.indices[1] - obj.indices[0] + 1
-                textHtml = textHtml.slice(0, -1 * mediaLength);
+                // Find the url and trim it
+                const url = obj.url
+                const urlIndex = textHtml.indexOf(url)
+                if(urlIndex != -1){
+                    textHtml = textHtml.substring(0, urlIndex)
+                }
+                // const mediaLength = obj.indices[1] - obj.indices[0] + 1
+                // textHtml = textHtml.slice(0, -1 * mediaLength);
             }
         });
     }
-
+    
     // Trim text from the start (sometimes contains mentions that are actually not part of the text)
     textHtml = textHtml.substring(textStartIndex)
 
     if(urls != null){
         urls.forEach(obj => {
             const displayUrl = obj.display_url
+            const url = obj.url
             if(obj.indices[1] > textEndIndex
                 || (obj.indices[1] == textEndIndex && displayUrl.startsWith("twitter.com")))
             { 
                 // Exceeds the text-display indices or this is an non-relevant twitter link
-                const urlLength = obj.indices[1] - obj.indices[0] + 1
-                textHtml = textHtml.slice(0, -1 * urlLength);
+                const urlIndex = textHtml.indexOf(url)
+                if(urlIndex != -1){
+                    textHtml = textHtml.substring(0, urlIndex)
+                }
+                // const urlLength = obj.indices[1] - obj.indices[0] + 1
+                // textHtml = textHtml.slice(0, -1 * urlLength);
             }
             else{
                 // Replace urls with "url.display_url"
-                const url = obj.url
                 // Edit the url
                 let injection = '<a href="' + url + '" target="_blank" class="text-keyword" data-type="url"'
                 + 'data-value="' + url + '">' + displayUrl + '</a>'

@@ -52,6 +52,10 @@ export default {
             type: String,
             required: true
         },
+        displayUrl:{
+            type: String,
+            required: true
+        },
         tweetId:{
             type: String,
             required: true
@@ -117,7 +121,12 @@ export default {
                     const data = response.data
                     vm.$nextTick(() => {
                         vm.domain = data.domain
-                        vm.title = data.title
+                        if(data.title){
+                            vm.title = data.title
+                        }
+                        else{
+                            vm.title = vm.displayUrl
+                        }
                         vm.imgSrc = data.img
                         vm.$refs.titleContainer.classList.add("show")
                         // Save to ls
@@ -143,7 +152,7 @@ a{
     display: block;
     text-decoration: none;
     color: unset;
-    height: 52vmin;
+    height: 54vmin;
     border: 1px solid #ebeef0;
     border-radius: 16px;
 }
@@ -187,13 +196,14 @@ a{
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem 1rem 0.5rem 1rem;
-    font-size: 1.51rem;
+    font-size: 1.6rem;
 }
 .title-container{
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-height: 1.15;
     visibility: hidden;
     opacity: 0;
     transition: opacity 500ms ease;

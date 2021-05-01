@@ -50,14 +50,18 @@ export default {
         }
     },
     created(){
-        // Retreive the result tab we were on.
-        if (localStorage.getItem("currentSearchTab") != null 
-            && localStorage["currentSearchQuery"] == this.currQuery){
-            this.cur = parseInt(localStorage["currentSearchTab"])
+        if(this.$route.query.tabIndex != null){
+            this.cur = parseInt(this.$route.query.tabIndex)
         }
         else{
-            localStorage["currentSearchTab"] = 0
-            this.cur = 0
+            // Retreive the result tab we were on.
+            if (localStorage.getItem("currentSearchTab") != null ){ 
+                this.cur = parseInt(localStorage["currentSearchTab"])
+            }
+            else{
+                localStorage["currentSearchTab"] = 0
+                this.cur = 0
+            }
         }
     },
     mounted() {
@@ -84,7 +88,6 @@ export default {
     methods: {
         clickedSearched(query){
             if(query.length > 0 && query != this.currQuery){
-                this.$refs.searchResults.resetResults()
                 this.$router.replace({ name: 'search', query: {q: query}})
             }
         },

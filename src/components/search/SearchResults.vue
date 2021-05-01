@@ -59,7 +59,6 @@ export default {
             if(!this.query){
                 this.query = this.$route.query.q
             }
-            console.log(this.query)
             private_switchTabsAndSearch(this, this.query);
         }
     },
@@ -80,7 +79,7 @@ export default {
             localStorage.removeItem("searchTweetsOrder");
             localStorage.removeItem("searchUsersOrder");
             localStorage.removeItem("currentSearchQuery");
-            localStorage.removeItem("currentSearchTab");
+            // localStorage.removeItem("currentSearchTab");
             // Reset scroll
             localStorage["searchTweetsScrollTop"] = 0
             localStorage["searchUsersScrollTop"] = 0

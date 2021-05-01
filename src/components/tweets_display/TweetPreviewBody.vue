@@ -38,6 +38,7 @@
 		<div class="post-content-media" v-if="canDisplayLinkPreview && linkPreviewUrl">
             <LinkPreview
 				:url="linkPreviewUrl"
+				:displayUrl="linkDisplayUrl"
 				:tweetId="tweetId"
 			/>
         </div>
@@ -98,6 +99,7 @@ export default {
 			replyToUserIdStr: null,
 			canDisplayLinkPreview: false, // Can display only if there is no other media
 			linkPreviewUrl: null,
+			linkDisplayUrl: null,
         }
     },
     created(){
@@ -141,7 +143,7 @@ export default {
 		}
 
 		// Check if we should add link preview
-		if(!this.isQuotedTweet && !this.hasMedia){
+		if(!this.is_quote_tweet && !this.isQuotedTweet && !this.hasMedia){
 			const urls = tweetPrev.entities.urls
 			if(urls != null && urls.length > 0){
 				const urlObj = urls[0]
@@ -154,6 +156,7 @@ export default {
 						// This link should render as a link preview
 						this.canDisplayLinkPreview = true
 						this.linkPreviewUrl = urlObj.expanded_url
+						this.linkDisplayUrl = urlObj.display_url
 						// Find and trim the url from the text
 						const url = urlObj.url
 						const urlIndex = this.textHtml.indexOf('<a href="' + url + '"')
@@ -228,7 +231,7 @@ export default {
 						else{
 							// Redirect to search page
 							setTimeout( () =>
-								this.$router.push({ name: 'search', query: {q: hashtag}})
+								this.$router.push({ name: 'search', query: {q: hashtag, tabIndex: 0}})
 							, 300)
 						}
 						break;

@@ -31,6 +31,8 @@ h4 .usernameSpan{
 	display: grid;
 	grid-template-columns: 12% 86.5%;
 	padding: 1rem 0 1rem 1rem;
+}
+.post.border{
 	border-bottom: 0.1rem solid #eee;
 }
 

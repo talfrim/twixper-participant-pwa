@@ -25,7 +25,7 @@
 			{{retweet_details.retweet_author_fullName}} Retweeted
 		</div>
 
-		<div class="post border">
+		<div class="post border" ref="post">
 			<!-- <router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }"
 				tag="div"
 				class="user-avatar-container"
@@ -36,7 +36,11 @@
 				ref="userAvatarContainer"
 				@click="clickedTweet"
 			>
-				<div class="user-avatar" v-lazyload>
+				<div 
+					ref="userImgContainer"
+					class="user-avatar"
+					v-lazyload
+				>
 				<!--<img :data-url="author.profileImgUrl">-->
 					<!-- <router-link :to="{ name: 'userPage', params: {userName: author.userName} }"
 						tag="img" :data-url="author.profileImgUrl"> 
@@ -91,6 +95,11 @@ export default {
 		tweetPreview: {
 			type: Object,
 			required: true
+		},
+		parentTweetStyle:{
+			type: Boolean,
+			required: false,
+			default: false
 		}
 	}, 
 	data() {
@@ -154,6 +163,12 @@ export default {
 		this.author.profileImgUrl = userJson.profile_image_url_https.replace("_normal", "");
 		this.author.isVerified = userJson.verified;		
 	},
+	mounted(){
+		if(this.parentTweetStyle){
+			// Remove the border
+			this.$refs.post.classList.remove("border")
+		}
+	},
 	methods:{
 		userImgLoaded(){
           if(this.isDestroyed){
@@ -203,6 +218,15 @@ export default {
 		clickedUserInfo(){
 			this.clickedTweet()
 		},
+		getUserImgPosInfo(){
+			const userImgContainerEl = this.$refs.userImgContainer
+			return {
+				"offsetTop": userImgContainerEl.offsetTop,
+				"offsetLeft": userImgContainerEl.offsetLeft,
+				"offsetWidth": userImgContainerEl.offsetWidth,
+				"offsetHeight": userImgContainerEl.offsetHeight,
+			}
+		}
 	}
 	
 	

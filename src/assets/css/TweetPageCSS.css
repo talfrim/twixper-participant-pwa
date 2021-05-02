@@ -4,6 +4,10 @@
     overflow-y: scroll;
 }
 
+.tweet-page-container{
+	height: calc(100vh - 6rem);
+}
+
 .loader-container{
     height: 8vh;
     display: flex;

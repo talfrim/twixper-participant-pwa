@@ -118,10 +118,10 @@ export default {
     created(){
         const userJson = this.userPageJson
         this.bannerImgSrc = userJson.profile_banner_url;
-        if(this.bannerImgSrc == null){
+        /*if(this.bannerImgSrc == null){
             // The user has no banner, give him grey banner
             this.bannerImgSrc = "https://lh3.googleusercontent.com/proxy/PSDZCf2QzwlqBlxjKMMqSahuh-jMLoQp6--uwhuQ8pR8hO3kDdKHhVR8ssdZ-CJxboQiEAe-ntySDAH15DZY8O7sR19elZfOYVJRkuUUwqhdps0"
-        }
+        }*/
         // In order to get high quality img:  replace("_normal", "").
         this.profileImgSrc = userJson.profile_image_url_https.replace("_normal", "");
         this.userFullName = userJson.name;

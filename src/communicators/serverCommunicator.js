@@ -166,13 +166,22 @@ async function registerToExperiment(expCode){
     Requests for data from Twitter to display
    ---------------------------------------- */
 
-async function getFeed(){
+async function getFeed(maxId, count){
     if(!actuallySendReqToServer){
         await sleep(600)
         return {status: 200, data: feedJSON}
     }
     // Else, send the request to the server
-    const requestUrl = serverUrl + feedEndpoint
+    let requestUrl = serverUrl + feedEndpoint
+    if(maxId || count){
+        requestUrl += "?"
+    }
+    if(maxId){
+        requestUrl += "maxId=" + maxId + "&"
+    }
+    if(count){
+        requestUrl += "count=" + count
+    }
     return await sendGetRequestReturnResponse(requestUrl)
 }
 

@@ -6,7 +6,7 @@
         </div>
         <div 
             class="tweet-wrapper"  
-            v-if="tweetPageJson"
+            v-if="tweetPageJson && author"
         >
 
             <TweetPreview
@@ -111,12 +111,15 @@ export default {
 				retweet_author_fullName: "",
                 retweet_author_idStr: ""
 			},
-            author:{
+            author: null,
+            /*
+            {
 				userFullName: "",
 				userName: "",
 				profileImgUrl: "",
 				isVerified: false
 			},
+            */
             parentTweetJson: null, // In case this tweet is a reply, parentTweetJson is the parent tweet
             verticalLineStyle: {}
         }
@@ -196,12 +199,13 @@ export default {
 		}
         
         const userJson = this.tweetPageJson.user;
-		this.author.userFullName = userJson.name;
-		this.author.userName = userJson.screen_name;
-        // In order to get high quality img:  replace("_normal", "")
-		this.author.profileImgUrl = userJson.profile_image_url_https.replace("_normal", "");
-		this.author.isVerified = userJson.verified;
-		this.author.idStr = userJson.id_str;
+        this.author = {
+            userFullName: userJson.name,
+            userName: userJson.screen_name,
+            profileImgUrl: userJson.profile_image_url_https.replace("_normal", ""),
+            isVerified: userJson.verified,
+            idStr: userJson.id_str
+        }
 
         if(this.parentTweetJson){
              this.$nextTick(() => {

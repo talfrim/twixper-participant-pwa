@@ -141,8 +141,12 @@ export default {
             })
         },
         imageLoaded(){
-            this.$refs.thumbImg.classList.add("show")
-        }  
+            this.$nextTick(() =>{
+                if(this.$refs.thumbImg){
+                    this.$refs.thumbImg.classList.add("show")
+                }
+            })
+        }
     }
 }
 </script>

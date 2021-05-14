@@ -22,6 +22,7 @@ const getLinkPreviewEndpoint = "/participants/getLinkPreview"
 const likeTweetEndpoint = "/participants/likeTweet"
 const unlikeTweetEndpoint = "/participants/unlikeTweet"
 const publishTweetEndpoint = "/participants/publishTweet"
+const publishRetweetEndpoint = "/participants/publishRetweet"
 
 const sendActionsEndpoint = "/participants/sendActions"
 
@@ -328,6 +329,16 @@ async function publishTweet(payload){
     return await sendPostRequestReturnResponse(requestUrl, payload)
 }
 
+async function publishRetweet(tweetId){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestQuery = "?tweetId=" + tweetId
+    const requestUrl = serverUrl + publishRetweetEndpoint + requestQuery
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
 
 /* ----------------------------------------
     Requests for logging actions
@@ -364,6 +375,7 @@ module.exports = {
     serverLikeTweet: likeTweet,
     serverUnlikeTweet: unlikeTweet,
     serverPublishTweet: publishTweet,
+    serverPublishRetweet: publishRetweet,
 
     serverSendActions: sendActions
 }

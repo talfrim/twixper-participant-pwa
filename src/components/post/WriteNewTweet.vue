@@ -1,6 +1,6 @@
 <template>
     <div id="wrapper">
-         <button type="button" class="post-btn" @click="showWritingBoxModal()" ref="btn">
+        <button type="button" class="post-btn" @click="showWritingBoxModal()" ref="btn">
             +<i class="fas fa-feather-alt"></i> <!-- "Post" -->
         </button>
         <WritingBoxModal ref="writeBoxModal"/>

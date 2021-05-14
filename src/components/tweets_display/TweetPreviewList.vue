@@ -136,7 +136,7 @@ export default {
                     return
                 }
                 this.obsTarget = this.$refs.tp[arrLen - 1].$el
-                console.log(this.obsTarget)
+                // console.log(this.obsTarget)
                 // Add intersection observer
                 const options = {
                     root: null,

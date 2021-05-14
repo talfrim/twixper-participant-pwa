@@ -228,6 +228,12 @@ function editTweetInLs(tweetId, field, newVal){
         tweet[field] = newVal
         localStorage.setItem("tweet" + tweetId, JSON.stringify(tweet))
     }
+    if(localStorage.getItem("tweetPage" + tweetId) != null) {
+        let tweet = JSON.parse(localStorage["tweetPage" + tweetId])
+        tweet[field] = newVal
+        localStorage.setItem("tweetPage" + tweetId, JSON.stringify(tweet))
+    }
+    
 }
 
 module.exports = {

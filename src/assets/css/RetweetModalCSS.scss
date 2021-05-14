@@ -1,0 +1,47 @@
+.modal-wrapper {
+    position: fixed;
+    background-color: rgba(178, 178, 178, 0.9);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s;
+    z-index: 20;
+}
+
+.modal-wrapper-display {
+    opacity: 1;
+    visibility: visible;
+    z-index: 999;
+}
+
+.modal {
+    width: 90%;
+    padding: 2rem;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    // transform: translate(-50%, -50%);
+    border-radius: 1.5rem 1.5rem 0 0;
+    display: none;
+}
+
+.container{
+    font-size: 2rem;
+    line-height: 4.7rem;
+    i{
+        color: rgb(91, 112, 131);
+    }
+    span{
+        margin-left: 1rem;
+    }
+    div{
+        transition: background-color 300ms ease;
+    }
+}
+
+.grey-background{
+    background-color: rgba(0, 0, 0, 0.1);
+}

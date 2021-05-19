@@ -146,8 +146,10 @@ export default {
                 localStorage["tweetPage" + this.tweetId] = JSON.stringify(this.tweetPageJson)
             }
             else{
-                // TODO: ELse, show "Try again later"
-                return
+               // show "Try again later"
+               this.$toasted.show("Sorry, There was an error. Please try again later", {duration: 2700});
+               this.showLoader = false
+               return
             }
         }
 

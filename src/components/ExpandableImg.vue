@@ -34,7 +34,12 @@ import ColorThief from 'colorthief';
 var colorThief = new ColorThief();
 
 export default {
-    props:{     
+    props:{   
+      blurPhoto:{
+        type: Boolean,
+        required: false,
+        default: false
+      }  
     },
     data () {
         return {
@@ -69,8 +74,9 @@ export default {
         this.expanded = false
       },
         clickedImgDiv(){
+            this.$emit("clicked-photo")
             if(this.isImageLoaded){
-                this.expanded = true;
+              this.expanded = true;
             }
         },
         closeImage (event) {
@@ -117,6 +123,9 @@ export default {
           }
           /*Get the img main color and make the image visible */
           this.$refs.image.classList.add("photo-display");
+          if(this.blurPhoto){
+            this.$refs.image.classList.add("blur");
+          }
           this.$emit('image-loaded');
           this.isImageLoaded = true;
           const dominentColor = colorThief.getColor(this.$refs.image);
@@ -157,6 +166,10 @@ export default {
             }, 0)
           } else {
             // This section will run when the image is closing
+            // Unblur
+            if(this.blurPhoto){
+              this.$refs.image.classList.remove("blur");
+            }
             // Hide the expanded image
             this.cloned.style.opacity = 0
             setTimeout(() => {
@@ -186,6 +199,10 @@ export default {
     height: 100%;
     border-radius: inherit;
   /*cursor: zoom-in;*/
+}
+
+.blur{
+  filter: blur(11px);
 }
 
 .photos{
@@ -231,6 +248,7 @@ body > .expandable-image.expanded > img {
   /*background: rgb(255,255,255,0.8);*/
   border: none !important; 
   border-radius: 0 !important;
+  filter: none !important;
 }
 body > .expandable-image.expanded > .close-button {
   display: block;

@@ -74,65 +74,7 @@ router.afterEach((to, from) => {
   }
 })
 
-// import { ImagePlugin } from 'bootstrap-vue'
-//import './quasar'
-//Vue.use(ImagePlugin)
-
-
 Vue.config.productionTip = false
-
-// v-closable. WE DONT USE THIS ANYMORE
-/*let handleOutsideClick
-let areaInFocus // The area that is in focused
-let areaParentEl// the wrapper that surrounds the area, a listener will be attcached to him
-Vue.directive('closable', {
-  bind (el, binding, vnode) {
-    // Here's the click/touchstart handler
-    // (it is registered below)
-    const { areaToFocus } = binding.value
-    areaInFocus = vnode.context.$refs[areaToFocus];
-    areaParentEl = el;
-
-    handleOutsideClick = (e) => {
-      e.stopPropagation()
-      // Get the handler method name and the exclude array
-      // from the object used in v-closable
-      const { handler, exclude} = binding.value
-      // This variable indicates if the clicked element is excluded
-      let clickedOnExcludedEl = false
-      exclude.forEach(refName => {
-        // We only run this code if we haven't detected
-        // any excluded element yet
-        if (!clickedOnExcludedEl) {
-          // Get the element using the reference name
-          const excludedEl = vnode.context.$refs[refName]
-          // See if this excluded element
-          // is the same element the user just clicked on
-          clickedOnExcludedEl = excludedEl.contains(e.target)
-        }
-      })
-
-      // We check to see if the clicked element is not
-      // the dialog element and not excluded
-      if (!areaInFocus.contains(e.target) && !clickedOnExcludedEl) {
-        // If the clicked element is outside the dialog,
-        // then call the outside-click handler
-        // from the same component this directive is used in
-        vnode.context[handler]()
-      }
-    }
-    // Register touchstart event listeners on the wrapper
-    areaParentEl.addEventListener('touchstart', handleOutsideClick)
-  },
-
-  unbind () {
-    // If the element that has v-closable is removed, then
-    // unbind touchstart listeners from his wrapper
-    areaParentEl.removeEventListener('touchstart', handleOutsideClick)
-  }
-}) */
-//End of v-closable
-
 
 let shared_data = {
 
@@ -197,6 +139,90 @@ new Vue({
     setAction(actionLSKey, action){
       localStorage[actionLSKey] = JSON.stringify(action)
       this.numOfActions ++
+    },
+    setViewTweetFullAction(tweetId){
+      // Set the action in the local storage
+      const tweetObj = JSON.parse(localStorage.getItem("tweet" + tweetId))
+      const date = getDateNowFunc()
+      const action = {
+        action_type: "view tweet page",
+        action_date: date,
+        tweet_obj: tweetObj
+      }
+      // Call for the method to set the action
+      const actionLSKey = "action_view_tweet_page_" + tweetId
+      this.setAction(actionLSKey, action)
+    },
+    setViewUserFullAction(userName){
+      // Set the action in the local storage
+      const userObj = JSON.parse(localStorage.getItem("user" + userName))
+      const date = getDateNowFunc()
+      const action = {
+        action_type: "view user page",
+        action_date: date,
+        user_obj: userObj
+      }
+      // Call for the method to set the action
+      const actionLSKey = "action_view_user_page_" + userName
+      this.setAction(actionLSKey, action)
+    },
+    setClickedTweetMediaPhotoAction(tweetId, mediaObj, mediaIndex){
+      // Set the action in the local storage
+      const tweetObj = JSON.parse(localStorage.getItem("tweet" + tweetId))
+      const date = getDateNowFunc()
+      const action = {
+        action_type: "clicked tweet media photo",
+        action_date: date,
+        tweet_obj: tweetObj,
+        media_obj_clicked: mediaObj
+      }
+      // Call for the method to set the action
+      const actionLSKey = "action_click_media_photo_" + tweetId + "_" + mediaIndex
+      this.setAction(actionLSKey, action)
+    },
+    setClickedTweetMediaVideoAction(tweetId, mediaObj){
+      // Set the action in the local storage
+      const tweetObj = JSON.parse(localStorage.getItem("tweet" + tweetId))
+      const date = getDateNowFunc()
+      const action = {
+        action_type: "clicked tweet media video",
+        action_date: date,
+        tweet_obj: tweetObj,
+        media_obj_clicked: mediaObj
+      }
+      // Call for the method to set the action
+      const actionLSKey = "action_click_media_video_" + tweetId
+      this.setAction(actionLSKey, action)
+    },
+    setClickedTweetUrlAction(tweetId, url, isLinkPreview = false){
+      // Set the action in the local storage
+      const tweetObj = JSON.parse(localStorage.getItem("tweet" + tweetId))
+      const date = getDateNowFunc()
+      let action = {
+        action_type: isLinkPreview ? "clicked tweet url with preview": "clicked tweet url",
+        action_date: date,
+        tweet_obj: tweetObj,
+        url_clicked: url
+      }
+      if(isLinkPreview){
+        action.link_preview_details = JSON.parse(localStorage.getItem("tweetLinkPreview" + tweetId))
+      }
+      
+      // Call for the method to set the action
+      const actionLSKey = "action_click_tweet_url_" + tweetId + "_" + url
+      this.setAction(actionLSKey, action)
+    },
+    setSearchedAction(searchType, query){
+      // Set the action in the local storage
+      const date = getDateNowFunc()
+      const action = {
+        action_type: "searched " + searchType,
+        action_date: date,
+        query: query
+      }
+      // Call for the method to set the action
+      const actionLSKey = "action_search_" + searchType + "_" + query
+      this.setAction(actionLSKey, action)
     },
     setExpandableMediaMode(isExpandableMediaOpened){
       this.isExpandableMediaOpened = isExpandableMediaOpened

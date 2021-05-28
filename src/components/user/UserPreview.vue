@@ -85,7 +85,10 @@
                 // Redirect to the rewtweeter user page
                 this.setBackgroundGrey(this.$refs.wrapper)
                 setTimeout( () =>
+                {
+                    this.$root.setViewUserFullAction(this.username) // log the action
                     this.$router.push({ path: '/userPagePublic/'+this.username + "/" + this.idStr})
+                }
                 , 400)
             },
             setBackgroundGrey(domElement){

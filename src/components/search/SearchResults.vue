@@ -91,6 +91,8 @@ export default {
                 if(response.status == 200){
                     const response_tweets = response.data.statuses
                     this.tweetsResultsArr.push(...response_tweets);
+                    // Log the action
+                    this.$root.setSearchedAction("tweets", q)
                     // Add tweets results to local storage
                     // TODO: Add only the latest 30 or 40 tweets.
                     addToLsByList("tweet", this.tweetsResultsArr, "searchTweetsOrder")
@@ -105,6 +107,8 @@ export default {
                 const response = await serverSearchForUsers(q)
                 if(response.status == 200){
                     this.usersResultsArr.push(...response.data);
+                    // Log the action
+                    this.$root.setSearchedAction("users", q)
                     // Add users results to local storage
                     addToLsByList("user", this.usersResultsArr, "searchUsersOrder")
                 }

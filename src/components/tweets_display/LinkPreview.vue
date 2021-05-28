@@ -3,6 +3,7 @@
         ref="linkPreviewWrapper"
         :href="url" 
         target="_blank"
+        @click="clickedUrl"
     >
         <div class="link-prev-container">
             <div class="img-container">
@@ -59,6 +60,11 @@ export default {
         tweetId:{
             type: String,
             required: true
+        },
+        blurThumbnail:{
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data(){
@@ -144,8 +150,17 @@ export default {
             this.$nextTick(() =>{
                 if(this.$refs.thumbImg){
                     this.$refs.thumbImg.classList.add("show")
+                    if(this.blurThumbnail){
+                        this.$refs.thumbImg.classList.add("blur");
+                    }
                 }
             })
+        },
+        clickedUrl(){
+            this.$emit('clicked-url')
+            if(this.$refs.thumbImg && this.blurThumbnail){
+                this.$refs.thumbImg.classList.remove("blur");
+            }
         }
     }
 }
@@ -185,6 +200,10 @@ a{
 .show{
     visibility: visible !important; 
     opacity: 1 !important;
+}
+
+.blur{
+  filter: blur(11px);
 }
 
 .img-replacer{

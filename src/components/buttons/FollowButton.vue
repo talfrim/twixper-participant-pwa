@@ -1,14 +1,16 @@
 <template>
-    <ButtonCustom
-        :btnText="followBtnText" 
-        :btnModeOn="isFollowing"
-        @clicked-btn="followUnfollowUser()"
-    />
-
+    <div class="follow-btn-container" ref="container">
+        <ButtonCustom
+            :btnText="followBtnText" 
+            :btnModeOn="isFollowing"
+            @clicked-btn="followUnfollowUser()"
+        />
+    </div>
 </template>
 
 <script>
 import ButtonCustom from "./ButtonCustom.vue";
+import {serverFollow, serverUnfollow} from "../../communicators/serverCommunicator"
 
 export default {
     components:{
@@ -27,7 +29,8 @@ export default {
     data(){
         return{
             followBtnText: "Follow",
-            isFollowing: this.following // There is a vue warn if I don't use this
+            isFollowing: this.following, // There is a vue warn if I don't use this
+            actionsDisabled: false
         }
     },
     created(){
@@ -47,31 +50,83 @@ export default {
     },
     methods:{
         followUnfollowUser(){
+            if(this.actionsDisabled){
+                return
+            }
+            this.disableActions()
+            let vm = this
             if(this.isFollowing === false){ // Follow
-                // TODO: Send request to the serer to follow this page (user clicked follow btn)
-                // If the request was successful:
-
-
-                this.isFollowing = true;
-                this.$toasted.show('Followed (not really)');
-                console.log("Follow user "+ this.usernameContext)
+                // Send request to the serer to follow this page (user clicked follow btn)
+                serverFollow(this.usernameContext).then(function (response) {
+                    if(response.status == 200 || response.status == 201){
+                        // Success
+                        vm.isFollowing = true;
+                        vm.$toasted.show('Followed');
+                        console.log("Follow user "+ vm.usernameContext)
+                    }
+                    else{
+                        if(response.status == 502){
+                            if (response.data.code == 88){
+                                vm.$toasted.show('(API limit exceeded) Could not follow. Please try again later.', {duration: 2700});
+                            }
+                            else{
+                                vm.$toasted.show('API unknown issue) Could not follow. Please try again later', {duration: 2700});
+                            }
+                        }
+                        else{ // Error is not in the api
+                            vm.$toasted.show('Could not follow. Please try again later', {duration: 2700});
+                        }
+                    }
+                    vm.enableActions()
+                })
             }
             else{ // Unfollow
-                // TODO: Ask if the user is sure
-                // TODO: Send request to the serer to unfollow this page (user clicked unfollow btn)
-                // If the request was successful:
-
+                // Send request to the serer to unfollow this page (user clicked unfollow btn)
+                serverUnfollow(this.usernameContext).then(function (response) {
+                    if(response.status == 200 || response.status == 201){
+                        // Success
+                        vm.isFollowing = false;
+                        vm.$toasted.show('Unfollowed');
+                        console.log("Unfollow user "+ vm.usernameContext)
+                    }
+                    else{
+                        if(response.status == 502){
+                            if (response.data.code == 88){
+                                vm.$toasted.show('(API limit exceeded) Could not unfollow. Please try again later.', {duration: 2700});
+                            }
+                            else{
+                                vm.$toasted.show('API unknown issue) Could not unfollow. Please try again later', {duration: 2700});
+                            }
+                        }
+                        else{ // Error is not in the api
+                            vm.$toasted.show('Could not unfollow. Please try again later', {duration: 2700});
+                        }
+                    }
+                    vm.enableActions()
+                })
                 
-                this.isFollowing = false;
-                this.$toasted.show('Unfollowed (not really)');
-                console.log("Unfollow user "+ this.usernameContext)
+
             }
 
+        },
+        disableActions(){
+            this.actionsDisabled = true
+            this.$refs.container.classList.add('disabled')
+        },
+        enableActions(){
+            this.actionsDisabled = false
+            this.$refs.container.classList.remove('disabled');
         }
     },    
 }
 </script>
 
 <style scoped>
+.follow-btn-container{
+    transition: opacity 0.5s ease;
+}
 
+.disabled{
+	opacity: 0.4
+}
 </style>

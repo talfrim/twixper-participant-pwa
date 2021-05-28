@@ -12,8 +12,10 @@
             </div>
             <ExpandableImg 
                 :data-url="photoObj.url" 
+                :blurPhoto="blurPhotos"
                 @image-loaded="imageLoaded(i)"
                 @image-load-error="imageLoadError(i)"
+                @clicked-photo="$emit('clicked-photo', i)"
             />
             <!--<img :data-url="photoObj.url" 
                  class="photos"
@@ -41,6 +43,11 @@ export default {
         photosJson:{ 
             type: Array,
             required: true
+        },
+        blurPhotos:{
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data(){

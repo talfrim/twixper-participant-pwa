@@ -1,7 +1,5 @@
 <template>
     <div class="quoted-tweet-wrapper" ref="quotedTweetWrapper">
-        <!-- <router-link :to="{ name: 'tweetPage', params: {tweetId: tweetId} }"
-            tag="div" class="user-header-container">  -->
         <div
             class="user-header-container"
             @click="clickedTweet"
@@ -65,8 +63,10 @@ export default {
         clickedTweet(){
             // Redirect to tweet page
             this.$refs.quotedTweetWrapper.style.backgroundColor = "rgba(0,0,0,0.1)"
-            setTimeout( () =>
+            setTimeout( () =>{
+                this.$root.setViewTweetFullAction(this.tweetId) // log the action
 				this.$router.push({ path: '/tweetPage/'+this.tweetId})
+            }
 			, 400)
         }
     }

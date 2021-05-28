@@ -69,6 +69,11 @@ export default {
         videoUrl:{
             type: String,
             required: true
+        },
+        blurThumbnail:{
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data(){
@@ -140,6 +145,10 @@ export default {
                 }, 0)
             } else {
                 // This section will run when the image is closing
+                // Unblur thumbnail
+                if(this.blurThumbnail){
+                    this.$refs.thumbImg.classList.remove("blur");
+                }
                 // Hide the expanded image
                 this.cloned.style.opacity = 0
                 setTimeout(() => {
@@ -164,6 +173,7 @@ export default {
             this.expanded = false
         },
         clickedImgDiv(){
+            this.$emit("clicked-video")
             if(this.isImageLoaded){
                 this.expanded = true;
                 console.log("opening video")
@@ -199,6 +209,9 @@ export default {
         imageLoaded(){
             if(this.isDestroyed){
                 return;
+            }
+            if(this.blurThumbnail){
+                this.$refs.thumbImg.classList.add("blur");
             }
             /*Get the img main color and make the image thumbnail visible */
             this.$refs.thumbImg.classList.add("photo-display");
@@ -247,6 +260,9 @@ body > .exp-video-container.expanded {
     position: relative;
 } 
 
+.blur{
+  filter: blur(11px);
+}
 
 .thumb-img{
     object-fit: cover;

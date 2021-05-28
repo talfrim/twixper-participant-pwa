@@ -182,6 +182,7 @@ export default {
 				return
 			}
 			// Redirect to the author user page
+			this.$root.setViewUserFullAction(this.author.userName) // log the action
 			this.$router.push({ path: '/userPagePublic/'+ this.author.userName + "/" + this.author.idStr})
 		},
 		clickedTweet(e){
@@ -189,8 +190,10 @@ export default {
 			if(!e || e.target == this.$refs.userAvatarContainer){
 				// Redirect to tweet page
 				this.setBackgroundGrey(this.$refs.tweetPrevWrapper)
-				setTimeout( () =>
+				setTimeout( () =>{
+					this.$root.setViewTweetFullAction(this.tweetId) // log the action
 					this.$router.push({ path: '/tweetPage/'+this.tweetId})
+				}
 				, 300)
 			}
 		},
@@ -204,10 +207,11 @@ export default {
 				return
 			}
 			// Redirect to the rewtweeter user page
-			setTimeout( () =>
+			setTimeout( () =>{
+				this.$root.setViewUserFullAction(this.retweet_details.retweet_author_username) // log the action
 				this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username
 				+ "/" + this.retweet_details.retweet_author_idStr })
-			, 300)
+			}, 300)
 		},
 		setBackgroundGrey(domElement){
 			domElement.style.backgroundColor = "rgba(0,0,0,0.1)"

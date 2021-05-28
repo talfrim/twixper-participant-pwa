@@ -1,3 +1,14 @@
+Example for action obj:
+const action = {
+    action_type: "view tweet", // Required!
+    action_date: date, // Required!
+    tweet_obj: tweetObj,
+    user_obj: tweetObj,
+    media_obj_clicked: mediaObj
+    url_clicked: string,
+    link_preview_details: obj
+}
+
 user_twitter_token_enc:
 user_twitter_token_secret_enc: 
 user_twitter_entity: Object of the participant's twitter info
@@ -33,6 +44,12 @@ userTweetsScrollTop:
 userLikesScrollTop:
 
 action_view_{tweet id}
-action_view_full{tweet id}
+action_view_tweet_page_{tweet id}
+action_view_user_page_{user id}
+action_click_media_photo_{tweet id}_{media index}
+action_click_media_video_{tweet id}
+action_click_tweet_url_{tweet id}_{url}
+action_search_tweets_{search query}
+action_search_users_{search query}
 action_login
 action_logout

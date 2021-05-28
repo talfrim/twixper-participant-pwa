@@ -28,11 +28,15 @@
             <TweetPreviewImgsGrid
                 v-if="photosJson.length > 0" 
                 :photosJson="photosJson" 
+				:blurPhotos="blurMedia"
+				@clicked-photo="clickedPhoto"
             />
 			<ExpandableVideo
 				v-if="videoUrl"
 				:thumbnailImgUrl="videoThumbnailUrl"
 				:videoUrl="videoUrl"
+				:blurThumbnail="blurMedia"
+				@clicked-video="clickedVideo"
 			/>
         </div>
 		<div class="post-content-media" v-if="canDisplayLinkPreview && linkPreviewUrl">
@@ -40,6 +44,8 @@
 				:url="linkPreviewUrl"
 				:displayUrl="linkDisplayUrl"
 				:tweetId="tweetId"
+				:blurThumbnail="blurMedia"
+				@clicked-url="clickedLinkPreview"
 			/>
         </div>
 
@@ -91,6 +97,8 @@ export default {
 			lang: "",
             hasMedia: false,
 			photosJson: [],
+			blurMedia: false,
+			videoJson: {},
 			videoThumbnailUrl: "",
 			videoUrl: "",
 			is_quote_tweet: false, // Whether the tweet is quote of other tweet
@@ -120,8 +128,12 @@ export default {
 			this.quoted_tweet = tweetPrev.quoted_status
 		}
 
+		if(tweetPrev.pixel_media === true){
+			this.blurMedia = true
+		}
+
 		// Check for media
-        if(tweetPrev.extended_entities){
+        if(tweetPrev.extended_entities && tweetPrev.remove_media !== true){
 			const extEnt = tweetPrev.extended_entities;
 			if(extEnt.media){
 				this.hasMedia = true;
@@ -134,6 +146,7 @@ export default {
 						this.photosJson.push(extEntMediaItem);
 					}
 					else if(type === "video" || type === "animated_gif"){
+						this.videoJson = extEntMediaItem
 						this.videoThumbnailUrl = extEntMediaItem.media_url_https;
 						const variants = extEntMediaItem.video_info.variants;
 						this.videoUrl = variants[variants.length - 1].url;
@@ -143,7 +156,7 @@ export default {
 		}
 
 		// Check if we should add link preview
-		if(!this.is_quote_tweet && !this.isQuotedTweet && !this.hasMedia){
+		if(!this.is_quote_tweet && !this.isQuotedTweet && !this.hasMedia && tweetPrev.remove_media !== true){
 			const urls = tweetPrev.entities.urls
 			if(urls != null && urls.length > 0){
 				const urlObj = urls[0]
@@ -188,6 +201,16 @@ export default {
 				this.$refs.textParagraph.style.direction = "rtl";
 			} 
 		},
+		clickedPhoto(index){
+			const mediaItem = this.photosJson[index]
+			this.$root.setClickedTweetMediaPhotoAction(this.tweetId, mediaItem, index)
+		},
+		clickedVideo(){
+			this.$root.setClickedTweetMediaVideoAction(this.tweetId, this.videoJson)
+		},
+		clickedLinkPreview(){
+			this.$root.setClickedTweetUrlAction(this.tweetId, this.linkPreviewUrl, true)
+		},
 		clickedTweet(e){
 			// Check the target
 			const target = e.target
@@ -214,9 +237,10 @@ export default {
 						}
 						else{
 							// Redirect to user page
-							setTimeout( () =>
+							setTimeout( () =>{
+								this.$root.setViewUserFullAction(username) // log the action
 								this.$router.push({ path: '/userPagePublic/'+username+ "/" + userId})
-								, 300)
+							}, 300)
 						}
 						break;
 					}
@@ -238,8 +262,9 @@ export default {
 					}
 					case "url":{
 						// Already redirecting to the link because it is under "<a>" tag
-						/*const url = value
-						console.log(url)*/
+						const url = value
+						// Log the action
+						this.$root.setClickedTweetUrlAction(this.tweetId, url)
 						setTimeout( () =>{
 							this.unsetBackgroundGrey(target)
 						}, 300)
@@ -260,9 +285,10 @@ export default {
 				return
 			}
 			// Redirect to user page
-			setTimeout( () =>
+			setTimeout( () =>{
+				this.$root.setViewUserFullAction(this.replyToUserName) // log the action
 				this.$router.push({ path: '/userPagePublic/'+this.replyToUserName+ "/" + this.replyToUserIdStr})
-			, 300)
+			}, 300)
 		},
 		setBackgroundGrey(domElement){
 			domElement.style.backgroundColor = "rgba(0,0,0,0.1)"

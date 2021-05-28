@@ -21,6 +21,8 @@ const getLinkPreviewEndpoint = "/participants/getLinkPreview"
 
 const likeTweetEndpoint = "/participants/likeTweet"
 const unlikeTweetEndpoint = "/participants/unlikeTweet"
+const followEndpoint = "/participants/follow"
+const unfollowEndpoint = "/participants/unfollow"
 const publishTweetEndpoint = "/participants/publishTweet"
 const publishRetweetEndpoint = "/participants/publishRetweet"
 
@@ -319,6 +321,28 @@ async function unlikeTweet(tweetId){
     return await sendPostRequestReturnResponse(requestUrl, {})
 }
 
+async function follow(screenName){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestQuery = "?screen_name=" + screenName
+    const requestUrl = serverUrl + followEndpoint + requestQuery
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
+async function unfollow(screenName){
+    if(!actuallySendReqToServer){
+        await sleep(600)
+        return {status: 200, data: {}}
+    }
+    // Else, send the request to the server
+    const requestQuery = "?screen_name=" + screenName
+    const requestUrl = serverUrl + unfollowEndpoint + requestQuery
+    return await sendPostRequestReturnResponse(requestUrl, {})
+}
+
 async function publishTweet(payload){
     if(!actuallySendReqToServer){
         await sleep(600)
@@ -374,6 +398,8 @@ module.exports = {
 
     serverLikeTweet: likeTweet,
     serverUnlikeTweet: unlikeTweet,
+    serverFollow: follow,
+    serverUnfollow: unfollow,
     serverPublishTweet: publishTweet,
     serverPublishRetweet: publishRetweet,
 

@@ -41,11 +41,14 @@
                         <div class="author-info-container">
                             <div class="user-avatar" v-lazyload ref="userImgContainer">
                                 <router-link :to="{ name: 'userPage', params: {userName: author.userName, userId: author.idStr} }"
-                                    tag="img" :data-url="author.profileImgUrl"> 
+                                    tag="img" :data-url="author.profileImgUrl"
+                                    @click.native="$root.setViewUserFullAction(author.userName)"
+                                > 
                                 </router-link>
                             </div>
                             <router-link :to="{ name: 'userPage', params: {userName: author.userName, userId: author.idStr} }"
                                     tag="div" class="names-container"
+                                    @click.native="$root.setViewUserFullAction(author.userName)"
                             >  
                                 <div class="user-full-name-container">
                                     <span>{{author.userFullName}}</span>
@@ -89,6 +92,7 @@ import Loader from "../../components/Loader"
 import TweetPreviewList from "../../components/tweets_display/TweetPreviewList"
 
 import {serverGetTweetPage} from "../../communicators/serverCommunicator"
+import { addToLsByList, emptyFromLsByList } from '../../assets/globalFunctions'
 
 export default {
     components:{
@@ -126,9 +130,11 @@ export default {
     },
     beforeDestroy(){
         // Deleting the comments from LS
-        this.comments.forEach(commentObj => {
+        /*this.comments.forEach(commentObj => {
             localStorage.removeItem('tweet' + commentObj.id_str)
-        });
+        });*/
+        emptyFromLsByList("tweet", "commentsOrder")
+        localStorage.removeItem("commentsOrder");
     },
     async created(){
         // Retrieve the tweet page Json from localStorage
@@ -183,11 +189,12 @@ export default {
         // Do preparation to the data so it would be more comfortable to display it
         this.comments = this.tweetPageJson.comments || []
         // Add the comments to LS
-        this.comments.forEach(commentObj => {
+        addToLsByList("tweet", this.comments, "commentsOrder")
+        /*this.comments.forEach(commentObj => {
             if(localStorage.getItem('tweet' + commentObj.id_str) == null){
                 localStorage['tweet' + commentObj.id_str] = JSON.stringify(commentObj)
             }
-        });
+        });*/
 
         // If this is a retweet, the tweetPrev should be the original tweet
 		if(this.tweetPageJson.retweeted_status){
@@ -243,9 +250,11 @@ export default {
         clickedRetweet(){
             // Redirect to the rewtweeter user page
             this.setBackgroundGrey(this.$refs.retweeterDiv)
-            setTimeout( () =>
+            this.$root.setViewUserFullAction(this.retweet_details.retweet_author_username) // log the action
+            setTimeout( () =>{
                 this.$router.push({ path: '/userPagePublic/'+this.retweet_details.retweet_author_username
                 + "/" + this.retweet_details.retweet_author_idStr})
+            }
             , 300)
         },
         setBackgroundGrey(domElement){

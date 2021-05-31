@@ -35,7 +35,7 @@
                     </span> -->
                     <!--@click="clickedSignIn" onclick="window.open(this.href)"-->
                 </div>
-                <div class="alpha-alert-wrapper">
+                <!-- <div class="alpha-alert-wrapper">
                     <div class="alpha-alert">
                         This is an alpha version. It is not fully working and tested yet. <br/>
                         The following features are not implemented yet: <br/> 
@@ -44,13 +44,13 @@
                         - Comment. <br/>
                         - Retweet. 
                     </div>  
-                </div>
+                </div> -->
                 <div class="footer-basic">
                     <footer>
                         <p class="copyright">
                             Twixper will record data regarding your usage and it will be available to the researchers that own the experiment.
                             Twixper might make changes in content you would normally see in twitter. 
-                            We never post on behalf of your name or change things you write.</p>
+                            We will never post on behalf of your name or change things you write.</p>
                     </footer>
                 </div>
             </div>

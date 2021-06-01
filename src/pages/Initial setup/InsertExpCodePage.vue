@@ -50,7 +50,7 @@ export default{
                 // this.$router.replace('feed')
                 window.location.reload()
             }
-            else if (registerToExpResponse.status == 401){
+            else if (registerToExpResponse.status == 401 || registerToExpResponse.status == 428){
                 alert("Unathorized. Login with twitter first");
                 emptyLs()
                 localStorage.removeItem("providedCredentials")

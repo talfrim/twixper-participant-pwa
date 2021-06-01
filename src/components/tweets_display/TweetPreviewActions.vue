@@ -3,10 +3,10 @@
         v-if="isTweetPageStyle"
         class="post-icons-container-page-style" 
     >
-        <div class="time-container">
+        <div class="container time-container">
             {{time}}
         </div>
-        <div class="stats-container">
+        <div class="container stats-container">
             <div class="retweets-container">
                 <span class="number">{{retweets}}</span> 
                 <span class="title"> Retweets & Quotes</span>
@@ -16,7 +16,7 @@
                 <span class="title"> Likes </span>
             </div>
         </div>
-        <div class="icons-container" ref="container">
+        <div class="container icons-container" ref="container">
             <i class="far fa-comment" @click="clickedComment()"></i>
             <i class="fas fa-retweet page-style" @click="clickedRetweet()" ref="retweetIcon"></i>
             <div class="heart-container" @click="likeTweet()" >

@@ -86,7 +86,7 @@ export default {
     methods:{
         async getFeedFromServer(maxId, count){
             let success = true
-            // this.showLoader = true
+            this.showMoreLoader = true
             const response = await serverGetFeed(maxId, count)
             if(response.status == 200){
                 let tweetsFromServer = response.data
@@ -102,7 +102,6 @@ export default {
                 addToLsByList("tweet", this.feedTweetsArr, "feedTweetsOrder")
                 // Observe when the user scroll to bottom
                 this.$refs.tpl.setObserver() 
-                this.showMoreLoader = true
             }
             else if (response.status == 401 || response.status == 428){
                 // Unauthorized

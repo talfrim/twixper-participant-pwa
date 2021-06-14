@@ -98,8 +98,8 @@ function emptyCacheFromLs(){
     Object.keys(localStorage).forEach((key) => {
         if(key != "providedCredentials"
         && key != "registeredToExperiment"
-        && key != "user_twitter_token_enc"
-        && key != "user_twitter_token_secret_enc"
+        && key != "user_twitter_token"
+        && key != "user_twitter_token_secret"
         && key != "user_twitter_entity"
         && !key.startsWith("action")
         ){

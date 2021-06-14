@@ -80,8 +80,8 @@ export default {
         else{ // The auth headers are invalid.
           localStorage.removeItem('providedCredentials')
           localStorage.removeItem('registeredToExperiment')
-          localStorage.removeItem('user_twitter_token_enc')
-          localStorage.removeItem('user_twitter_token_secret_enc')
+          localStorage.removeItem('user_twitter_token')
+          localStorage.removeItem('user_twitter_token_secret')
           localStorage.removeItem('user_twitter_entity')
           emptyCacheFromLs()
           emptyActionsFromLs()

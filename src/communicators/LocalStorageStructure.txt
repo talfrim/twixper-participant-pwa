@@ -9,8 +9,8 @@ const action = {
     link_preview_details: obj
 }
 
-user_twitter_token_enc:
-user_twitter_token_secret_enc: 
+user_twitter_token:
+user_twitter_token_secret: 
 user_twitter_entity: Object of the participant's twitter info
 
 providedCredentials: boolean, whether the current participant already authorized us.

@@ -50,10 +50,10 @@ function sleep(ms) {
 // Create auth header object
 function createAuthHeaderObj(){
     let headerObj = {}
-    if(localStorage.getItem("user_twitter_token_enc") != null
-     && localStorage.getItem("user_twitter_token_secret_enc") != null){
-        headerObj["User-Twitter-Token-Enc"] = localStorage.getItem("user_twitter_token_enc")
-        headerObj["User-Twitter-Token-Secret-Enc"] = localStorage.getItem("user_twitter_token_secret_enc")
+    if(localStorage.getItem("user_twitter_token") != null
+     && localStorage.getItem("user_twitter_token_secret") != null){
+        headerObj["User-Twitter-Token"] = localStorage.getItem("user_twitter_token")
+        headerObj["User-Twitter-Token-Secret"] = localStorage.getItem("user_twitter_token_secret")
     }
     return headerObj
 }
@@ -145,9 +145,9 @@ async function checkCredentials(token, tokenSecret){
     }
     const response = await sendPostRequestReturnResponse(requestUrl, payload)
     if(response.status == 200){
-        // Set "user_twitter_token_enc" and "user_twitter_token_secret_enc" in LS from the response header.
-        localStorage.setItem("user_twitter_token_enc", response.headers["user-twitter-token-enc"])
-        localStorage.setItem("user_twitter_token_secret_enc", response.headers["user-twitter-token-secret-enc"])
+        // Set "user_twitter_token" and "user_twitter_token_secret" in LS from the response header.
+        localStorage.setItem("user_twitter_token", response.headers["user-twitter-token"])
+        localStorage.setItem("user_twitter_token_secret", response.headers["user-twitter-token-secret"])
     }
     return response
 }

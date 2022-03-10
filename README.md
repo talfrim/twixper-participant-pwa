@@ -1,5 +1,5 @@
-# Twixper_participant
-Repository for the Twitter clone app for participants in experiments. 
+# twixper-participant-pea
+A pwa Twitter clone app.
 
 ## Project setup
 ```
